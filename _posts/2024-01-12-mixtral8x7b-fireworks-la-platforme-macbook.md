@@ -1,8 +1,8 @@
 ---
 title: Mixtral 8x7B on Fireworks, Mistral's La Platforme, and a Macbook with 32 GB RAM
 author: Mitja Martini
-date: 2023-12-12 16:30:00 +0200
-categories: [Generative AI, Tutorial]
+date: 2024-01-12 16:30:00 +0200
+category: Playground
 tags: [Mistral, Python, Fireworks]
 render_with_liquid: false
 ---
