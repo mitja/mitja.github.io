@@ -11,7 +11,7 @@ tags:
  - OpenAI
  - GPT
 image:
-  path: /assets/blog/2024/memory-tree-construction.png
+  path: /assets/blog/2024/tree-of-summaries/memory-tree-construction.png
   alt: This is how a tree of summaries looks like in theory.
 ---
 
