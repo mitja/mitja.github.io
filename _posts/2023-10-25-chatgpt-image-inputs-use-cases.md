@@ -142,7 +142,7 @@ size constraints.
 
 I then used this to ask GPT-4 to create a second, more [automatically improved version](/assets/blog/2023/chatgpt-image-inputs/chat-generated-improved-automatically.html) of the code. The result is not as good as the improved code, where I manually described the differences, but still better than the original version:
 
-![ChatGPT's first attempt at recreating Azure's chatbot box.](assets/blog/2023/chatgpt-image-inputs/chat-generated-improved-automatically.png)
+![ChatGPT's first attempt at recreating Azure's chatbot box.](/assets/blog/2023/chatgpt-image-inputs/chat-generated-improved-automatically.png)
 
 ## Conclusion
 
