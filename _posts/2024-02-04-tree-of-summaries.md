@@ -1,5 +1,5 @@
 ---
-date: 2023-12-02
+date: 2024-02-04
 title: Summarizing Large Texts with LLMs and a Tree of Summaries
 author: mitja
 category: The Basics
