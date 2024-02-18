@@ -77,9 +77,9 @@ The basis for data processing is Art. 6 Paragraph 1 lit. b GDPR, which allows th
 processing of data to fulfill a contract or pre-contractual
 measures.
 
-## Netlify
+## GitHub Pages
 
-GitHub is used to publish the website.
+GitHub Pages are used to publish this website.
 Details on handling user data can be found here: https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement#
 
 ## YouTube
