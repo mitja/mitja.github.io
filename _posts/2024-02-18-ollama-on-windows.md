@@ -9,7 +9,7 @@ tags:
  - Windows
  - OpenAI API
 image:
-  path: /assets/blog/2024/ollama-on-windows/ollama-windows.png
+  path: /assets/blog/2024/ollama-on-windows/ollama-windows.jpg
   alt: Ollama on Windows with OpenWebUI on top.
 ---
 Ollama is one of the easiest ways to run large language models locally.
