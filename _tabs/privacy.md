@@ -77,23 +77,14 @@ The basis for data processing is Art. 6 Paragraph 1 lit. b GDPR, which allows th
 processing of data to fulfill a contract or pre-contractual
 measures.
 
-## Brevio
-
-Brevio is used to manage the newsletter. Personal information managed by Bevio includes your email, your firstname and the preferred language for the newsletter. The address of this provider is Brevio AS, Wergelandsveien 1, 0167 Oslo, Sweden. Details on handling user data can be found in <a href="https://www.brevio.com/en/privacy-policy">Brevio's Privacy Policy</a>.
-
 ## Netlify
 
-Netlify is used to publish this website. The address of this provider is 
-Netlify, 2325 3rd Street, Suite 215, San Francisco, CA 94107, USA.
-Every page view is answered by Netlify. Netlify stores: access logs
-including the IP address for less than 30 days.</p>
-
-Details on handling user data can be found in
-Netlify's data protection declaration at https://www.netlify.com/privacy/.
+GitHub is used to publish the website.
+Details on handling user data can be found here: https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement#
 
 ## YouTube
 
-This website uses plugins from YouTube to integrate and display video content. 
+This website uses plugins from YouTube to integrate and display video content.
 The provider of the video portal is YouTube, LLC, 901 Cherry Ave.,
 San Bruno, CA 94066, USA.
 
@@ -109,8 +100,7 @@ YouTube is used in the interest of an attractive presentation
 of this website. This represents a legitimate interest within the meaning of
 Article 6 (1) (f) GDPR.
 
-You can find details on the handling of user data in
-YouTube's data protection declaration at: https://www.google.de/intl/de/policies/ privacy.
+You can find details on the handling of user data by Google here: https://policies.google.com/?hl=en
 
 ## Google Analytics
 
@@ -118,12 +108,4 @@ Requests to this website are tracked with Google Analytics. The tracking is used
 aggregate interest in pages to improve the content and experience for users of this
 website.
 
-## Thinkific
-
-Courses are hosted on Thinkific. To attend a course, you need to create a user account ("User Account"). Personal information stored include your email, your name, a hash of your password, links to social accounts if you use them for authentication, the courses you are enrolled in, and your progress in the courses.
-
-The headquarter of Thinkific is located at 400 - 369 Terminal Ave, Vancouver, Canada.
-
-Details on handling user data can be found in [Thinkific's Privacy Policy](https://www.thinkific.com/privacy-policy/).
-
-*This declaration was created with the help of the data protection configurator from mein-datenschutzbeauftragter.de.*
+You can find details on the handling of user data by Google here: https://policies.google.com/?hl=en
