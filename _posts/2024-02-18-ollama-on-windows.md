@@ -1,6 +1,6 @@
 ---
 date: 2024-02-18
-title: Ollama on Windows: How to Install and Use it with OpenWebUI
+title: "Ollama on Windows: How to Install and Use it with OpenWebUI"
 author: mitja
 category: The Basics
 tags:
