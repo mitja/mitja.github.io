@@ -26,16 +26,10 @@ python export_ollama_model.py phi3 mini --output phi3_mini.zip
 
 The result is a ZIP file that contains all files related to the model in Ollama: The manifest and the blobs. 
 
-Then I moved the ZIP file to the airgapped computer and imported it to it's local `.ollama` folder:
+Then I moved the ZIP file to the airgapped computer and imported it to it's local `.ollama` folder by running this command in the folder where `.ollama` is located:
 
 ```bash
-tar -xf <modelname>_<tag>_export.zip -C ./.ollama
-```
-
-Or with PowerShell:
-
-```PowerShell
-Expand-Archive -Path <modelname>_<tag>_export.zip -DestinationPath ./.ollama
+tar -xf phi3_mini.zip
 ```
 
 Here is the script (`export_ollama_model.py`):
