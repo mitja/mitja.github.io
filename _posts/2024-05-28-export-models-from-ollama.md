@@ -69,8 +69,7 @@ def create_zip(ollamamodels, registry, repository, model_name, model_tag, output
         zipf.write(Path.joinpath(ollamamodels, config_blob_path), arcname=config_blob_path.relative_to('.'))
 
     print(f"Model '{repository}{model_name}:{model_tag}' exported successfully to '{output_zip}'")
-    print(f"You can import it to another Ollama instance with 'tar -xf <modelname>_<tag>_export.zip -C ./.ollama'")
-    print(f"Or with PowerShell: 'Expand-Archive -Path <modelname>_<tag>_export.zip -DestinationPath ./.ollama'")
+    print(f"You can import it to another Ollama instance with 'tar -xf <modelname>_<tag>_export.zip'")
 
 def main():
     homedir = Path.home()
