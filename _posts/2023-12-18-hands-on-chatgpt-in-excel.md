@@ -26,7 +26,7 @@ In this book you will learn everything you need to know to create your own AI-in
 
 You can buy this book on [Amazon](https://www.amazon.com/dp/B0CQ3CRBKJ/).
 
-You can also buy my course [ChatGPT for Excel Users](https://courses.mitjamartini.com/courses/chatgpt-and-excel) which covers the same topics.
+You can also buy my **course** [Prompt Flow Engineering with ChatGPT in Excel](https://www.udemy.com/course/prompt-flow-engineering-with-chatgpt-in-excel/?couponCode=838EBE7CE289F5C14D73) which covers the same topics.
 
 ## Downloads
 

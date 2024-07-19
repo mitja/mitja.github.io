@@ -1,6 +1,6 @@
 ---
 date: 2023-10-16
-title: How to use Mistral AI Instruct model to generate structured content similar to Open AI Functions
+title: How to use Grammar Following in llama.cpp for Generating JSON similar to Open AI Functions
 author: mitja
 category: Playground
 tags:
@@ -9,7 +9,15 @@ tags:
  - llama.cpp
 ---
 
-This piece demonstrates how to use json schema and llama.cpp json schema to grammar to get Mistral 7B Instruct to parse and extract information in a structured way.
+Source: https://github.com/ggerganov/llama.cpp/discussions/2494
+
+grammar-following enables exciting use-cases where schemas matter, like
+
+- Generating type-safe requests to external APIs
+- Writing DB queries using specific SQL dialects and being absolutely sure that they are syntactically valid
+- Using LLM for structured extraction that can be sent directly to a database, excel spreadsheet, etc.
+
+This article demonstrates how to use a json schema and llama.cpp json schema to grammar to get Mistral 7B Instruct to parse and extract information in a structured way.
 
 In simple terms: How to let Mistral 7B Instruct generate structured content (JSON etc.)
 
@@ -22,3 +30,113 @@ Official instruction format:
 https://advanced-stack.com/resources/how-to-use-mistral-ai-instruct-model-to-generate-structured-content-similar-to-open-ai-functions.html
 
 Model card: https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.1
+
+### Create a JSON Schema
+
+[PyLLMCore](https://github.com/advanced-stack/py-llm-core) can generate a JSON schema from a dataclass. This is useful to define the structure of the JSON that Mistral 7B Instruct should generate.
+
+```python
+from py_llm_core import generate_json_schema
+from dataclasses import dataclass
+
+@dataclass
+class MyDataClass:
+    name: str
+    age: int
+    hobbies: list[str]
+
+schema = generate_json_schema(MyDataClass)
+print(schema)
+```
+
+### Create a Grammar
+
+[llama.cpp]()
+
+
+a natural side effect of the grammar sampling method that I am seeing a significant degradation in tokens per second speed during generation, even with permissive sampling rules?
+On 13b, I go from ~20T/s to ~13T/s, which is pretty unfortunate in my eyes, but is it expected? Is it CPU bound potentially?
+
+Simonw on hn: https://news.ycombinator.com/item?id=36819906
+
+Here's my understanding of how this works (please someone correct me if I'm getting this wrong).
+Language models emit tokens one at a time, starting with the prompt that you give them.
+If you have a conversation with an LLM, effectively you can think of that as you giving it a sequence of tokens, then it generates some, then you generate more and so-on.
+This grammar trick effectively takes advantage of this by giving you much more finely grained control over the tokens. So you can do things like this:
+    Give me the address of the
+    White House as JSON:
+    
+    {"street": "
+Then the LLM can return:
+    1600 Pennsylvania Ave NW"
+The moment you see that closing double quote, you take over again and inject:
+    ",
+    "City": "
+It fills in:
+    Washington, DC"
+And so on.
+But because this is all based on a grammar, you can do way more with it than just JSON.
+
+jiggawatts: 
+
+Not just that: the LLM outputs not individual tokens, but a weighted recommendation. The most probable (“best”) token has the highest weight, but there may be many alternatives including JSON symbols like quote characters.
+
+The “temperature” setting adjusts how likely it is that an output token is chosen that is not the top-rated option. That prevents repetitive output.
+
+Forcing an LLM to obey a grammar is mostly about filtering the list before the token choice is made. There may still be a random element controlled by the temperature!
+
+A more advanced feature not commonly used is to also enable back-tracking if the AI gets stuck and can’t produce a valid output.
+
+play with a grammar generator: https://grammar.intrinsiclabs.ai
+
+I ended up doing similar work in PyLLMCore but for Python dataclasses.
+
+Basically, you can generates a grammar on the fly from a dataclass (including nested fields). I just added the Enum type today:
+
+```python
+from dataclasses import dataclass
+from llm_core.assistants import LLaMACPPAssistant
+from enum import Enum
+
+class TargetItem(Enum):
+    PROJECT = 1
+    TASK = 2
+    COMMENT = 3
+    MEETING = 4
+
+
+class CRUDOperation(Enum):
+    CREATE = 1
+    READ = 2
+    UPDATE = 3
+    DELETE = 4
+
+
+@dataclass
+class UserQuery:
+    system_prompt = "You are a helpful assistant."
+    prompt = """
+    Analyze the user's query and convert his intent to:
+    - an operation (among CRUD)
+    - a target item
+
+    Query: {prompt}
+    """
+    operation: CRUDOperation
+    target: TargetItem
+
+
+def ask(prompt):
+    with LLaMACPPAssistant(UserQuery, model="mistral") as assistant:
+        user_query = assistant.process(prompt=prompt)
+        return user_query
+```
+
+ask('Cancel all my meetings for the week')
+ask('What is the agenda ?')
+ask('Schedule meeting for next monday')
+ask('When is my next meeting ?')
+
+Der LLaMACPPAssistant oder LLaMACPPParser ruft das LLaMACPPModel auf, was automatisch grammar auf Basis des Schemas definiert. Funktioniert auch für LLaVA.
+
+https://til.simonwillison.net/llms/llama-cpp-python-grammars
