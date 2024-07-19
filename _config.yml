@@ -16,10 +16,10 @@ timezone: Europe/Berlin
 
 title: Mitja Martini # the main title
 
-tagline: "IT Solution Designer" # it will display as the sub-title
+tagline: "A Gen Xer meets Gen AI" # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
-  A blog about IT solution design and AI engineering.
+  A blog about AI engineering.
 
 # Fill in the protocol & hostname for your site.
 # e.g. 'https://username.github.io', note that it does not end with a '/'.
