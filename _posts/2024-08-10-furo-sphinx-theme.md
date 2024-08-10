@@ -1,5 +1,5 @@
 ---
-title: The Furo Sphinx Theme looks good with small documentations
+title: The Furo Sphinx Theme Looks Good with Small Documentations
 author: mitja
 date: 2024-08-10
 category: Building AI Apps
@@ -11,10 +11,10 @@ render_with_liquid: false
 permalink: /blog/2024/08/10/furr-sphinx-theme/
 image:
   path: /assets/blog/2024/furo-sphinx-theme/furo-customization.png
-  alt: A screenshot of the Furr Sphinx Theme
+  alt: A screenshot of the Furo Sphinx Theme
 ---
 
-For documentation, I prefer Sphinx over static site builders like Hugo and Jekyll, as I can
+For documentation, I prefer [Sphinx](https://www.sphinx-doc.org/en/master/) over static site builders like [Hugo](https://gohugo.io) and [Jekyll](https://jekyllrb.com), as I can
 
 - have one source for html, epub, and PDFs,
 - create docs from Jupyter Notebooks with [Jupyterbook](https://jupyterbook.org/),
@@ -23,6 +23,6 @@ For documentation, I prefer Sphinx over static site builders like Hugo and Jekyl
 
 A disadvantage of Sphinx is that smaller documentations often look a bit empty with the most common themes for html. 
 
-Today, I stumbled across the [Furo](https://github.com/pradyunsg/furo) Sphinx theme. I like that it looks good with a minimal, customizable appearance and that it looks good even with small documentations.
+Today, I stumbled across the [Furo](https://github.com/pradyunsg/furo) Sphinx theme. I like it's minimal appearance and that it looks good even with small documentations.
 
 I think I'll give it a try.
