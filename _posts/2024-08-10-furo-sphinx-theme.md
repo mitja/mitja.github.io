@@ -1,4 +1,3 @@
-
 ---
 title: The Furo Sphinx Theme looks good with small documentations
 author: mitja
@@ -11,7 +10,7 @@ tags: [Documentation, Sphinx]
 render_with_liquid: false
 permalink: /blog/2024/08/10/furr-sphinx-theme/
 image:
-  path: /assets/blog/2024/furo-sphinx-theme/furo-customization.jpeg
+  path: /assets/blog/2024/furo-sphinx-theme/furo-customization.png
   alt: A screenshot of the Furr Sphinx Theme
 ---
 
