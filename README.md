@@ -3,6 +3,7 @@
 ## Categories
 
 - The Basics
+- Practical AI Use Cases
 - Amazing Ideas (planned)
 - Playground
 - Working with AI (planned)
