@@ -14,6 +14,15 @@
 - Walkable AI (planned)
 - Kubecademy (planned)
 
+## Installation
+
+On windows:
+
+- [Install Jekyll](https://jekyllrb.com/docs/installation/windows/)
+- cd into this repo
+- run `bundle install`
+- start server (see below)
+
 ## Usage
 
 - create a draft in _drafts
