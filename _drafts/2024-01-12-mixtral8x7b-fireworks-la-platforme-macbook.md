@@ -19,7 +19,7 @@ This is a quick note on how to test Mixtral 8x7B online and how to run a quantiz
 
 ## Introduction
 
-Mixtral 8x7B is a new "sparse mixture of experts" model by Mistral which [outperforms Llama2 70B on most benchmarks with 6x faster inference](https://mistral.ai/news/mixtral-of-experts/) according to Mistral.
+Mixtral 8x7B is a "sparse mixture of experts" model by Mistral which [outperforms Llama2 70B on most benchmarks with 6x faster inference](https://mistral.ai/news/mixtral-of-experts/) according to Mistral.
 
 Mixtral uses only two of its 7B parameter sets or about 12B parameters at a time. This makes it very fast compared to models with a similar total number of tokens. Unfortunately, you still need to hold all the weights in memory. The unquantized model requires about 100GB RAM to run.
 

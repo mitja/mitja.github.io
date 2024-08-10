@@ -44,12 +44,12 @@ This blog post is the first of a series of articles about Ollama. I plan to cove
 1. What is Ollama (this article)
 2. Ollama Quickstart and Using the CLI
 3. Using Ollama with Open Web UI and Chatbox
-4. Using Ollama with Excel
+4. Using Ollama with Excel (easiest way to create custom solutions for non-programmers)
 5. Working with Ollama Modelfiles and How Models are Stored
 6. Using the Ollama API with Python and JavaScript
 7. Using the Ollama OpenAI API with Python and JavaScript
 8. Retrieval Augmented Generation and Working with Embeddings
-9. Robust Function Calling with Ollama and Guided Completion
+9. Function Calling with Ollama
 10. Publishing the API on your local network and on the Internet
 11. Fine Tuning with LORA adapters (serving fine-tuned models)
 12. Ollama in a Nutshell (Summarizing all the articles)
@@ -68,14 +68,17 @@ Reference docs:
 
 Etudes:
 
-- Installation on Linux: `curl -fsSL https://ollama.com/install.sh | sh` (windows and mac are available as download)
+- Installation on Linux: `curl -fsSL https://ollama.com/install.sh | sh` 
+- Installation on Windows
+- Installation on Mac
+- Installation with Docker
 - Run a model from the repository: `ollama run example`
+- Run with infos: `ollama run example --verbose`
 - List models on your computer: `ollama list`
 - Delete a model from your computer: `ollama rm example`
 - copy a model from the repository: `ollama cp example newname`
-- Run with infos: `ollama run example --verbose`
 - Start server: `ollama start`
-- Test server with curl: `curl http
+- Test server with curl: `curl http`
 - Create a model from a Modelfile: `ollama create example -f Modelfile`
 - Pull a model from the repository: `ollama pull example`
 - Pass in prompts as arguments: `ollama run example "say hi"`
@@ -103,7 +106,7 @@ Etudes:
 
 - use the Ollama cli with ollama on a different host: `OLLAMA_HOST=192.168.188.10 ollama list` (todo: check)
 
-- specify context window on command line: `ollama run example /set parameter num_ctx 4096
+- specify context window on command line: `ollama run example /set parameter num_ctx 4096`
 - preload a model: hit the chat or generate endpoint with just the model: `curl http://localhost:11434/api/chat -d '{"model": "mistral"}'`
 - keep a model in memory: `curl http://localhost:11434/api/generate -d '{"model": "llama2", "keep_alive": -1}'`
 - unload a model to free up memory: `curl http://localhost:11434/api/generate -d '{"model": "llama2", "keep_alive": 0}'`
