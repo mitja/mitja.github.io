@@ -11,7 +11,7 @@ tags: [Documentation, Sphinx]
 render_with_liquid: false
 permalink: /blog/2024/08/10/furr-sphinx-theme/
 image:
-  path: /assets/blog/2024/furo-sphinx-theme/furo-customization.png
+  path: /assets/blog/2024/furo-sphinx-theme/furo-customization.jpeg
   alt: A screenshot of the Furr Sphinx Theme
 ---
 
