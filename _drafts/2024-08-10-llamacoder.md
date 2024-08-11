@@ -1,28 +1,28 @@
 ---
-title: Creating an App with Llama Coder
+title: "Llama Coder: An Open Source Variant of Claude Artifacts"
 author: mitja
-date: 2024-08-07
+date: 2024-08-10
 category: Building AI Apps
-tags: [Claude]
+tags: [Claude, Artifacts, Llama, together.ai]
 #pin: true
 #math: true
 #mermaid: true
 render_with_liquid: false
-permalink: /blog/2024/08/07/llamacoder/
-#image:
-#  path: /assets/img/featured-excel-q1-2022.png
-#  alt: What is new in Excel in Q1 2022
+permalink: /blog/2024/08/10/llamacoder/
+image:
+  path: /assets/blog/2024/llamacoder/llamacoder-screenshot.png
+  alt: A screenshot of the LlamaCoder App
 ---
 
-Llama Coder is an Open Source variant of Claude Artifacts developed by Hassan . It uses Llama 3.1 405B hosted by Together AI and Sandpack for the code sandboxes. 
+Llama Coder is an Open Source variant of Claude Artifacts. It uses Llama 3.1 405B hosted by Together AI and Sandpack for the code sandboxes. 
 
-You can find the open source here: https://github.com/Nutlope/llamacoder The code is lean and simple. Amazing! Hassan actually shared a tweet with the diagram:
+The [code](https://github.com/Nutlope/llamacoder) is lean and simple. Amazing! Here is a Tweet by the author with a big picture of the architecture:
 
 https://x.com/nutlope/status/1820299550269358582
 
-The main prompt is here: https://github.com/Nutlope/llamacoder/blob/main/app/api/generateCode/route.ts
+The [main prompt](https://github.com/Nutlope/llamacoder/blob/main/app/api/generateCode/route.ts) is surprisingly simple, too - with some prompt engineering hacks thrown in. 
 
-For the record, here is a more complete list of the stack:
+This is a somewhat complete list of the stack:
 
 - Vercel for hosting
 - [Next.js app router](https://nextjs.org/docs/app) for the app (The Next.js App Router introduces a new model for building applications using React's latest features such as Server Components, Streaming with Suspense, and Server Actions.)
@@ -33,10 +33,11 @@ For the record, here is a more complete list of the stack:
 - Helicone for LLM observability
 - Plausible for Analytics
 
-This looks like a pragmatic and productive Typescript LLM app stack stack for indie hackers.
-I was curious to learn what Hassan would use for the DB/Vector DB, and the Auth Provider. Peeting into his [PDFtoChat](https://github.com/Nutlope/pdftochat?tab=readme-ov-file) app, I found out, he used MongoDB, and Clerk for it. I'm normally using PostgreSQL and SQLite, so I didn't know that MongoDB (Atlas) mpw also has a vector index feature. I also didn't know about Clerk but it sounds like a reasonable choice for indie hackers: (10k users for free, then, 0.02 per MAU). It's a bit more expensive than eg. Firebase/GCP Identity Platform, Azure AD, or AWS Cognito, but it's probably easier to setup and manage.
+It looks like a pragmatic and productive TypeScript LLM app stack stack for indie hackers to me.
 
-I tried the app with some tiny ideas I had. The first didn't work. The code abruptly ended, I assume it didn't fit in the output token limit. The next was even simpler and worked out of the box: It's a IBAN number calculator. This is for EU folks who like me cannot remember their IBAN but know their old bank account number by heart. I normally use another service which is so ad-laden that I wanted to create my own every time I use it. Now with the help of Llama Coder, I finally did it. You can find it online, here: 
+I was curious to learn what Hassan would use for a database, and the auth provider. Peeking into his [PDFtoChat](https://github.com/Nutlope/pdftochat?tab=readme-ov-file) app, I found out, he used **MongoDB**, and **Clerk**. I normally use PostgreSQL and SQLite, so I didn't know that MongoDB also has a vector index feature. I also didn't know about Clerk but it sounds like a reasonable choice for indie hackers: It's a bit more expensive than eg. Firebase/GCP Identity Platform, Azure AD, or AWS Cognito, but it's probably easier to setup and manage.
+
+I tried LlamaCoder with some tiny ideas I had. The first didn't work. The code abruptly ended, I assume it didn't fit in the output token limit. The next was even simpler and worked out of the box: It's a IBAN calculator. This is for EU residents like me who cannot remember their IBAN but know their old bank account number by heart. I normally use a very old website for this, but this is so ad-laden that I feel the urge to create my own every time I use it. Now, with the help of LlamaCoder, I finally did it.
 
 I've created the backend with Python and Simon Willisons great llm CLI tool with the same prompt and model, but I adjusted it to generate Python/FastAPI code for the backend, instead. I deployed the app as Azure Function.
 
