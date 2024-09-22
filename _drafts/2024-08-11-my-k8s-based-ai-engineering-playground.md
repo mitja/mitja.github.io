@@ -43,7 +43,7 @@ I eliminated Docker Compose and Dokku because of the limits in terms of which te
 I run my k8s cluster on Hetzner Cloud with a small three-node k3s cluster setup by [Kube-Hetzner](https://github.com/kube-hetzner). The infrastructure is managed with Terraform, the OS and k3s are updated automatically without interrupting the services. Here is the complete "bill of material":
 
 - 3x CPX31 instances (4vCPU, 8GB RAM, 160 GB NVMe, AMD), 3x 16.18 EUR/Month
-- 1x CPX21 instance (3vCPU, 4GB RAM, 80 TB NVMe, AMD), NAS 8.39 EUR/Month + 1.68 EUR for Backup
+- 1x CPX21 instance (3vCPU, 4GB RAM, 80 TB NVMe, AMD), Storage 8.39 EUR/Month + 1.68 EUR for Backup
 - 1x Loadbalancer LB11 (6.41 EUR/Month)
 - Volumes as needed (min. 10 GB each, at 0.0524 EUR/GB/Month)
 
