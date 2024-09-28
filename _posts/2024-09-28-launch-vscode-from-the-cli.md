@@ -8,10 +8,10 @@ tags: [Python, Conda, VSCode]
 #math: true
 #mermaid: true
 render_with_liquid: false
-permalink: /blog/2024/09/28/launch-vscode-from-the-command-line/
-#image:
-#  path: /assets/blog/2024/furo-sphinx-theme/furo-customization.png
-#  alt: A screenshot of the Furo Sphinx Theme
+permalink: /blog/2024/09/28/launch-vscode-from-the-cli/
+image:
+  path: /assets/blog/2024/launch-vscode-from-the-cli/thumbnail.png
+  alt: Comparing the effect on settings of launching VS Code directly vs from the command line
 ---
 
 Quick tip: It's much better to launch VS Code from the command line. Why? Because this way, the sessions' environment configuration is used by VS Code, too, and you don't need to configure the Python interpreter in VS Code. 
