@@ -9,9 +9,9 @@ tags: [SaaS, Django, Dokku]
 #mermaid: true
 render_with_liquid: false
 permalink: /blog/2024/09/22/deploying-django-on-dokku/
-#image:
-#  path: /assets/blog/2024/furo-sphinx-theme/furo-customization.png
-#  alt: A screenshot of the Furo Sphinx Theme
+image:
+  path: /assets/blog/2024/deploying-django-on-dokku/thumbnail.png
+  alt: Launching a SaaS Pegasus app from a laptop to a Dokku server
 ---
 
 I am working on a SaaS app. Although I started it with [FastAPI](https://fastapi.tiangolo.com) I decided to go back to [Django](https://www.djangoproject.com) since I'm using Django on and off since end of 2005 (really!) thus, I know it much better than FastAPI. Also, I like its batteries included approch and the Django way of rendering frontends mostly server-side with some HTMX, jQuery and vanilla.js.
