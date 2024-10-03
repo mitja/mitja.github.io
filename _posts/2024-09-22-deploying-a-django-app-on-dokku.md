@@ -2,7 +2,7 @@
 title: Deploying a SaaS Pegasus Based Django App on Dokku
 author: mitja
 date: 2024-09-22
-category: Building AI Apps
+category: Self-Hosting with Dokku
 tags: [SaaS, Django, Dokku]
 #pin: true
 #math: true

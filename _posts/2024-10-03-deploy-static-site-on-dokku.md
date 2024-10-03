@@ -2,7 +2,7 @@
 title: Deploy a Static Site on Dokku
 author: mitja
 date: 2024-10-03
-category: Building AI Apps
+category: Self-hosting on Dokku
 tags: [Dokku, Static Site, Tailwind CSS, Plausible, Email Octopus, Hetzner]
 #pin: true
 #math: true
@@ -20,10 +20,21 @@ The site has newsletter signup form for a list hosted by Email Octopus, and Plau
 
 Here is everything that's needed to deploy the site, including activating Let's encrypt signed certificates for the domain:
 
-1. Create a git repository
-2. add an `index.html` file with the content.
-3. Ad an an empty `.static` file. The `.static` file is needed to tell Dokku that this is a static site - Dokku then uses an Nginx builder to build and deploy it.
-4. use some commands to create, configure, and deploy the site:
+1. Register the domain and point it to the Dokku server. I usually set these records in the domain's DNS zone:
+
+```bash
+A @ 7200 <DOKKU_SERVER_IP>
+A * 7200 <DOKKU_SERVER_IP>
+CNAME www 7200 <DOMAIN_NAME>
+AAAA @ 7200 <DOKKU_SERVER_IP>
+AAAA * 7200 <DOKKU_SERVER_IP>
+```
+
+2. Create a git repository
+3. add an `index.html` file with the content.
+4. Ad an an empty `.static` file. The `.static` file is needed to tell Dokku that this is a static site - Dokku then uses an Nginx builder to build and deploy it.
+6. Commit the changes to git.
+5. Use these commands to create, configure, and deploy the site:
 
 ```bash
 export DOKKU_HOST=mitja.app
@@ -38,4 +49,16 @@ ssh dokku@$DOKKU_HOST letsencrypt:enable $APP_NAME
 
 That's it. The site is live at [builderhabit.com](https://builderhabit.com).
 
-Updates can be deployed by checking them into git and then with the command `git push dokku main`.
+Updates can be deployed by checking them into git and running `git push dokku main`.
+
+Here are some more tips: 
+
+Serving files from a subdirectory (eg. `public` in this example): 
+
+```bash
+ssh dokku@$DOKKU_HOST config:set $APP_NAME NGINX_ROOT=/app/www/public
+```
+
+Building the site during deployment:
+
+When you want to automatically build a site during deployment, you can use [multiple buildpacks](https://dokku.com/docs/deployment/builders/herokuish-buildpacks/), for example by adding a `.buildpacks` file to the root directory of the repository. This way, you can use one buildpack for building and another, eg. [Nginx Buildpack](https://github.com/dokku/heroku-buildpack-nginx) for serving. Another option is to use [Dockerfile deployments](https://dokku.com/docs/deployment/builders/dockerfiles/).

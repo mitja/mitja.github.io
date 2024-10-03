@@ -2,7 +2,7 @@
 title: Launch VS Code from the Command Line
 author: mitja
 date: 2024-09-28
-category: Building AI Apps
+category: The Basics
 tags: [Python, Conda, VSCode]
 #pin: true
 #math: true
