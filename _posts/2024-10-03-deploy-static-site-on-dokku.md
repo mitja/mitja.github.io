@@ -2,16 +2,16 @@
 title: Deploy a Static Site on Dokku
 author: mitja
 date: 2024-10-03
-category: Self-hosting on Dokku
+category: Self-hosting with Dokku
 tags: [Dokku, Static Site, Tailwind CSS, Plausible, Email Octopus, Hetzner]
 #pin: true
 #math: true
 #mermaid: true
 render_with_liquid: false
 permalink: /blog/2024/10/03/deploy-static-site-on-dokku/
-#image:
-#  path: /assets/blog/2024/launch-vscode-from-the-cli/thumbnail.png
-#  alt: Comparing the effect on settings of launching VS Code directly vs from the command line
+image:
+  path: /assets/blog/dokku.png
+  alt: The Dokku logo which is a friendly whale with a captain's hat (I think).
 ---
 
 Today, I wanted to try a little experiment: In reaction to a tweet by Pieter Levels about preferring builder as opposed to talker, I created and launched a dead simple website called [Builder Habit](https://builderhabit.com). This is just a landing page for a reminder service to get into builder mode and "strengthen your builder habit."
