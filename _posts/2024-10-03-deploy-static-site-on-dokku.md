@@ -2,7 +2,7 @@
 title: Deploy a Static Site on Dokku
 author: mitja
 date: 2024-10-03
-category: Self-hosting with Dokku
+category: Self-Hosting with Dokku
 tags: [Dokku, Static Site, Tailwind CSS, Plausible, Email Octopus, Hetzner]
 #pin: true
 #math: true
