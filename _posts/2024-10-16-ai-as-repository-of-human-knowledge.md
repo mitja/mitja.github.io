@@ -10,7 +10,7 @@ tags: [AI, Yann LeCun, Open Source]
 render_with_liquid: false
 permalink: /blog/2024/10/16/ai-as-repository-of-human-knowledge/
 image:
-  path: /assets/blog/2024/dokku.png
+  path: /assets/blog/2024/ai-as-repository-of-human-knowledge.png
   alt: "What do we want a repository of human knowledge to be? A product or open source?"
 ---
 
