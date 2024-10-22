@@ -14,7 +14,7 @@ image:
   alt: "What do we want a repository of human knowledge to be? A product or open source?"
 ---
 
-Yann LeCun has made an interesting statement in a talk he gave at a talk. I didn't find the original source, but here is a snippet from Twitter:
+Yann LeCun has made an interesting statement in a talk he gave recently. I didn't find the original source, but here is a snippet from Twitter:
 
 <video controls src="https://video.twimg.com/amplify_video/1846254874729582592/vid/avc1/720x720/cEG0uRC7I2v19Mcb.mp4?tag=16" type="video/mp4"></video>
 
