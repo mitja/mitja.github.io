@@ -34,6 +34,8 @@ SnagIt can also send captures to other targets such as Youtube, Google Drive, di
 
 A minimum viable solution would be a CLI tool that takes a pre-configured prompt and writes the output to a file. A more elaborate version would have a GUI for interactive prompting.
 
-On the other hand: Using Google's AI Studio and uploading the video manually is also not too involved. The default mp4 file format works well. I've tried it and came to the conclusion that it's actually better for one-off tasks than a half-baked custom tool: It's more flexible and doesn't add too much burden.
+On the other hand: Using Google's AI Studio and uploading the video manually is also not too cumbersome. I however needed to resize long videos to HD format with QuickTime to make it smaller (max. file size 2 GB). Also, Safari crashed on uploading, with Chrome it works.
+
+I've tried it and came to the conclusion that it's actually better for one-off tasks than a half-baked custom tool: It's more flexible and doesn't add too much burden.
 
 If I find myself doing some process very often, I'll probably come back to this idea and implement "snagit2gemini". But for now, I'll just use the AI Studio. By the way, if you have a Gemini Advanced subscription, you can activate the [YouTube Extension](https://gemini.google.com/extensions) to give Gemini access to your YouTube videos.
