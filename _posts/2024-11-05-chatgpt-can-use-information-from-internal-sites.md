@@ -1,5 +1,5 @@
 ---
-title: "ChatGPT Can Use Information from Internal Sites"
+title: "ChatGPT can use information from internal sites"
 author: mitja
 date: 2024-11-05
 category: Working with AI
