@@ -1,5 +1,5 @@
 ---
-title: "A look at the rumored NVIDIA RTX 5090 specs for local LLM inference"
+title: "A look at the NVIDIA RTX 5090 specs for local LLM inference"
 author: mitja
 date: 2024-11-26
 category: Local AI
@@ -9,25 +9,25 @@ tags: [NVIDIA, RTX5090, RTX4090]
 #mermaid: true
 render_with_liquid: false
 permalink: /blog/2024/11/26/a-look-at-rtx-5090-specs-for-local-ai/
-#image:
-#  path: /assets/blog/2024/chatgpt-local-sites.png
-#  alt: The ChatGPT Search User Experience.
+image:
+  path: /assets/blog/2024/chatgpt-local-sites.png
+  alt: "The NVIDIA RTX 5090 and the NVIDIA RTX 4090 dies side by side.""
 ---
-This is a quick look at the [rumored specs of the upcoming RTX 5090](https://www.tomshardware.com/pc-components/gpus/leak-claims-rtx-5090-has-600w-tgp-rtx-5080-hits-400w-up-to-21760-cores-32gb-vram-512-bit-bus) which are most relevant for local inference with LLMs:
+Update (January 14, 2025): The RTX 5090 was officially announced at CES and will be available January 30, 2025. This post was updated with the aktual [RTX 5090 specs](https://www.nvidia.com/de-de/geforce/graphics-cards/50-series/rtx-5090/). I kept the rumored specs in the post for reference.
 
-|Spec|5090|4090|Delta|
-|--|--|--|--|
-|Memory Bandwidth|1,52 TB/s|1.01 TB/s|+50%|
-|VRAM|32 GB|24 GB|+50%|
-|TDP|600 W|450 W|+33%|
+This is a quick look at the [specs of the RTX 5090](https://www.tomshardware.com/pc-components/gpus/leak-claims-rtx-5090-has-600w-tgp-rtx-5080-hits-400w-up-to-21760-cores-32gb-vram-512-bit-bus) which are most relevant for local inference with LLMs:
 
-The specs mean that the RTX 5090 will probably be about 50% faster and can serve models that are 50% larger than the [RTX 4090](https://www.techpowerup.com/gpu-specs/geforce-rtx-4090.c3889). 
+|Spec|Actual RTX 5090 Specs|Rumored RTX 5090 Specs (Nov 24)|RTX 4090 Specs|Delta (Actual RTX 5090 vs. RTX 4090)|
+|--|--|--|--|--|
+|Memory Bandwidth|1.792 TB/s|1.52 TB/s|1.01 TB/s|+77%|
+|VRAM|32 GB|32 GB|24 GB|+50%|
+|TDP|575 W|600 W|450 W|+28%|
 
-A nice upgrade, let's hope the price will not be 50% higher, as well. If it's about the same price as the 4090, it should be a great card, and probably the best we will get for the next two years or so (the 4090 was released September 2022, the 3090 was released September 2020).
+The specs mean that the RTX 5090 is probably about 77% faster and can serve models that are 50% larger than the [RTX 4090](https://www.techpowerup.com/gpu-specs/geforce-rtx-4090.c3889). 
 
-On a practical level, various models in the 30B parameter range should run with great speed at reasonable levels of quantization. With throttling the performance should still be great at the same or lower power consumption as the RTX 4090.
+The RTX 5090 is a nice upgrade, especially as it's only about 10-20% more expensive as the RTX 4090. It's a great card, and probably the best we will get for the next two years or so (the 4090 was released September 2022, the 3090 was released September 2020). Unfortunately, the other cards of the new RTX 50xx line are not as interesting for local LLM inference.
 
-For real-time apps this is great news.
+On a practical level, various models up to the 30B parameter range should run with good speed at reasonable levels of quantization. With throttling, the performance should still be better at the same or lower power consumption as the RTX 4090.
 
 **What about Macs?**
 
