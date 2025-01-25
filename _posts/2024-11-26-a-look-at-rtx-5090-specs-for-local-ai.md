@@ -10,7 +10,7 @@ tags: [NVIDIA, RTX5090, RTX4090]
 render_with_liquid: false
 permalink: /blog/2024/11/26/a-look-at-rtx-5090-specs-for-local-ai/
 image:
-  path: /assets/blog/2024/chatgpt-local-sites.png
+  path: /assets/blog/2025/nvidia-rtx-5090.png
   alt: "The NVIDIA RTX 5090 and the NVIDIA RTX 4090 dies side by side.""
 ---
 Update (January 14, 2025): The RTX 5090 was officially announced at CES and will be available January 30, 2025. This post was updated with the aktual [RTX 5090 specs](https://www.nvidia.com/de-de/geforce/graphics-cards/50-series/rtx-5090/). I kept the rumored specs in the post for reference.
