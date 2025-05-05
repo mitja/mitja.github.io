@@ -29,7 +29,7 @@ sudo usermod -aG docker $USER
 newgrp docker
 ```
 
-## Step 3 - Smoke tests
+### Step 3 - Smoke tests
 
 Docker and the Docker Compose plugin now should just work.
 
@@ -61,20 +61,20 @@ Even though rootless is often recommended for development and testing and for th
 
 ### Enable Rootless Mode
 
-1. Install uidmap and run rootless setup:
+#### Step 1 - Install uidmap and run rootless setup
 
 ```bash
 sudo apt-get install -y uidmap
 dockerd-rootless-setuptool.sh install
 ```
 
-2. Enable lingering to run background services:
+#### Step 2 - Enable lingering to run background services
 
 ```bash
 sudo loginctl enable-linger $USER
 ```
 
-3. Add environment variables to your `.bashrc`
+#### Step 3 - Add environment variables to your `.bashrc`
 
 ```bash
 echo 'PATH=/usr/bin:$PATH' >> ~/.bashrc
@@ -82,7 +82,7 @@ echo 'export DOCKER_HOST=unix:///run/user/1000/docker.sock' >> ~/.bashrc
 source ~/.bashrc
 ```
 
-4. Test if Docker runs rootless.
+#### Step 4 - Test if Docker runs rootless
 
 The Docker Root Dir should be in your home directory:
 
@@ -90,13 +90,11 @@ The Docker Root Dir should be in your home directory:
 docker info | grep "Docker Root Dir: /home"
 ```
 
----
-
 ### Disable Rootless Mode
 
 This may look a bit over-the-top, but I struggled to get rid of an error where the Docker client still tried to connect to the rootless Docker demon for my user. As this did not exist anymore, it didn't work. I tried quite a few things,. in the end, below steps worked. Maybe some are redundant, but at least, these steps should work.
 
-1. Stop Docker, remove the services, and kill any running processes
+#### Step 1 - Stop Docker, remove the services, and kill any running processes
 
 ```bash
 systemctl --user stop docker
@@ -104,14 +102,14 @@ systemctl --user disable docker.socket docker.service
 pkill -u $(id -u) dockerd || true
 ```
 
-2. Unset environment variables
+#### Step 2 - Unset environment variables
 
 ```bash
 unset DOCKER_HOST
 export PATH=/usr/bin:$PATH
 ```
 
-3. Remove local docker configs:
+#### Step 3 - Remove local docker configs
 
 ```bash
 rm -rf ~/.config/docker ~/.local/share/docker ~/.docker
@@ -119,25 +117,27 @@ rm -rf ~/.config/docker ~/.local/share/docker ~/.docker
 
 Also, remove `DOCKER_HOST` from `~/.bashrc`.
 
-4. Disable lingering (change `mitja` to your username)
+#### Step 4 - Disable lingering (change `mitja` to your username)
 
 ```bash
 sudo loginctl disable-linger mitja
 ```
 
-5. Start Docker (now "rootful"):
+#### Step 5 - Start Docker (now "rootful")
 
 ```bash
 sudo systemctl start docker
 ```
 
-6. Test if Docker runs "rootful" (Docker Root Dir should be in /var/lib/docker)
+#### Step 6 - Test if Docker runs "rootful" 
+
+The Docker Root Dir should be in /var/lib/docker:
 
 ```bash
 sudo docker info | grep "Docker Root Dir: /var"
 ```
 
-7. Test if you can connect to the rootful Docker demon from your user:
+#### Step 7 - Test if you can connect to the rootful Docker demon from your user
 
 ```bash
 docker context ls
