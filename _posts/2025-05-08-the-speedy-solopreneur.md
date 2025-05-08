@@ -10,7 +10,7 @@ image:
   alt: "An AI generated pop art style image showing a laptop under a light bulp at the left, an arrow pointing to a runner jumping over an abstract hurdle at the center and right."
 ---
 
-In [The Batch 300](https://www.deeplearning.ai/the-batch/issue-300/}, Andrew Ng shared some insights on the importance of speed for startups and how to be fast as a startup:
+In [The Batch 300](https://www.deeplearning.ai/the-batch/issue-300/), Andrew Ng shared some insights on the importance of speed for startups and how to be fast as a startup:
 
 - focus on one concrete idea (don't hedge)
 - quickly switch to a different hypthesis if data indicates the original hypothesis is flawed
