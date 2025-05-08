@@ -13,6 +13,8 @@
 - Excel is all you need
 - Walkable AI (planned)
 - Kubecademy (planned)
+- Homelab
+- Voice Agents
 
 ## Installation
 
