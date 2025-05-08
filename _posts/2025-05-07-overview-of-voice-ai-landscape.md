@@ -4,7 +4,7 @@ title: "An Overview of the Voice AI Landscape (Session Notes)"
 date: 2025-05-08
 author: mitja
 category: "Voice Agents"
-tags: [Raspberry Pi, Docker, Docker Compose, Tutorial]
+tags: [Voice AI, Session Notes]
 image:
   path: /assets/blog/2025/voice-ai-landscape.jpg
   alt: "An AI generated pop art style image showing a mic, a comic speech bubble, a human head speaking and listening to a loudspeaker. In a corner, there is a symbol for AI showing six circles, connected and arranged like a star."
