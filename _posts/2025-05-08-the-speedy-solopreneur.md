@@ -16,7 +16,7 @@ In [The Batch 300](https://www.deeplearning.ai/the-batch/issue-300/), Andrew Ng 
 - quickly switch to a different hypthesis if data indicates the original hypothesis is flawed
 - trust a domain expert's gut
 - quickly build and test prototypes with AI assisted coding
-- be fast at getting user feedback (this becomes the bottleneck and a competetive advantage)
+- be fast at getting user feedback (this becomes the bottleneck and a competitive advantage)
 - know the technology well (deep understanding of what AI can and cannot do well, saves wasting time in blind alleys)
 
 I think they translate well to ideas for being a **speedy solopreneur**:
