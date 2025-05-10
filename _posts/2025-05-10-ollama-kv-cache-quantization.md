@@ -11,7 +11,7 @@ render_with_liquid: false
 permalink: /blog/kv-cache-quantization-in-ollama/
 image:
   path: /assets/blog/2025/kv-cache-quantization-in-ollama.jpg
-  alt: An AI generated image about K/V Cache Quantization in Ollama in the style of Dada art."
+  alt: An AI generated image about K/V Cache Quantization in Ollama in the style of Dada art.
 ---
 A somewhat hidden feature of Ollama is K/V Cache quantization. This post is about how to activate it, it's benefits and drawback, example numbers, and use cases.
 
@@ -34,10 +34,10 @@ Drawback:
 Example numbers: 
 
 - Llama 3.2 8B supports 128.000 tokens context windows. 
-- Runnit it with Q4_K_M quantization and the longest possible context length, it    consumes 
-- 23.3 GB memory without K/V cache qantization, 
-- 17.0 GB with Q8_K_0 K/V cache quantization, and
-- 13.8 GB with Q4_K_0 K/V cache quantization.
+- Running it with Q4_K_M quantization and the longest possible context length, it    consumes 
+  - 23.3 GB memory without K/V cache qantization, 
+  - 17.0 GB with Q8_K_0 K/V cache quantization, and
+  - 13.8 GB with Q4_K_0 K/V cache quantization.
 - it now fits into 16 GB RAM...
 - Sam McLeod's [vram-estimator](https://smcleod.net/vram-estimator/) is a nice tool to estimate the memory consumption of models with different quantization settings.
 
