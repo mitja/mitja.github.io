@@ -1,5 +1,5 @@
 ---
-title: "PipeCat Cloud Latency for EU Users"
+title: "Pipecat Cloud Latency for EU Users"
 author: mitja
 date: 2025-05-11
 category: Voice Agents
@@ -14,11 +14,11 @@ image:
   alt: An AI generated image of an old and incorrect map of the world with an arrow pointing from America to Europe.
 ---
 
-[Pipecat cloud](https://www.daily.co/products/pipecat-cloud/) is the easiest way to run a [PipeCat](https://github.com/pipecat-ai/pipecat) driven voice agent in production. 
+[Pipecat Cloud](https://www.daily.co/products/pipecat-cloud/) is the easiest way to run a [Pipecat](https://github.com/pipecat-ai/pipecat) driven voice agent in production. 
 
-I've heard in the Voice Agents course that Daily.co, the company behind PipeCat Cloud, currently only have regions in the US and wondered if PipeCat Cloud is already fast enough for users in the EU. 
+I've heard in the Voice Agents course that Daily.co, the company behind Pipecat Cloud, currently only has regions in the US and wondered if Pipecat Cloud is already fast enough for users in the EU. 
 
-At first, I planned to compare PipeCat Cloud with a VM based deployment hosted in Germany, but I skipped the comparison after and testing the [pipecat-cloud-simple-chatbot](https://github.com/daily-co/pipecat-cloud-simple-chatbot) on PipeCat cloud. 
+At first, I planned to compare Pipecat Cloud with a VM based deployment hosted in Germany, but I skipped the comparison after and testing the [pipecat-cloud-simple-chatbot](https://github.com/daily-co/pipecat-cloud-simple-chatbot) on Pipecat cloud. 
 
 It's fast enough:
 
