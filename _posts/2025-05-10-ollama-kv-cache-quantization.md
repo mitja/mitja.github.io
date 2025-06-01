@@ -13,13 +13,11 @@ image:
   path: /assets/blog/2025/kv-cache-quantization-in-ollama.jpg
   alt: An AI generated image about K/V Cache Quantization in Ollama in the style of Dada art.
 ---
-A somewhat hidden feature of Ollama is K/V Cache quantization. This post is about how to activate it, it's benefits and drawback, example numbers, and use cases.
+A somewhat hidden feature of Ollama is K/V Cache quantization. K/V Cache quantization in Ollama is not on by default, so you need to activate it by setting the `OLLAMA_KV_CACHE_TYPE` environment variable. Supported values are documented in [How can I set the quantization type for the K/V cache?](https://github.com/ollama/ollama/blob/main/docs/faq.md#how-can-i-set-the-quantization-type-for-the-kv-cache):
 
-Activating K/V Cache quantization in Ollama:
-
-- not on by default
-- Set the `OLLAMA_KV_CACHE_TYPE` environment variable. 
-- see Ollama's FAQ entry [How can I set the quantization type for the K/V cache?](https://github.com/ollama/ollama/blob/main/docs/faq.md#how-can-i-set-the-quantization-type-for-the-kv-cache) for supported values.
+- f16
+- q8_0
+- q4_0
 
 Benefits:
 
