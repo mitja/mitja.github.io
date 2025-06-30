@@ -1,13 +1,13 @@
 ---
-layout: post
 title: "Evals for Voice Agents (Session Notes)"
 date: 2025-06-30
 author: mitja
-category: "Voice Agents"
+category: Voice Agents
 tags: [Voice AI, Session Notes, Evals, Coval, WandB]
+permalink: /blog/evals-for-voice-agents-session-notes/
 image:
   path: /assets/blog/2025/evals-for-voice-agents-session-notes.jpg
-  alt: "A 16x9 teaser image for a blog post about "Evals for Voice Agents (Session Notes)" in the style of early telephone / late telegraph era advertising, with a woman at the phone and a man besides her, taking notes. No text visible. AI generated with gpt-4o in ChatGPT."
+  alt: "A 16x9 teaser image in the style of early telephone / late telegraph era advertising, with a woman at the phone and a man besides her, taking notes. No text visible. AI generated with gpt-4o in ChatGPT."
 ---
 
 These are my notes of a whirlwind intro to evals for voice agents, a session of [Kwindla's and swyx's Voice AI Course](https://maven.com/pipecat/voice-ai-and-voice-agents-a-technical-deep-dive). It was so packed that I catched many ideas only during note taking. 
