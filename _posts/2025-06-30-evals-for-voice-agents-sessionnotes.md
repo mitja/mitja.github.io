@@ -18,7 +18,7 @@ For me the main takeaway of this session is: **Evals are a key aspect of AI Engi
 
 If you are interested in AI Engineering and want to learn more about evaluating actual AI apps (not just look at benchmarks or use tool-provided standard metrics) I would highly recommend you attend [Shreya's and Hamel's Evals course](https://maven.com/parlance-labs/evals). There is still time left to join and if you look on their X feeds, can get probably still get a 30% discount code. This will be the last live cohort for some time as Shreya and Hamel want to get back to building. So, take the course, while you can.
 
-[Hamel](https://hamel.dev) kicked it off with a walk through of his blog post [A Field Guide to Rapidly Improving AI Products](https://hamel.dev/blog/posts/field-guide/)about. His mantra **Look at your data** is now the second meme of this course after **latency**. I will blog about Hamel's recommendations in separate posts with my notes on the Evals course.
+[Hamel](https://hamel.dev) kicked it off with a walk through of his blog post [A Field Guide to Rapidly Improving AI Products](https://hamel.dev/blog/posts/field-guide/). His mantra **Look at your data** is now the second meme of this course after **latency**. I will blog about Hamel's recommendations in separate posts with my notes on the Evals course.
 
 [Ian](https://x.com/cairns) from Freeplay recommends to **start with evals from day one** and use them at every stage. He also pitched Freeplay's product highlights and demoed it with a meeting scheduler agent written in PipeCat. I liked Freeplay's 
 
@@ -41,7 +41,7 @@ If you are interested in AI Engineering and want to learn more about evaluating 
 
 Sam's explanations were hands-on and practical. I also like his [weave-pipecat](https://github.com/SamMakesThings/weave-pipecat) GitHub repo that shows how to integrate WandB's Weave with Pipecat.
 
-[Brooke](https://x.com/bnicholehopkins), the founder of Coval, closed the loop that Hamel started, by looking at the methodology, especially with simulation driven evals. I like her analogy that "self-driving is just an agent on wheels" and that she's now building "self-driving for evals" with her company. She says with voice AI, trust is especially important, since we all have painful experiences with old-school voice assistants. Even if the technology became so much better, we still have to prove that the systems are now better, too. And the only way to do this is evals. 
+[Brooke](https://x.com/bnicholehopkins), the founder of Coval, closed the loop that Hamel started, by looking at the methodology, especially with simulation driven evals. I like her analogy that "self-driving is just an agent on wheels" and that she's now building "self-driving for evals" with her company. She says with voice AI, trust is especially important, since we all have painful experiences with old-school voice assistants. Even if the technology became so much better, we still have to prove that the systems now are better, too. And the only way to do this is evals. 
 
 AI testing is slow, but this has been solved by self-driving teams ten years ago which faced a similar challenge:
 
@@ -51,12 +51,12 @@ AI testing is slow, but this has been solved by self-driving teams ten years ago
   
 Simulation can simulate many possible scenarios, and is able to estimate the possibiliy of certain types of events across different scenarios and paths to answer the main question; "What is the probability that my voice agent is able to achieve my objective."
 
-Brooke highlighted that evaluating voice is inherently hard because voice AI apps need a model cascade, where each step is difficult in itself, and putting them together even more so. An error upstream can impact the performance of all the downstream steps. For example, if the speech to text performance is bad, it doesn't matter how smart the LLM is, because the input is wrong. At the end of her part, she gave a good list of common challenges of voice AI apps:
+Brooke highlighted that evaluating voice is inherently hard because voice AI apps need a model cascade, where each step is difficult in itself, and putting them together even more so. An error upstream can impact the performance of all the downstream steps. For example, if the speech to text performance is bad, it doesn't matter how smart the LLM is, because the input is wrong. At the end of her presentation, she gave a good list of common challenges of voice AI apps:
 
-1. latency vs. interruptions is a tradeoff. Making an app more proactive and responsive with reduced latency will likely lead to more interruptions and vice versa.
-2. Workflow following (keeping the agent on topicmi) is hard.
-3. Tool calls are (as always) hard to evaluate: Does the agent take the right actions at the right time with the right arguments and does it lead to the agent completing the task successfully?
-4. Improving alphanumeric performance, reducing transcription errors, and translation are still difficult.
+1. Latency vs. interruptions is a tradeoff. Making an app more proactive and responsive with reduced latency will likely lead to more interruptions and vice versa.
+2. Workflow following in the sense of keeping the agent on topic is hard.
+3. Tool calls are hard to evaluate: Does the agent take the right actions at the right time with the right arguments and does it lead to the agent completing the task successfully?
+4. Alphanumeric performance, transcription errors, and translation quality are still difficult.
 5. Compliance
 
-This session made me even more excited to participate in Hamel's and Shreya's Evals course. It reinforced my gut feeling that evals are a very important aspect of AI Engineering and provided a glimpse of what it might entail.
+This session reinforced my gut feeling that evals are a very important aspect of AI Engineering and provided a glimpse into how to approach it. It also made me even more excited about Shreya's and Hamel's Evals course. 
