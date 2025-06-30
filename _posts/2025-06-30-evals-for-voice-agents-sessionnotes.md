@@ -27,7 +27,7 @@ If you are interested in AI Engineering and want to learn more about evaluating 
 * prompt versioning, and
 * playground with prompt comparison views.
 
-[Sam](https://x.com/sammakesthings) from WandB jumped into a demo about hacking a CEO's bank account from a voice AI agent. He stressed how important evals are, and then walked through five steps to evaluate voice agents with Weights and Biases:
+[Sam](https://x.com/sammakesthings) from WandB jumped into a demo about hacking a CEO's bank account from a voice AI agent. He stressed how important evals are, and then walked through **five steps to evaluate voice agents** with Weights and Biases:
 
 1. Setup good tracing in your app.
 
@@ -41,7 +41,7 @@ If you are interested in AI Engineering and want to learn more about evaluating 
 
 Sam's explanations were hands-on and practical. I also like his [weave-pipecat](https://github.com/SamMakesThings/weave-pipecat) GitHub repo that shows how to integrate WandB's Weave with Pipecat.
 
-[Brooke](https://x.com/bnicholehopkins), the founder of Coval, closed the loop that Hamel started, by looking at the methodology, especially with simulation driven evals. I like her analogy that "self-driving is just an agent on wheels" and that she's now building "self-driving for evals" with her company. She says with voice AI, trust is especially important, since we all have painful experiences with old-school voice assistants. Even if the technology became so much better, we still have to prove that the systems now are better, too. And the only way to do this is evals. 
+[Brooke](https://x.com/bnicholehopkins), the founder of Coval, closed the loop that Hamel started, by looking at the methodology, especially with simulation driven evals. I like her analogy that **"self-driving is just an agent on wheels"** and that she's now building **"self-driving for evals"** with her company. She says with voice AI, trust is especially important, since we all have painful experiences with old-school voice assistants. Even if the technology became so much better, we still have to prove that the systems now are better, too. And the only way to do this is evals. 
 
 AI testing is slow, but this has been solved by self-driving teams ten years ago which faced a similar challenge:
 
@@ -51,7 +51,7 @@ AI testing is slow, but this has been solved by self-driving teams ten years ago
   
 Simulation can simulate many possible scenarios, and is able to estimate the possibiliy of certain types of events across different scenarios and paths to answer the main question; "What is the probability that my voice agent is able to achieve my objective."
 
-Brooke highlighted that evaluating voice is inherently hard because voice AI apps need a model cascade, where each step is difficult in itself, and putting them together even more so. An error upstream can impact the performance of all the downstream steps. For example, if the speech to text performance is bad, it doesn't matter how smart the LLM is, because the input is wrong. At the end of her presentation, she gave a good list of common challenges of voice AI apps:
+Brooke highlighted that evaluating voice is inherently hard because voice AI apps need a model cascade, where each step is difficult in itself, and putting them together even more so. An error upstream can impact the performance of all the downstream steps. For example, if the speech to text performance is bad, it doesn't matter how smart the LLM is, because the input is wrong. At the end of her presentation, she gave a good list of **common challenges of voice AI apps**:
 
 1. Latency vs. interruptions is a tradeoff. Making an app more proactive and responsive with reduced latency will likely lead to more interruptions and vice versa.
 2. Workflow following in the sense of keeping the agent on topic is hard.
