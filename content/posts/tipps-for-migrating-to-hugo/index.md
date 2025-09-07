@@ -144,19 +144,6 @@ This is why I believe it's worth considering hiring an expert with experience in
 
 I think nice to have screenshots from your old blog and the initial version of your new blog for your photo album. 
 
-Here are screenshots of my blog before and after the migration, presented by the [Blowfish's Gallery Shortcode](https://blowfish.page/docs/shortcodes/#gallery):
+Here are screenshots of my blog before and after the migration, presented by the [Blowfish's Carousel Shortcode](https://blowfish.page/docs/shortcodes/#carousel):
 
-{{< gallery >}}
-  <img src="my-chirpy-site.webp" class="grid-w33" />
-  <img src="my-chirpy-site-categories.webp" class="grid-w33" />
-  <img src="my-chirpy-site-tags.webp" class="grid-w33" />
-  <img src="my-chirpy-site-archives.webp" class="grid-w33" />
-  <img src="my-chirpy-site-post.webp" class="grid-w33" />
-  <img src="my-chirpy-site-post-dark.webp" class="grid-w33" />
-  <img src="my-blowfish-site.webp" class="grid-w33" />
-  <img src="my-blowfish-site-dark.webp" class="grid-w33" />
-  <img src="my-blowfish-site-post.webp" class="grid-w33" />
-  <img src="my-blowfish-site-post-dark.webp" class="grid-w33" />
-  <img src="my-blowfish-site-posts.webp" class="grid-w33" />
-  <img src="my-blowfish-site-tags.webp" class="grid-w33" />
-{{< /gallery >}}
+{{< carousel images="gallery/*" >}}
