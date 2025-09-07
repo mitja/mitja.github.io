@@ -1,0 +1,20 @@
+{
+  "name": "mitjamartini.com",
+  "version": "1.0.0",
+  "description": "A Blog powered by Hugo and blowfish",
+  "main": "index.js",
+  "scripts": {
+    "dev": "hugo server --minify -D -E -F"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mitja/mitja.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nunocoracao/blowfish_template/issues"
+  },
+  "homepage": "https://github.com/nunocoracao/blowfish_template#readme"
+}

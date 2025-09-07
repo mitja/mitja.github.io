@@ -1,7 +1,0 @@
-- rds blue green: https://aws.amazon.com/de/blogs/database/perform-maintenance-tasks-and-schema-modifications-in-amazon-rds-for-postgresql-with-minimal-downtime/
-- implementing seamless updates using the Blue-Green Deployment pattern with HA Postgres Cluster with HAProxy, and Zookeeper: https://www.linkedin.com/pulse/part-two-seamless-postgresql-updates-blue-green-paulo-cabral-ol0sf
-- Here is how to setup the HA postgres: https://www.linkedin.com/pulse/setting-up-ha-postgresql-cluster-haproxy-zookeeper-using-paulo-cabral-4j7nc?trk=article-ssr-frontend-pulse_little-text-block
-- low downtime schema change: make a read replica, change schema, promote replica
-- in-place schema change: pt-online-schema-change (for MySQL), or https://github.com/shayonj/pg-osc (for Postgres), or pgroll (https://github.com/xataio/pgroll) which does it on column level instead of table level as pg-osc does.
-- pgroll is built in Go, here are the docs: https://pgroll.com/docs/latest/getting-started 
-- pgroll is an easy CLI tool for making zero downtime schema changes and backfills in PostgreSQL (in Ruby)

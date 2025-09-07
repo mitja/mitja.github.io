@@ -1,1 +1,0 @@
-https://www.reddit.com/r/LocalLLaMA/comments/1j9jfbt/m3_ultra_runs_deepseek_r1_with_671_billion/
