@@ -1,0 +1,4 @@
+- neue gen von Claude Sonnet und Haiku trainiert
+- über die API nutzbar
+- damit nun viel einfacher, quellenverweise umzusetzen
+- Anthropic's new Citations API

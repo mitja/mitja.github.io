@@ -1,0 +1,34 @@
+Notes on reranking call...
+
+- low hanging fruit to improve retrieval
+- can't use the rerank models first, as its too compute intensive for large sets of docs
+- hybrid search is good
+- is this econ viable: as long as you build for humans, it is important, we can only look at around 10 links. for models, may not be as important, although they get confused by bad results. for recommendation engines, etc. better recommendations lead to more business.
+- important for RAG
+- non-desctructive, can be applied without reindexing
+- at querytime
+- drawback: adds latency, on the order of 10s of ms on GPU
+- if affordable: use APIs, eg. Cohere (2/1k queries)
+- pre-trained, oss Modern Bert based reranking model
+- fine tuning improves results, but
+  - need proprietary data (not in public body)
+  - focus on hard negatives (that are edge cases)
+  - need 10s of thousands examples
+- generated datasets are mostly amplifying bad inputs
+- very hard to get even good models to generate synthetic examples
+- there are libraries to evaluate the quality of synthetic data
+- 1000 pairs of very high quality, we can turn it into 10k dataset with embedding models
+- how do you decide on the Filtering threshold?
+  - score cut-off? is pretty much a similarity score, becomes the distance score; treat the reranker score, don't filter on that, if the 
+  reranker thinks this is the best doc, i take the best doc.
+- lancedb normalizes the scores, in the same domain as the distance
+- how do you reliably generate citations (chunk-id in xml, reference the chunk, more than that the span)
+- how to keep up?
+  - as non-technical folks
+  - you should start to use ai in your workflow, at this point you become a semi-tech person
+  - first you become a user.
+- https://www.lancedb.com
+- next domain, that retrieval ppl. should focus on is multi-modality. 
+  - building more benchmarks
+  - better baselines
+  - what is the baseline multi-model RAG?
