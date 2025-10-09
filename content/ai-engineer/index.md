@@ -15,7 +15,7 @@ showSummary : false
 sharingLinks : false
 ---
 
-## AI Engineering
+## AI Engineering - Work with me
 
 **Prototype. Error Analysis. MVP. Eval Loop.**
 
