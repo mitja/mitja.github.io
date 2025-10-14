@@ -8,6 +8,7 @@ categories:
 tags: 
   - Claude
   - Devcontainer
+draft: false
 ---
 
 Letting Claude Code run unattened on a personal computer can be quite scary. With [Development Containers](https://containers.dev) or just "devcontainer" you can put Claude Code in a sandbox on your local machine so you don't need to worry as much.
