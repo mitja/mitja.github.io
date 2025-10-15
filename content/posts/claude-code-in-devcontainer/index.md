@@ -1,13 +1,9 @@
 ---
-title: How to run Claude Code in a Devcontainer Sandbox
+title: "How to run Claude Code in a Devcontainer Sandbox"
 summary: "How to limit what Claude Code can do and see on your machine."
-date: 2025-10-15
-categories: 
-  - AI Assisted Coding
-  - Blog
-tags: 
-  - Claude
-  - Devcontainer
+date: 2025-10-14
+categories: ["AI Engineering", "Blog"]
+tags: ["Claude", "Devcontainer"]
 draft: false
 ---
 
@@ -15,11 +11,11 @@ Letting Claude Code run unattened on a personal computer can be quite scary. Wit
 
 A good foundation to set this up is Anthropic's own [claude-code](https://github.com/anthropics/claude-code) repoaitory. The configuration is in `.devcontainer` and provides following security features:
 
-## 1. Container Isolation
+## Container Isolation
 
 Claude code runs in a Docker container (or on GitHub Codespaces, but I haven't tried this).
 
-## 2. Network Firewall
+## Network Firewall
 
 The firewall script `.devcontainer/init-firewall.sh` restricts network access to only approved destinations:
 
@@ -36,20 +32,20 @@ You can customize this. For example, I've added the following line to prevent co
 
 I mostly did this because Claude Code often got confused when there were files open it cannot find in the repo. I don't know if this is still the case.
 
-## 3. Limited File Access
+## Limited File Access
 
 Claude Code can only read/write in specific directories:
 
-- Your workspace folder (read-write)
-- Command history and config (volumes)
+- Your workspace folder (read-write) (see `workspaceMount` in `devcontainer.json`)
+- Command history and config (volumes) (see `mounts` in `devcontainer.json`)
 
 Your home directory is NOT mounted - Claude Code cannot access your personal files.
 
-## 4. Non-root User
+## Non-root User
 
 It runs as the `node` user with limited privileges.
 
-## 5. Limited bash commands (optionally)
+## Limited bash commands (optionally)
 
 There is also a `bash_command_validator_example.sh` which is a Claude Code PreToolUse hook for the bash tool that "validates bash commands a set of rules before execution". 
 
