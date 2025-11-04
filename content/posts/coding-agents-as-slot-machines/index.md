@@ -1,7 +1,6 @@
 ---
 title: "Coding Agents as Slot Machines"
-summary: "Interacting with LLM coding tools is much like playing a slot machine."
-categories: ["AI Engineering","Blog",]
+categories: ["AI Engineering"]
 tags: ["Coding Agents",]
 date: 2025-06-01
 draft: false
@@ -13,4 +12,4 @@ After reading a nice post [via HN](https://news.ycombinator.com/item?id=44147966
 
 This probably applies to many systems that use Generative AI, especially systems that work on the cutting edge where randomness is more pronounced.
 
-So, whenever you get carried away by an agent, be aware that it can be or lead to addiction.
+If you also "[Can't sleep gud anymore](https://www.youtube.com/watch?v=sq6a3WC5_Ns)" as Mario Zechner beautifully put it, be aware that coding with agents can be addictive.

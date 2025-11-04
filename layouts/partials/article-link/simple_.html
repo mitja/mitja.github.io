@@ -1,0 +1,128 @@
+{{/* Handle both direct page context and dict with Page and showSummary */}}
+{{ $page := . }}
+{{ $showSummaryOverride := false }}
+{{ if reflect.IsMap . }}
+  {{ if .Page }}
+    {{ $page = .Page }}
+    {{ if isset . "showSummary" }}
+      {{ $showSummaryOverride = .showSummary }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ $constrainItemsWidth := $page.Site.Params.list.constrainItemsWidth | default false }}
+
+{{ $articleClasses := "group-hover-card group flex flex-wrap md:flex-nowrap article relative" }}
+{{ if $page.Site.Params.list.showCards }}
+  {{ $articleClasses = delimit (slice $articleClasses "border border-neutral-200 dark:border-neutral-700 border-2 rounded-md overflow-hidden") " " }}
+{{ else }}
+  {{ $articleClasses = delimit (slice $articleClasses "") " " }}
+{{ end }}
+
+{{ $articleImageClasses := "w-full md:w-auto h-full thumbnail nozoom" }}
+{{ if $page.Site.Params.list.showCards }}
+  {{ $articleImageClasses = delimit (slice $articleImageClasses "") " " }}
+{{ else }}
+  {{ $articleImageClasses = delimit (slice $articleImageClasses "thumbnailshadow md:mr-7") " " }}
+{{ end }}
+
+{{ $disableImageOptimization := $page.Site.Params.disableImageOptimization | default false }}
+
+{{ $articleInnerClasses := "" }}
+{{ if $page.Site.Params.list.showCards }}
+  {{ $articleInnerClasses = delimit (slice $articleInnerClasses "p-4") " " }}
+{{ else }}
+  {{ $articleInnerClasses = delimit (slice $articleInnerClasses "mt-3 md:mt-0") " " }}
+{{ end }}
+
+{{ if $constrainItemsWidth }}
+  {{ $articleClasses = delimit (slice $articleClasses "max-w-prose") " " }}
+{{ end }}
+
+
+<div class="{{ $articleClasses }}">
+  <a
+    {{ partial "article-link/_external-link.html" $page | safeHTMLAttr }}
+    class="absolute inset-0"
+    aria-label="{{ $page.Title }}"></a>
+  {{- with $page.Params.images -}}
+    {{- range first 6 . }}
+      <meta property="og:image" content="{{ . | absURL }}">
+    {{ end -}}
+  {{- else -}}
+    {{- $images := $page.Resources.ByType "image" -}}
+    {{- $featured := $images.GetMatch "*feature*" -}}
+    {{- if not $featured }}{{ $featured = $images.GetMatch "{*cover*,*thumbnail*}" }}{{ end -}}
+    {{ if and $page.Params.featureimage (not $featured) }}
+      {{- $url:= $page.Params.featureimage -}}
+      {{ $featured = resources.GetRemote $url }}
+    {{ end }}
+    {{- if not $featured }}
+      {{ with $page.Site.Params.defaultFeaturedImage }}{{ $featured = resources.Get . }}{{ end }}
+    {{ end -}}
+    {{ if $page.Params.hideFeatureImage }}{{ $featured = false }}{{ end }}
+    {{- with $featured -}}
+      {{ if or $disableImageOptimization (strings.HasSuffix $featured ".svg") }}
+        {{ with . }}
+          <div class="{{ $articleImageClasses }}" style="background-image:url({{ .RelPermalink }});"></div>
+        {{ end }}
+      {{ else }}
+        {{ with .Resize "600x" }}
+          <div class="{{ $articleImageClasses }}" style="background-image:url({{ .RelPermalink }});"></div>
+        {{ end }}
+      {{ end }}
+    {{- else -}}
+      {{- with $page.Site.Params.images }}
+        <meta property="og:image" content="{{ index . 0 | absURL }}">
+      {{ end -}}
+    {{- end -}}
+  {{- end -}}
+
+
+  <div class="{{ $articleInnerClasses }}">
+    <div class="items-center text-left text-xl font-semibold">
+      {{ with $page.Params.externalUrl }}
+        <div
+          class="group-hover-card-title decoration-primary-500 dark:text-neutral text-xl font-bold text-neutral-800 group-hover:underline group-hover:underline-offset-2">
+          {{ $page.Title | emojify }}
+          <span class="cursor-default align-top text-xs text-neutral-400 dark:text-neutral-500">
+            <span class="rtl:hidden">&#8599;</span>
+            <span class="ltr:hidden">&#8598;</span>
+          </span>
+        </div>
+      {{ else }}
+        <div
+          class="group-hover-card-title decoration-primary-500 dark:text-neutral text-xl font-bold text-neutral-800 group-hover:underline group-hover:underline-offset-2">
+          {{ $page.Title | emojify }}
+        </div>
+      {{ end }}
+      {{ if and $page.Draft $page.Site.Params.article.showDraftLabel }}
+        <div class="ltr:ml-2 rtl:mr-2">{{ partial "badge.html" (i18n "article.draft" | emojify) }}</div>
+      {{ end }}
+      {{ if templates.Exists "partials/extend-article-link.html" }}
+        {{ partial "extend-article-link.html" $page }}
+      {{ end }}
+    </div>
+    <div class="group-hover-cancel text-sm text-neutral-500 dark:text-neutral-400">
+      {{ partial "article-meta/basic.html" $page }}
+    </div>
+    {{ if $showSummaryOverride }}
+      {{ $summary := "" }}
+      {{ if $page.Truncated }}
+        {{/* Use manual summary if <!-- more --> exists */}}
+        {{ $summary = $page.Summary }}
+      {{ else }}
+        {{/* Try to split at <!-- more --> manually */}}
+        {{ $content := $page.RawContent }}
+        {{ if (findRE "<!--\\s*more\\s*-->" $content 1) }}
+          {{ $parts := split $content "<!-- more -->" }}
+          {{ $summary = index $parts 0 }}
+        {{ else }}
+          {{ $summary = $page.Summary }}
+        {{ end }}
+      {{ end }}
+      <div class="prose dark:prose-invert max-w-fit py-1">{{ $summary | markdownify }}</div>
+    {{ end }}
+  </div>
+  <div class="px-6 pt-4 pb-2"></div>
+</div>

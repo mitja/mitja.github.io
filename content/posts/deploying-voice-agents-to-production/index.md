@@ -1,29 +1,35 @@
 ---
 layout: post
 title: "Deploying Voice Agents to Production"
-summary: "Notes on a session about deploying voice agents to production by kwindla"
 date: 2025-05-09
 author: mitja
 draft: false
-categories: ["AI Engineering", "Blog"]
-tags: ["Voice AI", "Session Notes", "PipeCat", "WebRTC"]
+categories: ["AI Engineering"]
+tags: ["Voice Agents", "Session Notes", "PipeCat", "WebRTC"]
 ---
 
-These are my notes on the session about deploying voice agents to production of the [Voice Agents Course](https://maven.com/pipecat/voice-ai-and-voice-agents-a-technical-deep-dive).
+Here are my notes on the session about deploying voice agents to production which is part of the [Voice Agents Course](https://maven.com/pipecat/voice-ai-and-voice-agents-a-technical-deep-dive).
 
-TLDR:
+<!-- more -->
+
+{{< alert "lightbulb" >}}
+The course if held by kwindla und swyx, the CTO und an investor of Daily.co, a WebRTC und Voice AI infrastructure provider. Some of their recommendations might be predisposed. I still state them as is as I trust them and because I don't have enough experience with voice agents in production.
+{{< /alert >}}
+
+
+## TL;DR
 
 - Use a voice AI provider for simple, scalable deployment for production.
 - Use a single VM or your homelab for demos.
 
-Differences between voice agents and traditional apps: 
+## Differences between voice agents and traditional web apps
 
 - are mostly in the transport
 - persistent connnection (minutes)
 - bidirectional streaming
 - stateful sessions
 
-Voice agents in production need:
+## Voice agents in production need
 
 - A http service for 
   - API endpoints, 
@@ -35,7 +41,7 @@ Voice agents in production need:
   - websocket based for server-to-server (tcp).
 - Bots (udp or tcp, connect to media transport layer)
 
-Bots:
+## Bots
 
  - Are instances of the agents.
  - Can be written in Python with PipeCat.
@@ -50,14 +56,14 @@ Bots:
    - 2-3 secs (web), 
    - 3-5 secs (phone)
  
-Ways to solve the "fast start challenge":
+## Ways to solve the "fast start challenge"
 
   - percentage-based warm pool
   - fast startup times (caching, pre-loading)
   - proactive/predictive scheduling
   - fallbacks from reactive world (eg. UX based solutions, not just silent fails)
 
-Infra providers:
+## Infra providers
 
   - need to support tcp and udp
   - voice ai providers are easiest (Pipecat Cloud, Daily, Vapi, Layercode)
@@ -71,6 +77,8 @@ Infra providers:
   - proximity to users matters (Daily plans global regions for PipeCat cloud, currently only us-west)
   - conn between servers can be implemented with WebSockets
 
+## What's next?
+
 After the session I have looked at the PipeCat examples and realized it should be easy enough to run a basic voice agent with PipeCat's [SmallWebRTCTransport](https://docs.pipecat.ai/server/services/transport/small-webrt) on a virtual server hosted in Europe and then switch the transport and deploy it to production on PipeCat Cloud.
 
-I will probably try that to see if the US based PipeCat cloud is fast enough for users in Europe and how much of a difference the longer network round trip time makes.
+I will probably try that to see if the latency between US based PipeCat cloud and users in Europe is low enough for a good user experience.

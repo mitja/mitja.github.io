@@ -1,28 +1,40 @@
 ---
 title: "Tipps for Migrating to Hugo"
-summary: "Lessons learned from migrating my blog from Jekyll to Hugo."
 categories: ["Cloud Solution Design", "Blog"]
 tags: ["Hugo", "Jekyll", "Static Site Builder"]
 date: 2025-09-06
 draft: false
 ---
 
-Here are some tipps for migrating a blog to [Hugo](https://gohugo.io), the static website builder.
+In this article, I document some non-technical things I've learned migrating my blog from Jekyll to [Hugo](https://gohugo.io). The gist is to **keep it as simple as possible**:
+
+<!--more-->
+
+Here is a somewhat longer gist:
+
+* only migrate for good reasons
+* define your objectives and non-objectives (keep it simple, make it simpler)
+* chose the right theme (almost as important as chosing a static site generator)
+* draft and follow a plan (it's too easy to get distracted)
+* use scripts (which can be vibe coded)
+* publish, check, and fix first, only then change (again, keep it simple)
+* don't underestimate the effort
+* take screenshots to remember your old blog
 
 ## Why Migrate? (Maybe don't)
 
 A migration is always more effort than it may seem. It's important to be clear about the reasons to migrate and only migrate when necessary. My reasons for migrating my blog to Hugo were:
 
-- Hugo is in my view the best static site generator, today, as it's flexible, focused, fast, and feature-rich. It can certainly serve the site, today and in the forseeable future.
-- Due to it's focus and flexiblity, I plan to use Hugo also for other websites.
+- Hugo is in my view the best static site generator, today. It's flexible, focused, fast, and feature-rich. It can certainly serve my blog, today and in the forseeable future.
+- Because it's so focussed and flexible, I plan to use Hugo also for other websites.
 - Hugo supports multi-lingual sites out of the box. Jekyll does not really support it.
-- Hugo can be used as a rendering target of Quarto and nbdev which means that I can write posts in Jupyter Notebook and don't need to manually transfer them to the blog. 
+- Hugo can be a rendering target of Quarto and nbdev which means that I could write posts in Jupyter Notebook and don't need to manually transfer them to the blog. 
 
-For me, the compelling reason to switch was Hugo's multi-language support. I also contemplated how I could bring that to Jekyll, but it would have been more effort overall, especially later on.
+For me, the compelling reason to switch was Hugo's multi-language support. I also contemplated how I could bring that to Jekyll, as I really liked the Chirpy theme I was using, but it would have been more effort overall, especially later on.
 
 ## Define Objectives
 
-Your main objective should be to do as little as possible. It will get more involved anyway. Writing down your objectives before detailed planning and starting the actual migration will help you keep on track.
+Your main objective should be to do as little as possible. It will get more involved anyway. Writing down your objectives before detailed planning and starting the actual migration is a good idea and will help you keep on track.
 
 My main objective was to benefit from Hugo's additional features, especially multi-language support, while keeping all the links working. 
 
@@ -30,11 +42,11 @@ I also wanted a blog that's easy to use, and easy to keep up-to date. This meant
 
 ## Define Non-Objectives
 
-Initially, I was looking into porting the Chirpy theme to Hugo.
+Initially, I was also looking into porting the Chirpy theme to Hugo.
 
-I started vibe-coding a Hugo port of Chirpy, and it was even beginning to look ok-ish, but there were a myriad of things that would have needed to be improved and features like multi-lingual support were missing altogether. 
+I started vibe-coding a Hugo port of Chirpy, and it was even beginning to look ok-ish, but there were a myriad of things that would have needed to be improved and important features like multi-lingual support were still missing. 
 
-Not to speak of the code quality. Developing and maintaining a great theme is not a small task and needs dedication. There are great open source themes for Hugo. Use one of these.
+Not to speak of the code quality. Developing and maintaining a great theme is not a small task and needs dedication. There are great open source themes for Hugo. I decided to just use one of these and move on.
 
 Another idea of mine was to move to a different deployment platform. I dropped that, too and decided to stay with GitHub Actions and GitHub Pages to build and publish the blog.
 
@@ -146,4 +158,4 @@ I think nice to have screenshots from your old blog and the initial version of y
 
 Here are screenshots of my blog before and after the migration, presented by the [Blowfish's Carousel Shortcode](https://blowfish.page/docs/shortcodes/#carousel):
 
-{{< carousel images="gallery/*" >}}
+{{< carousel images="gallery/*" interval="5000" >}}

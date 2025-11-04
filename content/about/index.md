@@ -3,6 +3,7 @@ title: "About"
 summary: "About me"
 date: 2025-09-07
 
+showAuthor: true
 showDate : false
 showDateUpdated : false
 showHeadingAnchors : false
@@ -16,15 +17,30 @@ sharingLinks : false
 ---
 Hi, I’m Mitja Martini,
 
-I graduated in Communication in Social and Economic Contexts at the Berlin University of the Arts,  work as Cloud Application Services Solution Designer at T-Systems International GmbH and build AI apps on the side.
+I work as IT Solution Designer at T-Systems International GmbH. 
+
+On the side, I build AI Apps and update my book "Hands-on ChatGPT in Excel".
+
+My goal is to make AI approachable, efficient, and useful for businesses.
+
+I believe in learning by doing. If you want to turn prompts into reusable applications or 
+create a small-scale prototype of a SaaS idea, I can help you get there, quickly and in 
+a structured way.
+
+What I help with:
+
+* Getting started with no-code AI tools and spreadsheet-driven workflows (mainly Excel)
+* Building AI-powered web apps in Python (Django, FastAPI, FastHTML, Litestar, Streamlit, ...)
+* Building Voice AI solutions
+* Improving AI systems through error analysis and evaluation
+* Getting started with AI-assisted coding
+* Setting up local AI environments
 
 {{< alert "lightbulb" >}}
-If you like to contact me, please send an email to hi@mitjamartini.com, ideally with your phone number, and I’ll get back to you as soon as possible.
+If you are interested in AI Engineering training or coaching, please send me a [mail](hi@mitjamartini.com).
 {{< /alert >}}
 
-Best Regards,
-
-Mitja Martini
+Mitja
 
 > Helmkrautstr. 32  
 > 13503 Berlin  

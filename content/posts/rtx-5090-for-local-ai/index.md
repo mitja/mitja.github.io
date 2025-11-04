@@ -10,7 +10,7 @@ aliases: [
 ]
 ---
 
-Update (January 14, 2025): The RTX 5090 was officially announced at CES and will be available January 30, 2025. This post was updated with the aktual [RTX 5090 specs](https://www.nvidia.com/de-de/geforce/graphics-cards/50-series/rtx-5090/). I kept the rumored specs in the post for reference.
+Update (January 14, 2025): The RTX 5090 was officially announced at CES and will be available January 30, 2025. This post was updated with the actual [RTX 5090 specs](https://www.nvidia.com/de-de/geforce/graphics-cards/50-series/rtx-5090/). I kept the rumored specs in the post for reference.
 
 This is a quick look at the [specs of the RTX 5090](https://www.tomshardware.com/pc-components/gpus/leak-claims-rtx-5090-has-600w-tgp-rtx-5080-hits-400w-up-to-21760-cores-32gb-vram-512-bit-bus) which are most relevant for local inference with LLMs:
 
@@ -36,10 +36,10 @@ Memory bandwidth of the M4 Pro is almost 5.6x slower (273 GB/s), but still beara
 
 My go-to LLMs are hosted models from Anthropic, OpenAI, Google, etc., anyway. I use local models only for longer running experiments, for trying out new models, and when I work with sensitive data. For these use cases, I'm fine with the slower inference.
 
-For other things like training, media production, gaming, a PC with this card is certainly well worth it and I will probably upgrade my GPU at one point anyway. Currently it's a 2070 Super, and my system can be equipped with an RTX 5090.
+For other things like training, media production, gaming, a PC with this card is certainly well worth it and I will probably upgrade my GPU at one point anyway. Currently it's a 2070 Super with only 8GB vRAM.
 
-The first things I would try on the RTX 5090 is probably real-time inference and inference scaling. It would be interesting to see how the inference speed would feel with local voice-to-voice apps, for example.  With inference scaling, the 5090 can probably achieve much better performance with the same latency and model as an M4 Pro.
+The first things I would try on the RTX 5090 would probably be real-time inference and inference scaling. It would be interesting to see how the inference speed would feel with local voice-to-voice apps, for example. With inference scaling (as in increasing the batch size with vLLM or similar), the 5090 can probably achieve much higher througput with the similar latency and model-sizes up to 30B with 4bit quantization as an M4 Pro.
 
-What I would not to at this point is buy an RTX 4090. The RTX 5090 is much more attractive spec-wise and I would wait until it's released. 
+What I would not do at this point is buy an RTX 4090. The RTX 5090 is much more attractive spec-wise and I would wait until it's released and reasonably priced. 
 
 In the end, I don't have an immediate need for the RTX 5090, so I probably will not buy it at release time, but maybe upgrade my system at some time in the future.

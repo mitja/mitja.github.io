@@ -1,10 +1,8 @@
 ---
 title: "Deploying a SaaS Pegasus Based Django App on Dokku"
-summary: "A step-by-step guide to deploying a Django app on Dokku."
 date: 2024-09-22
+summary: "In this post I'll share the steps I did to deploy a SaaS Pegasus bootstrapped Django app (Scriv from the SaaS Pegasus marketplace to be precise) with Celery, Redis and Postgres on a Dokku host. There were some hickups along the way, but I believe, when you go step-by-step, it is quite straightforward."
 showZenMode: true
-categories: 
-  - Self-Hosting with Dokku
 tags: 
   - SaaS
   - Django
@@ -13,14 +11,16 @@ aliases:
   - /blog/2024/09/22/deploying-django-on-dokku/
 ---
 
-I am working on a SaaS app. Although I started it with [FastAPI](https://fastapi.tiangolo.com) I decided to go back to [Django](https://www.djangoproject.com) since I'm using Django on and off since end of 2005 (really!) thus, I know it much better than FastAPI. Also, I like its batteries included approch and the Django way of rendering frontends mostly server-side with some HTMX, jQuery and alpine.js.
-
-Until now, I used [Django Cookiecutter](https://cookiecutter-django.readthedocs.io/en/latest/) to start projects which were only personal and company-internal tools up to this point. As I'm now building a SaaS I switched to [SaaS Pegasus](https://saaspegasus.com/) as a project template.
-
-SaaS Pegasus comes with quite a few options for deploying, such as with [Kamal](https://kamal-deploy.org) on a single server. As I already had a [Dokku](https://dokku.com) server running, I buckled down and found a way to deploy it on Dokku.
-
 In this post I'll share the steps I did to deploy a SaaS Pegasus bootstrapped Django app (Scriv from the SaaS Pegasus marketplace to be precise) with Celery, Redis and Postgres on a Dokku host. There were some hickups along the way, but I believe, when you go step-by-step, it is quite straightforward.
 
+<!-- more -->
+
+I am working on a SaaS app. Although I started it with [FastAPI](https://fastapi.tiangolo.com) I decided to go back to [Django](https://www.djangoproject.com) since I'm using Django on and off since end of 2005 (really!) thus, I know it much better than FastAPI. Also, I like its batteries included approch and the Django way of rendering frontends mostly server-side with some HTMX, jQuery and alpine.js.
+
+Until now, I used [Django Cookiecutter](https://cookiecutter-django.readthedocs.io/en/latest/) to start projects. As I'm now building a SaaS I switched to [SaaS Pegasus](https://saaspegasus.com/) as a project template.
+
+SaaS Pegasus comes with quite a few options for deploying, such as with [Kamal](https://kamal-deploy.org) on a single server. As I already had a [Dokku](https://dokku.com) server running, I buckled down and found a way to deploy it on Dokku.
+  
 ## Preconditions
 
 The main precondition is, that you have a Dokku server running and that you can use it from your local machine with commands like `ssh dokku@<your-dokku-server> apps:list`. There are some commands you need to run on the server with `sudo` and the actual deployment is done from your local machine with `git push dokku main`, but you need to use `dokku` commands to configure your app. 

@@ -7,15 +7,15 @@ title = "Mitja Martini"
   displayName = "EN"
   isoCode = "en"
   rtl = false
-  #logo = "img/mitja.jpg"
-  description = "A blog about AI Engineering and IT"
+  logo = "img/mitja-avatar.png"
+  description = "Mitja Martini's blog about AI Engineering"
   # copyright = "Copy, _right?_ :thinking_face:"
   dateFormat = "2 January 2006"
 
 [params.author]
   name = "Mitja Martini"
   image = "img/mitjamartini.jpg"
-  headline = "IT Solution Designer and AI Engineer"
+  headline = "IT Solution Designer, AI Engineer"
   bio = "IT Solution Designer and AI Engineer"
    links = [
      #{ link = "https://nunocoracao.github.io/blowfish/" },

@@ -12,19 +12,9 @@ aliases:
   - /blog/2023/01/15/fetching-data-from-rest-apis-with-python-and-httpx/
 ---
 
-Fetching data is a common task with REST APIs. With the **httpx** module you can do it in a single command.
+Fetching data is a common task with REST APIs. With the **httpx** module you can do it in a single command. This article shows how to install and use httpx to fetch and work with data from REST APIs.
 
-This article shows how to:
-
-- install httpx
-- fetch data
-- look at the data
-- turn json data into python dictionaries
-- send querystring parameters
-- work with result lists
-- paginate
-- use a client
-- handle authentication
+<!-- more -->
 
 You can perform these steps with an interactive Python prompt like ipython.
 

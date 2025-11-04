@@ -12,7 +12,11 @@ tags:
 aliases: 
   - /blog/2023/10/10/how-hard-can-it-be-prompting-small-llms/
 ---
-This post shows some results of prompting small LLMs to accomplish a variety of tasks. It demonstrates that small models can produce quite good results. Here is a short list of my conclusions for prompting small LLMs:
+This post shows some results of prompting small LLMs to accomplish a variety of tasks. It demonstrates that small models can produce quite good results. 
+
+<!-- more -->
+
+Here is a short list of my conclusions for prompting small LLMs:
 
 - test different quanization levels
 - use prompt templates
@@ -20,7 +24,7 @@ This post shows some results of prompting small LLMs to accomplish a variety of 
 - be precise
 - be concise
 - only do one task at a time
-- don't rely on reasoning as it doesn't work well
+- don't rely on reasoning as it doesn't work well with small models, yet
 - run diverse experiments to gain experience
 - monitor and compare the performance
 - maybe use large LLMs to optimize prompts for small LLMs

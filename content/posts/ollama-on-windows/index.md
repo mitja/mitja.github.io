@@ -17,7 +17,6 @@ Thanks to llama.cpp, it can run models on CPUs or GPUs, even older ones like my 
 
 In this blog post and it's acompanying video, you'll learn how to install Ollama, load models via the command line and use OpenWebUI with it.
 
-
 {{< youtubeLite id="z8xi44O3hvY" label="Ollama on Windows" >}}
 
 ## About Ollama

@@ -15,9 +15,9 @@ aliases:
 
 Quick tip: It's much better to launch VS Code from the command line. Why? Because this way, the sessions' environment configuration is used by VS Code, too, and you don't need to configure the Python interpreter in VS Code. 
 
-For example, I often check out a repository with GitHub Desktop and then open the project from GitHub Desktop in VS Code. This way, I also need to configure the Python interpreter in the VS Code workspace. On the other hand, when I open the working copy in the terminal, do the initialization there, and only then launch GitHub Desktop, the Python interpreter is automatically set accordingly.
+For example, I often check out a repository with GitHub Desktop and then open the project from GitHub Desktop in VS Code. This way, I also need to configure the Python interpreter in the VS Code workspace. On the other hand, when I open the working copy in the terminal, do the initialization there, and only then launch GitHub Desktop, the Python interpreter is automatically setup in VS Code, too.
 
-Here is a step-by-step example with Anaconda. After cloning the repository, I open a terminal in the repositories' directory and create a new conda environment with:
+Here is a step-by-step example with Anaconda. After cloning the repository, I open a terminal in the repository directory and create a new conda environment with:
 
 ```bash
 conda create --name myenv python=3.11

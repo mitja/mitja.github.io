@@ -1,15 +1,16 @@
 ---
 title: "An Overview of the Voice AI Landscape (Session Notes)"
-summary: "Notes on a session by kwindla about the voice AI landscape."
 date: 2025-05-08
 author: mitja
 categories: ["AI Engineering", "Blog"]
-tags: ["Voice AI", "Session Notes"]
+tags: ["Voice Agents", "Session Notes"]
 ---
 
 I'm so happy to be part of the [Voice Agents Course](https://maven.com/pipecat/voice-ai-and-voice-agents-a-technical-deep-dive) by Kwindla and swyx. Yesterday, Kwindla kicked it off with an overview of the voice AI landscape. The pace, insights, and questions from the audience were just great.
 
 Here are my personal notes, probably incomplete and maybe not always correct. For a more authoritative overview of the Voice AI landscape, check out their free online book [Voice AI & Voice Agents - An Illustrated Primer](https://voiceaiandvoiceagents.com).
+
+<!-- more -->
 
 - Voice AI has highly valuable use cases with actual real business value.
 - Benefits:

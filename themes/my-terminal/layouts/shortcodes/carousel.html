@@ -1,0 +1,131 @@
+{{- $id := delimit (slice "carousel" (now.UnixNano)) "-" -}}
+{{- $aspect := default "16-9" (.Get "aspectRatio") -}}
+{{- $interval := default "2000" (.Get "interval") -}}
+
+{{- $page := .Page.Resources -}}
+{{- $imagesTemp := .Get "images" -}}
+{{- $imagesTemp = strings.TrimPrefix "{" $imagesTemp -}}
+{{- $imagesTemp = strings.TrimSuffix "}" $imagesTemp -}}
+{{- $imagesTemp := strings.Split $imagesTemp "," -}}
+{{- $images := slice -}}
+{{- range $imagesTemp -}}
+  {{- if or (strings.HasPrefix . "http:") (strings.HasPrefix . "https:") -}}
+    {{- $images = $images | append (resources.GetRemote .) -}}
+  {{- else -}}
+    {{- $images = $images | append ($page.Match .) -}}
+  {{- end -}}
+{{- end -}}
+
+<style>
+#{{ $id }} {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  margin: 25px 0;
+  border: 4px solid var(--accent);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--background);
+}
+
+#{{ $id }} .carousel-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: {{ if eq $aspect "16-9" }}16 / 9{{ else if eq $aspect "4-3" }}4 / 3{{ else if eq $aspect "1-1" }}1 / 1{{ else }}16 / 9{{ end }};
+  overflow: hidden;
+}
+
+#{{ $id }} .carousel-slide {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+#{{ $id }} .carousel-slide.active {
+  display: block;
+}
+
+#{{ $id }} .carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+#{{ $id }} .carousel-controls {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+#{{ $id }} .carousel-button {
+  pointer-events: all;
+  background: color-mix(in srgb, var(--background) 70%, transparent);
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  transition: all 0.2s;
+  margin: 0 10px;
+}
+
+#{{ $id }} .carousel-button:hover {
+  background: var(--accent);
+  color: var(--background);
+}
+
+#{{ $id }} .carousel-indicators {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+#{{ $id }} .carousel-indicator {
+  width: 30px;
+  height: 4px;
+  background: color-mix(in srgb, var(--accent) 40%, transparent);
+  border: 1px solid var(--accent);
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#{{ $id }} .carousel-indicator.active {
+  background: var(--accent);
+}
+</style>
+
+<div id="{{ $id }}" data-carousel="{{ $id }}" data-interval="{{ $interval }}">
+  <div class="carousel-container">
+    {{- range $index, $image := $images -}}
+      <div class="carousel-slide{{ if eq $index 0 }} active{{ end }}">
+        <img src="{{ $image.RelPermalink }}" alt="Carousel image {{ add $index 1 }}">
+      </div>
+    {{- end -}}
+  </div>
+
+  <div class="carousel-controls">
+    <button type="button" class="carousel-button carousel-prev">&lt;</button>
+    <button type="button" class="carousel-button carousel-next">&gt;</button>
+  </div>
+
+  <div class="carousel-indicators">
+    {{- range $index, $image := $images -}}
+      <div class="carousel-indicator{{ if eq $index 0 }} active{{ end }}"></div>
+    {{- end -}}
+  </div>
+</div>

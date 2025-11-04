@@ -1,0 +1,4 @@
+{{/* Conditionally load carousel JavaScript only when the page uses the carousel shortcode */}}
+{{ if .Page.HasShortcode "carousel" }}
+<script defer src="/js/carousel.js"></script>
+{{ end }}

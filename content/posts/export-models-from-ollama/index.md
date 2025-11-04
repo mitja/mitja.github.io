@@ -14,33 +14,42 @@ showZenMode: true
 #layout: "simple"
 ---
 
+I wanted to load Ollama models onto a system with restricted internet access. Unfortunately, Ollama doesn't support private registries, yet or has a command for exporting models. 
+
+As a workaround, I've created a Python script that can export a model from Ollama with a single command into a zip folder that can then be imported to another Ollama instance.
+
+<!-- more -->
+
 {{< alert "lightbulb" >}}
-This script has been created as a workaround for Ollama's missing custom OCI registry support. As Ollama now supports loading models from custom OCI registries, the script is now obsolete.
+As Ollama now supports loading models from custom OCI registries, a better approach is to run a registry in your private network that can serve images for your private Ollama instances.
 {{< /alert >}}
 
-I wanted to load Ollama models onto a system with restricted internet access. 
-
-Unfortunately, Ollama doesn't yet support private registries or has a command for exporting models.
-
-As a workaround, I have created a Python script that can export a model from Ollama with a single command:
+## Exporting models from Ollama
 
 ```bash
-python export_ollama_model.py <modelname> <tagname> –repository reponame –output filename.zip
+python export_ollama_model.py \ 
+  $MODELNAME $TAGNAME \
+  –repository $REPONAME \
+  –output filename.zip
 ```
 
-Here is an example for `phi3:mini`:
+Repository is optional. Here is an example for `phi3:mini`:
 
 ```bash
 python export_ollama_model.py phi3 mini --output phi3_mini.zip
 ```
 
-The result is a ZIP file that contains all files related to the model in Ollama: The manifest and the blobs. 
+The result is a zip file that contains all files related to the model in Ollama: The manifest and the blobs of the image layers. 
 
-Then I moved the ZIP file to the airgapped computer and imported it to it's local `.ollama` folder by running this command in the folder where `.ollama` is located:
+## Importing models to Ollama
+
+Move the zip file to the airgapped computer and import it to it's local `.ollama` folder by running this command in the folder where `.ollama` is located:
 
 ```bash
 tar -xf phi3_mini.zip
 ```
+
+## Now, where is the script?
 
 Here is the script (`export_ollama_model.py`):
 
@@ -97,4 +106,3 @@ def main():
 if __name__ == "__main__":
     main()
 ```
-

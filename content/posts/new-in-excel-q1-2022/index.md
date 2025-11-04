@@ -1,6 +1,5 @@
 ---
 title: "What is new in Excel in Q1 2022"
-summary: "This is when TEXTSPLIT appeared, a building block for working with LLMs in Excel."
 date: 2022-04-24
 categories: 
   - "Excel is All You Need"
@@ -13,9 +12,11 @@ aliases:
 
 Microsoft keeps adding new exciting features to Excel all the time. Here is an overview of new features added in the first quarter of 2022.
 
-I base this on the Excel Blog. Please drop me a mail if I missed something. As Microsoft rolls out new features gradually, not everything might be available for you, right now.
-
 For me, `TEXTSPLIT` is the best new Excel feature of this quarter. With it you can split text that is eg. formatted as CSV into multiple rows and columns. This is extremely helpful if you want to use ChatGPT in Excel.
+
+<!-- more -->
+
+I base this on the Excel Blog. Please drop me a mail if I missed something. As Microsoft rolls out new features gradually, not everything might be available for you, right now.
 
 ## 3 New Excel Functions for Text Extraction
 

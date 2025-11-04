@@ -1,6 +1,5 @@
 ---
-title: "A note on the Hidden Complexities of WebSockets"
-summary: "Things to keep in mind when working with WebSockets"
+title: "A note on the hidden complexities of WebSockets"
 date: 2025-01-25
 categories: ["AI Engineering", "Blog"]
 tags: ["websockets", "realtime"]
@@ -10,17 +9,18 @@ aliases: [
 draft: false
 ---
 
-AI Apps are often expected to be realtime. On the web, realtime could be implemented with WebSockets.
+AI Apps are often expected to be realtime. On the web, realtime communication can be implemented with WebSockets. I've started with WebSockets to create chatbots and other live-updated interfaces, but then switched to SSE and now mostly follow these rules of thumbs: 
 
-Atul Jalan from Compose has written a nice blog post about 
-[The Hidden Complexity of Scaling WebSockets](https://composehq.com/blog/scaling-websockets-1-23-25). It's a quick read and
-captures important lessons to keep in mind when working with WebSockets. 
+* Use WebSockets for server-to-server communication.
+* Use SSE for server-to-client communication.
+* If you still want or need to use WebSockets for server-to-client communication, add a fallback to SSE.
+* If you need realtime voice/video server-to-client communication, use WebRTC.
 
-All of his lessons are important, even when working not at scale. I know this, because I've stumbled upon all of them, already.
+<!-- more -->
 
-As I cannot express it better than Atul, this is just a quick shoutout to his post and a reminder to myself to keep his lessons in mind when working with WebSockets.
+If you still want or need to build a websocket service, please read Atul Jalan's blog post about [The Hidden Complexity of Scaling WebSockets](https://composehq.com/blog/scaling-websockets-1-23-25). It's a quick read and captures important lessons to keep in mind when working with WebSockets. 
 
-Here is a quick summary:
+All of his lessons are important, even when working not at scale. Here is a quick summary:
 
 - Downtimeless deployments are much more involved than in HTTP services.
 - Establish a good message schema, eg. 2 byte prefixes and single character field delimiters.

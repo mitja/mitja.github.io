@@ -1,0 +1,55 @@
+{{- /* Parse parameters - support both named and positional */ -}}
+{{ if .IsNamedParams }}
+  {{ $.Scratch.Set "icon" (default "triangle-exclamation" (.Get "icon") ) }}
+  {{ $.Scratch.Set "cardColor" (.Get "cardColor") }}
+  {{ $.Scratch.Set "iconColor" (.Get "iconColor") }}
+  {{ $.Scratch.Set "textColor" (.Get "textColor") }}
+{{ else }}
+  {{ $.Scratch.Set "icon" (default "triangle-exclamation" (.Get 0) ) }}
+{{ end }}
+
+{{- /* Map icon names to emoji symbols */ -}}
+{{ $iconName := $.Scratch.Get "icon" }}
+{{ $iconEmoji := "⚠️" }}
+{{ if eq $iconName "triangle-exclamation" }}{{ $iconEmoji = "⚠️" }}{{ end }}
+{{ if eq $iconName "circle-info" }}{{ $iconEmoji = "ℹ️" }}{{ end }}
+{{ if eq $iconName "info" }}{{ $iconEmoji = "ℹ️" }}{{ end }}
+{{ if eq $iconName "circle-check" }}{{ $iconEmoji = "✓" }}{{ end }}
+{{ if eq $iconName "check" }}{{ $iconEmoji = "✓" }}{{ end }}
+{{ if eq $iconName "circle-xmark" }}{{ $iconEmoji = "✗" }}{{ end }}
+{{ if eq $iconName "xmark" }}{{ $iconEmoji = "✗" }}{{ end }}
+{{ if eq $iconName "x" }}{{ $iconEmoji = "✗" }}{{ end }}
+{{ if eq $iconName "lightbulb" }}{{ $iconEmoji = "💡" }}{{ end }}
+{{ if eq $iconName "fire" }}{{ $iconEmoji = "🔥" }}{{ end }}
+{{ if eq $iconName "bug" }}{{ $iconEmoji = "🐛" }}{{ end }}
+{{ if eq $iconName "rocket" }}{{ $iconEmoji = "🚀" }}{{ end }}
+{{ $.Scratch.Set "iconEmoji" $iconEmoji }}
+
+<div
+  style="
+    display: flex;
+    padding: 20px;
+    margin: 25px 0;
+    border: 2px solid {{ if $.Scratch.Get "cardColor" }}{{ $.Scratch.Get "cardColor" }}{{ else }}var(--accent){{ end }};
+    border-radius: var(--radius);
+    {{ if $.Scratch.Get "cardColor" }}background-color: {{ $.Scratch.Get "cardColor" }};{{ end }}
+    {{ if $.Scratch.Get "textColor" }}color: {{ $.Scratch.Get "textColor" }};{{ end }}
+  "
+>
+  <span
+    style="
+      {{ if $.Scratch.Get "iconColor" }}color: {{ $.Scratch.Get "iconColor" }};{{ else }}color: var(--accent);{{ end }}
+      padding-right: 15px;
+      display: flex;
+      align-items: flex-start;
+      font-size: 1.2em;
+      line-height: 1;
+    "
+  >
+    {{ $.Scratch.Get "iconEmoji" }}
+  </span>
+
+  <span style="flex: 1;">
+    {{- .Inner | markdownify -}}
+  </span>
+</div>

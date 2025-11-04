@@ -1,0 +1,12 @@
+name = "My Terminal Customizations"
+license = "MIT"
+licenselink = "https://github.com/mitja/mitja.github.io/blob/main/LICENSE"
+description = "Custom shortcodes and enhancements for the Terminal theme"
+homepage = "https://github.com/mitja/mitja.github.io"
+tags = ["terminal", "customizations", "shortcodes"]
+features = ["alert", "youtubeLite", "carousel"]
+min_version = "0.147.0"
+
+[author]
+  name = "Mitja Martini"
+  homepage = "https://mitja.github.io"

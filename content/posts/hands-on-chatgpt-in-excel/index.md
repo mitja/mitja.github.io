@@ -25,8 +25,6 @@ In this book you will learn everything you need to know to create your own AI-in
 
 You can buy this book on [Amazon](https://www.amazon.com/dp/B0CQ3CRBKJ/).
 
-You can also buy my **course** [Prompt Flow Engineering with ChatGPT in Excel](https://www.udemy.com/course/prompt-flow-engineering-with-chatgpt-in-excel/?couponCode=838EBE7CE289F5C14D73) which covers the same topics.
-
 ## Downloads
 
 Here are the Excel workbooks referenced in the book. You can download them individually or as a [single zip archive](labs-genai/handson-chatgpt-in-excel-examples.zip).
