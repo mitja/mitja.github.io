@@ -22,10 +22,9 @@ Hallo, ich bin Mitja Martini und arbeite als IT Solution Designer bei T-Systems 
 
 Nebenberuflich entwickle ich KI Anwendungen und aktualisiere und übersetze gerade mein Buch "Hands-on ChatGPT in Excel". 
 
-Mein Ziel ist, KI effektiv einzusetzen und mit KI Mehrwert für Unternehmen zu schaffen.
+Mein Ziel ist, KI verantwortungsvoll, sicher und mit messbarem Mehrwert einzusetzen.
 
-Ich glaube an Learning by Doing. Wenn Du Prompts zu Anwendungen weiterentwickeln oder eine SaaS-Idee 
-prototypisch umsetzen möchtest, helfe ich Dir gerne, schnell und strukturiert ans Ziel zu kommen.
+Ich glaube an Learning by Doing. Wenn Du Prompts zu Anwendungen weiterentwickeln oder eine SaaS-Idee prototypisch umsetzen möchtest, helfe ich Dir gerne, schnell und strukturiert ans Ziel zu kommen.
 
 Wobei ich helfen kann:
 

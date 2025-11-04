@@ -1,5 +1,5 @@
 ---
-title: "Welcome to my AI Engineering blog"
+title: "Hello, I'm Mitja Martini"
 date: 2025-10-15
 categories: ["AI Engineering", "Blog"]
 #tags: ["Claude", "Devcontainer"]
