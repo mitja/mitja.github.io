@@ -73,6 +73,11 @@
    weight = 10
 
  [[footer]]
+   name = "Geschäftsbedingungen"
+   pageRef = "terms"
+   weight = 20
+
+ [[footer]]
    name = "Datenschutz"
    pageRef = "privacy"
-   weight = 20
+   weight = 30
