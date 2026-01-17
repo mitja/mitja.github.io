@@ -21,7 +21,7 @@ import argparse
 import subprocess
 import sys
 import asyncio
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 import re
 from pydantic import BaseModel, Field
@@ -112,7 +112,7 @@ async def create_post(title: str, lang: str = "en", draft: bool = False, model: 
         slug = slugify(title)
 
     # Get current date for folder structure
-    now = datetime.now(timezone=datetime.timezon.utc)
+    now = datetime.now(tz=timezone.utc)
     year = now.strftime("%Y")
     month = now.strftime("%m")
 

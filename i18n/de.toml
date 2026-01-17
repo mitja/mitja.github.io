@@ -1,0 +1,5 @@
+[stream.toPost]
+other = "Zum Beitrag"
+
+[stream.onThisPage]
+other = "Auf dieser Seite"

@@ -7,15 +7,15 @@ title = "Mitja Martini"
   displayName = "DE"
   isoCode = "de"
   rtl = false
-  logo = "img/mitja-avatar.png"
+  # logo = "img/mitja-avatar.png"  # removed to show only name in header
   description = "Mitja Martinis Blog über AI Engineering"
   dateFormat = "2. January 2006"
 
 [params.author]
   name = "Mitja Martini"
-  image = "img/mitjamartini.jpg"
-  headline = "IT Solution Designer, AI Engineer"
-  bio = "IT Solution Designer und AI Engineer"
+  image = "img/mitja-avatar.png"
+  headline = ""
+  bio = ""
    links = [
      { github = "https://github.com/mitja" },
      { x-twitter = "https://twitter.com/MitjaMartini" }

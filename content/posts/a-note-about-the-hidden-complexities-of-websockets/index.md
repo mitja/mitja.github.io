@@ -6,7 +6,7 @@ tags: ["websockets", "realtime"]
 aliases: [
   "/blog/a-note-about-the-hidden-complexities-of-websockets/", 
 ]
-draft: false
+stream: true
 ---
 
 AI Apps are often expected to be realtime. On the web, realtime communication can be implemented with WebSockets. I've started with WebSockets to create chatbots and other live-updated interfaces, but then switched to SSE and now mostly follow these rules of thumbs: 

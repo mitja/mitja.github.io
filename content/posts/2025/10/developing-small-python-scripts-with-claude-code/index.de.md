@@ -187,7 +187,7 @@ Der Code Review der beiden Scripte war eher oberflächlich, weil auch Fehlfunkti
 - Glob / iterieren ist implementiert, aber nicht getestet
 - namen könnte besser sein (MarkdownTranslator -> Hugo Translator?)
 - neue gpt version (habe ich angepasst: gpt-5 statt gpt-4o)
-- `now = datetime.now(timezone=datetime.timezon.utc)`
+- `now = datetime.now(timezone=datetime.timezone.utc)`
 
 ## Bis zur Unendlichkeit und noch viel weiter
 

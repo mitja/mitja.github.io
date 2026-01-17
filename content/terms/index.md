@@ -2,6 +2,7 @@
 title: "Terms"
 summary: "Terms and conditions"
 date: 2025-12-21
+draft: true
 
 showAuthor: true
 showDate : false

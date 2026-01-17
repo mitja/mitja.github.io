@@ -26,15 +26,18 @@ mainSections = ["posts"]
   showScrollToTop = true
 
 [homepage]
-  layout = "card" # valid options: page, profile, hero, card, background (default), custom
-  homepageImage = "img/cover.jpg" # used in: hero, and card
+  layout = "profile" #"background" #"profile" # valid options: page, profile, hero, card, background (default), custom
+  homepageImage = "img/oberbaum-bridge-view.jpg" # used in: hero, and card
   showRecent = true
   showRecentItems = 7
   showMoreLink = true
   showMoreLinkDest = "posts"
+  streamView = false # show full content for posts with stream: true in front matter
+  streamItems = 10 # number of posts to scan for stream (full content) posts
+  streamSections = ["posts"] # sections to include in the stream
   cardView = false
   cardViewScreenWidth = false
-  layoutBackgroundBlur = false # only used when layout equals background
+  layoutBackgroundBlur = true # only used when layout equals background
 
 [article]
   showDate = true
@@ -43,7 +46,7 @@ mainSections = ["posts"]
   showDateUpdated = false
   showAuthor = false
   showHero = true
-  heroStyle = "big" # valid options: basic, big, background (default)
+  heroStyle = "background" # valid options: basic, big, background (default)
   showBreadcrumbs = true
   showDraftLabel = true
   showEdit = false
@@ -63,7 +66,8 @@ mainSections = ["posts"]
 
 [list]
   showHero = false
-  heroStyle = "basic" # valid options: basic, big, background (default)
+  heroStyle = "background" # valid options: basic, big, background (default)
+  layoutBackgroundBlur = true
   layoutBackgroundHeaderSpace = false
   showBreadcrumbs = false
   showSummary = false

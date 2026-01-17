@@ -81,8 +81,6 @@ YouTube wird im Interesse einer ansprechenden Darstellung dieser Website eingese
 
 Einzelheiten zum Umgang mit Nutzerdaten durch Google findest Du hier: https://policies.google.com/
 
-## Google Analytics
+## Umami Analytics
 
-Anfragen an diese Website werden mit Google Analytics nachverfolgt. Das Tracking wird verwendet, um das aggregierte Interesse an Seiten zu messen und die Inhalte sowie das Nutzungserlebnis für die Nutzer dieser Website zu verbessern.
-
-Einzelheiten zum Umgang mit Nutzerdaten durch Google findest Du hier: https://policies.google.com/
+Anfragen an diese Website werden mit einer selbst betriebenen Umami Analytics Instanz nachverfolgt. Das Tracking wird verwendet, um das aggregierte Interesse an Seiten zu messen und die Inhalte sowie das Nutzungserlebnis für die Nutzer dieser Website zu verbessern.

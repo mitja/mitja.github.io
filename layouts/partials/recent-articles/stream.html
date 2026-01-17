@@ -1,0 +1,42 @@
+{{/* Stream view: shows full content for posts with stream: true, normal list items for others */}}
+{{/* Configuration: streamItems (count), streamSections (which sections to include) */}}
+{{ $streamItems := .Site.Params.homepage.streamItems | default .Site.Params.homepage.showRecentItems | default 10 }}
+{{ $streamSections := .Site.Params.homepage.streamSections | default .Site.Params.mainSections }}
+
+{{/* Filter pages by configured sections - site.RegularPages is already language-aware */}}
+{{ $pages := first $streamItems (where site.RegularPages "Section" "in" $streamSections) }}
+
+<div class="flex flex-col lg:flex-row lg:gap-8">
+  {{/* Main content stream */}}
+  <section class="space-y-10 flex-1 min-w-0">
+    {{ range $pages }}
+      {{ if .Params.stream }}
+        {{ partial "article-link/full-content.html" . }}
+      {{ else }}
+        {{ partial "article-link/simple.html" . }}
+      {{ end }}
+    {{ end }}
+  </section>
+
+  {{/* TOC sidebar - visible on large screens, styled like article TOC */}}
+  {{ $topClass := cond (hasPrefix site.Params.header.layout "fixed") "lg:top-[140px]" "lg:top-10" }}
+  <aside class="hidden lg:block lg:ml-auto px-0 lg:ps-8 lg:w-64 lg:flex-shrink-0">
+    <div class="toc ps-5 lg:sticky {{ $topClass }}">
+      <div class="min-w-[180px] py-2 border-dotted border-s border-neutral-300 dark:border-neutral-600 -ms-5 ps-5">
+        <h3 class="text-sm font-semibold text-neutral-800 dark:text-neutral-100 mb-3">
+          {{ i18n "stream.onThisPage" | default "On this page" }}
+        </h3>
+        <ul class="space-y-2 text-sm">
+          {{ range $pages }}
+            <li>
+              <a href="#post-{{ .File.UniqueID }}"
+                 class="text-neutral-600 dark:text-neutral-400 hover:text-primary-500 dark:hover:text-primary-400 block py-0.5 line-clamp-2">
+                {{ .Title | truncate 50 }}
+              </a>
+            </li>
+          {{ end }}
+        </ul>
+      </div>
+    </div>
+  </aside>
+</div>

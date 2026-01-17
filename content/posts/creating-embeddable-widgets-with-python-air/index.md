@@ -10,8 +10,6 @@ draft: true
 
 I've tried this and created step-by-step guides for building Python Air apps that can be embedded on other websites with iFrames and JavaScript injection.
 
-<!--more-->
-
 ## The Two Main Approaches
 
 ### Iframe Embedding (Simple but Isolated)

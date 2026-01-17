@@ -21,7 +21,7 @@ I work as IT Solution Designer at T-Systems International GmbH.
 
 On the side, I build AI Apps and update my book "Hands-on ChatGPT in Excel".
 
-My goal is to make AI approachable, efficient, and useful for businesses.
+My goal is to use AI responsibly, safely, and in ways that create measuable value.
 
 I believe in learning by doing. If you want to turn prompts into reusable applications or 
 create a small-scale prototype of a SaaS idea, I can help you get there, quickly and in 

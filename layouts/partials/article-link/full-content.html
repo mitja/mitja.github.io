@@ -1,0 +1,31 @@
+{{/* Full content article display for stream view */}}
+{{ $page := . }}
+
+<article id="post-{{ $page.File.UniqueID }}" class="mb-14 scroll-mt-20">
+  {{/* Header */}}
+  <header class="mb-4">
+    <h2 class="mt-0 text-2xl font-extrabold text-neutral-900 dark:text-neutral">
+      <a href="{{ $page.RelPermalink }}" class="hover:underline hover:decoration-primary-500 hover:underline-offset-2">
+        {{ $page.Title | emojify }}
+      </a>
+      {{ if and $page.Draft $page.Site.Params.article.showDraftLabel }}
+        <span class="ml-2">{{ partial "badge.html" (i18n "article.draft" | emojify) }}</span>
+      {{ end }}
+    </h2>
+    <div class="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
+      {{ partial "article-meta/basic.html" $page }}
+    </div>
+  </header>
+
+  {{/* Content */}}
+  <section class="prose dark:prose-invert max-w-none">
+    {{ $page.Content }}
+  </section>
+
+  {{/* Link to full post */}}
+  <div class="mt-4">
+    <a href="{{ $page.RelPermalink }}" class="text-sm text-primary-600 dark:text-primary-400 hover:underline">
+      {{ i18n "stream.toPost" | default "Go to post" }} &rarr;
+    </a>
+  </div>
+</article>

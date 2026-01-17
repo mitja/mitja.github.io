@@ -1,0 +1,5 @@
+[stream.toPost]
+other = "Go to post"
+
+[stream.onThisPage]
+other = "On this page"

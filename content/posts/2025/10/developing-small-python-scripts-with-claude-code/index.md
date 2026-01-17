@@ -5,7 +5,7 @@ draft: true
 slug: developing-small-python-scripts-with-claude-code
 title: Developing Small Python Scripts with Claude Code
 ---
-Cloud-Code is really very good at developing small Python scripts. That’s super practical and a good way to get to know Claude Code better. Here’s how I developed two scripts with Cloud-Code.
+Claude Code is really very good at developing small Python scripts. That’s super practical and a good way to get to know Claude Code better. Here’s how I developed two scripts with Cloud-Code.
 
 <!-- more -->
 

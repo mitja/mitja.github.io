@@ -75,8 +75,6 @@ YouTube is used in the interest of an attractive presentation of this website. T
 
 You can find details on the handling of user data by Google here: https://policies.google.com/?hl=en
 
-## Google Analytics
+## Umami Analytics
 
-Requests to this website are tracked with Google Analytics. The tracking is used to gauge aggregate interest in pages to improve the content and experience for users of this website.
-
-You can find details on the handling of user data by Google here: https://policies.google.com/?hl=en
+Requests to this website are tracked with a self-hosted instance of Umami Analytics. The tracking is used to gauge aggregate interest in pages to improve the content and experience for users of this website.
