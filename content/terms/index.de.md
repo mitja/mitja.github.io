@@ -1,8 +1,8 @@
 ---
 title: "Geschäftsbedingungen"
 summary: "Geschäftsbedingungen"
-date: 2025-12-21
-draft: true
+date: 2025-12-31
+draft: false
 
 showAuthor: true
 showDate : false
