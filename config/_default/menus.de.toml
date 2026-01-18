@@ -72,10 +72,10 @@
    pageRef = "about"
    weight = 10
 
-# [[footer]]
-#   name = "Geschäftsbedingungen"
-#   pageRef = "terms"
-#   weight = 20
+ [[footer]]
+   name = "Geschäftsbedingungen"
+   pageRef = "terms"
+   weight = 20
 
  [[footer]]
    name = "Datenschutz"
