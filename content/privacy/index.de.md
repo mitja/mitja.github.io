@@ -22,7 +22,7 @@ title: Datenschutz
 Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:
 
 > Mitja Martini  
-> Helmkrautstr. 32 
+> Helmkrautstr. 32  
 > 13503 Berlin  
 > Deutschland  
 > 

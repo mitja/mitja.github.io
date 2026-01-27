@@ -20,7 +20,7 @@ sharingLinks : false
 The responsible body for data processing on this website is:
 
 > Mitja Martini  
-> Helmkrautstr. 32 
+> Helmkrautstr. 32  
 > 13503 Berlin  
 > Germany  
 > 

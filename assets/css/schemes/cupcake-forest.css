@@ -1,0 +1,53 @@
+/* Cupcake-Forest scheme
+ * Blends DaisyUI cupcake (light) with forest (dark) themes
+ * Primary: teal/green matching oklch(0.596 0.145 163.225)
+ * Secondary: pink from cupcake theme
+ *
+ * DaisyUI Cupcake backgrounds (light mode):
+ *   base-100: #faf7f5 = RGB(250, 247, 245)
+ *   base-200: #efeae6 = RGB(239, 234, 230)
+ *   base-300: #e7e2df = RGB(231, 226, 223)
+ *
+ * DaisyUI Forest backgrounds (dark mode):
+ *   base-100: #171212 = RGB(23, 18, 18)
+ */
+:root {
+  /* Neutral - cupcake cream (light) to forest dark (dark) */
+  --color-neutral: 255, 255, 255;
+  --color-neutral-50: 249, 247, 245;   /* light bg #F9F7F5 */
+  --color-neutral-100: 239, 234, 230;  /* cupcake base-200 */
+  --color-neutral-200: 231, 226, 223;  /* cupcake base-300 */
+  --color-neutral-300: 200, 190, 180;
+  --color-neutral-400: 150, 140, 130;
+  --color-neutral-500: 100, 90, 85;
+  --color-neutral-600: 60, 50, 48;
+  --color-neutral-700: 40, 32, 30;
+  --color-neutral-800: 30, 25, 25;
+  --color-neutral-900: 21, 18, 18;     /* dark bg #151212 */
+
+  /* Primary - teal/green (custom primary from Django site)
+   * Based on oklch(0.596 0.145 163.225) ≈ RGB(29, 161, 103)
+   */
+  --color-primary-50: 230, 250, 240;
+  --color-primary-100: 200, 245, 225;
+  --color-primary-200: 160, 235, 200;
+  --color-primary-300: 100, 210, 160;
+  --color-primary-400: 50, 185, 130;
+  --color-primary-500: 29, 161, 103;   /* oklch(0.596 0.145 163.225) */
+  --color-primary-600: 25, 140, 90;
+  --color-primary-700: 20, 115, 75;
+  --color-primary-800: 15, 90, 60;
+  --color-primary-900: 10, 65, 45;
+
+  /* Secondary - pink (cupcake-inspired) */
+  --color-secondary-50: 255, 245, 248;
+  --color-secondary-100: 255, 230, 238;
+  --color-secondary-200: 255, 210, 225;
+  --color-secondary-300: 250, 180, 200;
+  --color-secondary-400: 240, 150, 175;
+  --color-secondary-500: 230, 130, 160;
+  --color-secondary-600: 200, 100, 135;
+  --color-secondary-700: 170, 75, 110;
+  --color-secondary-800: 140, 55, 90;
+  --color-secondary-900: 110, 40, 70;
+}

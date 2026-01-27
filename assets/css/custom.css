@@ -1,0 +1,13 @@
+/* Custom CSS for Hugo Blog
+ * Apply "Love Ya Like A Sister" font to all headings
+ */
+
+h1, h2, h3, h4, h5, h6,
+.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+  font-family: "Love Ya Like A Sister", cursive;
+}
+
+/* Adjust letter-spacing for readability */
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: 0.02em;
+}

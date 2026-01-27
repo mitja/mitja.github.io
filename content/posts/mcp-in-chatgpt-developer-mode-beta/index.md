@@ -4,6 +4,7 @@ date: 2025-10-17
 categories: ["AI Engineering", "Blog"]
 tags: ["ChatGPT", "MCP"]
 draft: false
+stream: false
 ---
 OpenAI just releasesd MCP connectors and ChatGPT developer mode beta. In this post, I describe the process of connecting MCP servers to ChatGPT, show how they look and feel right now in a chat session and give an overview of their current limitations.
 
