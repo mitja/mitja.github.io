@@ -32,8 +32,10 @@ If you are interested in learning to build AI SaaS apps, please check out my upc
 
 Mitja
 
+> Mitja Martini  
 > Helmkrautstr. 32  
 > 13503 Berlin  
 > Germany  
-> 
+>  
+> VAT ID: DE362081733
 > Email: hi@mitjamartini.com  

@@ -38,7 +38,7 @@ Meine SaaS Anwendungen können für **30 Tage kostenlos getestet werden – ganz
 
 **Kurse & digitale Inhalte**
 
-Für Kurse gilt eine **volle Rückerstattung**, solange **nicht mehr als etwa ein Drittel der Inhalte genutzt** wurde. So hast du ausreichend Gelegenheit, dir ein echtes Bild vom Kurs zu machen.
+Für Kurse gilt eine **volle Rückerstattung bis 14 Tage nach dem Start**. So hast du ausreichend Gelegenheit, dir ein echtes Bild vom Kurs zu machen.
 
 **Fairness**
 

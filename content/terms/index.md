@@ -40,7 +40,7 @@ My SaaS applications can be tested **free of charge for 30 days – no credit ca
 
 **Courses & Digital Content**
 
-For courses and digital content, a **full refund** is available as long as **no more than approximately one third of the material** has been accessed. This gives you sufficient time to get a genuine impression of the course.
+For courses and digital content, a **full refund** is available until 14 days after the start of the course or after getting access to the digital content. This gives you sufficient time to get a genuine impression.
 
 **Fairness**
 
