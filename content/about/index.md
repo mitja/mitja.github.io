@@ -27,7 +27,7 @@ I believe in learning by doing. If you want to turn prompts into reusable applic
 create a small-scale prototype of a SaaS idea, I can help you get there, quickly and in a structured way.
 
 {{< alert "lightbulb" >}}
-If you are interested in learning to build AI SaaS apps, please check out my upcoming course [Ship a SaaS in 3 Weeks](https://promptflower.com).
+Join Eleanor and me in the 3rd Live Cohort of Elite AI Assisted Coding. Save 25% with this [early bird discount link](https://maven.com/agentic-ventures/ai-coding?promoCode=MITJA).
 {{< /alert >}}
 
 Mitja

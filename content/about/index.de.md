@@ -27,7 +27,7 @@ Mein Ziel ist, KI verantwortungsvoll, sicher und mit messbarem Mehrwert einzuset
 Ich glaube an Learning by Doing. Wenn Du Prompts zu Anwendungen weiterentwickeln oder eine SaaS-Idee prototypisch umsetzen möchtest, helfe ich Dir gerne, schnell und strukturiert ans Ziel zu kommen.
 
 {{< alert "lightbulb" >}}
-Falls dich interessiert, wie man KI-SaaS-Apps entwickelt, schau dir gern meinen kommenden Kurs [Ship a SaaS in 3 Weeks](https://promptflower.com) an.
+Mach mit bei der 3. Live-Kohorte von Elite AI Assisted Coding mit Eleanor und mir. Spare 25 % mit diesem [Early-Bird-Rabattlink](https://maven.com/agentic-ventures/ai-coding?promoCode=MITJA).
 {{< /alert >}}
 
 Mitja
