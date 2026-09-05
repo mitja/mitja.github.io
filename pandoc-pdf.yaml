@@ -1,0 +1,52 @@
+# Pandoc defaults for rendering posts to PDF (XeLaTeX + macOS system fonts).
+# Usage: pandoc -d pandoc-pdf content/posts/<post>/index.md -o out.pdf
+pdf-engine: xelatex
+filters:
+  - ${.}/pandoc-pdf.lua        # puts the output file name into the footer
+variables:
+  # Layout
+  documentclass: scrartcl      # KOMA-Script article: sans-serif headings, modern spacing
+  papersize: a4
+  fontsize: 11pt
+  geometry:
+    - left=30mm
+    - right=30mm
+    - top=28mm
+    - bottom=32mm
+  linestretch: 1.15
+  colorlinks: true
+  linkcolor: NavyBlue
+  urlcolor: NavyBlue
+  # Fonts
+  mainfont: Charter            # body text
+  sansfont: Seravek            # headings, footer
+  monofont: Menlo              # code blocks and inline code
+  monofontoptions: Scale=MatchLowercase
+  CJKmainfont: Hiragino Sans GB
+  header-includes: |
+    % Only real CJK characters go to the CJK font. Punctuation, arrows, bullets,
+    % shapes and other symbols (U+2000-U+2BFF) stay in the main font.
+    \xeCJKDeclareCharClass{Default}{"2000 -> "2BFF}
+    % Symbols Charter lacks: arrows from Seravek, shapes and check marks from Menlo.
+    \usepackage{newunicodechar}
+    \newunicodechar{→}{{\sffamily\symbol{"2192}}}
+    \newunicodechar{←}{{\sffamily\symbol{"2190}}}
+    \newunicodechar{↑}{{\sffamily\symbol{"2191}}}
+    \newunicodechar{↓}{{\sffamily\symbol{"2193}}}
+    \newunicodechar{▲}{{\ttfamily\symbol{"25B2}}}
+    \newunicodechar{✓}{{\ttfamily\symbol{"2713}}}
+    \newunicodechar{✗}{{\ttfamily\symbol{"2717}}}
+    % Footer: author and print date (left), PDF file name (center), page number (right).
+    \usepackage[footsepline=0.4pt]{scrlayer-scrpage}
+    \clearpairofpagestyles
+    \makeatletter
+    \newcommand*{\isodate}{\the\year-\two@digits\month-\two@digits\day}
+    \makeatother
+    \providecommand*{\pdffilename}{}   % set by pandoc-pdf.lua from the -o file name
+    \setkomafont{pageheadfoot}{\normalfont\footnotesize\sffamily\color{gray}}
+    \setkomafont{pagenumber}{\normalfont\footnotesize\sffamily\color{gray}}
+    \setkomafont{footsepline}{\color{lightgray}}
+    \ifoot*{Mitja Martini, \isodate}
+    \cfoot*{\pdffilename}
+    \ofoot*{\pagemark}
+    \pagestyle{scrheadings}
