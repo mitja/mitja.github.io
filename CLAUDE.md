@@ -108,6 +108,7 @@ pandoc -d pandoc-pdf content/posts/2026/01/my-post/index.md -o my-post.pdf
 - `pandoc-pdf.lua` — puts the output file name into the footer
 - `pandoc-table-autowidth.lua` — sizes table columns by their content
 - `pandoc-table-rules.lua` — draws a hairline between table rows
+- `pandoc-mermaid.lua` — renders ```mermaid blocks as diagrams
 
 **Table widths:** pandoc otherwise derives column widths from the dashes in the
 markdown separator row, so `|--|--|--|` gives equally wide columns regardless of
@@ -124,6 +125,23 @@ read across twenty. `pandoc-table-rules.lua` writes a `\rowrule` at the start of
 each row, which lands between rows because TeX accepts `\noalign` there; the
 macro itself is defined in `header-includes`. Turn it off with
 `table-row-rules: false` in the front matter.
+
+**Mermaid diagrams** in a ```` ```mermaid ```` block are drawn into the PDF.
+No toolchain is needed: headless Chrome renders them with the `mermaid.min.js`
+the Blowfish theme already ships, and `rsvg-convert` (`brew install librsvg`)
+turns the SVG into an embeddable PDF. Diagrams are cached by the hash of their
+source, so only changed ones are re-rendered (~2s each, then ~0). If anything is
+missing or a diagram does not parse, the block stays visible as source code and a
+warning is printed — the document still builds. Turn it off with `mermaid: false`.
+
+Two things to know. Vertical layouts print well; a long `flowchart LR` chain does
+not — a 1314pt-wide diagram is scaled to 32% to fit the text block, which leaves
+5px labels. Prefer `flowchart TD`. And the fence renders in the PDF but *not* on
+the website: Blowfish loads mermaid only for its `{{< mermaid >}}` shortcode.
+The shortcode cannot be supported here in turn, because pandoc's smart
+punctuation rewrites `-->` as an en-dash inside it, while fenced blocks are
+verbatim. Making the fence work on the site as well needs a
+`render-codeblock-mermaid.html` hook plus a `vendor.html` override.
 
 **Strikeout** (`~~text~~`), `==highlight==` and underline make pandoc load the
 `soul` package, which BasicTeX does not ship — the render then dies on a missing
@@ -251,6 +269,7 @@ Embed external apps in posts:
 - `pandoc-pdf.yaml` - Pandoc defaults for rendering a post to PDF
 - `pandoc-table-autowidth.lua` - Sizes PDF table columns by their content
 - `pandoc-table-rules.lua` - Draws a hairline between PDF table rows
+- `pandoc-mermaid.lua` - Renders mermaid blocks as diagrams in the PDF
 - `config/_default/hugo.toml` - Main Hugo configuration
 - `config/_default/languages.*.toml` - Language configurations
 - `README.md` - User-facing documentation
