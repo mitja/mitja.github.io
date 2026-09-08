@@ -1,0 +1,19 @@
+{{- /*
+  Render ```mermaid fences as diagrams, the same way the theme's {{< mermaid >}}
+  shortcode does, so one syntax works on the site and in the PDF that
+  pandoc-mermaid.lua builds. The fence is the form pandoc can read: its content
+  is verbatim, where smart punctuation rewrites `-->` as an en-dash inside a
+  shortcode.
+
+  The markup has to match the theme's shortcode, because assets/js/mermaid.js
+  looks for div.mermaid and lifts the text out of the <pre> before mermaid runs.
+  Unlike the shortcode this does not pipe through safeHTML: leaving Hugo to
+  escape the source keeps a diagram containing < or & from breaking the page,
+  and the theme reads it back with textContent, which decodes it again.
+
+  Loading the library is handled by partials/extend-head-uncached.html, since
+  the theme only ships it for pages using the shortcode.
+*/ -}}
+<div class="mermaid" align="center">
+  <pre>{{ .Inner }}</pre>
+</div>

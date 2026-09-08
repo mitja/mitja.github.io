@@ -134,14 +134,23 @@ source, so only changed ones are re-rendered (~2s each, then ~0). If anything is
 missing or a diagram does not parse, the block stays visible as source code and a
 warning is printed — the document still builds. Turn it off with `mermaid: false`.
 
-Two things to know. Vertical layouts print well; a long `flowchart LR` chain does
-not — a 1314pt-wide diagram is scaled to 32% to fit the text block, which leaves
-5px labels. Prefer `flowchart TD`. And the fence renders in the PDF but *not* on
-the website: Blowfish loads mermaid only for its `{{< mermaid >}}` shortcode.
-The shortcode cannot be supported here in turn, because pandoc's smart
+The same fence renders on the website, through two local layouts:
+
+- `layouts/_default/_markup/render-codeblock-mermaid.html` turns the fence into
+  the `div.mermaid` markup the theme's shortcode produces.
+- `layouts/partials/extend-head-uncached.html` loads mermaid on pages that use a
+  fence. Blowfish ships the library only for pages using its `{{< mermaid >}}`
+  shortcode, and its `extend-head.html` hook is `partialCached` on `.Site`, so it
+  cannot decide per page — the uncached hook gets the page as context. Pages
+  using the shortcode are skipped so nothing loads twice.
+
+The shortcode stays supported on the site but cannot be read by pandoc: smart
 punctuation rewrites `-->` as an en-dash inside it, while fenced blocks are
-verbatim. Making the fence work on the site as well needs a
-`render-codeblock-mermaid.html` hook plus a `vendor.html` override.
+verbatim. Prefer the fence.
+
+One caveat: vertical layouts print well, a long `flowchart LR` chain does not —
+a 1314pt-wide diagram is scaled to 32% to fit the text block, leaving 5px labels.
+Prefer `flowchart TD`.
 
 **Strikeout** (`~~text~~`), `==highlight==` and underline make pandoc load the
 `soul` package, which BasicTeX does not ship — the render then dies on a missing

@@ -1,0 +1,26 @@
+{{- /*
+  Load mermaid for pages that draw diagrams with a ```mermaid fence.
+
+  The theme ships the library only for pages using its {{< mermaid >}} shortcode
+  (partials/vendor.html tests .Page.HasShortcode), so a fence would render as a
+  div.mermaid that nothing ever draws. Overriding vendor.html would mean copying
+  a hundred lines that only drift when the theme moves on; this hook is called
+  uncached and with the page as context, which is all that is needed.
+
+  The page is checked by looking for the fence in its source. The obvious
+  alternative, having render-codeblock-mermaid.html record a flag in .Store, does
+  not work here: the head is built before the content it would come from.
+
+  Pages using the shortcode are skipped, so nothing is loaded twice.
+*/ -}}
+{{- $fence := findRE "(?m)^[ \t]*(?:```|~~~)[ \t]*[{]?[ \t]*[.]?mermaid\\b" .RawContent 1 -}}
+{{- if and $fence (not (.HasShortcode "mermaid")) -}}
+  {{- $lib := resources.Get "lib/mermaid/mermaid.min.js" -}}
+  {{- $config := resources.Get "js/mermaid.js" | resources.Minify -}}
+  {{- $bundle := slice $lib $config | resources.Concat "js/mermaid.bundle.js" | resources.Fingerprint (.Site.Params.fingerprintAlgorithm | default "sha512") -}}
+  <script
+    defer
+    type="text/javascript"
+    src="{{ $bundle.RelPermalink }}"
+    integrity="{{ $bundle.Data.Integrity }}"></script>
+{{- end -}}
