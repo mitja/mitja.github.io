@@ -125,6 +125,12 @@ each row, which lands between rows because TeX accepts `\noalign` there; the
 macro itself is defined in `header-includes`. Turn it off with
 `table-row-rules: false` in the front matter.
 
+**Strikeout** (`~~text~~`), `==highlight==` and underline make pandoc load the
+`soul` package, which BasicTeX does not ship — the render then dies on a missing
+`soul.sty`. `pandoc-pdf.yaml` empties pandoc's `strikeout` variable to drop that
+load and pulls in `soul` only when it is installed, falling back to `ulem`, which
+BasicTeX has. `tlmgr install soul` is picked up automatically if you ever add it.
+
 **Code blocks** are set at 9pt, which fits 89 columns against 73 at the body
 size. Every monospace font on macOS has the same 0.6em advance, so a different
 font gains nothing — only the size does. Change `\footnotesize` in the

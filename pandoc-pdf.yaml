@@ -30,7 +30,20 @@ variables:
   monofont: Menlo              # code blocks and inline code
   monofontoptions: Scale=MatchLowercase
   CJKmainfont: Hiragino Sans GB
+  # ~~strikeout~~, ==highlight== and underline make pandoc load soul, which
+  # BasicTeX does not ship, and the render dies on a missing soul.sty. Emptying
+  # this drops pandoc's own \usepackage{soul} so header-includes below can load
+  # it only when it is really there.
+  strikeout: ""
   header-includes: |
+    % Strikeout and friends. soul if the installation has it, otherwise ulem,
+    % which BasicTeX does ship and whose \sout looks all but the same. Install
+    % soul (tlmgr install soul) and it gets picked up here without any change.
+    \IfFileExists{soul.sty}{\usepackage{soul}}{\usepackage[normalem]{ulem}}
+    % No-ops when soul is loaded, since it defines all three itself.
+    \providecommand{\st}[1]{\sout{#1}}
+    \providecommand{\ul}[1]{\uline{#1}}
+    \providecommand{\hl}[1]{\colorbox{yellow!30}{#1}}
     % Only real CJK characters go to the CJK font. Punctuation, arrows, bullets,
     % shapes and other symbols (U+2000-U+2BFF) stay in the main font.
     \xeCJKDeclareCharClass{Default}{"2000 -> "2BFF}
