@@ -114,6 +114,12 @@ local function fix_svg(svg)
   local w, h = head:match('viewBox="[%d%.%-+eE]+%s+[%d%.%-+eE]+%s+([%d%.%-+eE]+)%s+([%d%.%-+eE]+)"')
   if not w then return nil end
 
+  -- Diagrams that place an icon reference it with xlink:href, but the browser
+  -- does not always serialise the namespace that goes with it.
+  if svg:find("xlink:", 1, true) and not head:find("xmlns:xlink", 1, true) then
+    head = head:sub(1, -2) .. ' xmlns:xlink="http://www.w3.org/1999/xlink">'
+  end
+
   head = head:gsub('%s+width="[^"]*"', ""):gsub('%s+height="[^"]*"', "")
   head = head:gsub('max%-width:[^;"]*;?', "")
   head = head:sub(1, -2) .. string.format(' width="%spx" height="%spx">', w, h)
@@ -127,6 +133,31 @@ local function fix_svg(svg)
   body = body:gsub("<foreignObject.-</foreignObject>", "")
 
   body = body:gsub("<text ", '<text xml:space="preserve" '):gsub("<text>", '<text xml:space="preserve">')
+
+  -- Mermaid escapes a label once for HTML and puts the result in the SVG text
+  -- too, where the browser's serialiser escapes it again, so <<satisfies>>
+  -- arrives as &amp;lt;&amp;lt;satisfies&amp;gt;&amp;gt; and would be set
+  -- literally. Only the five entities XML defines are unwrapped, plus numeric
+  -- ones: turning anything else back into a bare & would break the parse.
+  for _, entity in ipairs({ "lt", "gt", "quot", "apos" }) do
+    body = body:gsub("&amp;" .. entity .. ";", "&" .. entity .. ";")
+  end
+  body = body:gsub("&amp;(#%d+);", "&%1;")
+  body = body:gsub("&amp;amp;", "&amp;")
+
+  -- Edge labels sit on a rect that punches the line out from behind them. It is
+  -- given no fill, which in SVG means black, and mermaid gets away with it
+  -- because the rect belongs to the same branch the browser never draws. Now
+  -- that the branch is the one being drawn, it has to be painted.
+  body = body:gsub('<rect%s[^>]*>', function(tag)
+    if not (tag:find('class="[^"]*background') or tag:find('class="[^"]*labelBkg')) then
+      return tag
+    end
+    if tag:find('style="', 1, true) then
+      return (tag:gsub('style="', 'style="fill:#fff;', 1))
+    end
+    return tag:sub(1, -2) .. ' style="fill:#fff">'
+  end)
 
   -- Those uncovered labels carry the same task-type-N / section-type-N class as
   -- the box behind them, and the class sets the box's pale fill -- which on the
@@ -188,7 +219,10 @@ local function render(source, cfg)
     return nil
   end
 
-  local from, to = rendered:find("<svg.-</svg>")
+  -- Greedy on purpose: an architecture diagram nests <svg> icons inside itself,
+  -- and stopping at the first </svg> would cut the document in half. The body
+  -- holds nothing but the diagram, so the last </svg> is the right one.
+  local from, to = rendered:find("<svg.*</svg>")
   if not from then
     warn_once("no diagram came back from Chrome; leaving diagrams as code")
     return nil

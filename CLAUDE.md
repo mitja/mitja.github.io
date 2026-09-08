@@ -148,12 +148,14 @@ The shortcode stays supported on the site but cannot be read by pandoc: smart
 punctuation rewrites `-->` as an en-dash inside it, while fenced blocks are
 verbatim. Prefer the fence.
 
+All 22 of mermaid's diagram types draw, including the newer `-beta` ones.
 Mermaid writes each label twice — as HTML for the browser and as plain SVG text
-for everything else — and offers the pair to the renderer inside an SVG `switch`.
-librsvg takes the HTML branch, cannot draw it, and never reaches the text, so the
-filter strips the HTML half. Some labels then inherit the pale fill meant for the
-box behind them and are forced dark. This is what makes `journey` and `gantt`
-come out; `erDiagram`, `quadrantChart` and `gitGraph` still lose a label each.
+for everything else — and offers the pair inside an SVG `switch`. librsvg takes
+the HTML branch, cannot draw it, and never reaches the text, so the filter strips
+the HTML half, paints the backing rect mermaid leaves unfilled (black, by SVG
+default), forces a dark fill on labels that inherit the pale colour of the box
+behind them, and undoes the double escaping. `quadrantChart` still drops its
+point labels and `gitGraph` sets commit hashes rotated and small.
 
 One caveat: vertical layouts print well, a long `flowchart LR` chain does not —
 a 1314pt-wide diagram is scaled to 32% to fit the text block, leaving 5px labels.
