@@ -119,7 +119,8 @@ the PDF carries no author.
 
 - **Language**, from the file name. An `index.de.md` is German, and without
   being told, LaTeX hyphenates it as English — `An-griffsvek-toren` where German
-  breaks `An-griffs-vek-to-ren`. Only files under `content/` are read this way.
+  breaks `An-griffs-vek-to-ren`. The suffix must be exactly two letters, so a
+  `notes.old.md` is not taken to be written in "old".
 - **The published URL**, printed in the footer so a page on paper says where it
   came from. It is Hugo's `baseURL` (read from `config/_default/hugo.toml`), the
   language prefix, and the path below `content/` with the last segment replaced

@@ -38,12 +38,11 @@ local function read_file(path)
   return text
 end
 
--- index.de.md is German, index.md is the default language. Only files under
--- content/ are read this way, since that is where the convention holds: a
--- notes.old.md kept anywhere else would otherwise be declared to be in "old".
+-- index.de.md is German, index.md is the default language. The suffix has to be
+-- exactly two letters to count, which is what a language code is: it keeps a
+-- notes.old.md or a report.v2.md from being declared to be written in "old".
 local function language_of(path)
-  if not path:find("/content/", 1, true) then return DEFAULT_LANGUAGE end
-  return path:match("%.([%a][%a][%a]?)%.md$") or DEFAULT_LANGUAGE
+  return path:match("%.(%a%a)%.md$") or DEFAULT_LANGUAGE
 end
 
 -- Hugo's baseURL, so the address in the footer cannot drift from the site's.
