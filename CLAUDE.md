@@ -100,105 +100,32 @@ Use the `translate.py` script with Pydantic AI and OpenAI:
 ### 3. Rendering a Post to PDF
 
 ```bash
-pandoc -d pandoc-pdf content/posts/2026/01/my-post/index.md -o my-post.pdf
+ppdf content/posts/2026/01/my-post/index.md
 ```
 
-**Files:**
-- `pandoc-pdf.yaml` — XeLaTeX on A4, Charter/Seravek/Menlo, footer with author and date
-- `pandoc-pdf.lua` — puts the output file name into the footer
-- `pandoc-table-autowidth.lua` — sizes table columns by their content
-- `pandoc-table-rules.lua` — draws a hairline between table rows
-- `pandoc-mermaid.lua` — renders ```mermaid blocks as diagrams
+The theme lives in its own repository, https://github.com/mitja/pandoc-pdf,
+installed into pandoc's data directory by its `install.sh`. It is not part of
+this repository. To render without the `ppdf` shell function:
 
-**Front matter.** `title` and `date` reach the title block; `summary`, `tags`
-and `categories` are not used. `author` is not either — Hugo writes `null` or
-nothing, and the byline was dropped from the footer to make room for the URL, so
-the PDF carries no author.
+```bash
+pandoc -d pandoc-pdf -d fonts-macos content/posts/2026/01/my-post/index.md -o my-post.pdf
+```
 
-`pandoc-pdf.lua` derives two things Hugo does not put in the front matter:
+What it does with a post, in short: table columns are sized by their content
+rather than by the dashes in the markdown, rows are separated by a hairline,
+code blocks are set a step down so 89 characters fit on a line, and ```mermaid
+blocks are drawn as diagrams. It reads two things from the file itself — the
+language, so an `index.de.md` is hyphenated as German, and the address the post
+has on the site, which goes in the footer. That address comes from `baseURL` in
+`config/_default/hugo.toml`, the language prefix, and the path below `content/`
+with the last segment replaced by the front matter `slug`.
 
-- **Language**, from the file name. An `index.de.md` is German, and without
-  being told, LaTeX hyphenates it as English — `An-griffsvek-toren` where German
-  breaks `An-griffs-vek-to-ren`. The suffix must be exactly two letters, so a
-  `notes.old.md` is not taken to be written in "old".
-- **The published URL**, printed in the footer so a page on paper says where it
-  came from. It is Hugo's `baseURL` (read from `config/_default/hugo.toml`), the
-  language prefix, and the path below `content/` with the last segment replaced
-  by the front matter `slug`. Checked against the built site: 74 of 75 posts
-  match exactly, the odd one being a draft Hugo does not build. Anything that is
-  not a post falls back to the output file name.
+Mermaid diagrams need the `mermaid.min.js` the Blowfish theme already ships;
+the filter finds it by looking upwards from the post. See the theme's README for
+the options and the known limits.
 
-**Table widths:** pandoc otherwise derives column widths from the dashes in the
-markdown separator row, so `|--|--|--|` gives equally wide columns regardless of
-what is in them. `pandoc-table-autowidth.lua` measures the cells instead, leaves
-narrow tables at their natural width, and splits the page between wide columns in
-proportion to how much text they hold, never letting a column of prose fall below a
-readable width while the page can spare it. Crowded tables step down to `\small`
-and a tighter `\tabcolsep`, and long paths get break points, so nothing runs off
-the page.
-
-**Table rows** are separated by a light hairline. Pandoc styles tables with
-booktabs, which rules only the head and the foot — fine for a few rows, hard to
-read across twenty. `pandoc-table-rules.lua` writes a `\rowrule` at the start of
-each row, which lands between rows because TeX accepts `\noalign` there; the
-macro itself is defined in `header-includes`. Turn it off with
-`table-row-rules: false` in the front matter.
-
-**Mermaid diagrams** in a ```` ```mermaid ```` block are drawn into the PDF.
-No toolchain is needed: headless Chrome renders them with the `mermaid.min.js`
-the Blowfish theme already ships, and `rsvg-convert` (`brew install librsvg`)
-turns the SVG into an embeddable PDF. Diagrams are cached by the hash of their
-source, so only changed ones are re-rendered (~2s each, then ~0). If anything is
-missing or a diagram does not parse, the block stays visible as source code and a
-warning is printed — the document still builds. Turn it off with `mermaid: false`.
-
-The same fence renders on the website, through two local layouts:
-
-- `layouts/_default/_markup/render-codeblock-mermaid.html` turns the fence into
-  the `div.mermaid` markup the theme's shortcode produces.
-- `layouts/partials/extend-head-uncached.html` loads mermaid on pages that use a
-  fence. Blowfish ships the library only for pages using its `{{< mermaid >}}`
-  shortcode, and its `extend-head.html` hook is `partialCached` on `.Site`, so it
-  cannot decide per page — the uncached hook gets the page as context. Pages
-  using the shortcode are skipped so nothing loads twice.
-
-The shortcode stays supported on the site but cannot be read by pandoc: smart
-punctuation rewrites `-->` as an en-dash inside it, while fenced blocks are
-verbatim. Prefer the fence.
-
-All 22 of mermaid's diagram types draw, including the newer `-beta` ones.
-Mermaid writes each label twice — as HTML for the browser and as plain SVG text
-for everything else — and offers the pair inside an SVG `switch`. librsvg takes
-the HTML branch, cannot draw it, and never reaches the text, so the filter strips
-the HTML half, paints the backing rect mermaid leaves unfilled (black, by SVG
-default), forces a dark fill on labels that inherit the pale colour of the box
-behind them, and undoes the double escaping. What is left is mermaid's own
-styling, which the website shows the same way: `erDiagram` sets relationship
-labels pale, `gitGraph` sets commit hashes rotated.
-
-One caveat: vertical layouts print well, a long `flowchart LR` chain does not —
-a 1314pt-wide diagram is scaled to 32% to fit the text block, leaving 5px labels.
-Prefer `flowchart TD`. Gantt charts get `axisFormat: '%m-%d'` by default, since
-mermaid's full dates overlap; per-diagram config (`tickInterval` and the rest)
-works as usual.
-
-**Strikeout** (`~~text~~`), `==highlight==` and underline make pandoc load the
-`soul` package, which BasicTeX does not ship — the render then dies on a missing
-`soul.sty`. `pandoc-pdf.yaml` empties pandoc's `strikeout` variable to drop that
-load and pulls in `soul` only when it is installed, falling back to `ulem`, which
-BasicTeX has. `tlmgr install soul` is picked up automatically if you ever add it.
-
-**Code blocks** are set at 9pt, which fits 89 columns against 73 at the body
-size. Every monospace font on macOS has the same 0.6em advance, so a different
-font gains nothing — only the size does. Change `\footnotesize` in the
-`header-includes` of `pandoc-pdf.yaml` to `\scriptsize` (8pt, 100 columns) or
-`\small` (10pt, 80 columns). Lines longer than that still run off the page:
-fancyvrb cannot wrap them without the `fvextra` package, which BasicTeX omits.
-
-Opt out for a single table with a `fixed-widths` class, or set
-`table-autowidth: false` in the front matter. If you change `geometry` or
-`fontsize` in `pandoc-pdf.yaml`, update `table-line-width` / `table-font-size` in
-the same file to match.
+Front matter: `title` and `date` reach the title block. `author`, `summary`,
+`tags` and `categories` are not used.
 
 ### 4. Local Development
 
@@ -305,10 +232,6 @@ Embed external apps in posts:
 
 - `new-post.py` - Create new posts with date structure
 - `translate.py` - Translate posts between languages
-- `pandoc-pdf.yaml` - Pandoc defaults for rendering a post to PDF
-- `pandoc-table-autowidth.lua` - Sizes PDF table columns by their content
-- `pandoc-table-rules.lua` - Draws a hairline between PDF table rows
-- `pandoc-mermaid.lua` - Renders mermaid blocks as diagrams in the PDF
 - `config/_default/hugo.toml` - Main Hugo configuration
 - `config/_default/languages.*.toml` - Language configurations
 - `README.md` - User-facing documentation
