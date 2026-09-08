@@ -42,6 +42,18 @@ variables:
     \newunicodechar{▲}{{\ttfamily\symbol{"25B2}}}
     \newunicodechar{✓}{{\ttfamily\symbol{"2713}}}
     \newunicodechar{✗}{{\ttfamily\symbol{"2717}}}
+    % Code blocks at 9pt: 89 columns fit the text width, against 73 at body size.
+    % Both of pandoc's environments need it -- Highlighting for fenced blocks that
+    % name a language, plain verbatim for those that do not. fancyvrb is only
+    % loaded when a highlighted block exists, hence the guard. Inline code is left
+    % at body size. Raise the column count by dropping to \scriptsize (8pt, 100
+    % columns) or lower it with \small (10pt, 80 columns).
+    \makeatletter
+    \@ifpackageloaded{fancyvrb}{%
+      \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\},fontsize=\footnotesize}%
+    }{}
+    \g@addto@macro\@verbatim{\footnotesize}
+    \makeatother
     % Footer: author and print date (left), PDF file name (center), page number (right).
     \usepackage[footsepline=0.4pt]{scrlayer-scrpage}
     \clearpairofpagestyles

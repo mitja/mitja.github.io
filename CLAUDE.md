@@ -117,6 +117,13 @@ readable width while the page can spare it. Crowded tables step down to `\small`
 and a tighter `\tabcolsep`, and long paths get break points, so nothing runs off
 the page.
 
+**Code blocks** are set at 9pt, which fits 89 columns against 73 at the body
+size. Every monospace font on macOS has the same 0.6em advance, so a different
+font gains nothing — only the size does. Change `\footnotesize` in the
+`header-includes` of `pandoc-pdf.yaml` to `\scriptsize` (8pt, 100 columns) or
+`\small` (10pt, 80 columns). Lines longer than that still run off the page:
+fancyvrb cannot wrap them without the `fvextra` package, which BasicTeX omits.
+
 Opt out for a single table with a `fixed-widths` class, or set
 `table-autowidth: false` in the front matter. If you change `geometry` or
 `fontsize` in `pandoc-pdf.yaml`, update `table-line-width` / `table-font-size` in
