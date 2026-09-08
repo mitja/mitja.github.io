@@ -4,6 +4,7 @@ pdf-engine: xelatex
 filters:
   - ${.}/pandoc-pdf.lua              # puts the output file name into the footer
   - ${.}/pandoc-table-autowidth.lua  # sizes table columns by their content
+  - ${.}/pandoc-table-rules.lua      # hairline between table rows
 metadata:
   # Read by pandoc-table-autowidth.lua, which has to know the text area to work
   # out how much room a table has. Keep in sync with geometry and fontsize below.
@@ -42,6 +43,14 @@ variables:
     \newunicodechar{▲}{{\ttfamily\symbol{"25B2}}}
     \newunicodechar{✓}{{\ttfamily\symbol{"2713}}}
     \newunicodechar{✗}{{\ttfamily\symbol{"2717}}}
+    % A hairline between table rows, light enough not to compete with the
+    % booktabs rules that close the head and the foot. Placed by
+    % pandoc-table-rules.lua, which writes \rowrule at the start of each row.
+    % \specialrule keeps the rule to the width of the table, where a bare
+    % \hrule would run the width of the page; colortbl supplies the colour.
+    \usepackage{colortbl}
+    \newcommand{\rowrule}{%
+      \arrayrulecolor{black!14}\specialrule{0.4pt}{1.5pt}{1.5pt}\arrayrulecolor{black}}
     % Code blocks at 9pt: 89 columns fit the text width, against 73 at body size.
     % Both of pandoc's environments need it -- Highlighting for fenced blocks that
     % name a language, plain verbatim for those that do not. fancyvrb is only

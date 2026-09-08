@@ -107,6 +107,7 @@ pandoc -d pandoc-pdf content/posts/2026/01/my-post/index.md -o my-post.pdf
 - `pandoc-pdf.yaml` — XeLaTeX on A4, Charter/Seravek/Menlo, footer with author and date
 - `pandoc-pdf.lua` — puts the output file name into the footer
 - `pandoc-table-autowidth.lua` — sizes table columns by their content
+- `pandoc-table-rules.lua` — draws a hairline between table rows
 
 **Table widths:** pandoc otherwise derives column widths from the dashes in the
 markdown separator row, so `|--|--|--|` gives equally wide columns regardless of
@@ -116,6 +117,13 @@ proportion to how much text they hold, never letting a column of prose fall belo
 readable width while the page can spare it. Crowded tables step down to `\small`
 and a tighter `\tabcolsep`, and long paths get break points, so nothing runs off
 the page.
+
+**Table rows** are separated by a light hairline. Pandoc styles tables with
+booktabs, which rules only the head and the foot — fine for a few rows, hard to
+read across twenty. `pandoc-table-rules.lua` writes a `\rowrule` at the start of
+each row, which lands between rows because TeX accepts `\noalign` there; the
+macro itself is defined in `header-includes`. Turn it off with
+`table-row-rules: false` in the front matter.
 
 **Code blocks** are set at 9pt, which fits 89 columns against 73 at the body
 size. Every monospace font on macOS has the same 0.6em advance, so a different
@@ -236,6 +244,7 @@ Embed external apps in posts:
 - `translate.py` - Translate posts between languages
 - `pandoc-pdf.yaml` - Pandoc defaults for rendering a post to PDF
 - `pandoc-table-autowidth.lua` - Sizes PDF table columns by their content
+- `pandoc-table-rules.lua` - Draws a hairline between PDF table rows
 - `config/_default/hugo.toml` - Main Hugo configuration
 - `config/_default/languages.*.toml` - Language configurations
 - `README.md` - User-facing documentation
