@@ -110,6 +110,23 @@ pandoc -d pandoc-pdf content/posts/2026/01/my-post/index.md -o my-post.pdf
 - `pandoc-table-rules.lua` — draws a hairline between table rows
 - `pandoc-mermaid.lua` — renders ```mermaid blocks as diagrams
 
+**Front matter.** `title` and `date` reach the title block; `summary`, `tags`
+and `categories` are not used. `author` is not either — Hugo writes `null` or
+nothing, and the byline was dropped from the footer to make room for the URL, so
+the PDF carries no author.
+
+`pandoc-pdf.lua` derives two things Hugo does not put in the front matter:
+
+- **Language**, from the file name. An `index.de.md` is German, and without
+  being told, LaTeX hyphenates it as English — `An-griffsvek-toren` where German
+  breaks `An-griffs-vek-to-ren`. Only files under `content/` are read this way.
+- **The published URL**, printed in the footer so a page on paper says where it
+  came from. It is Hugo's `baseURL` (read from `config/_default/hugo.toml`), the
+  language prefix, and the path below `content/` with the last segment replaced
+  by the front matter `slug`. Checked against the built site: 74 of 75 posts
+  match exactly, the odd one being a draft Hugo does not build. Anything that is
+  not a post falls back to the output file name.
+
 **Table widths:** pandoc otherwise derives column widths from the dashes in the
 markdown separator row, so `|--|--|--|` gives equally wide columns regardless of
 what is in them. `pandoc-table-autowidth.lua` measures the cells instead, leaves

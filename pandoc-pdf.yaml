@@ -77,17 +77,17 @@ variables:
     }{}
     \g@addto@macro\@verbatim{\footnotesize}
     \makeatother
-    % Footer: author and print date (left), PDF file name (center), page number (right).
+    % Footer: where the page came from (left), page number (right). The address
+    % goes on the left rather than the middle because it is the long part -- the
+    % longest post URL is 385pt of the 427pt line, which leaves nothing to centre
+    % it in. pandoc-pdf.lua sets it to the address the post has on the site, or
+    % to the output file name for anything that is not a post.
     \usepackage[footsepline=0.4pt]{scrlayer-scrpage}
     \clearpairofpagestyles
-    \makeatletter
-    \newcommand*{\isodate}{\the\year-\two@digits\month-\two@digits\day}
-    \makeatother
-    \providecommand*{\pdffilename}{}   % set by pandoc-pdf.lua from the -o file name
+    \providecommand*{\pdffooter}{}
     \setkomafont{pageheadfoot}{\normalfont\footnotesize\sffamily\color{gray}}
     \setkomafont{pagenumber}{\normalfont\footnotesize\sffamily\color{gray}}
     \setkomafont{footsepline}{\color{lightgray}}
-    \ifoot*{Mitja Martini, \isodate}
-    \cfoot*{\pdffilename}
+    \ifoot*{\pdffooter}
     \ofoot*{\pagemark}
     \pagestyle{scrheadings}
