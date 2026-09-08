@@ -33,6 +33,7 @@ local CHROMES = {
 local MERMAID_CONFIG = [[{
   startOnLoad: false, theme: 'neutral', htmlLabels: false,
   flowchart: { htmlLabels: false }, er: { htmlLabels: false },
+  gantt: { axisFormat: '%m-%d' },
   fontFamily: 'Helvetica, Arial, sans-serif'
 }]]
 
@@ -118,7 +119,29 @@ local function fix_svg(svg)
   head = head:sub(1, -2) .. string.format(' width="%spx" height="%spx">', w, h)
 
   local body = svg:sub(head_end + 1)
+
+  -- Mermaid wraps a label as <switch><foreignObject>HTML</foreignObject><text>
+  -- the same label</text></switch>. librsvg takes the foreignObject branch,
+  -- cannot draw it, and never reaches the text that was put there for exactly
+  -- this case, so the label disappears. Dropping the foreignObject uncovers it.
+  body = body:gsub("<foreignObject.-</foreignObject>", "")
+
   body = body:gsub("<text ", '<text xml:space="preserve" '):gsub("<text>", '<text xml:space="preserve">')
+
+  -- Those uncovered labels carry the same task-type-N / section-type-N class as
+  -- the box behind them, and the class sets the box's pale fill -- which on the
+  -- text means near-white on near-white. The browser never showed it, having
+  -- drawn the HTML label instead. An inline style outranks the stylesheet.
+  body = body:gsub("<text%s[^>]*>", function(tag)
+    if not (tag:find('class="[^"]*task%-type%-%d') or tag:find('class="[^"]*section%-type%-%d')) then
+      return tag
+    end
+    if tag:find('style="', 1, true) then
+      return (tag:gsub('style="', 'style="fill:#333;', 1))
+    end
+    return tag:sub(1, -2) .. ' style="fill:#333">'
+  end)
+
   return head .. body
 end
 
@@ -130,7 +153,8 @@ local function warn_once(message)
 end
 
 local function render(source, cfg)
-  local key = pandoc.utils.sha1(source .. cfg.library)
+  -- The config belongs in the key: change it and every diagram must be redrawn.
+  local key = pandoc.utils.sha1(source .. cfg.library .. MERMAID_CONFIG)
   local pdf = CACHE .. key .. ".pdf"
   if exists(pdf) then return pdf end
 

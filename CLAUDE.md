@@ -148,9 +148,18 @@ The shortcode stays supported on the site but cannot be read by pandoc: smart
 punctuation rewrites `-->` as an en-dash inside it, while fenced blocks are
 verbatim. Prefer the fence.
 
+Mermaid writes each label twice — as HTML for the browser and as plain SVG text
+for everything else — and offers the pair to the renderer inside an SVG `switch`.
+librsvg takes the HTML branch, cannot draw it, and never reaches the text, so the
+filter strips the HTML half. Some labels then inherit the pale fill meant for the
+box behind them and are forced dark. This is what makes `journey` and `gantt`
+come out; `erDiagram`, `quadrantChart` and `gitGraph` still lose a label each.
+
 One caveat: vertical layouts print well, a long `flowchart LR` chain does not —
 a 1314pt-wide diagram is scaled to 32% to fit the text block, leaving 5px labels.
-Prefer `flowchart TD`.
+Prefer `flowchart TD`. Gantt charts get `axisFormat: '%m-%d'` by default, since
+mermaid's full dates overlap; per-diagram config (`tickInterval` and the rest)
+works as usual.
 
 **Strikeout** (`~~text~~`), `==highlight==` and underline make pandoc load the
 `soul` package, which BasicTeX does not ship — the render then dies on a missing
