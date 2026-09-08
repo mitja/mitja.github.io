@@ -2,7 +2,13 @@
 # Usage: pandoc -d pandoc-pdf content/posts/<post>/index.md -o out.pdf
 pdf-engine: xelatex
 filters:
-  - ${.}/pandoc-pdf.lua        # puts the output file name into the footer
+  - ${.}/pandoc-pdf.lua              # puts the output file name into the footer
+  - ${.}/pandoc-table-autowidth.lua  # sizes table columns by their content
+metadata:
+  # Read by pandoc-table-autowidth.lua, which has to know the text area to work
+  # out how much room a table has. Keep in sync with geometry and fontsize below.
+  table-line-width: 426.8pt    # A4 (210mm) less the left and right margins
+  table-font-size: 11pt
 variables:
   # Layout
   documentclass: scrartcl      # KOMA-Script article: sans-serif headings, modern spacing

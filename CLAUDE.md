@@ -97,7 +97,32 @@ Use the `translate.py` script with Pydantic AI and OpenAI:
 - Categories → Where applicable
 - Tags → Where applicable
 
-### 3. Local Development
+### 3. Rendering a Post to PDF
+
+```bash
+pandoc -d pandoc-pdf content/posts/2026/01/my-post/index.md -o my-post.pdf
+```
+
+**Files:**
+- `pandoc-pdf.yaml` — XeLaTeX on A4, Charter/Seravek/Menlo, footer with author and date
+- `pandoc-pdf.lua` — puts the output file name into the footer
+- `pandoc-table-autowidth.lua` — sizes table columns by their content
+
+**Table widths:** pandoc otherwise derives column widths from the dashes in the
+markdown separator row, so `|--|--|--|` gives equally wide columns regardless of
+what is in them. `pandoc-table-autowidth.lua` measures the cells instead, leaves
+narrow tables at their natural width, and splits the page between wide columns in
+proportion to how much text they hold, never letting a column of prose fall below a
+readable width while the page can spare it. Crowded tables step down to `\small`
+and a tighter `\tabcolsep`, and long paths get break points, so nothing runs off
+the page.
+
+Opt out for a single table with a `fixed-widths` class, or set
+`table-autowidth: false` in the front matter. If you change `geometry` or
+`fontsize` in `pandoc-pdf.yaml`, update `table-line-width` / `table-font-size` in
+the same file to match.
+
+### 4. Local Development
 
 ```bash
 # Start Hugo development server
@@ -202,6 +227,8 @@ Embed external apps in posts:
 
 - `new-post.py` - Create new posts with date structure
 - `translate.py` - Translate posts between languages
+- `pandoc-pdf.yaml` - Pandoc defaults for rendering a post to PDF
+- `pandoc-table-autowidth.lua` - Sizes PDF table columns by their content
 - `config/_default/hugo.toml` - Main Hugo configuration
 - `config/_default/languages.*.toml` - Language configurations
 - `README.md` - User-facing documentation
