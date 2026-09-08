@@ -154,8 +154,9 @@ for everything else — and offers the pair inside an SVG `switch`. librsvg take
 the HTML branch, cannot draw it, and never reaches the text, so the filter strips
 the HTML half, paints the backing rect mermaid leaves unfilled (black, by SVG
 default), forces a dark fill on labels that inherit the pale colour of the box
-behind them, and undoes the double escaping. `quadrantChart` still drops its
-point labels and `gitGraph` sets commit hashes rotated and small.
+behind them, and undoes the double escaping. What is left is mermaid's own
+styling, which the website shows the same way: `erDiagram` sets relationship
+labels pale, `gitGraph` sets commit hashes rotated.
 
 One caveat: vertical layouts print well, a long `flowchart LR` chain does not —
 a 1314pt-wide diagram is scaled to 32% to fit the text block, leaving 5px labels.
