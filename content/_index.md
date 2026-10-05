@@ -5,8 +5,8 @@ draft: false
 # Rendered by layouts/partials/home/custom.html. The texts live here so they can be edited without touching templates.
 hero:
   name: "Mitja Martini"
-  tagline: "Trainer and coach for AI engineering, agentic DevOps and platform engineering."
-  intro: "By day I am a Cloud Services Solution Designer at T-Systems; on the side I work as a trainer and coach. I help you build reliable software and infrastructure with coding agents: in live trainings and in coaching. From Berlin, in English or German."
+  tagline: "Trainer and coach for using AI where it pays off, from your processes to AI engineering."
+  intro: "By day I am a Cloud Services Solution Designer at T-Systems; on the side I work as a trainer and coach. I help you use AI where it pays off and build what that takes, reliably: in coaching and in live trainings. From Berlin, in English or German."
   primary:
     text: "Book a call"
     url: "TODO(Mitja): link to the Microsoft Bookings page"
@@ -15,20 +15,20 @@ hero:
     url: "mailto:hi@mitjamartini.com"
 offers:
   heading: "Services"
-  lead: "Three ways to work with me. All of them start with a short conversation about what you run today and where you want to go."
+  lead: "Trainings and coaching. Both start with a short conversation about what you do today and where you want to go."
   items:
+    - title: "Coaching: AI in your processes"
+      text: "Use AI where it pays off. We take one concrete process: where does time get lost, where does AI really help, what does it cost, what does it bring? The result is a small, measurable first step you can carry on yourself. In the spirit of the KI Bauer podcast: making AI simple."
+      link: "mailto:hi@mitjamartini.com?subject=Coaching%3A%20AI%20in%20my%20processes"
+      link_text: "Ask for a first call"
+    - title: "Coaching: AI engineering"
+      text: "For those who build AI solutions themselves: from a prompt to a running prototype, error analysis with your own eval set, an MVP, and an eval loop that keeps quality up. We work on your project, in your repository, with your data."
+      link: "/en/ai-engineer/"
+      link_text: "How I work"
     - title: "Trainings"
       text: "Live online courses in small groups: two weeks, four sessions, at most ten people. \"Your own managed Kubernetes on Hetzner\" with Gardener, and \"Agentic DevOps\": how to trust infrastructure that a coding agent wrote. Every session ends with something you built."
       link: "https://paasbox.com/training/"
       link_text: "Courses on paasbox.com"
-    - title: "Coaching"
-      text: "AI engineering, step by step: from a prompt to a running prototype, error analysis with your own eval set, an MVP, and an eval loop that keeps quality up. We work on your project, in your repository, with your data."
-      link: "/en/ai-engineer/"
-      link_text: "How I work"
-    - title: "Development and consulting"
-      text: "Prototypes and small SaaS apps, built with coding agents and run on Kubernetes. Consulting for teams that use Kubernetes, Gardener or Hetzner, or want to. Focused engagements with measurable outcomes instead of agency overhead."
-      link: "mailto:hi@mitjamartini.com?subject=Inquiry"
-      link_text: "Send an inquiry"
   note: "TODO(Mitja): add prices, formats and availability."
 apps:
   heading: "Apps"

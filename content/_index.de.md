@@ -5,8 +5,8 @@ draft: false
 # Rendered by layouts/partials/home/custom.html. The texts live here so they can be edited without touching templates.
 hero:
   name: "Mitja Martini"
-  tagline: "Trainer und Coach für AI Engineering, Agentic DevOps und Platform Engineering."
-  intro: "Hauptberuflich bin ich Cloud Services Solution Designer bei T-Systems, nebenberuflich Trainer und Coach. Ich helfe Dir, mit Coding Agents verlässliche Software und Infrastruktur zu bauen: in Live-Trainings und im Coaching. Aus Berlin, auf Deutsch oder Englisch."
+  tagline: "Trainer und Coach für den wirtschaftlichen Einsatz von KI, von Deinen Abläufen bis zum AI Engineering."
+  intro: "Hauptberuflich bin ich Cloud Services Solution Designer bei T-Systems, nebenberuflich Trainer und Coach. Ich helfe Dir, KI dort einzusetzen, wo sie sich rechnet, und verlässlich zu bauen, was dafür nötig ist: im Coaching und in Live-Trainings. Aus Berlin, auf Deutsch oder Englisch."
   primary:
     text: "Termin buchen"
     url: "TODO(Mitja): Link zur Microsoft-Bookings-Seite"
@@ -15,20 +15,20 @@ hero:
     url: "mailto:hi@mitjamartini.com"
 offers:
   heading: "Angebot"
-  lead: "Drei Wege, mit mir zu arbeiten. Alle beginnen mit einem kurzen Gespräch darüber, was Du heute betreibst und wohin Du willst."
+  lead: "Trainings und Coaching. Beides beginnt mit einem kurzen Gespräch darüber, was Du heute tust und wohin Du willst."
   items:
+    - title: "Coaching: KI in Deinen Abläufen"
+      text: "KI dort einsetzen, wo sie sich rechnet. Wir nehmen uns einen konkreten Ablauf vor: Wo geht Zeit verloren, wo hilft KI wirklich, was kostet sie, was bringt sie? Daraus wird ein kleiner, messbarer erster Schritt, den Du selbst weiterführen kannst. Ganz im Sinne des KI Bauer Podcasts: KI einfach machen."
+      link: "mailto:hi@mitjamartini.com?subject=Coaching%3A%20KI%20in%20meinen%20Abl%C3%A4ufen"
+      link_text: "Erstgespräch anfragen"
+    - title: "Coaching: AI Engineering"
+      text: "Für alle, die KI-Lösungen selbst bauen: vom Prompt zum lauffähigen Prototyp, Fehleranalyse mit einem eigenen Eval-Set, MVP und ein Eval-Loop, der die Qualität hält. Wir arbeiten an Deinem Vorhaben, in Deinem Repo, mit Deinen Daten."
+      link: "/en/ai-engineer/"
+      link_text: "So arbeite ich (englisch)"
     - title: "Trainings"
       text: "Live-Online-Kurse in kleinen Gruppen: zwei Wochen, vier Sitzungen, höchstens zehn Personen. „Dein eigenes Managed Kubernetes auf Hetzner“ mit Gardener, und „Agentic DevOps“: wie Du Infrastruktur vertrauen kannst, die ein Coding Agent geschrieben hat. Jede Sitzung endet mit etwas, das Du gebaut hast."
       link: "https://paasbox.com/training/"
       link_text: "Kurse auf paasbox.com"
-    - title: "Coaching"
-      text: "AI Engineering, Schritt für Schritt: vom Prompt zum lauffähigen Prototyp, Fehleranalyse mit einem eigenen Eval-Set, MVP und ein Eval-Loop, der die Qualität hält. Wir arbeiten an Deinem Vorhaben, in Deinem Repo, mit Deinen Daten."
-      link: "/en/ai-engineer/"
-      link_text: "So arbeite ich (englisch)"
-    - title: "Entwicklung und Beratung"
-      text: "Prototypen und kleine SaaS-Anwendungen, gebaut mit Coding Agents und betrieben auf Kubernetes. Beratung für Teams, die Kubernetes, Gardener oder Hetzner nutzen oder dorthin wollen. Fokussierte Aufträge mit messbarem Ergebnis statt Agentur-Overhead."
-      link: "mailto:hi@mitjamartini.com?subject=Anfrage"
-      link_text: "Anfrage schicken"
   note: "TODO(Mitja): Preise, Formate und Verfügbarkeit ergänzen."
 apps:
   heading: "Apps"
