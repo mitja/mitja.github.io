@@ -5,8 +5,8 @@ draft: false
 # Rendered by layouts/partials/home/custom.html. The texts live here so they can be edited without touching templates.
 hero:
   name: "Mitja Martini"
-  tagline: "Trainer, coach and developer for AI engineering, agentic DevOps and platform engineering."
-  intro: "I help you build reliable software and infrastructure with coding agents: in live trainings, in coaching, and as the developer of your prototypes. From Berlin, in English or German."
+  tagline: "Trainer and coach for AI engineering, agentic DevOps and platform engineering."
+  intro: "By day I am a Cloud Services Solution Designer at T-Systems; on the side I work as a trainer and coach. I help you build reliable software and infrastructure with coding agents: in live trainings and in coaching. From Berlin, in English or German."
   primary:
     text: "Book a call"
     url: "TODO(Mitja): link to the Microsoft Bookings page"
@@ -59,7 +59,7 @@ articles:
   more_text: "All articles"
 about:
   heading: "About"
-  text: "I have built and run small apps on the side for years. In 2025 I started working with coding agents, and by early 2026 I could build a small SaaS app in a day or two. Shipping it was the slow part: auth, DNS, email, payments, monitoring, deployment. paasbox, Cloud Viewer and the trainings grew out of that. Today I pass on what worked."
+  text: "By day I design cloud services at T-Systems. On the side I have built and run small apps for years. In 2025 I started working with coding agents, and by early 2026 I could build a small SaaS app in a day or two. Shipping it was the slow part: auth, DNS, email, payments, monitoring, deployment. paasbox, Cloud Viewer and the trainings grew out of that. Today I pass on what worked."
   link: "/en/about/"
   link_text: "More about me"
 ---

@@ -5,8 +5,8 @@ draft: false
 # Rendered by layouts/partials/home/custom.html. The texts live here so they can be edited without touching templates.
 hero:
   name: "Mitja Martini"
-  tagline: "Trainer, Coach und Entwickler für AI Engineering, Agentic DevOps und Platform Engineering."
-  intro: "Ich helfe Dir, mit Coding Agents verlässliche Software und Infrastruktur zu bauen: in Live-Trainings, im Coaching und als Entwickler Deiner Prototypen. Aus Berlin, auf Deutsch oder Englisch."
+  tagline: "Trainer und Coach für AI Engineering, Agentic DevOps und Platform Engineering."
+  intro: "Hauptberuflich bin ich Cloud Services Solution Designer bei T-Systems, nebenberuflich Trainer und Coach. Ich helfe Dir, mit Coding Agents verlässliche Software und Infrastruktur zu bauen: in Live-Trainings und im Coaching. Aus Berlin, auf Deutsch oder Englisch."
   primary:
     text: "Termin buchen"
     url: "TODO(Mitja): Link zur Microsoft-Bookings-Seite"
@@ -59,7 +59,7 @@ articles:
   more_text: "Alle Artikel"
 about:
   heading: "Über mich"
-  text: "Ich baue und betreibe seit Jahren kleine Anwendungen nebenher. 2025 habe ich angefangen, mit Coding Agents zu arbeiten, und Anfang 2026 konnte ich eine kleine SaaS-Anwendung in ein, zwei Tagen bauen. Ausliefern war der langsame Teil: Auth, DNS, E-Mail, Zahlung, Monitoring, Deployment. Daraus sind paasbox, Cloud Viewer und die Trainings entstanden. Heute gebe ich weiter, was dabei funktioniert hat."
+  text: "Hauptberuflich entwerfe ich Cloud Services bei T-Systems. Nebenher baue und betreibe ich seit Jahren kleine Anwendungen. 2025 habe ich angefangen, mit Coding Agents zu arbeiten, und Anfang 2026 konnte ich eine kleine SaaS-Anwendung in ein, zwei Tagen bauen. Ausliefern war der langsame Teil: Auth, DNS, E-Mail, Zahlung, Monitoring, Deployment. Daraus sind paasbox, Cloud Viewer und die Trainings entstanden. Heute gebe ich weiter, was dabei funktioniert hat."
   link: "/de/ueber-mich/"
   link_text: "Mehr über mich"
 ---
