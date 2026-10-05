@@ -7,7 +7,7 @@
     </header>
     <div class="lp-apps">
       {{- range .Sections }}
-      <a class="lp-app" href="{{ .RelPermalink }}">
+      <a class="lp-app" href="{{ .Params.external | default .RelPermalink }}"{{ with .Params.external }} rel="noopener"{{ end }}>
         <span class="lp-app-name">{{ .Title }}{{ with .Params.status }} <span class="lp-badge">{{ . }}</span>{{ end }}</span>
         <span class="lp-app-sub">{{ .Params.subtitle }}</span>
         <span class="lp-app-text">{{ .Params.teaser }}</span>

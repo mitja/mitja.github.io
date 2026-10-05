@@ -115,3 +115,6 @@ h1, h2, h3, h4, h5, h6,
 @media (min-width: 640px) { .ad-nav ol { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .ad-nav a { color: var(--lp-ink); }
 .ad-nav a[aria-current="page"] { color: var(--lp-accent); font-weight: 700; }
+
+/* Hero eyebrow: the brand line above the name (e.g. "KI Bauer · Berlin") */
+.lp-hero-eyebrow { color: var(--lp-accent, currentColor); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 0.5rem; }

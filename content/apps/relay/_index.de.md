@@ -1,5 +1,6 @@
 ---
 title: "Mitjas Relay"
+weight: 10
 subtitle: "Webhooks für Microsoft Bookings"
 kicker: "App"
 status: "Beta"

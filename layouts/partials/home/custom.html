@@ -16,6 +16,7 @@
   {{- with $p.hero }}
   <section class="lp-hero">
     <div class="lp-hero-text">
+      {{- with .eyebrow }}<p class="lp-hero-eyebrow">{{ . }}</p>{{ end }}
       <h1 class="lp-hero-name">{{ .name }}</h1>
       <p class="lp-hero-tagline">{{ .tagline }}</p>
       <p class="lp-hero-intro">{{ .intro }}</p>
@@ -37,6 +38,24 @@
         <img src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}" alt="{{ $p.hero.name }}" class="nozoom" fetchpriority="high">
       </div>
     {{- end }}
+  </section>
+  {{- end }}
+
+  {{- /* Approach: how I work (the kinds of proof), same cards as the offers */ -}}
+  {{- with $p.approach }}
+  <section class="lp-section" id="{{ if $isDE }}arbeitsweise{{ else }}approach{{ end }}">
+    <div class="lp-section-head">
+      <h2>{{ .heading }}</h2>
+      {{ with .lead }}<p class="lp-lead">{{ . }}</p>{{ end }}
+    </div>
+    <div class="lp-offers">
+      {{- range .items }}
+      <article class="lp-offer">
+        <h3>{{ .title }}</h3>
+        <p>{{ .text }}</p>
+      </article>
+      {{- end }}
+    </div>
   </section>
   {{- end }}
 
@@ -71,7 +90,7 @@
     </div>
     <div class="lp-apps">
       {{- range .Sections }}
-      <a class="lp-app" href="{{ .RelPermalink }}">
+      <a class="lp-app" href="{{ .Params.external | default .RelPermalink }}"{{ with .Params.external }} rel="noopener"{{ end }}>
         <span class="lp-app-name">{{ .Title }}{{ with .Params.status }} <span class="lp-badge">{{ . }}</span>{{ end }}</span>
         <span class="lp-app-sub">{{ .Params.subtitle }}</span>
         <span class="lp-app-text">{{ .Params.teaser }}</span>
