@@ -35,9 +35,9 @@ The window reaches from yesterday to 90 days ahead. Appointments already inside 
 
 ## Checklist
 
-- [ ] Plan bought or trial started
-- [ ] Consent granted, tenant "active" in the relay
-- [ ] Calendars and interval set
-- [ ] Target created, secret stored at the receiver
-- [ ] Signature verification tested at the receiver
-- [ ] First `created` event received
+- Plan bought or trial started
+- Consent granted, tenant "active" in the relay
+- Calendars and interval set
+- Target created, secret stored at the receiver
+- Signature verification tested at the receiver
+- First `created` event received

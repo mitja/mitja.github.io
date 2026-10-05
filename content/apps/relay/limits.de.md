@@ -28,23 +28,23 @@ Deshalb Beta. Die ersten Kunden begleite ich persönlich, und diese Liste wird k
 
 ## Häufige Fragen
 
-**Welche Berechtigung braucht der Relay in meinem Mandanten?**
+**Welche Berechtigung braucht der Relay in meinem Mandanten?**\
 Nur `Bookings.Read.All` als Anwendungsberechtigung, lesend. Feiner als mandantenweit geht es bei Microsoft Graph für Bookings nicht; der Relay liest aber nur die konfigurierten Kalender.
 
-**Sieht der Relay meine Kundendaten?**
+**Sieht der Relay meine Kundendaten?**\
 Während eines Abgleichs im Arbeitsspeicher, ja; das ist nötig, um sie Dir zuzustellen. Gespeichert werden sie nicht. Beim Selbstbetrieb sieht sie niemand außer Dir.
 
-**Was passiert bei Gruppenbuchungen?**
+**Was passiert bei Gruppenbuchungen?**\
 Ein weiterer Kunde an einem bestehenden Termin ist ein `updated`, kein `created`. Das Feld `customers` enthält alle.
 
-**Erkennt der Relay, was sich geändert hat?**
+**Erkennt der Relay, was sich geändert hat?**\
 Er erkennt, dass sich etwas Relevantes geändert hat, und liefert den neuen Stand. Welches Feld es war, musst Du mit Deinem letzten Stand vergleichen.
 
-**Kann ich den Abgleich sofort anstoßen?**
+**Kann ich den Abgleich sofort anstoßen?**\
 Ja, `POST /sync` mit Deinem Token, etwa als Knopf in Deinem Tool.
 
-**Was kostet Azure beim Selbstbetrieb?**
+**Was kostet Azure beim Selbstbetrieb?**\
 Ein Container Apps Job, der ein paar Mal pro Stunde wenige Sekunden läuft, und ein Table-Storage-Account: in der Praxis wenige Euro im Monat, über Deine Azure-Rechnung.
 
-**Wie kündige ich?**
+**Wie kündige ich?**\
 Im Polar-Kundenportal, jederzeit zum Periodenende. Beim Dienst werden Zustand und Ziel-Secrets Deines Mandanten gelöscht; übrig bleiben die Abo-Eckdaten für die Buchhaltung. Beim Selbstbetrieb hört der Relay mit der nächsten Lizenzprüfung auf.

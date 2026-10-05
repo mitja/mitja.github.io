@@ -84,22 +84,22 @@ TODO(Mitja): add the Polar checkout links, confirm the Partner price, provide th
 
 ## FAQ
 
-**How fast does an event arrive?**
+**How fast does an event arrive?**\
 At most one interval after the change: 60, 15 or 5 minutes depending on the plan. A call to `POST /sync` triggers an immediate sync.
 
-**What if my endpoint is down?**
+**What if my endpoint is down?**\
 The relay retries with backoff (up to six hours apart) and files a dead letter after ten failures, which you can inspect and redeliver. A failing target does not slow down the others.
 
-**Can I deliver to several targets?**
+**Can I deliver to several targets?**\
 Yes, 1, 3 or 10 targets depending on the plan, each with its own secret and its own delivery state.
 
-**Do I need Power Automate or Azure?**
+**Do I need Power Automate or Azure?**\
 No. One admin consent, then webhooks arrive. You only need Azure if you want to self-host the relay there.
 
-**What is in an event?**
+**What is in an event?**\
 Start and end, service, staff, customer with name, email, phone and answers, online status and Teams link, location, notes. The format is described in [Event format and signature verification](event-format/). Cancellations carry only ids and the last known time span, because the appointment is already gone at Microsoft.
 
-**What about the Microsoft Bookings connector for Power Automate?**
+**What about the Microsoft Bookings connector for Power Automate?**\
 For one calendar and one or two flows inside Microsoft 365 it is enough. The relay is built for several targets, one signed format, reliable delivery, and operation in the EU or on your own infrastructure.
 
 ## Support

@@ -35,9 +35,9 @@ Das Fenster reicht von gestern bis 90 Tage in die Zukunft. Termine, die beim ers
 
 ## Checkliste
 
-- [ ] Plan gekauft oder Test gestartet
-- [ ] Einwilligung erteilt, Mandant im Relay auf „aktiv“
-- [ ] Kalender und Intervall festgelegt
-- [ ] Ziel angelegt, Secret beim Empfänger hinterlegt
-- [ ] Signaturprüfung beim Empfänger getestet
-- [ ] Erstes `created`-Ereignis angekommen
+- Plan gekauft oder Test gestartet
+- Einwilligung erteilt, Mandant im Relay auf „aktiv“
+- Kalender und Intervall festgelegt
+- Ziel angelegt, Secret beim Empfänger hinterlegt
+- Signaturprüfung beim Empfänger getestet
+- Erstes `created`-Ereignis angekommen

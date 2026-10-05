@@ -31,8 +31,8 @@ h1, h2, h3, h4, h5, h6,
 .lp-hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; align-items: center; }
 .lp-hero-photo { order: -1; }
 @media (min-width: 768px) { .lp-hero-photo { order: 0; justify-self: end; } }
-.lp-hero-photo img { display: block; width: 7.5rem; height: 7.5rem; object-fit: cover; border-radius: 50%; margin: 0; }
-@media (min-width: 768px) { .lp-hero-photo img { width: min(100%, 18rem); height: auto; aspect-ratio: 1 / 1; border-radius: 1.25rem; } }
+.lp-hero-photo img { display: block; width: 7.5rem; height: 7.5rem; object-fit: cover; border-radius: 50%; margin: 0; background: var(--lp-tint); padding: 0.4rem; }
+@media (min-width: 768px) { .lp-hero-photo img { width: min(100%, 16rem); height: auto; aspect-ratio: 1 / 1; border-radius: 50%; background: var(--lp-tint); padding: 0.75rem; } }
 
 .lp-btn { display: inline-flex; align-items: center; padding: 0.7rem 1.25rem; border-radius: 0.5rem; font-weight: 600; font-size: 1rem; line-height: 1.2; white-space: nowrap; }
 .lp-btn-primary { background: var(--lp-accent); color: var(--lp-accent-ink); }

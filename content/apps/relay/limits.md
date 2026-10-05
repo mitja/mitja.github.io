@@ -28,23 +28,23 @@ That is why it is early access. I work with the first customers personally, and 
 
 ## FAQ
 
-**Which permission does the relay need in my tenant?**
+**Which permission does the relay need in my tenant?**\
 Only `Bookings.Read.All` as an application permission, read-only. Microsoft Graph has nothing finer than tenant-wide for Bookings; the relay reads only the configured calendars, though.
 
-**Does the relay see my customer data?**
+**Does the relay see my customer data?**\
 In memory during a sync, yes; that is needed to deliver it to you. It is not stored. With self-hosting nobody but you sees it.
 
-**What about group bookings?**
+**What about group bookings?**\
 Another customer on an existing appointment is an `updated`, not a `created`. The `customers` field contains all of them.
 
-**Does the relay tell me what changed?**
+**Does the relay tell me what changed?**\
 It detects that something relevant changed and delivers the new state. Which field it was, you compare against your last state.
 
-**Can I trigger a sync immediately?**
+**Can I trigger a sync immediately?**\
 Yes, `POST /sync` with your token, for example as a button in your tool.
 
-**What does Azure cost when self-hosting?**
+**What does Azure cost when self-hosting?**\
 A Container Apps job that runs for a few seconds a few times an hour, and a Table Storage account: in practice a few euros a month, on your Azure bill.
 
-**How do I cancel?**
+**How do I cancel?**\
 In the Polar customer portal, any time to the end of the period. In the hosted service your tenant's state and target secrets are deleted; the subscription records remain for accounting. With self-hosting the relay stops at the next licence check.

@@ -84,22 +84,22 @@ TODO(Mitja): Polar-Checkout-Links eintragen, Partner-Preis bestätigen, AVV bere
 
 ## Häufige Fragen
 
-**Wie schnell kommt ein Ereignis an?**
+**Wie schnell kommt ein Ereignis an?**\
 Spätestens ein Intervall nach der Änderung: 60, 15 oder 5 Minuten je nach Plan. Ein Aufruf von `POST /sync` stößt einen sofortigen Abgleich an.
 
-**Was passiert, wenn mein Endpunkt ausfällt?**
+**Was passiert, wenn mein Endpunkt ausfällt?**\
 Der Relay wiederholt mit Backoff (bis zu sechs Stunden Abstand) und legt nach zehn Fehlschlägen einen Dead Letter ab, den Du ansehen und erneut zustellen kannst. Ein ausgefallenes Ziel bremst die anderen nicht.
 
-**Kann ich mehrere Ziele beliefern?**
+**Kann ich mehrere Ziele beliefern?**\
 Ja, je nach Plan 1, 3 oder 10 Ziele, jedes mit eigenem Secret und eigenem Zustellstand.
 
-**Brauche ich Power Automate oder Azure?**
+**Brauche ich Power Automate oder Azure?**\
 Nein. Einmal Admin-Einwilligung, dann kommen Webhooks. Azure brauchst Du nur, wenn Du den Relay selbst dort betreiben willst.
 
-**Welche Daten stehen im Ereignis?**
+**Welche Daten stehen im Ereignis?**\
 Start und Ende, Dienst, Mitarbeitende, Kunde mit Name, E-Mail, Telefon und Antworten, Online-Status und Teams-Link, Ort, Notizen. Das Format steht in [Ereignisformat und Signaturprüfung](ereignisformat/). Bei Absagen nur Ids und der letzte bekannte Zeitraum, weil der Termin bei Microsoft schon weg ist.
 
-**Was ist mit dem Microsoft-Bookings-Connector für Power Automate?**
+**Was ist mit dem Microsoft-Bookings-Connector für Power Automate?**\
 Für einen Kalender und ein, zwei Flows innerhalb von Microsoft 365 reicht er. Der Relay ist für mehrere Ziele, ein einheitliches signiertes Format, zuverlässige Zustellung und Betrieb in der EU oder bei Dir gebaut.
 
 ## Support
