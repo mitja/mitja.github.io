@@ -1,0 +1,42 @@
+{{- /*
+  Root-level redirect stubs for the old English URLs.
+
+  English used to live at the site root (/posts/…, /about/…); now it lives
+  under /en/. Hugo's own `aliases` are written inside the language directory in
+  this configuration, so they cannot point /posts/x/ at /en/posts/x/. This
+  partial publishes one small HTML file per English page at the old root path
+  (resources.FromString publishes relative to the site root, like the CSS
+  bundle). It also keeps each page's front-matter aliases reachable at the root,
+  where the old build wrote them (/blog/…).
+
+  Called once, from the English home page. The result is a crawler-friendly
+  redirect: meta refresh plus canonical, the same shape as Hugo's alias.html.
+  scripts/check-legacy-urls.py verifies the old sitemap against the build.
+*/ -}}
+{{- $seen := dict -}}
+{{- range .Site.Pages -}}
+  {{- $target := .Permalink -}}
+  {{- $title := .Title -}}
+  {{- $paths := slice -}}
+  {{- $rel := .RelPermalink -}}
+  {{- if hasPrefix $rel "/en/" -}}
+    {{- $paths = $paths | append (strings.TrimPrefix "/en" $rel) -}}
+  {{- end -}}
+  {{- /* Hugo prefixes front-matter aliases with the language path (/en/blog/…); the old build wrote them at the root. */ -}}
+  {{- range .Aliases -}}
+    {{- $a := . -}}
+    {{- if hasPrefix $a "/en/" -}}
+      {{- $paths = $paths | append (printf "%s/" (strings.TrimSuffix "/" (strings.TrimPrefix "/en" $a))) -}}
+    {{- end -}}
+  {{- end -}}
+  {{- range $paths -}}
+    {{- $path := . -}}
+    {{- /* never overwrite the root chooser or the 404 page */ -}}
+    {{- if and (ne $path "/") (not (index $seen $path)) -}}
+      {{- $seen = merge $seen (dict $path true) -}}
+      {{- $html := printf `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>%s</title><link rel="canonical" href="%s"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=%s"></head><body><a href="%s">%s</a></body></html>` ($title | default $target) $target $target $target $target -}}
+      {{- $res := resources.FromString (printf "%sindex.html" (strings.TrimPrefix "/" $path)) $html -}}
+      {{- $_ := $res.Permalink -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}

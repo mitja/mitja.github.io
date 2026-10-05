@@ -24,3 +24,15 @@
     src="{{ $bundle.RelPermalink }}"
     integrity="{{ $bundle.Data.Integrity }}"></script>
 {{- end -}}
+
+{{- /*
+  hreflang alternates: every translation of this page, plus x-default on the
+  root chooser (/) which sends visitors to /de/ or /en/ by browser language.
+  The theme's head.html has no alternates of its own.
+*/ -}}
+{{- range .AllTranslations }}
+<link rel="alternate" hreflang="{{ .Language.LanguageCode }}" href="{{ .Permalink }}">
+{{- end }}
+{{- if .IsHome }}
+<link rel="alternate" hreflang="x-default" href="{{ .Site.BaseURL }}">
+{{- end }}

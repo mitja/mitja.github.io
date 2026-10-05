@@ -3,3 +3,6 @@ other = "Go to post"
 
 [stream.onThisPage]
 other = "On this page"
+
+[apps.docs]
+other = "Documentation"

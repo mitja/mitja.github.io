@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mitja Martini</title>
+  <meta name="description" content="Mitja Martini – Trainer, Coach und Entwickler für AI Engineering, Agentic DevOps und Platform Engineering in Berlin.">
+  <link rel="alternate" hreflang="de" href="https://mitjamartini.com/de/">
+  <link rel="alternate" hreflang="en" href="https://mitjamartini.com/en/">
+  <link rel="alternate" hreflang="x-default" href="https://mitjamartini.com/">
+  <link rel="icon" href="/favicon.ico">
+  <!--
+    Language chooser. German is the default; English when the browser's
+    preferred languages contain no German. A choice made with the site's
+    language switcher is stored as "mm-lang" and wins. Without JavaScript the
+    noscript meta refresh goes to /de/; the links below work in any case.
+    This is a plain static file (static/index.html); Hugo's own redirect to the
+    default language is off (disableDefaultLanguageRedirect).
+  -->
+  <noscript><meta http-equiv="refresh" content="0; url=/de/"></noscript>
+  <script>
+    (function () {
+      var lang = null;
+      try { lang = localStorage.getItem("mm-lang"); } catch (e) {}
+      if (lang !== "de" && lang !== "en") {
+        var prefs = navigator.languages || [navigator.language || navigator.userLanguage || ""];
+        var german = false;
+        for (var i = 0; i < prefs.length; i++) {
+          if (/^de\b/i.test(prefs[i])) { german = true; break; }
+        }
+        lang = german ? "de" : "en";
+      }
+      location.replace("/" + lang + "/" + (location.hash || ""));
+    })();
+  </script>
+  <style>
+    body { font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; background: #f9f7f5; color: #151212; margin: 0; padding: 4rem 1rem; line-height: 1.6; }
+    main { max-width: 28rem; margin: 0 auto; }
+    a { color: #198c5a; }
+    @media (prefers-color-scheme: dark) { body { background: #151212; color: #f0ebe6; } a { color: #50b982; } }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Mitja Martini</h1>
+    <p><a href="/de/" hreflang="de" lang="de">Deutsch</a> · <a href="/en/" hreflang="en" lang="en">English</a></p>
+  </main>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Seite nicht gefunden · Page not found · Mitja Martini</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/favicon.ico">
+  <!--
+    GitHub Pages serves this file for unknown paths. Old English URLs lived at
+    the site root; the build publishes redirect stubs for all of them
+    (layouts/partials/legacy-aliases.html). This script is the fallback for
+    anything the stubs do not cover (paginated lists, typos in a known path):
+    a path without a language prefix is retried once under /en/.
+  -->
+  <script>
+    (function () {
+      var p = location.pathname;
+      if (/^\/(de|en)(\/|$)/.test(p)) return;
+      if (/^\/(css|js|lib|img|fonts)\//.test(p)) return;
+      location.replace("/en" + (p.charAt(0) === "/" ? "" : "/") + p + location.search + location.hash);
+    })();
+  </script>
+  <style>
+    body { font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; background: #f9f7f5; color: #151212; margin: 0; padding: 4rem 1rem; line-height: 1.6; }
+    main { max-width: 32rem; margin: 0 auto; }
+    a { color: #198c5a; }
+    h1 { font-size: 1.5rem; }
+    @media (prefers-color-scheme: dark) { body { background: #151212; color: #f0ebe6; } a { color: #50b982; } }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Seite nicht gefunden</h1>
+    <p>Diese Adresse gibt es nicht (mehr). Zur <a href="/de/">Startseite</a> oder zu den <a href="/de/posts/">Artikeln</a>.</p>
+    <h1 lang="en">Page not found</h1>
+    <p lang="en">This address does not exist (any more). Go to the <a href="/en/">home page</a> or the <a href="/en/posts/">articles</a>.</p>
+  </main>
+</body>
+</html>

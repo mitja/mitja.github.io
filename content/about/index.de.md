@@ -1,36 +1,27 @@
 ---
-author: null
-date: 2025-09-07
-draft: false
-sharingLinks: false
+title: "Über mich"
+slug: "ueber-mich"
+summary: "Mitja Martini, Trainer, Coach und Entwickler in Berlin."
+date: 2026-10-05
 showAuthor: true
 showDate: false
 showDateUpdated: false
 showHeadingAnchors: false
 showPagination: false
 showReadingTime: false
-showSummary: false
-showTableOfContents: true
+showTableOfContents: false
 showTaxonomies: false
 showWordCount: false
-slug: impressum
-summary: Impressum
-title: Impressum
+showSummary: false
+sharingLinks: false
 ---
 
-Hallo, ich bin Mitja Martini und arbeite als IT Solution Designer bei T-Systems International GmbH. 
+Hallo, ich bin Mitja Martini. Ich arbeite als Trainer, Coach und Entwickler in Berlin, mit drei Schwerpunkten: AI Engineering, Agentic DevOps und Platform Engineering.
 
-Nebenberuflich entwickle ich KI SaaS Anwendungen und arbeite an einem Kurs zu diesem Thema.
+Ich baue und betreibe seit Jahren kleine Anwendungen nebenher. 2025 habe ich angefangen, mit Coding Agents zu arbeiten, und Anfang 2026 konnte ich eine kleine SaaS-Anwendung in ein, zwei Tagen bauen. Ausliefern war der langsame Teil: Auth, DNS, E-Mail, Zahlung, Monitoring, Deployment. Kubernetes hat sich als guter Ort für all das erwiesen, und Gardener automatisiert Kubernetes selbst. So sind [paasbox](https://paasbox.com) entstanden, eine Hetzner-Cloud-Landschaft aus einem Befehl, die [Cloud Viewer](https://cloudviewer.app)-App für Hetzner-Server und [Mitjas Relay](/de/apps/relay/).
 
-Mein Ziel ist, KI verantwortungsvoll, sicher und mit messbarem Mehrwert einzusetzen.
+Mein Ziel ist, KI verantwortungsvoll, sicher und mit messbarem Mehrwert einzusetzen. Ich glaube an Learning by Doing: Jede Trainingssitzung endet mit etwas, das Du gebaut hast, und jedes Coaching arbeitet an Deinem echten Vorhaben.
 
-Ich glaube an Learning by Doing. Wenn Du Prompts zu Anwendungen weiterentwickeln oder eine SaaS-Idee prototypisch umsetzen möchtest, helfe ich Dir gerne, schnell und strukturiert ans Ziel zu kommen.
+Du erreichst mich unter [hi@mitjamartini.com](mailto:hi@mitjamartini.com). Die Anbieterangaben stehen im [Impressum](/de/impressum/).
 
-Mitja
-
-> Helmkrautstr. 32  
-> 13503 Berlin  
-> Germany  
-> 
-> USt ID: DE362081733
-> Email: hi@mitjamartini.com
+TODO(Mitja): Lebenslauf, Referenzen und Foto ergänzen oder bestätigen.

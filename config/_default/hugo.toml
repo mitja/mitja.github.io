@@ -4,7 +4,12 @@
 
 theme = "blowfish"
 baseURL = "https://mitjamartini.com/"
+# "en" stays the default content language: files without a language suffix (index.md) are English.
+# Both languages live in subdirectories (/de/, /en/); the root / is a language chooser that prefers German.
 defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = true
+# The root / is a tiny language chooser (static/index.html), not Hugo's redirect to the default language.
+disableDefaultLanguageRedirect = true
 
 enableRobotsTXT = true
 pagination.pagerSize = 20

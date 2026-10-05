@@ -1,0 +1,41 @@
+{{- /*
+  Language switcher, overriding the theme's partial.
+
+  Differences: it is shown on every page, not only on translated ones (an
+  untranslated page links to the other language's home), the links carry
+  hreflang, and a click is remembered in localStorage ("mm-lang") so that the
+  root chooser (static/index.html) follows the visitor's explicit choice
+  instead of the browser language. The click handler is in extend-footer.html.
+*/ -}}
+{{- $page := . -}}
+{{- $current := .Site.Language.Lang -}}
+<div>
+  <div class="cursor-pointer flex items-center nested-menu">
+    <span class="ltr:mr-1 rtl:ml-1">
+      {{ partial "icon.html" "language" }}
+    </span>
+    <div
+      class="text-sm font-medium text-gray-500 hover:text-primary-600 dark:hover:text-primary-400"
+      title="{{ .Title }}">
+      {{- i18n "global.language" | markdownify -}}
+    </div>
+  </div>
+  <div class="absolute menuhide">
+    <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+      <div class="flex flex-col space-y-3">
+        {{ range .Site.Sites }}
+          {{- $lang := .Language.Lang -}}
+          {{- $url := .Home.RelPermalink -}}
+          {{- range $page.AllTranslations }}{{ if eq .Language.Lang $lang }}{{ $url = .RelPermalink }}{{ end }}{{ end -}}
+          <a href="{{ $url }}" hreflang="{{ $lang }}" lang="{{ $lang }}" data-lang-switch="{{ $lang }}" class="flex items-center"{{ if eq $lang $current }} aria-current="true"{{ end }}>
+            <p
+              class="text-sm font-sm text-gray-500 hover:text-primary-600 dark:hover:text-primary-400"
+              title="{{ .Language.LanguageName }}">
+              {{ .Language.Params.displayName | emojify }}
+            </p>
+          </a>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</div>

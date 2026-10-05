@@ -1,0 +1,145 @@
+{{- /*
+  Landing page (homepage.layout = "custom"). All texts come from the front
+  matter of content/_index.md and content/_index.de.md; this partial only
+  arranges them. Styles: assets/css/custom.css (.lp-*).
+
+  The English home also publishes the root-level redirect stubs that keep the
+  old English URLs (/posts/…, /about/…) working, see partials/legacy-aliases.html.
+*/ -}}
+{{- if eq .Site.Language.Lang "en" }}{{ partial "legacy-aliases.html" . }}{{ end -}}
+{{- $p := .Params -}}
+{{- $isDE := eq .Site.Language.Lang "de" -}}
+
+<div class="lp">
+
+  {{- /* Hero */ -}}
+  {{- with $p.hero }}
+  <section class="lp-hero">
+    <div class="lp-hero-text">
+      <h1 class="lp-hero-name">{{ .name }}</h1>
+      <p class="lp-hero-tagline">{{ .tagline }}</p>
+      <p class="lp-hero-intro">{{ .intro }}</p>
+      <div class="lp-hero-actions">
+        {{- with .primary }}
+          {{- if hasPrefix .url "TODO" }}
+            {{- /* No booking link yet: the button falls back to mail and carries the TODO as its title. */}}
+            <a class="lp-btn lp-btn-primary" href="mailto:hi@mitjamartini.com?subject={{ .text }}" title="{{ .url }}">{{ .text }}</a>
+          {{- else }}
+            <a class="lp-btn lp-btn-primary" href="{{ .url }}">{{ .text }}</a>
+          {{- end }}
+        {{- end }}
+        {{- with .secondary }}<a class="lp-btn lp-btn-quiet" href="{{ .url }}">{{ .text }}</a>{{ end }}
+      </div>
+    </div>
+    {{- with resources.Get "img/mitja-avatar.png" }}
+      {{- $img := .Fit "720x720 q85" }}
+      <div class="lp-hero-photo">
+        <img src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}" alt="{{ $p.hero.name }}" class="nozoom" fetchpriority="high">
+      </div>
+    {{- end }}
+  </section>
+  {{- end }}
+
+  {{- /* Offers */ -}}
+  {{- with $p.offers }}
+  <section class="lp-section" id="{{ if $isDE }}angebot{{ else }}services{{ end }}">
+    <div class="lp-section-head">
+      <h2>{{ .heading }}</h2>
+      {{ with .lead }}<p class="lp-lead">{{ . }}</p>{{ end }}
+    </div>
+    <div class="lp-offers">
+      {{- range .items }}
+      <article class="lp-offer">
+        <h3>{{ .title }}</h3>
+        <p>{{ .text }}</p>
+        {{- $text := .link_text }}
+        {{- with .link }}<a class="lp-link" href="{{ . }}">{{ $text }}</a>{{ end }}
+      </article>
+      {{- end }}
+    </div>
+    {{- with .note }}{{ if hasPrefix . "TODO" }}<p class="lp-todo">{{ . }}</p>{{ end }}{{ end }}
+  </section>
+  {{- end }}
+
+  {{- /* Apps */ -}}
+  {{- with $p.apps }}
+  {{- with $.Site.GetPage "apps" }}
+  <section class="lp-section" id="apps">
+    <div class="lp-section-head">
+      <h2>{{ $p.apps.heading }}</h2>
+      {{ with $p.apps.lead }}<p class="lp-lead">{{ . }}</p>{{ end }}
+    </div>
+    <div class="lp-apps">
+      {{- range .Sections }}
+      <a class="lp-app" href="{{ .RelPermalink }}">
+        <span class="lp-app-name">{{ .Title }}{{ with .Params.status }} <span class="lp-badge">{{ . }}</span>{{ end }}</span>
+        <span class="lp-app-sub">{{ .Params.subtitle }}</span>
+        <span class="lp-app-text">{{ .Params.teaser }}</span>
+      </a>
+      {{- end }}
+      {{- with .Params.coming }}<p class="lp-app-coming">{{ . }}</p>{{ end }}
+    </div>
+    <p class="lp-more"><a class="lp-link" href="{{ .RelPermalink }}">{{ $p.apps.more_text }}</a></p>
+  </section>
+  {{- end }}
+  {{- end }}
+
+  {{- /* Channels */ -}}
+  {{- with $p.channels }}
+  <section class="lp-section" id="{{ if $isDE }}kanaele{{ else }}channels{{ end }}">
+    <div class="lp-section-head">
+      <h2>{{ .heading }}</h2>
+      {{ with .lead }}<p class="lp-lead">{{ . }}</p>{{ end }}
+    </div>
+    <ul class="lp-channels">
+      {{- range .items }}
+      <li>
+        {{- if hasPrefix .url "TODO" }}
+          <span class="lp-channel-title">{{ .title }}</span>
+          <span class="lp-channel-text">{{ .text }}</span>
+          <span class="lp-todo">{{ .url }}</span>
+        {{- else }}
+          <a class="lp-channel-title" href="{{ .url }}"{{ if hasPrefix .url "http" }} rel="me noopener"{{ end }}>{{ .title }}</a>
+          <span class="lp-channel-text">{{ .text }}</span>
+        {{- end }}
+      </li>
+      {{- end }}
+    </ul>
+  </section>
+  {{- end }}
+
+  {{- /* Latest articles */ -}}
+  {{- with $p.articles }}
+  {{- $n := $.Site.Params.homepage.showRecentItems | default 3 }}
+  {{- $posts := where $.Site.RegularPages "Type" "in" ($.Site.Params.mainSections | default (slice "posts")) }}
+  <section class="lp-section" id="{{ if $isDE }}artikel{{ else }}articles{{ end }}">
+    <div class="lp-section-head">
+      <h2>{{ .heading }}</h2>
+      {{ with .lead }}<p class="lp-lead">{{ . }}</p>{{ end }}
+    </div>
+    <ol class="lp-articles">
+      {{- range first $n $posts }}
+      <li>
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date | time.Format ($.Site.Params.dateFormat | default "2 January 2006") }}</time>
+        {{- with .Summary }}<p>{{ . | plainify | truncate 180 }}</p>{{ end }}
+      </li>
+      {{- end }}
+    </ol>
+    {{- with $.Site.GetPage "posts" }}<p class="lp-more"><a class="lp-link" href="{{ .RelPermalink }}">{{ $p.articles.more_text }}</a></p>{{ end }}
+  </section>
+  {{- end }}
+
+  {{- /* About */ -}}
+  {{- with $p.about }}
+  <section class="lp-section lp-about" id="{{ if $isDE }}ueber-mich{{ else }}about{{ end }}">
+    <div class="lp-section-head">
+      <h2>{{ .heading }}</h2>
+    </div>
+    <p>{{ .text }}</p>
+    {{- $text := .link_text }}
+    {{- with .link }}<p class="lp-more"><a class="lp-link" href="{{ . }}">{{ $text }}</a></p>{{ end }}
+  </section>
+  {{- end }}
+
+</div>

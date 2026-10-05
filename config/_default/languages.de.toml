@@ -1,6 +1,6 @@
 languageCode = "de"
 languageName = "Deutsch"
-weight = 2
+weight = 1
 title = "Mitja Martini"
 
 [params]
@@ -8,7 +8,7 @@ title = "Mitja Martini"
   isoCode = "de"
   rtl = false
   # logo = "img/mitja-avatar.png"  # removed to show only name in header
-  description = "Mitja Martinis Blog über AI Engineering"
+  description = "Mitja Martini – Trainer, Coach und Entwickler für AI Engineering, Agentic DevOps und Platform Engineering in Berlin."
   dateFormat = "2. January 2006"
 
 [params.author]

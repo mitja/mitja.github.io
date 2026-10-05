@@ -78,3 +78,23 @@ You can find details on the handling of user data by Google here: https://polici
 ## Umami Analytics
 
 Requests to this website are tracked with a self-hosted instance of Umami Analytics. The tracking is used to gauge aggregate interest in pages to improve the content and experience for users of this website.
+
+## Scope and language choice
+
+This statement applies to all pages under mitjamartini.com, including the pages about the apps (for example Mitjas Relay) and their documentation. These pages are static; there is no login, no forms and no comments.
+
+The home page sends you to the German or English version according to your browser language. If you switch the language with the switcher in the menu, your browser remembers that choice in local storage (`mm-lang`). This value never leaves your browser and is not transmitted to me; you can delete it in your browser settings.
+
+## Google Fonts
+
+This website loads a font from Google Fonts. When you open a page, your browser connects to servers of Google (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland) and transmits your IP address. The legal basis is my legitimate interest in a consistent presentation (Art. 6 (1) (f) GDPR). Details: https://policies.google.com/privacy
+
+## Google Analytics
+
+This website uses Google Analytics, a web analytics service of Google Ireland Limited. Google Analytics uses cookies and similar techniques to evaluate the use of the website; the information generated is transmitted to and stored on Google servers. The legal basis is Art. 6 (1) (f) GDPR. You can prevent the collection with the [browser add-on to disable Google Analytics](https://tools.google.com/dlpage/gaoptout). Details: https://policies.google.com/privacy
+
+TODO(Mitja): decide whether Google Analytics stays (id in `config/_default/hugo.toml`); if so, settle consent (cookie banner) or remove the service.
+
+## Apps: Mitjas Relay
+
+If you use Mitjas Relay as a hosted service, I process appointment data from your Microsoft 365 tenant on your behalf. A data processing agreement under Art. 28 GDPR covers that, not this statement. What the relay stores and what it does not is described on the [product page](/en/apps/relay/). Payment is handled by Polar Software Inc. as merchant of record; Polar processes your billing and payment data as an independent controller (https://polar.sh/legal/privacy).
