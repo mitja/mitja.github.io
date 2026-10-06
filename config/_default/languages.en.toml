@@ -1,6 +1,6 @@
 languageCode = "en"
 languageName = "English"
-weight = 1
+weight = 2
 title = "Mitja Martini"
 
 [params]
@@ -8,7 +8,7 @@ title = "Mitja Martini"
   isoCode = "en"
   rtl = false
   # logo = "img/mitja-avatar.png"  # removed to show only name in header
-  description = "Mitja Martini's blog about AI Engineering"
+  description = "Mitja Martini – trainer, coach and developer for AI engineering, agentic DevOps and platform engineering in Berlin."
   # copyright = "Copy, _right?_ :thinking_face:"
   dateFormat = "2 January 2006"
 

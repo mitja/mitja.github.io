@@ -84,3 +84,23 @@ Einzelheiten zum Umgang mit Nutzerdaten durch Google findest Du hier: https://po
 ## Umami Analytics
 
 Anfragen an diese Website werden mit einer selbst betriebenen Umami Analytics Instanz nachverfolgt. Das Tracking wird verwendet, um das aggregierte Interesse an Seiten zu messen und die Inhalte sowie das Nutzungserlebnis für die Nutzer dieser Website zu verbessern.
+
+## Geltungsbereich und Sprachwahl
+
+Diese Erklärung gilt für alle Seiten unter mitjamartini.com, einschließlich der Seiten zu den Apps (z. B. Mitjas Relay) und ihrer Dokumentation. Diese Seiten sind statisch; es gibt keine Anmeldung, keine Formulare und keine Kommentare.
+
+Die Startseite leitet Dich nach der Sprache Deines Browsers auf die deutsche oder englische Fassung. Wenn Du die Sprache über den Schalter im Menü wechselst, merkt sich Dein Browser diese Wahl im Local Storage (`mm-lang`). Dieser Wert verlässt Deinen Browser nicht und wird nicht an mich übertragen; Du kannst ihn über die Einstellungen Deines Browsers löschen.
+
+## Google Fonts
+
+Diese Website lädt eine Schriftart von Google Fonts. Beim Aufruf einer Seite stellt Dein Browser eine Verbindung zu Servern von Google (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland) her und übermittelt dabei Deine IP-Adresse. Rechtsgrundlage ist mein berechtigtes Interesse an einer einheitlichen Darstellung (Art. 6 Abs. 1 lit. f DSGVO). Details: https://policies.google.com/privacy
+
+## Google Analytics
+
+Diese Website nutzt Google Analytics, einen Webanalysedienst der Google Ireland Limited. Google Analytics verwendet Cookies und ähnliche Techniken, um die Nutzung der Website auszuwerten; die dabei erzeugten Informationen werden an Server von Google übertragen und dort gespeichert. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Du kannst die Erfassung durch das [Browser-Add-on zur Deaktivierung von Google Analytics](https://tools.google.com/dlpage/gaoptout) verhindern. Details: https://policies.google.com/privacy
+
+TODO(Mitja): Prüfen, ob Google Analytics weiter eingesetzt werden soll (Kennung in `config/_default/hugo.toml`); falls ja, Einwilligung (Cookie-Banner) klären oder den Dienst entfernen.
+
+## Apps: Mitjas Relay
+
+Wenn Du Mitjas Relay als Dienst nutzt, verarbeite ich im Auftrag Termindaten aus Deinem Microsoft-365-Mandanten. Dafür gilt ein Auftragsverarbeitungsvertrag nach Art. 28 DSGVO, nicht diese Erklärung. Was der Relay speichert und was nicht, steht auf der [Produktseite](/de/apps/relay/). Die Zahlung wickelt Polar Software Inc. als Merchant of Record ab; Polar verarbeitet Deine Rechnungs- und Zahlungsdaten als eigener Verantwortlicher (https://polar.sh/legal/privacy).

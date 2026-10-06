@@ -1,0 +1,38 @@
+{{- /*
+  Product page of an app (content/apps/<app>/_index.md, layout: product).
+  Front matter: subtitle, status (badge), summary, primary/secondary CTA,
+  trademark note; plans are rendered by the {{< plans >}} shortcode from
+  .Params.plans. The child pages are the documentation and are listed at the end.
+*/ -}}
+{{ define "main" }}
+  <div class="pp">
+    <header class="pp-head">
+      {{ with .Params.kicker }}<p class="pp-kicker">{{ . }}</p>{{ end }}
+      <h1><span class="pb-marker pb-marker--highlight" data-tone="yellow">{{ .Title | emojify }}</span>{{ with .Params.status }} <span class="pp-badge">{{ . }}</span>{{ end }}</h1>
+      {{ with .Params.subtitle }}<p class="pp-subtitle">{{ . }}</p>{{ end }}
+      {{ with .Params.summary }}<p class="pp-summary">{{ . }}</p>{{ end }}
+      <div class="pp-actions">
+        {{- with .Params.primary }}
+          {{- if hasPrefix .url "TODO" }}<a class="lp-btn lp-btn-primary" href="mailto:hi@mitjamartini.com?subject={{ $.Title }}" title="{{ .url }}">{{ .text }}</a>
+          {{- else }}<a class="lp-btn lp-btn-primary" href="{{ .url }}">{{ .text }}</a>{{ end }}
+        {{- end }}
+        {{- with .Params.secondary }}<a class="lp-btn lp-btn-quiet" href="{{ .url }}">{{ .text }}</a>{{ end }}
+      </div>
+      {{ with .Params.status_note }}<p class="pp-note">{{ . }}</p>{{ end }}
+    </header>
+    <section class="max-w-full prose dark:prose-invert">
+      {{ .Content }}
+    </section>
+    {{ with .Pages }}
+    <section class="pp-docs">
+      <h2>{{ $.Params.docs_heading | default (i18n "apps.docs" | default "Documentation") }}</h2>
+      <ol>
+        {{ range .ByWeight }}
+        <li><a href="{{ .RelPermalink }}"><strong>{{ .Title }}</strong>{{ with .Params.summary }}<span>{{ . }}</span>{{ end }}</a></li>
+        {{ end }}
+      </ol>
+    </section>
+    {{ end }}
+    {{ with .Params.trademark }}<p class="pp-note">{{ . }}</p>{{ end }}
+  </div>
+{{ end }}

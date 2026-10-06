@@ -1,0 +1,120 @@
+/* ------------------------------------------------------------------------
+   Landing page (layouts/partials/home/custom.html), app pages
+   (layouts/_default/product.html, apps.html, appdoc.html) and the plans
+   shortcode. Colours come from the theme's scheme variables so light and
+   dark mode follow the theme (html.dark). Class prefixes: lp- (landing),
+   pp- (product page), ad- (app docs).
+
+   Typography, markers and the coral button colour come from the paasbox
+   theme (themes/paasbox): headings are set in its Fraunces at weight 400,
+   card labels stay Inter, and the primary button is its coral CTA. The
+   var(--pb-…, …) fallbacks keep this working on plain Blowfish.
+   ------------------------------------------------------------------------ */
+
+.lp, .pp, .ad { --lp-ink: rgb(var(--color-neutral-900)); --lp-muted: rgb(var(--color-neutral-500)); --lp-rule: rgb(var(--color-neutral-200)); --lp-accent: rgb(var(--color-primary-600)); --lp-accent-ink: rgb(var(--color-neutral)); --lp-tint: rgb(var(--color-primary-50)); --lp-cta: var(--pb-cta, var(--lp-accent)); --lp-cta-hover: var(--pb-cta-hover, var(--lp-accent)); --lp-cta-ink: var(--pb-cta-ink, var(--lp-accent-ink)); }
+.dark .lp, .dark .pp, .dark .ad { --lp-ink: rgb(var(--color-neutral)); --lp-muted: rgb(var(--color-neutral-400)); --lp-rule: rgb(var(--color-neutral-700)); --lp-accent: rgb(var(--color-primary-400)); --lp-accent-ink: rgb(var(--color-neutral-900)); --lp-tint: rgba(var(--color-primary-400), 0.12); }
+
+.lp { color: var(--lp-ink); }
+/* :where() keeps this reset below the margins the .lp-hero-* rules set. */
+:where(.lp) p { margin: 0; }
+.lp a { text-decoration: none; }
+.lp a:hover, .lp a:focus-visible { text-decoration: underline; text-decoration-color: var(--lp-accent); text-underline-offset: 3px; }
+.lp a:focus-visible, .pp a:focus-visible, .ad a:focus-visible { outline: 2px solid var(--lp-accent); outline-offset: 3px; border-radius: 2px; }
+
+/* Hero: name set large and tight, the photo at the side on wide screens */
+.lp-hero { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem; align-items: center; padding: 2rem 0 4rem; }
+@media (min-width: 768px) { .lp-hero { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 3rem; padding: 3rem 0 5rem; } }
+.lp-hero-name { font-size: clamp(2.6rem, 6vw, 4.2rem); line-height: 0.99; font-weight: 400; letter-spacing: -0.032em; margin: 0 0 1rem; }
+.lp-hero-tagline { font-size: clamp(1.2rem, 2.2vw, 1.5rem); line-height: 1.35; font-weight: 500; max-width: 26em; margin: 0 0 1rem; }
+.lp-hero-intro { color: var(--lp-muted); font-size: 1.05rem; line-height: 1.6; max-width: 34em; margin: 0 0 1.75rem; }
+.lp-hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; align-items: center; }
+.lp-hero-photo { order: -1; }
+@media (min-width: 768px) { .lp-hero-photo { order: 0; justify-self: end; } }
+.lp-hero-photo img { display: block; width: 7.5rem; height: 7.5rem; object-fit: cover; border-radius: 50%; margin: 0; background: var(--lp-tint); padding: 0.4rem; }
+@media (min-width: 768px) { .lp-hero-photo img { width: min(100%, 16rem); height: auto; aspect-ratio: 1 / 1; border-radius: 50%; background: var(--lp-tint); padding: 0.75rem; } }
+
+.lp-btn { display: inline-flex; align-items: center; padding: 0.75rem 1.4rem; border-radius: 999px; font-weight: 600; font-size: 1rem; line-height: 1.2; white-space: nowrap; }
+.lp-btn-primary { background: var(--lp-cta); color: var(--lp-cta-ink); }
+.lp-btn-primary:hover, .lp-btn-primary:focus-visible { text-decoration: none; background: var(--lp-cta-hover); }
+.lp-btn-quiet { padding-left: 0; padding-right: 0; color: var(--lp-ink); text-decoration: underline; text-decoration-color: var(--lp-rule); text-underline-offset: 4px; }
+.lp-btn-quiet:hover { text-decoration-color: var(--lp-accent); }
+
+/* Sections: a rule, the heading, a lead line, then the content */
+.lp-section { border-top: 1px solid var(--lp-rule); padding: 2.5rem 0 3rem; }
+@media (min-width: 768px) { .lp-section { padding: 3.5rem 0 4rem; } }
+.lp-section-head { margin-bottom: 1.75rem; }
+.lp-section-head h2 { font-size: clamp(1.75rem, 2.8vw, 2.2rem); line-height: 1.12; font-weight: 400; margin: 0 0 0.6rem; }
+.lp-lead { color: var(--lp-muted); font-size: 1.05rem; max-width: 36em; }
+.lp-link { color: var(--lp-accent); font-weight: 600; }
+.lp-more { margin-top: 1.5rem !important; }
+.lp-todo { display: block; margin-top: 1rem !important; font-size: 0.85rem; color: var(--lp-muted); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+
+/* Offers: three columns without boxes */
+.lp-offers { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+@media (min-width: 768px) { .lp-offers { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.5rem; } }
+.lp-offer h3, .pp-plan h3 { font-family: var(--pb-sans, inherit); letter-spacing: -0.01em; }
+.lp-offer h3 { font-size: 1.2rem; font-weight: 700; margin: 0 0 0.5rem; }
+.lp-offer p { line-height: 1.6; margin-bottom: 0.75rem; }
+
+/* Apps: one row per app, tinted */
+.lp-apps { display: grid; gap: 1rem; }
+.lp-app { display: grid; gap: 0.25rem; padding: 1.25rem 1.5rem; border-radius: 0.65rem 0.9rem 0.7rem 1rem; background: var(--lp-tint); color: var(--lp-ink); }
+.lp-app:hover { text-decoration: none; }
+.lp-app:hover .lp-app-name { text-decoration: underline; text-decoration-color: var(--lp-accent); text-underline-offset: 3px; }
+.lp-app-name { font-size: 1.25rem; font-weight: 700; }
+.lp-app-sub { color: var(--lp-muted); font-weight: 500; }
+.lp-app-text { line-height: 1.55; margin-top: 0.35rem; }
+.lp-app-coming { color: var(--lp-muted); font-size: 0.95rem; padding: 0.25rem 1.5rem; }
+.lp-badge, .pp-badge { font-family: var(--pb-sans, inherit); letter-spacing: 0; display: inline-block; vertical-align: middle; font-size: 0.7rem; font-weight: 700; line-height: 1; padding: 0.3em 0.55em; border-radius: 999px; border: 1px solid var(--lp-accent); color: var(--lp-accent); margin-left: 0.4em; }
+
+/* Channels and articles: plain lists */
+.lp-channels, .lp-articles { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.25rem; }
+@media (min-width: 768px) { .lp-channels { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 3rem; } }
+.lp-channels li, .lp-articles li { display: grid; gap: 0.2rem; }
+.lp-channel-title { font-weight: 700; color: var(--lp-ink); }
+.lp-channel-text { color: var(--lp-muted); line-height: 1.5; }
+.lp-articles li a { font-size: 1.2rem; font-weight: 700; color: var(--lp-ink); }
+.lp-articles time { color: var(--lp-muted); font-size: 0.9rem; }
+.lp-articles p { color: var(--lp-muted); line-height: 1.55; }
+.lp-about p { max-width: 40em; line-height: 1.65; margin-bottom: 0.5rem; }
+
+/* Product page */
+.pp-head { padding: 1rem 0 2.5rem; border-bottom: 1px solid var(--lp-rule); margin-bottom: 2.5rem; }
+.pp-kicker { color: var(--lp-muted); font-weight: 500; margin: 0 0 0.5rem; }
+.pp-head h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); line-height: 1.05; font-weight: 400; margin: 0 0 0.5rem; }
+.pp-subtitle { font-size: 1.25rem; font-weight: 500; margin: 0 0 1rem; }
+.pp-summary { color: var(--lp-muted); font-size: 1.05rem; line-height: 1.6; max-width: 38em; margin: 0 0 1.5rem; }
+.pp-actions { display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; align-items: center; }
+.pp-note { color: var(--lp-muted); font-size: 0.85rem; margin: 1rem 0 0; max-width: 40em; }
+.pp-docs { border-top: 1px solid var(--lp-rule); margin-top: 3rem; padding-top: 2rem; }
+.pp-docs h2 { font-size: 1.65rem; font-weight: 400; margin: 0 0 1rem; }
+.pp-docs ol, .ad-nav ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
+@media (min-width: 640px) { .pp-docs ol { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.pp-docs li a { display: block; padding: 1rem 1.25rem; border: 1px solid var(--lp-rule); border-radius: 0.75rem; color: var(--lp-ink); text-decoration: none; }
+.pp-docs li a:hover { border-color: var(--lp-accent); }
+.pp-docs li a strong { display: block; font-weight: 700; }
+.pp-docs li a span { color: var(--lp-muted); font-size: 0.95rem; line-height: 1.5; }
+
+/* Plans (shortcode) */
+.pp-plans { display: grid; gap: 1rem; margin: 1.5rem 0; }
+@media (min-width: 768px) { .pp-plans { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.pp-plan { border: 1px solid var(--lp-rule); border-radius: 0.75rem; padding: 1.25rem 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; }
+.pp-plan h3 { margin: 0 !important; font-size: 1.2rem; }
+.pp-plan-price { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.01em; line-height: 1.1; }
+.pp-plan-price small { display: block; font-size: 0.9rem; font-weight: 500; color: var(--lp-muted); margin-top: 0.25rem; }
+.pp-plan ul { list-style: none; margin: 0.5rem 0 0 !important; padding: 0; color: var(--lp-muted); display: grid; gap: 0.25rem; }
+.pp-plan ul li { padding-left: 0 !important; margin: 0 !important; }
+.pp-plan ul li::before { content: none !important; }
+.pp-plan .lp-btn { margin-top: auto; justify-content: center; }
+.pp-plan .lp-todo { margin-top: auto !important; }
+
+/* App docs: sibling navigation above the article */
+.ad-nav { margin: 0 0 2rem; padding: 1rem 1.25rem; border-radius: 0.75rem; background: var(--lp-tint); font-size: 0.95rem; }
+.ad-nav p { margin: 0 0 0.5rem; font-weight: 600; }
+.ad-nav ol { gap: 0.3rem; }
+@media (min-width: 640px) { .ad-nav ol { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.ad-nav a { color: var(--lp-ink); }
+.ad-nav a[aria-current="page"] { color: var(--lp-accent); font-weight: 700; }
+
+/* Hero eyebrow: the brand line above the name (e.g. "KI Bauer · Berlin") */
+.lp-hero-eyebrow { color: var(--lp-accent, currentColor); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 0.5rem; }

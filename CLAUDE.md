@@ -218,6 +218,13 @@ Embed external apps in posts:
 
 All options are listed in `themes/paasbox/README.md`; an unknown one fails the build.
 
+The landing page (`layouts/partials/home/custom.html`) takes its texts from the
+front matter of `content/_index.md` and `content/_index.de.md`. Running texts
+(tagline, intro, leads, item texts) go through `markdownify`, so `==word==`
+marks a word there; the name and the section headings get their markers from
+the template. Its styles, and those of the app pages, are in
+`assets/css/custom.css` (`.lp-`, `.pp-`, `.ad-`).
+
 ## Common Tasks for AI Assistants
 
 ### Creating a new blog post

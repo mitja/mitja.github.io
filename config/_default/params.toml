@@ -26,10 +26,10 @@ mainSections = ["posts"]
   showScrollToTop = true
 
 [homepage]
-  layout = "profile" #"background" #"profile" # valid options: page, profile, hero, card, background (default), custom
+  layout = "custom" # own partial layouts/partials/home/custom.html; # valid options: page, profile, hero, card, background (default), custom
   homepageImage = "img/oberbaum-bridge-view.jpg" # used in: hero, and card
   showRecent = true
-  showRecentItems = 7
+  showRecentItems = 3
   showMoreLink = true
   showMoreLinkDest = "posts"
   streamView = false # show full content for posts with stream: true in front matter

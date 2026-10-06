@@ -60,12 +60,27 @@ fails the build with the file and line, so a typo cannot ship.
 - **margin-note**: `label="…"` (default "Note" / "Randnotiz"); `tone` ink ·
   mint · coral · blue; `side` right · left
 
+`==text==` is styled anywhere inside `<main>`, so it also works in front-matter
+text that a template runs through `markdownify` (the landing page does).
+
 The text inside a shortcode may contain Markdown (`**bold**`, `` `code` ``).
 A margin note's body is block Markdown, so it can hold several paragraphs or a list.
 
 Templates and hand-written HTML can use the classes directly:
 `<span class="pb-marker pb-marker--circle" data-tone="coral">`, and
 `class="pb-display"` sets any element in the heading face.
+
+## Tokens for site CSS
+
+The theme defines paasbox's custom properties, and they flip with dark mode.
+Site CSS can use them, with a fallback for plain Blowfish:
+`--pb-serif`, `--pb-sans`, `--pb-paper`, `--pb-paper-raised`, `--pb-ink`,
+`--pb-ink-soft`, `--pb-line`, `--pb-accent`, `--pb-accent-strong`,
+`--pb-marker`, `--pb-mint`, `--pb-coral`, `--pb-blue`, `--pb-shadow`, and the
+coral call-to-action `--pb-cta`, `--pb-cta-hover`, `--pb-cta-ink` (primary
+buttons only, never links). Blowfish's own `--color-neutral-*`,
+`--color-primary-*` (forest green) and `--color-secondary-*` (coral) ramps carry
+the same palette.
 
 ## Differences from paasbox-web
 
@@ -80,7 +95,8 @@ Templates and hand-written HTML can use the classes directly:
 ## What it overrides in Blowfish
 
 - `layouts/partials/home/profile.html`: Blowfish's, with a marker under the
-  author's name. Compare the two when Blowfish is updated.
+  author's name. Compare the two when Blowfish is updated. Only used with
+  `homepage.layout = "profile"`; this site uses its own `custom` layout.
 
 Everything else is CSS. It needs no `!important` because Blowfish's compiled
 Tailwind CSS sits in cascade layers, and the unlayered scheme file beats it.

@@ -1,0 +1,13 @@
+{{- /*
+  Remember an explicit language choice. The switcher links (partials/
+  translations.html) carry data-lang-switch; the root chooser (static/
+  index.html) reads "mm-lang" from localStorage before looking at the browser
+  language. Nothing is recorded unless the visitor clicks.
+*/ -}}
+<script>
+  document.addEventListener("click", function (e) {
+    var a = e.target && e.target.closest ? e.target.closest("a[data-lang-switch]") : null;
+    if (!a) return;
+    try { localStorage.setItem("mm-lang", a.getAttribute("data-lang-switch")); } catch (err) {}
+  });
+</script>

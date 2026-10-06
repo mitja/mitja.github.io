@@ -1,0 +1,21 @@
+{{- /*
+  {{< plans >}} renders .Page.Params.plans as columns. Each plan: name, price,
+  period, yearly, features (list), checkout (URL or a TODO placeholder, shown
+  as such), cta (button text).
+*/ -}}
+<div class="pp-plans not-prose">
+  {{- range .Page.Params.plans }}
+  <div class="pp-plan">
+    <h3>{{ .name }}</h3>
+    <p class="pp-plan-price">{{ .price }}{{ with .yearly }}<small>{{ . }}</small>{{ end }}</p>
+    <ul>
+      {{- range .features }}<li>{{ . }}</li>{{ end }}
+    </ul>
+    {{- if hasPrefix .checkout "TODO" }}
+      <span class="lp-todo">{{ .checkout }}</span>
+    {{- else }}
+      <a class="lp-btn lp-btn-primary" href="{{ .checkout }}">{{ .cta }}</a>
+    {{- end }}
+  </div>
+  {{- end }}
+</div>

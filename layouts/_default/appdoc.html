@@ -1,0 +1,28 @@
+{{- /*
+  Documentation page below an app (layout: appdoc, set by cascade in the app's
+  _index.md). A navigation over the sibling pages sits above the article, the
+  rest is the theme's single-page look without article meta.
+*/ -}}
+{{ define "main" }}
+  {{ $app := .Parent }}
+  <article class="max-w-full ad">
+    <header>
+      {{ partial "breadcrumbs.html" . }}
+      <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">{{ .Title | emojify }}</h1>
+      {{ with .Params.summary }}<p class="mt-2 text-neutral-500 dark:text-neutral-400">{{ . }}</p>{{ end }}
+    </header>
+    {{ with $app }}
+    <nav class="ad-nav mt-6" aria-label="{{ .Title }}">
+      <p><a href="{{ .RelPermalink }}">{{ .Title }}</a></p>
+      <ol>
+        {{ range .Pages.ByWeight }}
+        <li><a href="{{ .RelPermalink }}"{{ if eq . $ }} aria-current="page"{{ end }}>{{ .Title }}</a></li>
+        {{ end }}
+      </ol>
+    </nav>
+    {{ end }}
+    <section class="max-w-full mt-6 prose dark:prose-invert">
+      {{ .Content }}
+    </section>
+  </article>
+{{ end }}

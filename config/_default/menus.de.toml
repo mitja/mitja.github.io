@@ -1,47 +1,26 @@
 # -- Main Menu --
-# The main menu is displayed in the header at the top of the page.
-# Acceptable parameters are name, pageRef, page, url, title, weight.
-# 
-# The simplest menu configuration is to provide:
-#   name = The name to be displayed for this menu link
-#   pageRef = The identifier of the page or section to link to
-#
-# By default the menu is ordered alphabetically. This can be
-# overridden by providing a weight value. The menu will then be
-# ordered by weight from lowest to highest.
-
-#[[main]]
-#  name = "AI Engineering"
-#  pageRef = "ai-engineer"
-#  weight = 5
+# Leads with who Mitja is and what he offers; the blog is secondary.
+# Anchors point at sections of the German home page (layouts/partials/home/custom.html).
 
 [[main]]
-  name = "Beiträge"
-  pageRef = "posts"
+  name = "Angebot"
+  url = "/de/#angebot"
   weight = 10
 
 [[main]]
-  name = "Tags"
-  pageRef = "tags"
+  name = "Apps"
+  pageRef = "apps"
   weight = 20
 
 [[main]]
-  name = "Kategorien"
-  pageRef = "categories"
-  weight = 25
+  name = "Artikel"
+  pageRef = "posts"
+  weight = 30
 
-#[[main]]
-#  identifier = "appointment"
-#  name = "Termin buchen"
-#  #pre = "bell"
-#  url = "https://nunocoracao.github.io/blowfish/"
-#  weight = 30
-
-#[[main]]
-#  identifier = "phone"
-#  pre = "phone"
-#  url = "https://nunocoracao.github.io/blowfish/"
-#  weight = 40
+[[main]]
+  name = "Über mich"
+  pageRef = "about"
+  weight = 40
 
 [[main]]
   identifier = "mail"
@@ -49,35 +28,14 @@
   url = "mailto:hi@mitjamartini.com"
   weight = 50
 
-#[[main]]
-#  identifier = "github"
-#  pre = "github"
-#  url = "https://github.com/nunocoracao/blowfish"
-#  weight = 50
-
-#[[main]]
-#  identifier = "twitter"
-#  pre = "twitter"
-#  url = "https://twitter.com/burufugu"
-#  weight = 60
-
-
 # -- Footer Menu --
-# The footer menu is displayed at the bottom of the page, just before
-# the copyright notice. Configure as per the main menu above.
 
+[[footer]]
+  name = "Impressum"
+  pageRef = "imprint"
+  weight = 10
 
- [[footer]]
-   name = "Über mich"
-   pageRef = "about"
-   weight = 10
-
- [[footer]]
-   name = "Geschäftsbedingungen"
-   pageRef = "terms"
-   weight = 20
-
- [[footer]]
-   name = "Datenschutz"
-   pageRef = "privacy"
-   weight = 30
+[[footer]]
+  name = "Datenschutz"
+  pageRef = "privacy"
+  weight = 20

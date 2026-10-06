@@ -83,6 +83,13 @@
   --pb-blue: #a9cbea;
   --pb-shadow: 0 14px 40px rgb(24 32 29 / 8%);
 
+  /* Coral CTA (global.css --color-cta-*): primary buttons only, never links.
+     Light mode is a pale salmon with dark ink, dark mode a deep brick with
+     light ink; the two inks differ on purpose (each passes AA). */
+  --pb-cta: #f2a38d;
+  --pb-cta-hover: #e8917a;
+  --pb-cta-ink: #2a0d05;
+
   /* Annotation roles (global.css). primary/secondary/accent/warning follow
      the tokens above and so flip with the mode; success/error do not. */
   --pb-mark-primary: var(--pb-accent);
@@ -110,6 +117,10 @@ html.dark {
   --pb-coral: #914f40;
   --pb-blue: #3f688c;
   --pb-shadow: 0 18px 48px rgb(0 0 0 / 24%);
+
+  --pb-cta: #914f40;
+  --pb-cta-hover: #a45c4c;
+  --pb-cta-ink: #fdf1ec;
 
   --pb-mark-success: #5cc15b;
   --pb-mark-error: #f87171;
@@ -299,11 +310,12 @@ main h1 {
 }
 
 /* ── Marker (Marker.astro) ──────────────────────────────────────────────────
-   {{< marker >}}, and `==text==` in Markdown, which Hugo renders as <mark>.
+   {{< marker >}}, and `==text==` in Markdown, which Hugo renders as <mark>
+   (anywhere in <main>, so also in front-matter text run through markdownify).
    Styles: highlight (a felt-tip stroke over the lower half), underline,
    circle. Tones: yellow (default), mint, coral, blue. Tilt: left (default),
    right, none. */
-.prose mark,
+main mark,
 .pb-marker {
   --marker-color: var(--pb-marker);
   --marker-rotate: -0.4deg;
@@ -317,7 +329,7 @@ main h1 {
   box-decoration-break: clone;
 }
 
-.prose mark::before,
+main mark::before,
 .pb-marker--highlight::before {
   position: absolute;
   z-index: -1;

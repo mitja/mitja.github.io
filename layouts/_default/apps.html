@@ -1,0 +1,20 @@
+{{- /* Apps overview (content/apps/_index.md, layout: apps). Lists the app sections below it. */ -}}
+{{ define "main" }}
+  <div class="lp pp">
+    <header class="pp-head">
+      <h1><span class="pb-marker pb-marker--highlight" data-tone="yellow">{{ .Title | emojify }}</span></h1>
+      {{ with .Params.summary }}<p class="pp-summary">{{ . }}</p>{{ end }}
+    </header>
+    <div class="lp-apps">
+      {{- range .Sections }}
+      <a class="lp-app" href="{{ .Params.external | default .RelPermalink }}"{{ with .Params.external }} rel="noopener"{{ end }}>
+        <span class="lp-app-name">{{ .Title }}{{ with .Params.status }} <span class="lp-badge">{{ . }}</span>{{ end }}</span>
+        <span class="lp-app-sub">{{ .Params.subtitle }}</span>
+        <span class="lp-app-text">{{ .Params.teaser }}</span>
+      </a>
+      {{- end }}
+      {{- with .Params.coming }}<p class="lp-app-coming">{{ . }}</p>{{ end }}
+    </div>
+    {{ with .Content }}<section class="max-w-full mt-10 prose dark:prose-invert">{{ . }}</section>{{ end }}
+  </div>
+{{ end }}
