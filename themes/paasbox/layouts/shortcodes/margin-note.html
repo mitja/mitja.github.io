@@ -1,0 +1,23 @@
+{{- /*
+  A taped-on note beside the text (MarginNote.astro in paasbox-web). Put it
+  on its own line before the paragraph it belongs to; from 48rem it floats
+  beside that paragraph, below that it sits between paragraphs.
+
+    {{< margin-note >}}
+    The body is **Markdown**.
+    {{< /margin-note >}}
+
+    {{< margin-note label="Aside" tone="mint" side="left" >}}…{{< /margin-note >}}
+
+  label: the italic heading (default: "Note" / "Randnotiz", from i18n)
+  tone:  ink (default) | mint | coral | blue
+  side:  right (default) | left
+*/ -}}
+{{- $o := partial "paasbox/options.html" (dict "sc" . "free" (slice "label") "sets" (dict
+  "tone" (slice "ink" "mint" "coral" "blue")
+  "side" (slice "right" "left")
+)) -}}
+<aside class="pb-margin-note" data-tone="{{ $o.tone | default "ink" }}" data-side="{{ $o.side | default "right" }}">
+  <span class="pb-margin-note__label">{{ $o.label | default (i18n "paasbox.margin_note") }}</span>
+  {{ .Inner | .Page.RenderString (dict "display" "block") }}
+</aside>

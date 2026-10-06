@@ -1,0 +1,10 @@
+{{- /*
+  A wavy underline (`:wavy[…]` in paasbox-web's Markdown).
+
+    {{< wavy >}}clear path{{< /wavy >}}
+    {{< wavy sm warning >}}build{{< /wavy >}}
+
+  color: primary (default) | secondary | accent | success | warning | error
+  size:  sm | lg (default is in between)
+*/ -}}
+{{- partial "paasbox/underline.html" (dict "sc" . "kind" "wavy" "inner" .Inner) -}}

@@ -1,0 +1,14 @@
+{{- /*
+  A translucent, tilted highlight block in a role colour (`:highlight[…]` in
+  paasbox-web's Markdown).
+
+    {{< hl >}}3-Week{{< /hl >}}
+    {{< hl warning >}}deadline{{< /hl >}}
+
+  color: primary (default) | secondary | accent | success | warning | error
+*/ -}}
+{{- $o := partial "paasbox/options.html" (dict "sc" . "sets" (dict
+  "color" (slice "primary" "secondary" "accent" "success" "warning" "error")
+)) -}}
+<span class="pb-highlight pb-highlight-{{ $o.color | default "primary" }}">{{ .Inner | .Page.RenderString }}</span>
+{{- /* no trailing newline */ -}}

@@ -1,0 +1,555 @@
+/* ┌─────────────────────────────────────────────────────────────────────┐
+   │ paasbox — a Blowfish colour scheme that carries the whole look.       │
+   │ Ported from ../paasbox-web/src/styles (paasbox.css + global.css):     │
+   │ paper and ink, the forest-green accent, the muted-salmon coral,       │
+   │ Fraunces for display headings, Inter for everything else, and the     │
+   │ hand-drawn markers and notes.                                         │
+   │                                                                       │
+   │ WHY EVERYTHING IS IN THE SCHEME FILE. Blowfish loads exactly one file │
+   │ by name from any theme: css/schemes/<colorScheme>.css. The other slot,│
+   │ css/custom.css, belongs to the site. So `colorScheme = "paasbox"` is  │
+   │ the one switch, and the site's custom.css stays free for overrides.   │
+   │                                                                       │
+   │ WHY IT WINS although it is loaded FIRST. Blowfish's compiled main.css │
+   │ is Tailwind v4 and puts every rule in a cascade layer (theme, base,   │
+   │ components, utilities). Unlayered rules beat layered ones whatever    │
+   │ their order or specificity, so nothing below needs !important. Keep   │
+   │ this file unlayered for that reason.                                  │
+   │                                                                       │
+   │ Dark mode is Blowfish's `html.dark`, where paasbox used               │
+   │ `[data-theme='dark']`. Class names carry a `pb-` prefix throughout:   │
+   │ the unprefixed `.highlight` of global.css is the class Hugo puts on   │
+   │ every code block.                                                     │
+   └─────────────────────────────────────────────────────────────────────┘ */
+
+/* ── Blowfish ramps ─────────────────────────────────────────────────────────
+   Blowfish reads these as "r, g, b" triples and uses ONE ramp for both modes:
+   the light end is light mode's paper and borders, the dark end dark mode's
+   (body is bg-neutral / dark:bg-neutral-800, text neutral-900 / neutral).
+   So the light stops are the paasbox paper, the dark stops its dark paper. */
+:root {
+  --color-neutral: 251, 248, 241;     /* --pb-paper #fbf8f1 */
+  --color-neutral-50: 255, 253, 248;  /* --pb-paper-raised #fffdf8 */
+  --color-neutral-100: 243, 239, 230;
+  --color-neutral-200: 232, 228, 218; /* hairline-light #e8e4da */
+  --color-neutral-300: 200, 208, 202; /* dark-mode body text */
+  --color-neutral-400: 170, 181, 174; /* --pb-ink-soft, dark #aab5ae */
+  --color-neutral-500: 95, 104, 99;   /* near --pb-ink-soft, light; AA on paper */
+  --color-neutral-600: 63, 74, 68;
+  --color-neutral-700: 38, 48, 43;    /* light body text, dark-mode raised bg */
+  --color-neutral-800: 17, 23, 20;    /* --pb-paper, dark #111714 */
+  --color-neutral-900: 11, 15, 13;
+
+  /* Forest green — paasbox's brand ramp (global.css --color-brand-*). */
+  --color-primary-50: 243, 250, 246;
+  --color-primary-100: 230, 244, 238;
+  --color-primary-200: 207, 233, 222; /* accent-low, light #cfe9de */
+  --color-primary-300: 168, 223, 198; /* --pb-mint #a8dfc6 */
+  --color-primary-400: 138, 209, 179; /* --pb-accent, dark #8ad1b3 */
+  --color-primary-500: 22, 128, 106;  /* brand-500 #16806a */
+  --color-primary-600: 14, 102, 81;   /* --pb-accent, light #0e6651 */
+  --color-primary-700: 8, 75, 61;     /* --pb-accent-strong #084b3d */
+  --color-primary-800: 6, 58, 47;
+  --color-primary-900: 12, 47, 34;    /* accent-low, dark #0c2f22 */
+
+  /* Muted salmon — paasbox's coral (global.css --color-cta-*). Blowfish uses
+     the secondary ramp for inline code: 700 in light, 400 in dark. */
+  --color-secondary-50: 253, 241, 236;
+  --color-secondary-100: 251, 225, 216;
+  --color-secondary-200: 247, 199, 184;
+  --color-secondary-300: 242, 163, 141; /* --pb-coral, light #f2a38d */
+  --color-secondary-400: 232, 145, 122;
+  --color-secondary-500: 201, 112, 90;
+  --color-secondary-600: 164, 92, 76;
+  --color-secondary-700: 145, 79, 64;   /* --pb-coral, dark #914f40 */
+  --color-secondary-800: 110, 58, 47;
+  --color-secondary-900: 42, 13, 5;     /* CTA ink #2a0d05 */
+}
+
+/* ── paasbox tokens (paasbox.css, global.css) ───────────────────────────── */
+:root {
+  --pb-serif: 'Fraunces Variable', Georgia, serif;
+  --pb-sans: 'Inter Variable', Inter, ui-sans-serif, system-ui, sans-serif;
+  --pb-paper: #fbf8f1;
+  --pb-paper-raised: #fffdf8;
+  --pb-ink: #18201d;
+  --pb-ink-soft: #59615d;
+  --pb-line: #d9d6cc;
+  --pb-accent: #0e6651;
+  --pb-accent-strong: #084b3d;
+  --pb-marker: #f4df64;
+  --pb-mint: #a8dfc6;
+  --pb-coral: #f2a38d;
+  --pb-blue: #a9cbea;
+  --pb-shadow: 0 14px 40px rgb(24 32 29 / 8%);
+
+  /* Annotation roles (global.css). primary/secondary/accent/warning follow
+     the tokens above and so flip with the mode; success/error do not. */
+  --pb-mark-primary: var(--pb-accent);
+  --pb-mark-secondary: var(--pb-mint);
+  --pb-mark-accent: var(--pb-coral);
+  --pb-mark-warning: var(--pb-marker);
+  --pb-mark-success: #22a04a;
+  --pb-mark-error: #dc2626;
+
+  /* Tailwind's own font tokens, so every `font-sans` utility gets Inter. */
+  --font-sans: var(--pb-sans);
+  --default-font-family: var(--pb-sans);
+}
+
+html.dark {
+  --pb-paper: #111714;
+  --pb-paper-raised: #171f1b;
+  --pb-ink: #edf1ea;
+  --pb-ink-soft: #aab5ae;
+  --pb-line: #344039;
+  --pb-accent: #8ad1b3;
+  --pb-accent-strong: #b6ead4;
+  --pb-marker: #9e8127;
+  --pb-mint: #33755e;
+  --pb-coral: #914f40;
+  --pb-blue: #3f688c;
+  --pb-shadow: 0 18px 48px rgb(0 0 0 / 24%);
+
+  --pb-mark-success: #5cc15b;
+  --pb-mark-error: #f87171;
+}
+
+/* ── Fonts ──────────────────────────────────────────────────────────────────
+   Self-hosted, never Google Fonts: static/fonts/ of this theme, latin and
+   latin-ext only (German needs nothing beyond latin). Fraunces is the
+   "standard" cut (weight and optical-size axes), Inter the weight axis. The
+   URLs are relative to the bundle Blowfish writes to /css/. */
+@font-face {
+  font-family: 'Fraunces Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url(../fonts/fraunces-latin-standard-normal.woff2) format('woff2-variations');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Fraunces Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url(../fonts/fraunces-latin-ext-standard-normal.woff2) format('woff2-variations');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Fraunces Variable';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url(../fonts/fraunces-latin-standard-italic.woff2) format('woff2-variations');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Fraunces Variable';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url(../fonts/fraunces-latin-ext-standard-italic.woff2) format('woff2-variations');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Inter Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url(../fonts/inter-latin-wght-normal.woff2) format('woff2-variations');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Inter Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url(../fonts/inter-latin-ext-wght-normal.woff2) format('woff2-variations');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Inter Variable';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url(../fonts/inter-latin-wght-italic.woff2) format('woff2-variations');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Inter Variable';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url(../fonts/inter-latin-ext-wght-italic.woff2) format('woff2-variations');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+
+/* ── Page ───────────────────────────────────────────────────────────────── */
+html {
+  background: var(--pb-paper);
+}
+
+body {
+  font-family: var(--pb-sans);
+  letter-spacing: -0.008em;
+}
+
+/* ── Display headings ───────────────────────────────────────────────────────
+   Fraunces for the headings inside <main>: page and post titles, the
+   author's ## and ###, post titles in lists. h4 and below stay Inter, as do
+   the header and footer. `.pb-display` opts any other element in.
+   Weight 400: Blowfish puts font-extrabold on its titles, and a synthesised
+   heavy serif reads as a mistake. */
+main :is(h1, h2, h3),
+.pb-display {
+  font-family: var(--pb-serif);
+  font-weight: 400;
+  font-synthesis-weight: none;
+  font-feature-settings: 'kern' 1, 'liga' 1;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+/* paasbox's restrained page scale, not its splash scale (see paasbox.css). */
+main h1 {
+  font-size: clamp(2.4rem, 4.5vw, 3.4rem);
+  line-height: 1.05;
+}
+
+.article-content > h2 {
+  margin-top: 2.2em;
+  font-size: clamp(1.75rem, 2.8vw, 2.2rem);
+  line-height: 1.12;
+}
+
+.article-content > h3 {
+  font-size: clamp(1.4rem, 2vw, 1.65rem);
+  line-height: 1.2;
+}
+
+.pb-display--hero {
+  font-size: clamp(2.6rem, 5.2vw, 4.4rem);
+  line-height: 0.99;
+  letter-spacing: -0.032em;
+}
+
+/* ── Prose ──────────────────────────────────────────────────────────────── */
+.prose :is(p, li) {
+  line-height: 1.72;
+}
+
+/* Links in the text, not the table of contents (a <nav> inside .prose). */
+.prose a:not([class]):not(nav a) {
+  color: var(--pb-accent);
+  text-decoration-line: underline;
+  text-decoration-color: color-mix(in srgb, var(--pb-accent) 42%, transparent);
+  text-decoration-thickness: 0.11em;
+  text-underline-offset: 0.18em;
+}
+
+.prose a:not([class]):not(nav a):hover {
+  color: var(--pb-accent-strong);
+  text-decoration-color: currentColor;
+}
+
+/* Pull-quote: Fraunces italic with a slightly tilted coral bar. Tailwind
+   Typography's curly quotes are dropped, as in paasbox. */
+.prose blockquote {
+  position: relative;
+  margin-block: 2.2rem;
+  padding: 0.6rem 0 0.6rem 1.4rem;
+  border-inline-start: 0;
+  color: var(--pb-ink);
+  font-family: var(--pb-serif);
+  font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.25;
+  quotes: none;
+}
+
+.prose blockquote > p {
+  margin-block: 0.4em;
+}
+
+.prose blockquote::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 0.22rem;
+  border-radius: 999px;
+  background: var(--pb-coral);
+  content: '';
+  transform: rotate(1.2deg);
+}
+
+.prose blockquote p:first-of-type::before,
+.prose blockquote p:last-of-type::after {
+  content: none;
+}
+
+.prose .highlight pre {
+  border-radius: 0.75rem;
+}
+
+.prose .highlight {
+  filter: drop-shadow(0 12px 24px rgb(24 32 29 / 7%));
+}
+
+/* ── Marker (Marker.astro) ──────────────────────────────────────────────────
+   {{< marker >}}, and `==text==` in Markdown, which Hugo renders as <mark>.
+   Styles: highlight (a felt-tip stroke over the lower half), underline,
+   circle. Tones: yellow (default), mint, coral, blue. Tilt: left (default),
+   right, none. */
+.prose mark,
+.pb-marker {
+  --marker-color: var(--pb-marker);
+  --marker-rotate: -0.4deg;
+  position: relative;
+  z-index: 0;
+  display: inline;
+  padding-inline: 0.07em;
+  color: inherit;
+  background: none;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.prose mark::before,
+.pb-marker--highlight::before {
+  position: absolute;
+  z-index: -1;
+  right: -0.08em;
+  bottom: 0.02em;
+  left: -0.08em;
+  height: 0.48em;
+  border-radius: 48% 38% 44% 34%;
+  background: var(--marker-color);
+  content: '';
+  opacity: 0.76;
+  transform: rotate(var(--marker-rotate)) skewX(-5deg);
+  transform-origin: left center;
+}
+
+.pb-marker--underline {
+  background-image: linear-gradient(
+    177deg,
+    transparent 64%,
+    var(--marker-color) 65% 83%,
+    transparent 84%
+  );
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.pb-marker--circle::after {
+  position: absolute;
+  z-index: -1;
+  inset: -0.15em -0.28em -0.08em;
+  border: 0.11em solid var(--marker-color);
+  border-radius: 48% 52% 44% 57% / 53% 46% 55% 48%;
+  content: '';
+  opacity: 0.9;
+  transform: rotate(var(--marker-rotate));
+}
+
+.pb-marker[data-tone='mint'] { --marker-color: var(--pb-mint); }
+.pb-marker[data-tone='coral'] { --marker-color: var(--pb-coral); }
+.pb-marker[data-tone='blue'] { --marker-color: var(--pb-blue); }
+.pb-marker[data-tilt='right'] { --marker-rotate: 0.55deg; }
+.pb-marker[data-tilt='none'] { --marker-rotate: 0deg; }
+
+/* ── Annotations (global.css; remark-annotations.mjs in paasbox) ───────────
+   {{< hl >}}: a translucent, tilted block behind the text, in one of the six
+   role colours. {{< wavy >}} / {{< dotted >}}: underlines in three weights. */
+.pb-highlight {
+  --mark: var(--pb-mark-primary);
+  position: relative;
+  white-space: nowrap;
+  isolation: isolate;
+}
+.pb-highlight::before {
+  content: '';
+  position: absolute;
+  left: -0.1em;
+  right: -0.1em;
+  top: 0.1em;
+  bottom: 0.1em;
+  background: color-mix(in oklab, var(--mark) 30%, transparent);
+  transform: rotate(-1deg) skewX(-3deg);
+  z-index: -1;
+  border-radius: 0.2em 0.4em 0.3em 0.4em;
+}
+.pb-highlight-primary { --mark: var(--pb-mark-primary); }
+.pb-highlight-secondary { --mark: var(--pb-mark-secondary); }
+.pb-highlight-accent { --mark: var(--pb-mark-accent); }
+.pb-highlight-success { --mark: var(--pb-mark-success); }
+.pb-highlight-error { --mark: var(--pb-mark-error); }
+/* Amber reads faint at 30 %, so warning gets 40 %. */
+.pb-highlight-warning { --mark: var(--pb-mark-warning); }
+.pb-highlight-warning::before { background: color-mix(in oklab, var(--mark) 40%, transparent); }
+
+.pb-underline-wavy, .pb-underline-wavy-sm, .pb-underline-wavy-lg,
+.pb-underline-dotted, .pb-underline-dotted-sm, .pb-underline-dotted-lg {
+  text-decoration-line: underline;
+  text-decoration-color: var(--pb-mark-primary);
+  text-decoration-skip-ink: none;
+}
+.pb-underline-wavy, .pb-underline-wavy-sm, .pb-underline-wavy-lg { text-decoration-style: wavy; }
+.pb-underline-dotted, .pb-underline-dotted-sm, .pb-underline-dotted-lg { text-decoration-style: dotted; }
+.pb-underline-wavy, .pb-underline-dotted { text-underline-offset: 0.2em; text-decoration-thickness: 2px; }
+.pb-underline-wavy-sm, .pb-underline-dotted-sm { text-underline-offset: 0.15em; text-decoration-thickness: 1px; }
+.pb-underline-wavy-lg, .pb-underline-dotted-lg { text-underline-offset: 0.25em; text-decoration-thickness: 3px; }
+
+.pb-underline-primary { text-decoration-color: var(--pb-mark-primary); }
+.pb-underline-secondary { text-decoration-color: var(--pb-mark-secondary); }
+.pb-underline-accent { text-decoration-color: var(--pb-mark-accent); }
+.pb-underline-success { text-decoration-color: var(--pb-mark-success); }
+.pb-underline-warning { text-decoration-color: var(--pb-mark-warning); }
+.pb-underline-error { text-decoration-color: var(--pb-mark-error); }
+
+/* ── Margin note (MarginNote.astro) ─────────────────────────────────────────
+   paasbox hangs these in the right margin from 90rem. Blowfish's right
+   margin is the table of contents, so here the note floats inside the
+   text column from 48rem instead, on the side it names. */
+.pb-margin-note {
+  --note-color: var(--pb-ink);
+  position: relative;
+  display: block;
+  margin-block: 1.4rem;
+  padding: 1rem 1.1rem 1.05rem;
+  border: 1px solid color-mix(in srgb, var(--note-color) 32%, var(--pb-line));
+  border-radius: 0.55rem 0.8rem 0.55rem 0.95rem;
+  color: var(--pb-ink);
+  background: color-mix(in srgb, var(--pb-paper-raised) 94%, var(--note-color));
+  box-shadow: 3px 4px 0 color-mix(in srgb, var(--note-color) 13%, transparent);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  transform: rotate(-0.25deg);
+}
+
+.pb-margin-note::before {
+  position: absolute;
+  top: -0.55rem;
+  left: 1.25rem;
+  width: 2.8rem;
+  height: 1rem;
+  background: color-mix(in srgb, var(--pb-marker) 46%, transparent);
+  content: '';
+  transform: rotate(-2deg);
+}
+
+.pb-margin-note__label {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: var(--note-color);
+  font-family: var(--pb-serif);
+  font-size: 1.05rem;
+  font-style: italic;
+}
+
+.prose .pb-margin-note :is(p, ul, ol) {
+  margin-block: 0 0.5em;
+  line-height: 1.5;
+}
+.prose .pb-margin-note > :last-child {
+  margin-bottom: 0;
+}
+
+.pb-margin-note[data-tone='mint'] { --note-color: #397b62; }
+.pb-margin-note[data-tone='coral'] { --note-color: #a84f3a; }
+.pb-margin-note[data-tone='blue'] { --note-color: #356b9d; }
+html.dark .pb-margin-note[data-tone='mint'] { --note-color: #8ad1b3; }
+html.dark .pb-margin-note[data-tone='coral'] { --note-color: #f2a38d; }
+html.dark .pb-margin-note[data-tone='blue'] { --note-color: #a9cbea; }
+
+@media (min-width: 48rem) {
+  .article-content > :is(h2, h3, h4, blockquote, .highlight, table, hr) {
+    clear: both;
+  }
+
+  .pb-margin-note {
+    float: right;
+    clear: right;
+    width: 15rem;
+    margin: 0.4rem -1rem 1rem 1.75rem;
+  }
+
+  .pb-margin-note[data-side='left'] {
+    float: left;
+    clear: left;
+    margin: 0.4rem 1.75rem 1rem -1rem;
+  }
+}
+
+/* ── Inline note (InlineNote.astro) ─────────────────────────────────────── */
+.pb-inline-note {
+  --note-color: var(--pb-marker);
+  position: relative;
+  display: inline;
+  border-bottom: 2px dotted color-mix(in srgb, var(--note-color) 85%, var(--pb-ink));
+  outline: none;
+  cursor: help;
+}
+
+.pb-inline-note__bubble {
+  position: absolute;
+  z-index: 20;
+  bottom: calc(100% + 0.7rem);
+  left: 50%;
+  width: max-content;
+  max-width: min(18rem, 75vw);
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--pb-line);
+  border-radius: 0.5rem 0.7rem 0.55rem 0.8rem;
+  color: var(--pb-ink);
+  background: var(--pb-paper-raised);
+  box-shadow: var(--pb-shadow);
+  font-family: var(--pb-sans);
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 450;
+  line-height: 1.4;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 0.25rem) rotate(-0.35deg);
+  transition: opacity 140ms ease, transform 140ms ease;
+}
+
+.pb-inline-note:is(:hover, :focus-visible) .pb-inline-note__bubble {
+  opacity: 1;
+  transform: translate(-50%, 0) rotate(-0.35deg);
+}
+
+.pb-inline-note:focus-visible {
+  border-radius: 0.15rem;
+  outline: 2px solid var(--pb-accent);
+  outline-offset: 0.18rem;
+}
+
+.pb-inline-note[data-tone='mint'] { --note-color: var(--pb-mint); }
+.pb-inline-note[data-tone='coral'] { --note-color: var(--pb-coral); }
+.pb-inline-note[data-tone='blue'] { --note-color: var(--pb-blue); }
+
+@media (prefers-reduced-motion: reduce) {
+  .pb-inline-note__bubble {
+    transition: none;
+  }
+}
+
+@media print {
+  .pb-inline-note__bubble {
+    position: static;
+    display: inline;
+    margin-left: 0.35em;
+    padding: 0;
+    border: 0;
+    box-shadow: none;
+    opacity: 1;
+  }
+
+  .pb-inline-note__bubble::before { content: '('; }
+  .pb-inline-note__bubble::after { content: ')'; }
+}

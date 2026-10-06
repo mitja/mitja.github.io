@@ -5,7 +5,7 @@
   {{ if index .Site.Params.homepage "showRecentItems" }}
     {{ $recentArticles = .Site.Params.homepage.showRecentItems }}
   {{ end }}
-  <h2 class="mt-8 text-2xl font-extrabold mb-10">{{ i18n "shortcode.recent_articles" | emojify }}</h2>
+  <h2 class="mt-8 text-2xl font-extrabold mb-10"><span class="pb-marker pb-marker--underline" data-tone="mint">{{ i18n "shortcode.recent_articles" | emojify }}</span></h2>
 
   {{ if .Site.Params.homepage.streamView | default false }}
     {{/* Stream view: full content for selected posts */}}

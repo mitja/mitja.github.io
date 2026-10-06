@@ -1,0 +1,60 @@
+{{- /*
+  Reads a paasbox shortcode's options and returns them as a dict.
+
+  Takes (dict "sc" <shortcode context> "sets" <dict of option → allowed values>
+  "free" <slice of options taking any text>). Two spellings are accepted:
+
+    {{< marker coral circle >}}               positional: each word is looked up
+                                              in every set (the sets don't overlap)
+    {{< marker tone="coral" style="circle" >}} named
+
+  A positional argument may hold several words ("sm warning"). Anything not
+  in a set fails the build with the shortcode's position, so a typo cannot
+  ship as an unstyled span. This is what remark-annotations.mjs does in
+  paasbox-web.
+*/ -}}
+{{- $sc := .sc -}}
+{{- $sets := .sets -}}
+{{- $free := .free | default slice -}}
+{{- $out := dict -}}
+{{- $help := slice -}}
+{{- range $k, $v := $sets -}}
+  {{- $help = $help | append (printf "%s: %s" $k (delimit $v ", ")) -}}
+{{- end -}}
+{{- range $free -}}
+  {{- $help = $help | append (printf "%s=\"…\"" .) -}}
+{{- end -}}
+{{- $help = delimit $help "; " -}}
+
+{{- if $sc.IsNamedParams -}}
+  {{- range $k, $v := $sc.Params -}}
+    {{- if in $free $k -}}
+      {{- $out = merge $out (dict $k $v) -}}
+    {{- else if not (index $sets $k) -}}
+      {{- errorf "%s: {{< %s >}} has no option %q. Options: %s" $sc.Position $sc.Name $k $help -}}
+    {{- else if not (in (index $sets $k) $v) -}}
+      {{- errorf "%s: {{< %s >}} %s=%q is not one of %s" $sc.Position $sc.Name $k $v (delimit (index $sets $k) ", ") -}}
+    {{- else -}}
+      {{- $out = merge $out (dict $k $v) -}}
+    {{- end -}}
+  {{- end -}}
+{{- else -}}
+  {{- range $sc.Params -}}
+    {{- range split (trim (string .) " ") " " -}}
+      {{- $word := . -}}
+      {{- if $word -}}
+        {{- $found := false -}}
+        {{- range $k, $v := $sets -}}
+          {{- if in $v $word -}}
+            {{- $out = merge $out (dict $k $word) -}}
+            {{- $found = true -}}
+          {{- end -}}
+        {{- end -}}
+        {{- if not $found -}}
+          {{- errorf "%s: {{< %s >}} does not know %q. Options: %s" $sc.Position $sc.Name $word $help -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return $out -}}

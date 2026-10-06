@@ -1,0 +1,13 @@
+{{- /* Shared by the wavy and dotted shortcodes; .kind is "wavy" or "dotted".
+       .inner is passed in because Hugo only allows a closing tag when the
+       shortcode template itself mentions .Inner. */ -}}
+{{- $sc := .sc -}}
+{{- $o := partial "paasbox/options.html" (dict "sc" $sc "sets" (dict
+  "color" (slice "primary" "secondary" "accent" "success" "warning" "error")
+  "size" (slice "sm" "lg")
+)) -}}
+{{- $class := printf "pb-underline-%s" .kind -}}
+{{- with $o.size }}{{ $class = printf "%s-%s" $class . }}{{ end -}}
+{{- with $o.color }}{{ $class = printf "%s pb-underline-%s" $class . }}{{ end -}}
+<span class="{{ $class }}">{{ .inner | $sc.Page.RenderString }}</span>
+{{- /* no trailing newline */ -}}

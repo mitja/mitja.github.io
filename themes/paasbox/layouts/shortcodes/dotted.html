@@ -1,0 +1,10 @@
+{{- /*
+  A dotted underline (`:dotted[…]` in paasbox-web's Markdown).
+
+    {{< dotted >}}clear path{{< /dotted >}}
+    {{< dotted sm warning >}}build{{< /dotted >}}
+
+  color: primary (default) | secondary | accent | success | warning | error
+  size:  sm | lg (default is in between)
+*/ -}}
+{{- partial "paasbox/underline.html" (dict "sc" . "kind" "dotted" "inner" .Inner) -}}

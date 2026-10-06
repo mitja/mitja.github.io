@@ -1,0 +1,20 @@
+{{- /*
+  A hand-drawn marker on inline text (Marker.astro in paasbox-web).
+
+    {{< marker >}}AI Engineering{{< /marker >}}
+    {{< marker coral circle >}}three{{< /marker >}}
+    {{< marker tone="mint" style="underline" tilt="right" >}}…{{< /marker >}}
+
+  tone:  yellow (default) | mint | coral | blue
+  style: highlight (default) | underline | circle
+  tilt:  left (default) | right | none
+
+  The plain yellow highlight is also `==text==` in Markdown.
+*/ -}}
+{{- $o := partial "paasbox/options.html" (dict "sc" . "sets" (dict
+  "tone" (slice "yellow" "mint" "coral" "blue")
+  "style" (slice "highlight" "underline" "circle")
+  "tilt" (slice "left" "right" "none")
+)) -}}
+<span class="pb-marker pb-marker--{{ $o.style | default "highlight" }}" data-tone="{{ $o.tone | default "yellow" }}" data-tilt="{{ $o.tilt | default "left" }}">{{ .Inner | .Page.RenderString }}</span>
+{{- /* no trailing newline */ -}}

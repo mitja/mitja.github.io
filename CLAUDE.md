@@ -190,7 +190,10 @@ Files:
 
 ## Theme
 
-Using [Blowfish](https://github.com/nunocoracao/blowfish) theme.
+[Blowfish](https://github.com/nunocoracao/blowfish), with the `paasbox` theme
+component on top (`theme = ["paasbox", "blowfish"]`, `colorScheme = "paasbox"`).
+`themes/paasbox/` carries the look of ../paasbox-web: colours, Fraunces and
+Inter, and the hand-drawn markers. See `themes/paasbox/README.md`.
 
 ## Custom Shortcodes
 
@@ -201,6 +204,19 @@ Embed external apps in posts:
 ```markdown
 {{</* iframed url="chatty.mitjamartini.com" title="Chat Demo" height="600px" */>}}
 ```
+
+### Markers and notes (paasbox theme)
+
+```markdown
+==yellow marker==
+{{</* marker */>}}text{{</* /marker */>}}             {{</* marker mint underline */>}}…{{</* /marker */>}}
+{{</* marker coral circle */>}}…{{</* /marker */>}}   {{</* hl warning */>}}…{{</* /hl */>}}
+{{</* wavy sm accent */>}}…{{</* /wavy */>}}         {{</* dotted lg success */>}}…{{</* /dotted */>}}
+{{</* inline-note note="Shown on hover" */>}}term{{</* /inline-note */>}}
+{{</* margin-note label="Aside" tone="mint" */>}}Markdown body{{</* /margin-note */>}}
+```
+
+All options are listed in `themes/paasbox/README.md`; an unknown one fails the build.
 
 ## Common Tasks for AI Assistants
 

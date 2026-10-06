@@ -1,0 +1,21 @@
+{{- /*
+  A dotted underline that shows a note on hover and keyboard focus
+  (InlineNote.astro in paasbox-web). Printed, the note follows in brackets.
+
+    {{< inline-note note="Retrieval-augmented generation" >}}RAG{{< /inline-note >}}
+    {{< inline-note note="…" tone="coral" >}}…{{< /inline-note >}}
+
+  note: the text of the bubble (required)
+  tone: yellow (default) | mint | coral | blue
+*/ -}}
+{{- $o := partial "paasbox/options.html" (dict "sc" . "free" (slice "note") "sets" (dict
+  "tone" (slice "yellow" "mint" "coral" "blue")
+)) -}}
+{{- if not $o.note -}}
+  {{- errorf "%s: {{< inline-note >}} needs note=\"…\"" .Position -}}
+{{- end -}}
+{{- /* Ordinal alone repeats when several pages' content shares one page,
+       as in Blowfish's stream view, so the page goes into the id too. */ -}}
+{{- $id := printf "pb-note-%s-%d" (substr (md5 .Page.RelPermalink) 0 6) .Ordinal -}}
+<span class="pb-inline-note" data-tone="{{ $o.tone | default "yellow" }}" tabindex="0" aria-describedby="{{ $id }}">{{ .Inner | .Page.RenderString }}<span class="pb-inline-note__bubble" id="{{ $id }}" role="tooltip">{{ $o.note | .Page.RenderString }}</span></span>
+{{- /* no trailing newline */ -}}

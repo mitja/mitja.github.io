@@ -1,0 +1,7 @@
+name = "paasbox"
+license = "MIT"
+description = "The paasbox look (paper and ink, forest green, Fraunces and Inter, hand-drawn markers) as a component over Blowfish."
+min_version = "0.146.0"
+
+[author]
+  name = "Mitja Martini"
