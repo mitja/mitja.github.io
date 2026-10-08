@@ -10,7 +10,7 @@ hero:
   intro: "By day I am a Cloud Services Solution Designer at T-Systems. On the side I work on one question: how can AI agents be used ++securely and reliably++ in operational processes?"
   primary:
     text: "Book a first call"
-    url: "TODO(Mitja): link to the Microsoft Bookings page"
+    url: "mailto:hi@mitjamartini.com?subject=First%20call"
   #secondary:
   #  text: "KI Bauer podcast (German)"
   #  url: "https://kibauer.de"

@@ -10,7 +10,7 @@ hero:
   intro: "Hauptberuflich bin ich Cloud Services Solution Designer bei T-Systems. Nebenberuflich beschäftige ich mich mit der Frage: Wie können KI-Agenten ++sicher und zuverlässig++ in betrieblichen Abläufen eingesetzt werden?"
   primary:
     text: "Erstgespräch buchen"
-    url: "TODO(Mitja): Link zur Microsoft-Bookings-Seite"
+    url: "mailto:hi@mitjamartini.com?subject=Erstgespr%C3%A4ch"
   #secondary:
   #  text: "KI Bauer Podcast hören"
   #  url: "https://kibauer.de"
