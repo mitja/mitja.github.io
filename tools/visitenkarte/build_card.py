@@ -33,6 +33,10 @@ from fontTools.varLib.instancer import instantiateVariableFont
 from reportlab.pdfgen import canvas
 
 FONTS, ICC, OUT = sys.argv[1:4]
+# --no-marks: the page is the bleed format itself (91 x 61 mm), without crop
+# marks. Online printers that show the uploaded page as their preview (such as
+# Heenemann's) otherwise show the marks in it.
+MARKS = "--no-marks" not in sys.argv[4:]
 HERE = pathlib.Path(__file__).resolve().parent
 CONTACT = tomllib.loads((HERE / "kontakt.toml").read_text())
 if (HERE / "kontakt.local.toml").exists():
@@ -42,7 +46,7 @@ MM = 72 / 25.4
 TRIM_W, TRIM_H = 85.0, 55.0
 BLEED = 3.0
 MARK_OFFSET, MARK_LEN = 3.0, 5.0
-OFF = MARK_OFFSET + MARK_LEN            # trim edge inside the media box
+OFF = MARK_OFFSET + MARK_LEN if MARKS else BLEED   # trim edge inside the media box
 MEDIA_W, MEDIA_H = TRIM_W + 2 * OFF, TRIM_H + 2 * OFF
 
 # CMYK as 0..1. Petrol #00657f through ISO Coated v2 (ECI), relative colorimetric + BPC.
@@ -183,7 +187,8 @@ def main():
         size -= 0.1
     text(c, inter600, role, size, L, 49.5, PETROL, tracking=0.08)
     print(f"role at {size:.1f} pt")
-    crop_marks(c)
+    if MARKS:
+        crop_marks(c)
     c.showPage()
 
     # Page 2, back: the pitch on top; contact left and the QR code right, both
@@ -209,7 +214,8 @@ def main():
     size = 18.0
     qx, qtop = TRIM_W - L - size, web + 0.5 - size
     version, n, module = qr(c, qx, qtop, size)
-    crop_marks(c)
+    if MARKS:
+        crop_marks(c)
     c.showPage()
     c.save()
     w_email = w_addr = max(widths)

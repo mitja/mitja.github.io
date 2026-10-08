@@ -20,6 +20,10 @@ unzip -o -j /tmp/eci.zip "*ISOcoated_v2_eci.icc" -d /tmp/icc
 /tmp/card-venv/bin/python build_card.py <repo>/themes/paasbox/static/fonts /tmp/icc/ISOcoated_v2_eci.icc Visitenkarte_Mitja_Martini_85x55_PDFX4.pdf
 ```
 
+Add `--no-marks` for a page of exactly the bleed format (91 × 61 mm, trim 3 mm inside, no crop marks).
+This is the variant to upload when the printer's preview shows the page as it is, crop marks included:
+`Visitenkarte_Mitja_Martini_85x55_PDFX4_ohne-Schnittmarken.pdf`.
+
 The fonts are Fraunces and Inter from the paasbox theme (`themes/paasbox/static/fonts`, OFL). The script
 prints the size the role line needed to fit the 4 mm safe area and where the QR code sits.
 
