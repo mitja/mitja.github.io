@@ -12,6 +12,10 @@
   startLevel = 2
   endLevel = 4
 
-# ==text== renders as <mark>, which the paasbox theme draws as a yellow marker.
+# ==text== renders as <mark> and ++text++ as <ins>. The paasbox theme draws
+# them as its two annotations: a tilted highlight block behind a phrase, and a
+# fine wavy underline.
 [goldmark.extensions.extras.mark]
+  enable = true
+[goldmark.extensions.extras.insert]
   enable = true

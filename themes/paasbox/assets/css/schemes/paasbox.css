@@ -1,9 +1,11 @@
 /* ┌─────────────────────────────────────────────────────────────────────┐
    │ paasbox — a Blowfish colour scheme that carries the whole look.       │
    │ Ported from ../paasbox-web/src/styles (paasbox.css + global.css):     │
-   │ paper and ink, the forest-green accent, the muted-salmon coral,       │
-   │ Fraunces for display headings, Inter for everything else, and the     │
-   │ hand-drawn markers and notes.                                         │
+   │ paper and ink, Fraunces for display headings, Inter for everything    │
+   │ else, and the hand-drawn markers and notes. Two departures: the       │
+   │ accent is petrol (oklch hue 222) where paasbox has forest green, and  │
+   │ the warm colour is the red of the KI Bauer cover's microphone where   │
+   │ paasbox has a muted salmon.                                           │
    │                                                                       │
    │ WHY EVERYTHING IS IN THE SCHEME FILE. Blowfish loads exactly one file │
    │ by name from any theme: css/schemes/<colorScheme>.css. The other slot,│
@@ -26,7 +28,10 @@
    Blowfish reads these as "r, g, b" triples and uses ONE ramp for both modes:
    the light end is light mode's paper and borders, the dark end dark mode's
    (body is bg-neutral / dark:bg-neutral-800, text neutral-900 / neutral).
-   So the light stops are the paasbox paper, the dark stops its dark paper. */
+   So the light stops are the paasbox paper, the dark stops the dark paper.
+   The dark paper is kibauer's cool slate (../kibauer/src/styles/theme.css,
+   oklch with hue 260–280), not paasbox's green-black; 600–900 are
+   those oklch values in sRGB. */
 :root {
   --color-neutral: 251, 248, 241;     /* --pb-paper #fbf8f1 */
   --color-neutral-50: 255, 253, 248;  /* --pb-paper-raised #fffdf8 */
@@ -35,35 +40,40 @@
   --color-neutral-300: 200, 208, 202; /* dark-mode body text */
   --color-neutral-400: 170, 181, 174; /* --pb-ink-soft, dark #aab5ae */
   --color-neutral-500: 95, 104, 99;   /* near --pb-ink-soft, light; AA on paper */
-  --color-neutral-600: 63, 74, 68;
-  --color-neutral-700: 38, 48, 43;    /* light body text, dark-mode raised bg */
-  --color-neutral-800: 17, 23, 20;    /* --pb-paper, dark #111714 */
-  --color-neutral-900: 11, 15, 13;
+  --color-neutral-600: 48, 59, 77;    /* kibauer dark border  oklch(35% 0.035 260) */
+  --color-neutral-700: 33, 38, 53;    /* kibauer dark input   oklch(27% 0.03 270) */
+  --color-neutral-800: 18, 22, 31;    /* kibauer dark paper   oklch(20% 0.02 270) */
+  --color-neutral-900: 10, 13, 21;    /* a step darker        oklch(16% 0.018 270) */
 
-  /* Forest green — paasbox's brand ramp (global.css --color-brand-*). */
-  --color-primary-50: 243, 250, 246;
-  --color-primary-100: 230, 244, 238;
-  --color-primary-200: 207, 233, 222; /* accent-low, light #cfe9de */
-  --color-primary-300: 168, 223, 198; /* --pb-mint #a8dfc6 */
-  --color-primary-400: 138, 209, 179; /* --pb-accent, dark #8ad1b3 */
-  --color-primary-500: 22, 128, 106;  /* brand-500 #16806a */
-  --color-primary-600: 14, 102, 81;   /* --pb-accent, light #0e6651 */
-  --color-primary-700: 8, 75, 61;     /* --pb-accent-strong #084b3d */
-  --color-primary-800: 6, 58, 47;
-  --color-primary-900: 12, 47, 34;    /* accent-low, dark #0c2f22 */
+  /* Petrol — the accent, oklch hue 222 throughout. paasbox.com uses forest
+     green here; on the slate dark paper green read as a second colour world.
+     Petrol sits next to the slate's blue, stands opposite the coral and the
+     yellow marker, and is friendlier on the warm paper than indigo was. */
+  --color-primary-50: 239, 249, 253;  /* oklch(97.5% 0.012 222) */
+  --color-primary-100: 221, 243, 251; /* oklch(95% 0.025 222) */
+  --color-primary-200: 191, 229, 244; /* oklch(90% 0.045 222) */
+  --color-primary-300: 159, 216, 236; /* oklch(85% 0.065 222) */
+  --color-primary-400: 127, 199, 223; /* --pb-accent, dark #7fc7df */
+  --color-primary-500: 28, 135, 165;  /* oklch(58% 0.10 222) */
+  --color-primary-600: 0, 101, 127;   /* --pb-accent, light #00657f */
+  --color-primary-700: 0, 72, 94;     /* --pb-accent-strong #00485e */
+  --color-primary-800: 0, 49, 65;     /* oklch(29% 0.06 222) */
+  --color-primary-900: 4, 35, 45;     /* oklch(24% 0.04 222) */
 
-  /* Muted salmon — paasbox's coral (global.css --color-cta-*). Blowfish uses
-     the secondary ramp for inline code: 700 in light, 400 in dark. */
-  --color-secondary-50: 253, 241, 236;
-  --color-secondary-100: 251, 225, 216;
-  --color-secondary-200: 247, 199, 184;
-  --color-secondary-300: 242, 163, 141; /* --pb-coral, light #f2a38d */
-  --color-secondary-400: 232, 145, 122;
-  --color-secondary-500: 201, 112, 90;
-  --color-secondary-600: 164, 92, 76;
-  --color-secondary-700: 145, 79, 64;   /* --pb-coral, dark #914f40 */
-  --color-secondary-800: 110, 58, 47;
-  --color-secondary-900: 42, 13, 5;     /* CTA ink #2a0d05 */
+  /* Cover red — the microphone of the KI Bauer cover, #e94326, oklch hue 32.
+     The warm colour for the CTA and the decoration (where paasbox has a
+     muted salmon). Blowfish uses this ramp for inline code: 700 in light
+     (6.2:1 on paper), 400 in dark (7.4:1 on the slate). */
+  --color-secondary-50: 255, 243, 240;  /* oklch(97.5% 0.015 32) */
+  --color-secondary-100: 255, 229, 222; /* oklch(94.5% 0.035 32) */
+  --color-secondary-200: 255, 203, 190; /* oklch(89% 0.07 32) */
+  --color-secondary-300: 255, 169, 151; /* oklch(82% 0.11 32) */
+  --color-secondary-400: 251, 131, 108; /* --pb-coral, dark #fb836c */
+  --color-secondary-500: 233, 67, 38;   /* the cover red #e94326, --pb-coral light */
+  --color-secondary-600: 212, 53, 24;   /* --pb-cta #d43518, white on it 4.8:1 */
+  --color-secondary-700: 175, 45, 22;   /* --pb-cta-hover #af2d16 */
+  --color-secondary-800: 137, 35, 18;   /* oklch(42% 0.14 32) */
+  --color-secondary-900: 82, 23, 13;    /* oklch(30% 0.09 32) */
 }
 
 /* ── paasbox tokens (paasbox.css, global.css) ───────────────────────────── */
@@ -75,25 +85,25 @@
   --pb-ink: #18201d;
   --pb-ink-soft: #59615d;
   --pb-line: #d9d6cc;
-  --pb-accent: #0e6651;
-  --pb-accent-strong: #084b3d;
+  --pb-accent: #00657f;        /* petrol, 6.2:1 on paper */
+  --pb-accent-strong: #00485e;
   --pb-marker: #f4df64;
   --pb-mint: #a8dfc6;
-  --pb-coral: #f2a38d;
+  --pb-coral: #e94326;         /* the cover red: wavy underlines, quote bar, accent marks */
   --pb-blue: #a9cbea;
   --pb-shadow: 0 14px 40px rgb(24 32 29 / 8%);
 
-  /* Coral CTA (global.css --color-cta-*): primary buttons only, never links.
-     Light mode is a pale salmon with dark ink, dark mode a deep brick with
-     light ink; the two inks differ on purpose (each passes AA). */
-  --pb-cta: #f2a38d;
-  --pb-cta-hover: #e8917a;
-  --pb-cta-ink: #2a0d05;
+  /* CTA: primary buttons only, never links. The cover red one step darker,
+     so white text on it passes AA (4.8:1; on #e94326 itself it is 4.0:1).
+     The same in both modes: on the slate it stands out on its own. */
+  --pb-cta: #d43518;
+  --pb-cta-hover: #af2d16;
+  --pb-cta-ink: #ffffff;
 
   /* Annotation roles (global.css). primary/secondary/accent/warning follow
      the tokens above and so flip with the mode; success/error do not. */
   --pb-mark-primary: var(--pb-accent);
-  --pb-mark-secondary: var(--pb-mint);
+  --pb-mark-secondary: #9fd8ec; /* light petrol, the accent's partner */
   --pb-mark-accent: var(--pb-coral);
   --pb-mark-warning: var(--pb-marker);
   --pb-mark-success: #22a04a;
@@ -104,24 +114,24 @@
   --default-font-family: var(--pb-sans);
 }
 
+/* Dark mode: kibauer's slate paper (../kibauer/src/styles/theme.css); ink,
+   accents and markers are paasbox's dark values, as kibauer keeps them too. */
 html.dark {
-  --pb-paper: #111714;
-  --pb-paper-raised: #171f1b;
+  --pb-paper: oklch(20% 0.02 270);
+  --pb-paper-raised: oklch(25% 0.025 280);
   --pb-ink: #edf1ea;
   --pb-ink-soft: #aab5ae;
-  --pb-line: #344039;
-  --pb-accent: #8ad1b3;
-  --pb-accent-strong: #b6ead4;
+  --pb-line: oklch(35% 0.035 260);
+  --pb-accent: #7fc7df;        /* 9.6:1 on the slate paper */
+  --pb-accent-strong: #b4e0ef;
   --pb-marker: #9e8127;
   --pb-mint: #33755e;
-  --pb-coral: #914f40;
+  --pb-coral: #fb836c;         /* the cover red, lighter for the slate (7.4:1) */
   --pb-blue: #3f688c;
   --pb-shadow: 0 18px 48px rgb(0 0 0 / 24%);
 
-  --pb-cta: #914f40;
-  --pb-cta-hover: #a45c4c;
-  --pb-cta-ink: #fdf1ec;
 
+  --pb-mark-secondary: #135568;
   --pb-mark-success: #5cc15b;
   --pb-mark-error: #f87171;
 }
@@ -206,6 +216,26 @@ body {
   letter-spacing: -0.008em;
 }
 
+/* Blowfish's basic header asks for pl-0 pr-0 next to px-4 sm:px-6, but in its
+   Tailwind 4 build the sm:px-6 comes later and wins, so the site name and the
+   icons sat 24px inside the text column. Flush with the column again. */
+.main-menu {
+  padding-inline: 0;
+}
+
+/* An SVG logo (params.logo), which Blowfish inlines: 2rem high, and if its
+   shapes carry these classes they take the accent and the paper, so the logo
+   follows the colour scheme and the dark mode. scripts/logo.py builds one.
+   Blowfish sizes it 5rem square with an unlayered `.logo svg` of its own,
+   hence the extra class here. */
+.main-menu .logo svg {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+}
+.pb-logo-disc { fill: var(--pb-accent); }
+.pb-logo-mark { fill: var(--pb-paper); }
+
 /* ── Display headings ───────────────────────────────────────────────────────
    Fraunces for the headings inside <main>: page and post titles, the
    author's ## and ###, post titles in lists. h4 and below stay Inter, as do
@@ -246,6 +276,19 @@ main h1 {
 }
 
 /* ── Prose ──────────────────────────────────────────────────────────────── */
+/* Text in ink, not in a step of the neutral ramp, whose dark end is now blue;
+   --pb-ink flips with the mode, so this covers prose-invert too (as kibauer). */
+.prose {
+  --tw-prose-body: var(--pb-ink);
+  --tw-prose-headings: var(--pb-ink);
+  --tw-prose-bold: var(--pb-ink);
+  --tw-prose-quotes: var(--pb-ink);
+  --tw-prose-links: var(--pb-accent);
+  --tw-prose-bullets: var(--pb-accent);
+  --tw-prose-counters: var(--pb-accent);
+  --tw-prose-quote-borders: var(--pb-coral);
+}
+
 .prose :is(p, li) {
   line-height: 1.72;
 }
@@ -310,12 +353,11 @@ main h1 {
 }
 
 /* ── Marker (Marker.astro) ──────────────────────────────────────────────────
-   {{< marker >}}, and `==text==` in Markdown, which Hugo renders as <mark>
-   (anywhere in <main>, so also in front-matter text run through markdownify).
-   Styles: highlight (a felt-tip stroke over the lower half), underline,
-   circle. Tones: yellow (default), mint, coral, blue. Tilt: left (default),
-   right, none. */
-main mark,
+   {{< marker >}}: a felt-tip stroke over the lower half of the text, an
+   underline stroke, or a ring. paasbox-web defines it but its pages use the
+   annotations below; so do `==text==` and `++text++`.
+   Tones: yellow (default), mint, coral, blue. Tilt: left (default), right,
+   none. */
 .pb-marker {
   --marker-color: var(--pb-marker);
   --marker-rotate: -0.4deg;
@@ -329,7 +371,6 @@ main mark,
   box-decoration-break: clone;
 }
 
-main mark::before,
 .pb-marker--highlight::before {
   position: absolute;
   z-index: -1;
@@ -374,14 +415,52 @@ main mark::before,
 .pb-marker[data-tilt='none'] { --marker-rotate: 0deg; }
 
 /* ── Annotations (global.css; remark-annotations.mjs in paasbox) ───────────
-   {{< hl >}}: a translucent, tilted block behind the text, in one of the six
-   role colours. {{< wavy >}} / {{< dotted >}}: underlines in three weights. */
+   What paasbox-web's pages use: a translucent, tilted block behind a phrase
+   of a heading, and wavy or dotted underlines in running text.
+
+     ==text==     <mark>  the block, yellow like a highlighter pen, or in the
+                          tone of the nearest .pb-tone-* ancestor
+     ++text++     <ins>   a fine wavy underline, coral, or that tone
+     {{< hl >}}           the block in a colour of its own
+     {{< wavy >}} / {{< dotted >}}  underlines in three weights
+
+   Both Markdown forms work anywhere in <main>, so also in front-matter text
+   run through markdownify. The block does not wrap (as in paasbox), so mark
+   a phrase, not a sentence. */
+/* --pb-mark-strength: how much of the colour the block takes. Yellow reads
+   faint, the dark accent pale on the warm paper, so both get more than 30 %. */
+.pb-tone-primary { --pb-mark-tone: var(--pb-mark-primary); --pb-mark-strength: 38%; }
+.pb-tone-secondary { --pb-mark-tone: var(--pb-mark-secondary); --pb-mark-strength: 30%; }
+.pb-tone-accent { --pb-mark-tone: var(--pb-mark-accent); --pb-mark-strength: 30%; }
+.pb-tone-success { --pb-mark-tone: var(--pb-mark-success); --pb-mark-strength: 30%; }
+.pb-tone-warning { --pb-mark-tone: var(--pb-mark-warning); --pb-mark-strength: 40%; }
+.pb-tone-error { --pb-mark-tone: var(--pb-mark-error); --pb-mark-strength: 30%; }
+
+main mark {
+  --mark: var(--pb-mark-tone, var(--pb-mark-warning));
+  color: inherit;
+  background: none;
+}
+
+main ins {
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: var(--pb-mark-tone, var(--pb-mark-accent));
+  text-decoration-thickness: 1.5px;
+  text-decoration-skip-ink: none;
+  text-underline-offset: 0.18em;
+}
+
+main mark,
 .pb-highlight {
-  --mark: var(--pb-mark-primary);
   position: relative;
   white-space: nowrap;
   isolation: isolate;
 }
+.pb-highlight {
+  --mark: var(--pb-mark-primary);
+}
+main mark::before,
 .pb-highlight::before {
   content: '';
   position: absolute;
@@ -394,6 +473,9 @@ main mark::before,
   z-index: -1;
   border-radius: 0.2em 0.4em 0.3em 0.4em;
 }
+main mark::before {
+  background: color-mix(in oklab, var(--mark) var(--pb-mark-strength, 40%), transparent);
+}
 .pb-highlight-primary { --mark: var(--pb-mark-primary); }
 .pb-highlight-secondary { --mark: var(--pb-mark-secondary); }
 .pb-highlight-accent { --mark: var(--pb-mark-accent); }
@@ -402,6 +484,8 @@ main mark::before,
 /* Amber reads faint at 30 %, so warning gets 40 %. */
 .pb-highlight-warning { --mark: var(--pb-mark-warning); }
 .pb-highlight-warning::before { background: color-mix(in oklab, var(--mark) 40%, transparent); }
+/* The accent reads pale at 30 % on the warm paper, so primary gets 38 %. */
+.pb-highlight-primary::before { background: color-mix(in oklab, var(--mark) 38%, transparent); }
 
 .pb-underline-wavy, .pb-underline-wavy-sm, .pb-underline-wavy-lg,
 .pb-underline-dotted, .pb-underline-dotted-sm, .pb-underline-dotted-lg {
@@ -471,10 +555,10 @@ main mark::before,
 }
 
 .pb-margin-note[data-tone='mint'] { --note-color: #397b62; }
-.pb-margin-note[data-tone='coral'] { --note-color: #a84f3a; }
+.pb-margin-note[data-tone='coral'] { --note-color: #af2d16; }
 .pb-margin-note[data-tone='blue'] { --note-color: #356b9d; }
 html.dark .pb-margin-note[data-tone='mint'] { --note-color: #8ad1b3; }
-html.dark .pb-margin-note[data-tone='coral'] { --note-color: #f2a38d; }
+html.dark .pb-margin-note[data-tone='coral'] { --note-color: #fb836c; }
 html.dark .pb-margin-note[data-tone='blue'] { --note-color: #a9cbea; }
 
 @media (min-width: 48rem) {

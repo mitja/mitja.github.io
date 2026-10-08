@@ -6,8 +6,8 @@ draft: false
 hero:
   eyebrow: "KI Bauer · Berlin"
   name: "Mitja Martini"
-  tagline: "AI that ==pays off==: in your processes and applications."
-  intro: "By day I am a Cloud Services Solution Designer at T-Systems; on the side I work as a trainer and coach. I help you use AI where it pays off: in your processes and in AI applications you build and run yourself. From Berlin, in English or German."
+  tagline: "AI that ++pays off++: in your processes and applications."
+  intro: "By day I am a Cloud Services Solution Designer at T-Systems; on the side I am an AI engineer. I help you use AI where it pays off: in your processes and in AI applications you build and run yourself. From Berlin, in English or German."
   primary:
     text: "Book a first call"
     url: "TODO(Mitja): link to the Microsoft Bookings page"
@@ -15,8 +15,8 @@ hero:
     text: "KI Bauer podcast (German)"
     url: "https://kibauer.de"
 approach:
-  heading: "How I work"
-  lead: "No hype and no tool reviews: every recommendation comes with ==numbers==, and what I recommend I have tried myself. I enable you and your team instead of building for you."
+  heading: "How I ==work=="
+  lead: "No hype and no tool reviews: every recommendation comes with ++numbers++, and what I recommend I have tried myself. I enable you and your team instead of building for you."
   items:
     - title: "Analysis"
       text: "Where does time get lost today, where does AI really help, what does it cost, what does it bring? We calculate with your figures. The result is a small, measurable first step."
@@ -25,7 +25,7 @@ approach:
     - title: "Operations"
       text: "AI-native application operations: run it securely, measure quality and cost, and improve quickly when something changes."
 offers:
-  heading: "Services"
+  heading: "==Services=="
   lead: "Coaching and trainings. Both start with a short conversation about what you do today and where you want to go."
   items:
     - title: "Coaching: AI in your processes"
@@ -42,11 +42,11 @@ offers:
       link_text: "Courses on paasbox.com"
   note: "TODO(Mitja): add prices, formats and availability."
 apps:
-  heading: "Apps"
+  heading: "==Apps=="
   lead: "Small tools from my own experiments: proof that it works, and ready for you to use."
   more_text: "All apps"
 channels:
-  heading: "Podcast, videos and open source"
+  heading: "Podcast, videos and ==open source=="
   lead: "Free: what I try out and calculate."
   items:
     - title: "KI Bauer podcast"
@@ -65,11 +65,11 @@ channels:
       text: "Code for articles and experiments."
       url: "https://github.com/mitja"
 articles:
-  heading: "Latest articles"
+  heading: "Latest ==articles=="
   lead: "I write rarely, and about things I have tried myself."
   more_text: "All articles"
 about:
-  heading: "About"
+  heading: "==About=="
   text: "I come from sales and solution design for enterprise IT, for about twenty years; by day I am a Cloud Services Solution Designer at T-Systems. On the side I work as a trainer and coach and test AI agents on my own systems: an agent-native CRM, paasbox, the Cloud Viewer app and Mitjas Relay. What works, I calculate and talk about in the KI Bauer podcast."
   link: "/en/about/"
   link_text: "More about me"

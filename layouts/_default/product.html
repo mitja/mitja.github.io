@@ -8,7 +8,7 @@
   <div class="pp">
     <header class="pp-head">
       {{ with .Params.kicker }}<p class="pp-kicker">{{ . }}</p>{{ end }}
-      <h1><span class="pb-marker pb-marker--highlight" data-tone="yellow">{{ .Title | emojify }}</span>{{ with .Params.status }} <span class="pp-badge">{{ . }}</span>{{ end }}</h1>
+      <h1>{{ .Title | emojify }}{{ with .Params.status }} <span class="pp-badge">{{ . }}</span>{{ end }}</h1>
       {{ with .Params.subtitle }}<p class="pp-subtitle">{{ . }}</p>{{ end }}
       {{ with .Params.summary }}<p class="pp-summary">{{ . }}</p>{{ end }}
       <div class="pp-actions">

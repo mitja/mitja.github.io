@@ -2,7 +2,7 @@
 {{ define "main" }}
   <div class="lp pp">
     <header class="pp-head">
-      <h1><span class="pb-marker pb-marker--highlight" data-tone="yellow">{{ .Title | emojify }}</span></h1>
+      <h1>{{ .Title | emojify }}</h1>
       {{ with .Params.summary }}<p class="pp-summary">{{ . }}</p>{{ end }}
     </header>
     <div class="lp-apps">

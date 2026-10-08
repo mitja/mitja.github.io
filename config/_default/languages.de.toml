@@ -7,7 +7,7 @@ title = "Mitja Martini"
   displayName = "DE"
   isoCode = "de"
   rtl = false
-  # logo = "img/mitja-avatar.png"  # removed to show only name in header
+  logo = "img/logo.svg" # an M on a petrol disc, built by scripts/logo.py; the name stays as text beside it
   description = "Mitja Martini – Trainer, Coach und Entwickler für AI Engineering, Agentic DevOps und Platform Engineering in Berlin."
   dateFormat = "2. January 2006"
 

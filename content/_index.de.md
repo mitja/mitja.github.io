@@ -6,8 +6,8 @@ draft: false
 hero:
   eyebrow: "KI Bauer · Berlin"
   name: "Mitja Martini"
-  tagline: "KI, die sich ==rechnet==: in Deinen Abläufen und Anwendungen."
-  intro: "Hauptberuflich bin ich Cloud Services Solution Designer bei T-Systems, nebenberuflich Trainer und Coach. Ich helfe Dir, KI dort einzusetzen, wo sie sich rechnet: in Deinen Abläufen und in KI-Anwendungen, die Du selbst entwickelst und betreibst. Aus Berlin, auf Deutsch oder Englisch."
+  tagline: "KI, die sich ++rechnet++: in Deinen Abläufen und Anwendungen."
+  intro: "Hauptberuflich bin ich Cloud Services Solution Designer bei T-Systems, nebenberuflich AI Engineer. Ich helfe Dir, KI dort einzusetzen, wo sie sich rechnet: in Deinen Abläufen und in KI-Anwendungen, die Du selbst entwickelst und betreibst. Aus Berlin, auf Deutsch oder Englisch."
   primary:
     text: "Erstgespräch buchen"
     url: "TODO(Mitja): Link zur Microsoft-Bookings-Seite"
@@ -15,8 +15,8 @@ hero:
     text: "KI Bauer Podcast hören"
     url: "https://kibauer.de"
 approach:
-  heading: "Wie ich arbeite"
-  lead: "Kein Hype und kein Werkzeugtest: Jede Empfehlung hat eine ==Rechnung==, und was ich empfehle, habe ich selbst ausprobiert. Ich befähige Dich und Dein Team, statt für Euch zu bauen."
+  heading: "Wie ich ==arbeite=="
+  lead: "Kein Hype und kein Werkzeugtest: Jede Empfehlung hat eine ++Rechnung++, und was ich empfehle, habe ich selbst ausprobiert. Ich befähige Dich und Dein Team, statt für Euch zu bauen."
   items:
     - title: "Analyse"
       text: "Wo geht heute Zeit verloren, wo hilft KI wirklich, was kostet sie, was bringt sie? Gerechnet wird mit Deinen Zahlen. Ergebnis ist ein kleiner, messbarer erster Schritt."
@@ -25,7 +25,7 @@ approach:
     - title: "Betrieb"
       text: "KI-nativer Anwendungsbetrieb: sicher betreiben, Qualität und Kosten messen und schnell nachbessern, wenn sich etwas ändert."
 offers:
-  heading: "Angebot"
+  heading: "==Angebot=="
   lead: "Coaching und Trainings. Beides beginnt mit einem kurzen Gespräch darüber, was Du heute tust und wohin Du willst."
   items:
     - title: "Coaching: KI in Deinen Abläufen"
@@ -42,11 +42,11 @@ offers:
       link_text: "Kurse auf paasbox.com"
   note: "TODO(Mitja): Preise, Formate und Verfügbarkeit ergänzen."
 apps:
-  heading: "Apps"
+  heading: "==Apps=="
   lead: "Kleine Werkzeuge aus meinen eigenen Experimenten: Beleg dafür, dass es funktioniert, und für Dich direkt nutzbar."
   more_text: "Alle Apps"
 channels:
-  heading: "Podcast, Videos und Open Source"
+  heading: "Podcast, Videos und ==Open Source=="
   lead: "Kostenlos: was ich ausprobiere und nachrechne."
   items:
     - title: "KI Bauer Podcast"
@@ -65,11 +65,11 @@ channels:
       text: "Code zu Artikeln und Experimenten."
       url: "https://github.com/mitja"
 articles:
-  heading: "Neue Artikel"
+  heading: "Neue ==Artikel=="
   lead: "Ich schreibe selten, dafür über Dinge, die ich selbst ausprobiert habe."
   more_text: "Alle Artikel"
 about:
-  heading: "Über mich"
+  heading: "==Über mich=="
   text: "Ich komme aus dem Vertrieb und Solution Design für Enterprise-IT, seit rund zwanzig Jahren; hauptberuflich bin ich Cloud Services Solution Designer bei T-Systems. Nebenberuflich arbeite ich als Trainer und Coach und erprobe KI-Agenten an eigenen Systemen: einem agent-nativen CRM, paasbox, der Cloud-Viewer-App und Mitjas Relay. Was funktioniert, rechne ich nach und erzähle es im KI Bauer Podcast."
   link: "/de/ueber-mich/"
   link_text: "Mehr über mich"

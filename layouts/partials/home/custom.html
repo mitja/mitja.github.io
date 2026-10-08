@@ -3,10 +3,11 @@
   matter of content/_index.md and content/_index.de.md; this partial only
   arranges them. Styles: assets/css/custom.css (.lp-*).
 
-  Markers come from the paasbox theme: the name has a yellow highlight, each
-  section heading a hand-drawn underline in turn mint, coral, blue. The
-  running texts go through markdownify, so `==text==` in the front matter
-  is a yellow marker and **bold** works too.
+  Annotations come from the paasbox theme and follow paasbox.com's homepage.
+  The main heading (the name) stays plain; each section heading highlights the
+  phrase marked with ==…== in its front matter, in yellow like a highlighter
+  pen. A class pb-tone-<colour> on the <h2> would give it another colour. Headings and running texts go through
+  markdownify, so ==text== and ++text++ (a wavy underline) work in all of them.
 
   The English home also publishes the root-level redirect stubs that keep the
   old English URLs (/posts/…, /about/…) working, see partials/legacy-aliases.html.
@@ -22,7 +23,7 @@
   <section class="lp-hero">
     <div class="lp-hero-text">
       {{- with .eyebrow }}<p class="lp-hero-eyebrow">{{ . }}</p>{{ end }}
-      <h1 class="lp-hero-name"><span class="pb-marker pb-marker--highlight" data-tone="yellow">{{ .name }}</span></h1>
+      <h1 class="lp-hero-name">{{ .name }}</h1>
       <p class="lp-hero-tagline">{{ .tagline | markdownify }}</p>
       <p class="lp-hero-intro">{{ .intro | markdownify }}</p>
       <div class="lp-hero-actions">
@@ -37,7 +38,7 @@
         {{- with .secondary }}<a class="lp-btn lp-btn-quiet" href="{{ .url }}">{{ .text }}</a>{{ end }}
       </div>
     </div>
-    {{- with resources.Get "img/mitja-avatar.png" }}
+    {{- with resources.Get "img/mitja-avatar.jpg" }}
       {{- $img := .Fit "720x720 q85" }}
       <div class="lp-hero-photo">
         <img src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}" alt="{{ $p.hero.name }}" class="nozoom" fetchpriority="high">
@@ -50,7 +51,7 @@
   {{- with $p.approach }}
   <section class="lp-section" id="{{ if $isDE }}arbeitsweise{{ else }}approach{{ end }}">
     <div class="lp-section-head">
-      <h2><span class="pb-marker pb-marker--underline" data-tone="mint">{{ .heading }}</span></h2>
+      <h2>{{ .heading | markdownify }}</h2>
       {{ with .lead }}<p class="lp-lead">{{ . | markdownify }}</p>{{ end }}
     </div>
     <div class="lp-offers">
@@ -68,7 +69,7 @@
   {{- with $p.offers }}
   <section class="lp-section" id="{{ if $isDE }}angebot{{ else }}services{{ end }}">
     <div class="lp-section-head">
-      <h2><span class="pb-marker pb-marker--underline" data-tone="coral">{{ .heading }}</span></h2>
+      <h2>{{ .heading | markdownify }}</h2>
       {{ with .lead }}<p class="lp-lead">{{ . | markdownify }}</p>{{ end }}
     </div>
     <div class="lp-offers">
@@ -90,7 +91,7 @@
   {{- with $.Site.GetPage "apps" }}
   <section class="lp-section" id="apps">
     <div class="lp-section-head">
-      <h2><span class="pb-marker pb-marker--underline" data-tone="blue">{{ $p.apps.heading }}</span></h2>
+      <h2>{{ $p.apps.heading | markdownify }}</h2>
       {{ with $p.apps.lead }}<p class="lp-lead">{{ . | markdownify }}</p>{{ end }}
     </div>
     <div class="lp-apps">
@@ -112,7 +113,7 @@
   {{- with $p.channels }}
   <section class="lp-section" id="{{ if $isDE }}kanaele{{ else }}channels{{ end }}">
     <div class="lp-section-head">
-      <h2><span class="pb-marker pb-marker--underline" data-tone="mint">{{ .heading }}</span></h2>
+      <h2>{{ .heading | markdownify }}</h2>
       {{ with .lead }}<p class="lp-lead">{{ . | markdownify }}</p>{{ end }}
     </div>
     <ul class="lp-channels">
@@ -138,7 +139,7 @@
   {{- $posts := where $.Site.RegularPages "Type" "in" ($.Site.Params.mainSections | default (slice "posts")) }}
   <section class="lp-section" id="{{ if $isDE }}artikel{{ else }}articles{{ end }}">
     <div class="lp-section-head">
-      <h2><span class="pb-marker pb-marker--underline" data-tone="coral">{{ .heading }}</span></h2>
+      <h2>{{ .heading | markdownify }}</h2>
       {{ with .lead }}<p class="lp-lead">{{ . | markdownify }}</p>{{ end }}
     </div>
     <ol class="lp-articles">
@@ -158,7 +159,7 @@
   {{- with $p.about }}
   <section class="lp-section lp-about" id="{{ if $isDE }}ueber-mich{{ else }}about{{ end }}">
     <div class="lp-section-head">
-      <h2><span class="pb-marker pb-marker--underline" data-tone="blue">{{ .heading }}</span></h2>
+      <h2>{{ .heading | markdownify }}</h2>
     </div>
     <p>{{ .text | markdownify }}</p>
     {{- $text := .link_text }}

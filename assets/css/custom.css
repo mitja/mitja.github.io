@@ -12,13 +12,14 @@
    ------------------------------------------------------------------------ */
 
 .lp, .pp, .ad { --lp-ink: rgb(var(--color-neutral-900)); --lp-muted: rgb(var(--color-neutral-500)); --lp-rule: rgb(var(--color-neutral-200)); --lp-accent: rgb(var(--color-primary-600)); --lp-accent-ink: rgb(var(--color-neutral)); --lp-tint: rgb(var(--color-primary-50)); --lp-cta: var(--pb-cta, var(--lp-accent)); --lp-cta-hover: var(--pb-cta-hover, var(--lp-accent)); --lp-cta-ink: var(--pb-cta-ink, var(--lp-accent-ink)); }
-.dark .lp, .dark .pp, .dark .ad { --lp-ink: rgb(var(--color-neutral)); --lp-muted: rgb(var(--color-neutral-400)); --lp-rule: rgb(var(--color-neutral-700)); --lp-accent: rgb(var(--color-primary-400)); --lp-accent-ink: rgb(var(--color-neutral-900)); --lp-tint: rgba(var(--color-primary-400), 0.12); }
+.dark .lp, .dark .pp, .dark .ad { --lp-ink: rgb(var(--color-neutral)); --lp-muted: rgb(var(--color-neutral-400)); --lp-rule: rgb(var(--color-neutral-700)); --lp-accent: rgb(var(--color-primary-400)); --lp-accent-ink: rgb(var(--color-neutral-900)); --lp-tint: var(--pb-paper-raised, rgba(var(--color-primary-400), 0.12)); }
 
 .lp { color: var(--lp-ink); }
 /* :where() keeps this reset below the margins the .lp-hero-* rules set. */
 :where(.lp) p { margin: 0; }
 .lp a { text-decoration: none; }
-.lp a:hover, .lp a:focus-visible { text-decoration: underline; text-decoration-color: var(--lp-accent); text-underline-offset: 3px; }
+/* Not on buttons: a petrol underline on the coral pill looked like a mistake. */
+.lp a:not(.lp-btn):hover, .lp a:not(.lp-btn):focus-visible { text-decoration: underline; text-decoration-color: var(--lp-accent); text-underline-offset: 3px; }
 .lp a:focus-visible, .pp a:focus-visible, .ad a:focus-visible { outline: 2px solid var(--lp-accent); outline-offset: 3px; border-radius: 2px; }
 
 /* Hero: name set large and tight, the photo at the side on wide screens */
@@ -30,8 +31,10 @@
 .lp-hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; align-items: center; }
 .lp-hero-photo { order: -1; }
 @media (min-width: 768px) { .lp-hero-photo { order: 0; justify-self: end; } }
-.lp-hero-photo img { display: block; width: 7.5rem; height: 7.5rem; object-fit: cover; border-radius: 50%; margin: 0; background: var(--lp-tint); padding: 0.4rem; }
-@media (min-width: 768px) { .lp-hero-photo img { width: min(100%, 16rem); height: auto; aspect-ratio: 1 / 1; border-radius: 50%; background: var(--lp-tint); padding: 0.75rem; } }
+/* The photo with its background (the "Rethink the system" neon at the top):
+   a square with rounded corners, so the neon stays whole. */
+.lp-hero-photo img { display: block; width: 9rem; height: 9rem; object-fit: cover; border-radius: 0.9rem; margin: 0; }
+@media (min-width: 768px) { .lp-hero-photo img { width: min(100%, 17rem); height: auto; aspect-ratio: 1 / 1; border-radius: 1.25rem; } }
 
 .lp-btn { display: inline-flex; align-items: center; padding: 0.75rem 1.4rem; border-radius: 999px; font-weight: 600; font-size: 1rem; line-height: 1.2; white-space: nowrap; }
 .lp-btn-primary { background: var(--lp-cta); color: var(--lp-cta-ink); }
