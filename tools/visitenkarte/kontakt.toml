@@ -1,0 +1,9 @@
+# Contact details on the business card. The phone number goes in
+# kontakt.local.toml (git-ignored): phone = "+49 …"
+name = "Mitja Martini"
+role = "KI-AUTOMATISIERTER BETRIEB · BERLIN"
+email = "mitja@mitjamartini.com"
+web = "mitjamartini.com"
+qr_url = "https://mitjamartini.com/de/"
+pitch_eyebrow = "PAASBOX · PAASBOX.COM"
+pitch = ["Wo KI-Agenten Anwendungen", "sicher und zuverlässig betreiben."]
