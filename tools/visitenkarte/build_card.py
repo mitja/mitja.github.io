@@ -210,7 +210,10 @@ def main():
     for key, font, colour in lines:
         widths.append(text(c, font, CONTACT[key], 8.0, L, y, colour))
         y += lead
-    widths.append(text(c, inter500, CONTACT["web"], 8.0, L, web, PETROL))
+    w_web = text(c, inter500, CONTACT["web"], 8.0, L, web, PETROL)
+    if CONTACT.get("place"):
+        w_web += text(c, inter400, " · " + CONTACT["place"], 8.0, L + w_web, web, GREY)
+    widths.append(w_web)
     size = 18.0
     qx, qtop = TRIM_W - L - size, web + 0.5 - size
     version, n, module = qr(c, qx, qtop, size)

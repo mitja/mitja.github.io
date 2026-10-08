@@ -28,5 +28,5 @@ The fonts are Fraunces and Inter from the paasbox theme (`themes/paasbox/static/
 prints the size the role line needed to fit the 4 mm safe area and where the QR code sits.
 
 History: version 1 (2026-10-06) said "AI Engineer · Berlin" with the address and a vCard QR code.
-Version 2 (2026-10-08) says "KI-automatisierter Betrieb · Berlin", carries the PaaSbox pitch on the back,
+Version 2 (2026-10-08) says "KI-automatisierter Betrieb" (Berlin moved to the back, after the web address), carries the PaaSbox pitch on the back,
 drops the address, and the QR code opens https://mitjamartini.com/de/.

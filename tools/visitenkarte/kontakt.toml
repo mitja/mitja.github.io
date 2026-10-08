@@ -1,7 +1,8 @@
 # Contact details on the business card. The phone number goes in
 # kontakt.local.toml (git-ignored): phone = "+49 …"
 name = "Mitja Martini"
-role = "KI-AUTOMATISIERTER BETRIEB · BERLIN"
+role = "KI-AUTOMATISIERTER BETRIEB"
+place = "Berlin"      # on the back, after the web address
 email = "mitja@mitjamartini.com"
 web = "mitjamartini.com"
 qr_url = "https://mitjamartini.com/de/"
