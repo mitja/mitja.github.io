@@ -17,7 +17,7 @@ hero:
 approach:
   id: "what-i-build"
   heading: "What I ==build=="
-  lead: "My focus own developments is AI-automated IT operations."
+  lead: "My focus for my own developments is AI-automated IT operations."
   items:
     - title: "PaaSbox: the platform"
       text: "A Kubernetes platform to run applications securely and reliably with the help of coding agents."
@@ -39,7 +39,7 @@ offers:
       link: "mailto:hi@mitjamartini.com?subject=Conversation"
       link_text: "Ask for a conversation"
     - title: "Coaching: building and running AI applications"
-      text: "You are working on AI solutions, and make a running prototype production-ready, eg. with error analysis with an own eval set and aneval loop that keeps quality up in operation? A coaching might help you get to the next level."
+      text: "You are working on AI solutions, and make a running prototype production-ready, eg. with error analysis with an own eval set and an eval loop that keeps quality up in operation? A coaching might help you get to the next level."
       link: "mailto:hi@mitjamartini.com?subject=Coaching"
       link_text: "Ask for coaching"
       #link: "/en/ai-engineer/"
