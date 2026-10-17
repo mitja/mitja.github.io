@@ -1,7 +1,7 @@
 ---
 title: "Über mich"
 slug: "ueber-mich"
-summary: "Mitja Martini, Cloud Services Solution Designer bei T-Systems und nebenberuflich Trainer und Coach für AI Engineering in Berlin."
+summary: "Mitja Martini, Cloud Services Solution Designer und AI Engineer."
 date: 2026-10-05
 showAuthor: true
 showDate: false
@@ -16,12 +16,10 @@ showSummary: false
 sharingLinks: false
 ---
 
-Hallo, ich bin Mitja Martini. Hauptberuflich bin ich Cloud Services Solution Designer bei der T-Systems International GmbH. Nebenberuflich arbeite ich in Berlin als Trainer und Coach, mit drei Schwerpunkten: AI Engineering, Agentic DevOps und Platform Engineering.
+Hallo, ich bin Mitja Martini. Hauptberuflich bin ich Cloud Services Solution Designer bei der T-Systems International GmbH. Nebenberuflich gebe ich trainings und entwickle Software mit KI Elementen.
 
-Außerdem baue und betreibe ich seit Jahren kleine Anwendungen. 2025 habe ich angefangen, mit Coding Agents zu arbeiten, und Anfang 2026 konnte ich eine kleine SaaS-Anwendung in ein, zwei Tagen bauen. Ausliefern war der langsame Teil: Auth, DNS, E-Mail, Zahlung, Monitoring, Deployment. Kubernetes hat sich als guter Ort für all das erwiesen, und Gardener automatisiert Kubernetes selbst. So sind [paasbox](https://paasbox.com) entstanden, eine Hetzner-Cloud-Landschaft aus einem Befehl, die [Cloud Viewer](https://cloudviewer.app)-App für Hetzner-Server und [Mitjas Relay](/de/apps/relay/).
+Aktuell arbeite ich vor Allem an Software, die hilft, den IT Betrieb mit Coding Agents zu automatisieren.
 
-Mein Ziel ist, KI verantwortungsvoll, sicher und mit messbarem Mehrwert einzusetzen. Ich glaube an Learning by Doing: Jede Trainingssitzung endet mit etwas, das Du gebaut hast, und jedes Coaching arbeitet an Deinem echten Vorhaben.
+Ich will KI verantwortungsvoll, sicher und wertstiftend einsetzen. Ich glaube an Learning by Doing und bin aktuell vielleicht etwas zu tief darin abgetaucht. In meiner Freizeit verbringe ich gerne Zeit mit meiner kleinen Familie (wir haben eine Tochter), unserem Pudel und den Katzen. Ich mag Wassersport, vor Allem SUP und Windsurfing und versuche, mich mit Jogging und in meinem kleinen Home Gym fit zu halten.
 
-Du erreichst mich unter [hi@mitjamartini.com](mailto:hi@mitjamartini.com). Die Anbieterangaben stehen im [Impressum](/de/impressum/).
-
-TODO(Mitja): Lebenslauf, Referenzen und Foto ergänzen oder bestätigen.
+Wenn Du mit mir sprechen oder arbeiten willst, sende eine Email an [hi@mitjamartini.com](mailto:hi@mitjamartini.com) und ich melde mich dann bei Dir.

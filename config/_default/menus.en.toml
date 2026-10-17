@@ -2,25 +2,25 @@
 # Leads with who Mitja is and what he offers; the blog is secondary.
 # Anchors point at sections of the English home page (layouts/partials/home/custom.html).
 
-[[main]]
-  name = "Services"
-  url = "/en/#services"
-  weight = 10
+#[[main]]
+#  name = "Services"
+#  url = "/en/#services"
+#  weight = 10
 
-[[main]]
-  name = "Apps"
-  pageRef = "apps"
-  weight = 20
+#[[main]]
+#  name = "Apps"
+#  pageRef = "apps"
+#  weight = 20
 
 [[main]]
   name = "Blog"
   pageRef = "posts"
   weight = 30
 
-[[main]]
-  name = "About"
-  pageRef = "about"
-  weight = 40
+#[[main]]
+#  name = "About"
+#  pageRef = "about"
+#  weight = 40
 
 [[main]]
   identifier = "mail"
