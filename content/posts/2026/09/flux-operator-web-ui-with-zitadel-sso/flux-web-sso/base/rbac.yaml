@@ -1,0 +1,67 @@
+# Who the signed-in user is allowed to be.
+#
+# The UI maps claims.email to a Kubernetes username and impersonates it, so actions are checked
+# against RBAC rather than run as the operator. The binding below is a plain User: no groups claim
+# is required.
+#
+# Three roles are available:
+#
+#   flux-web-admin   created by the chart. Read everything, plus reconcile / suspend / resume /
+#                    restart. Note that it also grants `create jobs` and `patch deployments`,
+#                    which together are close to cluster-admin in practice.
+#   flux-web-user    created by the chart. `apiGroups: ["*"], resources: ["*"], verbs: [get,list,
+#                    watch]` — which includes reading every Secret in the cluster.
+#   flux-web-viewer  defined below. Read-only and enumerated, so it cannot read Secrets.
+#
+# Pick one in kustomization.yaml (`role:`). Do not use cluster-admin: it hands the UI back exactly
+# the unrestricted power impersonation removes, with a login page in front of it.
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: flux-web-viewer
+rules:
+  # RBAC cannot express "everything except Secrets", so the resources are enumerated. Anything
+  # not listed here is invisible to the UI — add to this list rather than falling back to "*".
+  - apiGroups:
+      - fluxcd.controlplane.io
+      - source.toolkit.fluxcd.io
+      - source.extensions.fluxcd.io
+      - kustomize.toolkit.fluxcd.io
+      - helm.toolkit.fluxcd.io
+      - image.toolkit.fluxcd.io
+      - notification.toolkit.fluxcd.io
+    resources: ["*"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources:
+      - pods
+      - pods/log
+      - events
+      - services
+      - namespaces
+      - persistentvolumeclaims
+      - configmaps
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["apps"]
+    resources: ["deployments", "statefulsets", "daemonsets", "replicasets"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["batch"]
+    resources: ["jobs", "cronjobs"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["events.k8s.io"]
+    resources: ["events"]
+    verbs: ["get", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: flux-web-signed-in-user
+subjects:
+  - kind: User
+    name: PLACEHOLDER_USER
+    apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: PLACEHOLDER_ROLE
+  apiGroup: rbac.authorization.k8s.io

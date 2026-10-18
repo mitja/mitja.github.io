@@ -1,0 +1,52 @@
+# The flux-operator itself. Two values matter here; everything else is the chart's default.
+#
+#   web.networkPolicy.create: false
+#     The chart's own policy is hardcoded to `from: [{namespaceSelector: {}}]` — every namespace —
+#     and offers no value to narrow it. Switching it off leaves gotk's baseline `allow-egress`
+#     in place, which admits same-namespace traffic only. The allowance for the ingress controller
+#     is added back explicitly in components/ingress.
+#
+#   web.configSecretName
+#     Names the Secret holding the OIDC config. Without it the UI answers with no authentication
+#     and acts through this operator's ServiceAccount, which the chart grants cluster-admin.
+#     Create it from web-config.example.yaml before applying.
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: OCIRepository
+metadata:
+  name: flux-operator
+  namespace: flux-system
+spec:
+  interval: 12h
+  url: oci://ghcr.io/controlplaneio-fluxcd/charts/flux-operator
+  ref:
+    tag: "0.59.0"
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: flux-operator
+  namespace: flux-system
+spec:
+  interval: 1h
+  timeout: 5m
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  chartRef:
+    kind: OCIRepository
+    name: flux-operator
+  values:
+    web:
+      networkPolicy:
+        create: false
+      configSecretName: flux-operator-web-config
+    resources:
+      requests:
+        cpu: 10m
+        memory: 64Mi
+      limits:
+        memory: 256Mi

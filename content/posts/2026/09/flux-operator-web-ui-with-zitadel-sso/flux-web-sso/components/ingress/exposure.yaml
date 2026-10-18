@@ -1,0 +1,98 @@
+# Setup A: reach the UI over a public hostname.
+#
+# Leave this component out (comment it in kustomization.yaml) for Setup B, where the UI is reached
+# with `kubectl port-forward` and nothing is exposed. Port-forward arrives from the kubelet rather
+# than as pod traffic, so it bypasses NetworkPolicy and needs no allowance at all.
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: flux-web
+  namespace: flux-system
+spec:
+  secretName: flux-web-tls
+  issuerRef:
+    kind: ClusterIssuer
+    name: PLACEHOLDER_CLUSTER_ISSUER
+  dnsNames:
+    - PLACEHOLDER_HOST
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: flux-web
+  namespace: flux-system
+spec:
+  ingressClassName: PLACEHOLDER_INGRESS_CLASS
+  tls:
+    - hosts: [PLACEHOLDER_HOST]
+      secretName: flux-web-tls
+  rules:
+    - host: PLACEHOLDER_HOST
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: flux-operator
+                port:
+                  number: 9080
+---
+# Allowance 1 of 2: the ingress controller may reach the UI on :9080. The chart's own policy
+# admitted every namespace, which is what made the UI reachable from any pod in the cluster.
+# NetworkPolicies are additive, so this adds exactly one source and nothing more.
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: flux-operator-web-from-ingress
+  namespace: flux-system
+spec:
+  policyTypes: [Ingress]
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: flux-operator
+      app.kubernetes.io/instance: flux-operator
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: PLACEHOLDER_INGRESS_NAMESPACE
+      ports:
+        - protocol: TCP
+          port: 9080
+---
+# Allowance 2 of 2: the ACME HTTP-01 solver. Without this the Certificate above never issues.
+#
+# cert-manager answers a challenge with a throwaway pod created in the Certificate's namespace —
+# flux-system. Flux's own `allow-egress` policy there selects EVERY pod (`podSelector: {}`) and
+# admits only `podSelector: {}`, same namespace. So the ingress controller can route
+# /.well-known/acme-challenge/... to the solver but cannot reach it: the challenge URL returns 502
+# and cert-manager reports `wrong status code '502', expected '200'`. A 502 is the ingress failing
+# to reach a backend, not a name failing to resolve — DNS is not the problem.
+#
+# Allowance 1 does not cover it: that policy selects the flux-operator pod by name, and the solver
+# is a different pod. The label below is cert-manager's own and 8089 is the solver's fixed port.
+#
+# The solver exists only for the seconds a challenge is validated, so this policy has to be
+# standing in advance. Fix it once by hand instead of here and renewal fails the same way months
+# later. The same trap waits for any Certificate issued into a namespace whose pods sit under a
+# same-namespace-only ingress policy; DNS-01 avoids it entirely.
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: acme-http-solver-from-ingress
+  namespace: flux-system
+spec:
+  policyTypes: [Ingress]
+  podSelector:
+    matchLabels:
+      acme.cert-manager.io/http01-solver: "true"
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: PLACEHOLDER_INGRESS_NAMESPACE
+      ports:
+        - protocol: TCP
+          port: 8089

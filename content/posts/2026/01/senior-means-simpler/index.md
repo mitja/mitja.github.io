@@ -1,7 +1,7 @@
 ---
 author: null
 date: 2026-01-27
-draft: false
+draft: true
 slug: senior-means-simpler
 title: Senior means simpler
 stream: false

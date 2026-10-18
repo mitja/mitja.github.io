@@ -1,7 +1,7 @@
 ---
 author: null
 date: 2026-01-27
-draft: false
+draft: true
 slug: senior-bedeutet-einfacher
 stream: false
 title: Senior bedeutet einfacher

@@ -1,0 +1,58 @@
+# The UI's OIDC configuration.
+#
+# ⚠ THIS FILE IS DELIBERATELY NOT IN kustomization.yaml. It carries a client secret, so it should
+# never sit unencrypted next to the values you edit. Copy it, fill it in, and apply it one of the
+# two ways below — then delete the filled-in copy.
+#
+#   Straight to the cluster, nothing written to disk:
+#       cp web-config.example.yaml /tmp/web-config.yaml
+#       $EDITOR /tmp/web-config.yaml
+#       kubectl apply -f /tmp/web-config.yaml && rm /tmp/web-config.yaml
+#
+#   Or, if you keep this in Git with Flux, encrypt it first and add it to the resources list:
+#       sops --encrypt --in-place web-config.sops.yaml
+#
+# Without this Secret the UI still starts, answers with no authentication at all, and performs
+# every action through the operator's ServiceAccount — which the chart grants cluster-admin.
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: flux-operator-web-config      # must match web.configSecretName in base/flux-operator.yaml
+  namespace: flux-system
+type: Opaque
+stringData:
+  config.yaml: |
+    apiVersion: web.fluxcd.controlplane.io/v1
+    kind: Config
+    spec:
+      # Setup A: https://flux.example.com
+      # Setup B: http://localhost:9080
+      baseURL: https://flux.example.com
+      authentication:
+        type: OAuth2
+        oauth2:
+          provider: OIDC
+          issuerURL: https://auth.example.com
+          clientID: "REPLACE_ME"
+          clientSecret: "REPLACE_ME"
+          # claims.email becomes the Kubernetes username that gets impersonated, and must match
+          # the `user` value in kustomization.yaml.
+          #
+          # ⚠ The claim has to be in the ID TOKEN, not merely on the userinfo endpoint. Several
+          # providers put profile and email on userinfo by default; the UI reads the ID token, and
+          # the login then fails with
+          #     no such key: email
+          # after an otherwise successful authentication, with nothing logged provider-side.
+          # In Zitadel the switch is "User Info inside ID Token" under the application's Token
+          # settings. The user's email must also be verified.
+          #
+          # `groups` is left out on purpose: a CEL expression over a missing claim is a failed
+          # login rather than an empty list. Add it only once you know the claim is emitted.
+          impersonation:
+            username: "claims.email"
+      userActions:
+        # Impersonated = actions run as the signed-in user, so what they may do is decided by
+        # RBAC. The alternative runs them as the operator, i.e. as cluster-admin.
+        access: Impersonated
+        audit: ["*"]

@@ -1,0 +1,77 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  THIS IS THE ONLY FILE YOU EDIT.
+#  Set the values below, create the config Secret (see README.md), then:
+#      kubectl apply -k .
+# ─────────────────────────────────────────────────────────────────────────────
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: flux-system
+
+resources:
+  - base
+
+components:
+  # Setup A — public hostname behind an ingress controller.
+  # Setup B — comment this line out. The UI is then reachable only through
+  #           `kubectl port-forward svc/flux-operator 9080:9080` and nothing is exposed.
+  - components/ingress
+
+configMapGenerator:
+  - name: flux-web-values
+    options:
+      disableNameSuffixHash: true
+      annotations:
+        # keeps this ConfigMap out of the output — it configures the build, it is not applied
+        config.kubernetes.io/local-config: "true"
+    literals:
+      # The Kubernetes username the UI impersonates. Must equal the `email` claim your identity
+      # provider puts in the ID token.
+      - user=you@example.com
+
+      # flux-web-viewer (read-only, cannot read Secrets) | flux-web-user (reads every Secret)
+      # | flux-web-admin (also reconcile/suspend/restart, and close to cluster-admin in practice)
+      - role=flux-web-viewer
+
+      # Chart version. https://github.com/controlplaneio-fluxcd/flux-operator/releases
+      - operatorVersion=0.59.0
+
+      # ── Setup A only. Ignored when the ingress component is commented out. ──
+      - host=flux.example.com
+      - ingressClassName=nginx
+      # Namespace the ingress controller runs in. Matched on the automatic
+      # `kubernetes.io/metadata.name` label, so it is the namespace name verbatim.
+      - ingressNamespace=ingress-nginx
+      - clusterIssuer=letsencrypt-prod
+
+replacements:
+  - source: {kind: ConfigMap, name: flux-web-values, fieldPath: data.user}
+    targets:
+      - select: {kind: ClusterRoleBinding, name: flux-web-signed-in-user}
+        fieldPaths: [subjects.0.name]
+  - source: {kind: ConfigMap, name: flux-web-values, fieldPath: data.role}
+    targets:
+      - select: {kind: ClusterRoleBinding, name: flux-web-signed-in-user}
+        fieldPaths: [roleRef.name]
+  - source: {kind: ConfigMap, name: flux-web-values, fieldPath: data.operatorVersion}
+    targets:
+      - select: {kind: OCIRepository, name: flux-operator}
+        fieldPaths: [spec.ref.tag]
+  - source: {kind: ConfigMap, name: flux-web-values, fieldPath: data.host}
+    targets:
+      - select: {kind: Certificate, name: flux-web}
+        fieldPaths: [spec.dnsNames.0]
+      - select: {kind: Ingress, name: flux-web}
+        fieldPaths: [spec.tls.0.hosts.0, spec.rules.0.host]
+  - source: {kind: ConfigMap, name: flux-web-values, fieldPath: data.clusterIssuer}
+    targets:
+      - select: {kind: Certificate, name: flux-web}
+        fieldPaths: [spec.issuerRef.name]
+  - source: {kind: ConfigMap, name: flux-web-values, fieldPath: data.ingressClassName}
+    targets:
+      - select: {kind: Ingress, name: flux-web}
+        fieldPaths: [spec.ingressClassName]
+  - source: {kind: ConfigMap, name: flux-web-values, fieldPath: data.ingressNamespace}
+    targets:
+      - select: {kind: NetworkPolicy}
+        fieldPaths:
+          - spec.ingress.0.from.0.namespaceSelector.matchLabels.[kubernetes.io/metadata.name]
