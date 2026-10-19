@@ -1,0 +1,118 @@
+{{- /*
+  {{< sqlite-decision >}} — a decision helper for the SQLite resilience article
+  (posts/2026/10/sqlite-resilience-on-hetzner): the reader sets the
+  requirements, the table marks which setups meet them and the simplest one is
+  recommended. The numbers are the article's measurements. English and German,
+  by the page's language. Styles: assets/css/custom.css (.dh-).
+*/ -}}
+{{- $de := eq .Page.Language.Lang "de" -}}
+<div class="dh not-prose" data-dh data-lang="{{ cond $de "de" "en" }}">
+  <form class="dh-form">
+    <fieldset>
+      <legend>{{ cond $de "Datenverlust, wenn ein Server ausfällt" "Data lost when a server dies" }}</legend>
+      <label><input type="radio" name="rpo" value="1" checked> {{ cond $de "unter einer Sekunde ist in Ordnung" "under a second is fine" }}</label>
+      <label><input type="radio" name="rpo" value="0"> {{ cond $de "keiner" "none" }}</label>
+    </fieldset>
+    <fieldset>
+      <legend>{{ cond $de "Bis wieder geschrieben werden kann" "Until writes work again" }}</legend>
+      <label><input type="radio" name="rto" value="1e9" checked> {{ cond $de "Minuten sind in Ordnung" "minutes are fine" }}</label>
+      <label><input type="radio" name="rto" value="90"> {{ cond $de "etwa eine Minute" "about a minute" }}</label>
+      <label><input type="radio" name="rto" value="5"> {{ cond $de "wenige Sekunden" "a few seconds" }}</label>
+    </fieldset>
+    <fieldset>
+      <legend>{{ cond $de "Höchstens so viele Server" "At most this many servers" }}</legend>
+      <label><input type="radio" name="servers" value="1"> 1</label>
+      <label><input type="radio" name="servers" value="2"> 2</label>
+      <label><input type="radio" name="servers" value="3" checked> 3</label>
+    </fieldset>
+    <fieldset>
+      <legend>{{ cond $de "Außerdem" "Also" }}</legend>
+      <label><input type="checkbox" name="fast"> {{ cond $de "Ein Schreibzugriff muss unter 1 ms dauern" "A write must take under 1 ms" }}</label>
+      <label><input type="checkbox" name="http"> {{ cond $de "Die App kann eine HTTP-API statt SQLite nutzen" "The app can use an HTTP API instead of SQLite" }}</label>
+      <label><input type="checkbox" name="files"> {{ cond $de "Andere Dateien und Volumes brauchen denselben Schutz" "Other files and volumes need the same protection" }}</label>
+    </fieldset>
+  </form>
+  <p class="dh-result" aria-live="polite"></p>
+  <table class="dh-table">
+    <thead><tr>
+      <th>{{ cond $de "Aufbau" "Setup" }}</th><th>{{ cond $de "pro Commit" "per commit" }}</th>
+      <th>{{ cond $de "Verlust" "lost" }}</th><th>{{ cond $de "wieder schreibbar" "writable again" }}</th>
+      <th>{{ cond $de "Server" "servers" }}</th><th>{{ cond $de "passt?" "fits?" }}</th>
+    </tr></thead>
+    <tbody></tbody>
+  </table>
+</div>
+<script>
+(function () {
+  var T = {
+    en: {
+      rec: "Recommendation: ", none: "No setup meets all of these. Relax one requirement.",
+      yes: "yes", loss: "loses up to a second", slow: "takes too long", many: "needs {n} servers",
+      lat: "slower than 1 ms", http: "needs an HTTP client", files: "protects only the database",
+      setups: [
+        ["SQLite + Litestream", "0.33–0.38 ms", "0.11–0.65 s", "minutes (restore + server)"],
+        ["SQLite + Litestream + follow-mode standby", "0.33–0.38 ms", "0.07–0.61 s", "1.2–3.2 s + detection"],
+        ["SQLite on a Hetzner Volume", "2.3–2.65 ms", "0*", "minutes (estimate)"],
+        ["SQLite on DRBD, 2 replicas", "0.90–0.93 ms", "0", "54–65 s"],
+        ["rqlite, 3 nodes", "3.65–4.34 ms", "0", "2.0–3.6 s"]
+      ],
+      note: "* if only the server fails, not the Volume."
+    },
+    de: {
+      rec: "Empfehlung: ", none: "Kein Aufbau erfüllt alles. Lockere eine Anforderung.",
+      yes: "ja", loss: "verliert bis zu einer Sekunde", slow: "dauert zu lange", many: "braucht {n} Server",
+      lat: "langsamer als 1 ms", http: "braucht einen HTTP-Client", files: "schützt nur die Datenbank",
+      setups: [
+        ["SQLite + Litestream", "0,33–0,38 ms", "0,11–0,65 s", "Minuten (Restore + Server)"],
+        ["SQLite + Litestream + Follow-Standby", "0,33–0,38 ms", "0,07–0,61 s", "1,2–3,2 s + Erkennung"],
+        ["SQLite auf einem Hetzner Volume", "2,3–2,65 ms", "0*", "Minuten (geschätzt)"],
+        ["SQLite auf DRBD, 2 Replikate", "0,90–0,93 ms", "0", "54–65 s"],
+        ["rqlite, 3 Knoten", "3,65–4,34 ms", "0", "2,0–3,6 s"]
+      ],
+      note: "* wenn nur der Server ausfällt, nicht das Volume."
+    }
+  };
+  // In the order of preference: the simplest setup that fits is recommended.
+  // lossy: loses up to a second; back: seconds until writable (worst case, detection left out).
+  var S = [
+    { lossy: true,  back: 300, servers: 1, fast: true,  http: false, files: false },
+    { lossy: true,  back: 3.2, servers: 2, fast: true,  http: false, files: false },
+    { lossy: false, back: 300, servers: 1, fast: false, http: false, files: true },
+    { lossy: false, back: 65,  servers: 3, fast: true,  http: false, files: true },
+    { lossy: false, back: 3.6, servers: 3, fast: false, http: true,  files: false }
+  ];
+  document.querySelectorAll("[data-dh]").forEach(function (root) {
+    if (root.dataset.ready) return;
+    root.dataset.ready = "1";
+    var t = T[root.dataset.lang] || T.en, form = root.querySelector("form");
+    var body = root.querySelector("tbody"), out = root.querySelector(".dh-result");
+    var foot = document.createElement("p");
+    foot.className = "dh-note"; foot.textContent = t.note; root.appendChild(foot);
+    function render() {
+      var rpo0 = form.rpo.value === "0", rto = parseFloat(form.rto.value), max = parseInt(form.servers.value, 10);
+      var best = -1;
+      body.innerHTML = "";
+      S.forEach(function (s, i) {
+        var why = [];
+        if (rpo0 && s.lossy) why.push(t.loss);
+        if (s.back > rto) why.push(t.slow);
+        if (s.servers > max) why.push(t.many.replace("{n}", s.servers));
+        if (form.fast.checked && !s.fast) why.push(t.lat);
+        if (s.http && !form.http.checked) why.push(t.http);
+        if (form.files.checked && !s.files) why.push(t.files);
+        if (!why.length && best < 0) best = i;
+        var tr = document.createElement("tr");
+        if (why.length) tr.className = "dh-out";
+        t.setups[i].concat([String(s.servers), why.length ? why.join(", ") : t.yes]).forEach(function (v) {
+          var td = document.createElement("td"); td.textContent = v; tr.appendChild(td);
+        });
+        if (i === best) tr.className = "dh-best";
+        body.appendChild(tr);
+      });
+      out.textContent = best < 0 ? t.none : t.rec + t.setups[best][0];
+    }
+    form.addEventListener("change", render);
+    render();
+  });
+})();
+</script>

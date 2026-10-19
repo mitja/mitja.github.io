@@ -11,8 +11,8 @@
    var(--pb-…, …) fallbacks keep this working on plain Blowfish.
    ------------------------------------------------------------------------ */
 
-.lp, .pp, .ad { --lp-ink: rgb(var(--color-neutral-900)); --lp-muted: rgb(var(--color-neutral-500)); --lp-rule: rgb(var(--color-neutral-200)); --lp-accent: rgb(var(--color-primary-600)); --lp-accent-ink: rgb(var(--color-neutral)); --lp-tint: rgb(var(--color-primary-50)); --lp-cta: var(--pb-cta, var(--lp-accent)); --lp-cta-hover: var(--pb-cta-hover, var(--lp-accent)); --lp-cta-ink: var(--pb-cta-ink, var(--lp-accent-ink)); }
-.dark .lp, .dark .pp, .dark .ad { --lp-ink: rgb(var(--color-neutral)); --lp-muted: rgb(var(--color-neutral-400)); --lp-rule: rgb(var(--color-neutral-700)); --lp-accent: rgb(var(--color-primary-400)); --lp-accent-ink: rgb(var(--color-neutral-900)); --lp-tint: var(--pb-paper-raised, rgba(var(--color-primary-400), 0.12)); }
+.lp, .pp, .ad, .dh { --lp-ink: rgb(var(--color-neutral-900)); --lp-muted: rgb(var(--color-neutral-500)); --lp-rule: rgb(var(--color-neutral-200)); --lp-accent: rgb(var(--color-primary-600)); --lp-accent-ink: rgb(var(--color-neutral)); --lp-tint: rgb(var(--color-primary-50)); --lp-cta: var(--pb-cta, var(--lp-accent)); --lp-cta-hover: var(--pb-cta-hover, var(--lp-accent)); --lp-cta-ink: var(--pb-cta-ink, var(--lp-accent-ink)); }
+.dark .lp, .dark .pp, .dark .ad, .dark .dh { --lp-ink: rgb(var(--color-neutral)); --lp-muted: rgb(var(--color-neutral-400)); --lp-rule: rgb(var(--color-neutral-700)); --lp-accent: rgb(var(--color-primary-400)); --lp-accent-ink: rgb(var(--color-neutral-900)); --lp-tint: var(--pb-paper-raised, rgba(var(--color-primary-400), 0.12)); }
 
 .lp { color: var(--lp-ink); }
 /* :where() keeps this reset below the margins the .lp-hero-* rules set. */
@@ -121,3 +121,19 @@
 
 /* Hero eyebrow: the brand line above the name (e.g. "KI Bauer · Berlin") */
 .lp-hero-eyebrow { color: var(--lp-accent, currentColor); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 0.5rem; }
+
+/* Decision helper (layouts/shortcodes/sqlite-decision.html) */
+.dh { margin: 1.5rem 0 2rem; padding: 1.25rem 1.5rem; border: 1px solid var(--lp-rule); border-radius: 0.75rem; color: var(--lp-ink); font-size: 0.95rem; }
+.dh-form { display: grid; gap: 1rem; }
+@media (min-width: 768px) { .dh-form { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.dh fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: 0.3rem; }
+.dh legend { font-weight: 700; margin-bottom: 0.3rem; }
+.dh label { display: flex; gap: 0.5rem; align-items: baseline; cursor: pointer; }
+.dh input { accent-color: var(--lp-accent); }
+.dh-result { margin: 1.25rem 0 0.75rem; padding: 0.6rem 0.9rem; border-radius: 0.5rem; background: var(--lp-tint); font-weight: 700; }
+.dh-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; display: block; overflow-x: auto; }
+.dh-table th, .dh-table td { text-align: left; padding: 0.45rem 0.6rem 0.45rem 0; border-top: 1px solid var(--lp-rule); vertical-align: top; }
+.dh-table th { font-weight: 700; border-top: 0; }
+.dh-table tr.dh-out td { color: var(--lp-muted); }
+.dh-table tr.dh-best td { color: var(--lp-accent); font-weight: 700; }
+.dh-note { margin: 0.5rem 0 0; color: var(--lp-muted); font-size: 0.8rem; }
