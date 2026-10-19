@@ -102,7 +102,7 @@ DRBD war für mich die größte Überraschung: Die zweite Kopie kostet nur ~0,5 
 Der Nachteil: Es sind mehr Teile, die Einrichtung ist aufwendiger, und DRBD hat so seine Eigenheiten:
 
 - **Ein Fenster für einen Doppelfehler.**
-  - Ich habe den Primary ausgeschaltet, während der andere Knoten noch synchronisierte (39 %).
+  - Claude hat den Primary ausgeschaltet, während der andere Knoten noch synchronisierte (39 %).
   - DRBD hat sich zu Recht geweigert, eine unvollständige Kopie zu befördern, und das Volume blieb nicht verfügbar, bis die Quelle zurückkam. Nichts ging verloren, aber es ließ sich auch nichts schreiben.
   - Zwei Kopien heißt: Ein zweiter Ausfall während eines Resyncs ist ein Ausfall.
 - **`resource list` von LINSTOR zeigte UpToDate, während DRBD noch SyncTarget war.** Prüfe `drbdsetup status`.
@@ -155,8 +155,8 @@ Zum Vergleich: **Postgres mit CloudNativePG** und drei Instanzen auf lokalen Dis
 Claude Code hat die Skripte geschrieben, sie in einem Wegwerf-Projekt bei Hetzner ausgeführt und danach alles wieder abgebaut. Drei Läufe haben zusammen 1,10 € gekostet.
 
 - **Server:** drei cpx32 (4 geteilte vCPUs, 8 GB) in nbg1, auf getrennten Hosts (eine Spread Placement Group), ein privates Netz, Ubuntu 24.04.
-- **S3-Ziel:** Als Ziel für Litestream und rqlite habe ich Garage v2.4.1 auf einem cx23 in fsn1 aufgesetzt, um Ausfälle des Cloud-Speichers zu simulieren.
+- **S3-Ziel:** Als Ziel für Litestream und rqlite hat Claude Garage v2.4.1 auf einem cx23 in fsn1 aufgesetzt, um Ausfälle des Cloud-Speichers zu simulieren.
 - **Versionen:** SQLite 3.45.1, Litestream v0.5.17, Piraeus v2.12.0 mit LINSTOR 1.35.2 und DRBD 9.3.4 auf k3s v1.36.2, rqlite v10.6.0.
 - **Commit-Latenz:** fio und `pg_test_fsync` für den Flush der Disk, danach ein Python-Writer mit einer Zeile pro Transaktion im WAL-Modus.
-- **Datenverlust:** Der Writer schreibt 200 Transaktionen pro Sekunde und schickt jede bestätigte ID an einen Logger auf einem anderen Server. Ich habe den Server des Writers über die Hetzner-API hart ausgeschaltet, ihn wiederhergestellt oder einen anderen Server zum neuen Writer befördert und die höchste bestätigte ID mit der höchsten verglichen, die überlebt hat.
+- **Datenverlust:** Der Writer schreibt 200 Transaktionen pro Sekunde und schickt jede bestätigte ID an einen Logger auf einem anderen Server. Claude hat den Server des Writers über die Hetzner-API hart ausgeschaltet, ihn wiederhergestellt oder einen anderen Server zum neuen Writer befördert und die höchste bestätigte ID mit der höchsten verglichen, die überlebt hat.
 - **Bis wieder geschrieben werden kann:** bei DRBD vom Ausschalten bis zum ersten bestätigten Schreibzugriff, bei rqlite wie lange Schreibzugriffe fehlschlugen, bei Litestream die Dauer des Restores, beim Standby die Dauer des Skripts, das ihn befördert.

@@ -101,7 +101,7 @@ DRBD was the biggest surprise for me: The second copy costs just ~0.5 ms per fsy
 The downside is that it's more parts, more complicated to set up, and DRBD has its quirks:
 
 - **A double-fault window.**
-  - I powered off the primary while the other node was still resyncing (39 %).
+  - Claude powered off the primary while the other node was still resyncing (39 %).
   - DRBD refused to promote an incomplete copy (correctly) and the volume stayed unavailable until the source came back. Nothing was lost, but nothing was writable either.
   - Two copies means a second failure during a resync is an outage.
 - **LINSTOR's `resource list` said UpToDate while DRBD was still SyncTarget.** Check `drbdsetup status`.
@@ -154,8 +154,8 @@ For comparison: **Postgres with CloudNativePG** and three instances on local dis
 Claude Code wrote the scripts, ran them against a disposable Hetzner project, and tore everything down afterwards. Three runs cost €1.10 in total.
 
 - **Servers:** three cpx32 (4 shared vCPUs, 8 GB) in nbg1, on separate hosts (a spread placement group), a private network, Ubuntu 24.04.
-- **S3 target:** as Litestream's and rqlite's target, I set up Garage v2.4.1 on a cx23 in fsn1 to simulate cloud storage downtimes.
+- **S3 target:** as Litestream's and rqlite's target, Claude set up Garage v2.4.1 on a cx23 in fsn1 to simulate cloud storage downtimes.
 - **Versions:** SQLite 3.45.1, Litestream v0.5.17, Piraeus v2.12.0 with LINSTOR 1.35.2 and DRBD 9.3.4 on k3s v1.36.2, rqlite v10.6.0.
 - **Commit latency:** fio and `pg_test_fsync` for the disk's flush, then a Python writer, one row per transaction in WAL mode.
-- **Data loss:** the writer commits 200 transactions a second and sends each committed id to a logger on another server. I hard powered off the writer's server through the Hetzner API, restored it or promoted another server to be the new writer, and compared the highest acknowledged id with the highest one that survived.
+- **Data loss:** the writer commits 200 transactions a second and sends each committed id to a logger on another server. Claude hard powered off the writer's server through the Hetzner API, restored it or promoted another server to be the new writer, and compared the highest acknowledged id with the highest one that survived.
 - **Time until writes work again:** for DRBD, from the power-off to the first acknowledged write; for rqlite, how long writes failed; for Litestream, the restore's time; for the standby, the promotion script's time.
