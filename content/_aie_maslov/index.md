@@ -1,3 +1,8 @@
+---
+title: "The AI Engineer's Pyramid of Needs"
+draft: true
+---
+
 # The AI Engineer's Pyramid of Needs
 
 A strong reaction is that Andrew Ng’s coding-agent map is really describing a **shift in the scarcity structure of engineering**.
