@@ -105,4 +105,4 @@ For one calendar and one or two flows inside Microsoft 365 it is enough. The rel
 
 ## Support
 
-Email [hi@mitjamartini.com](mailto:hi@mitjamartini.com?subject=Mitjas%20Relay), replies usually by the next business day. Support cases are handled with logs that contain no appointment content. For self-hosting I provide the image and the template; running, monitoring and updating the installation is up to you.
+Email [support@mitjamartini.com](mailto:support@mitjamartini.com?subject=Mitjas%20Relay), replies usually by the next business day. Support cases are handled with logs that contain no appointment content. For self-hosting I provide the image and the template; running, monitoring and updating the installation is up to you.

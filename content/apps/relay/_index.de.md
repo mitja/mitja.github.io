@@ -105,4 +105,4 @@ Für einen Kalender und ein, zwei Flows innerhalb von Microsoft 365 reicht er. D
 
 ## Support
 
-E-Mail an [hi@mitjamartini.com](mailto:hi@mitjamartini.com?subject=Mitjas%20Relay), Antwort in der Regel am nächsten Werktag. Support-Fälle bearbeite ich mit Logs, die keine Termininhalte enthalten. Beim Selbstbetrieb liefere ich das Image und die Vorlage; Betrieb, Überwachung und Updates der Installation liegen bei Dir.
+E-Mail an [support@mitjamartini.com](mailto:support@mitjamartini.com?subject=Mitjas%20Relay), Antwort in der Regel am nächsten Werktag. Support-Fälle bearbeite ich mit Logs, die keine Termininhalte enthalten. Beim Selbstbetrieb liefere ich das Image und die Vorlage; Betrieb, Überwachung und Updates der Installation liegen bei Dir.
