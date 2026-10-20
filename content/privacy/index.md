@@ -24,7 +24,7 @@ The responsible body for data processing on this website is:
 > 13503 Berlin  
 > Germany  
 > 
-> Email: hi@mitjamartini.com
+> Email: privacy@mitjamartini.com
 
 The responsible body decides alone or together with others on the purposes and means of processing personal data (e.g. names, contact details, etc.). Revocation of your consent to data processing Some data processing operations are only possible with your express consent. You can revoke your consent that you have already given at any time. An informal message by e-mail is sufficient for the revocation. The legality of the data processing that took place up until the revocation remains unaffected by the revocation.
 

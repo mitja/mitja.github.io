@@ -26,7 +26,7 @@ Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:
 > 13503 Berlin  
 > Deutschland  
 > 
-> E-Mail: hi@mitjamartini.com
+> E-Mail: privacy@mitjamartini.com
 
 Als verantwortliche Stelle entscheide ich allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung personenbezogener Daten (z. B. Namen, Kontaktdaten etc.). 
 
