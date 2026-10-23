@@ -81,7 +81,7 @@ Requests to this website are tracked with a self-hosted instance of Umami Analyt
 
 ## Scope and language choice
 
-This statement applies to all pages under mitjamartini.com, including the pages about the apps (for example Mitjas Relay) and their documentation. These pages are static; there is no login, no forms and no comments.
+This statement applies to all pages under mitjamartini.com, including the pages about the apps (for example Mitjas Relay) and their documentation, and to the website vaicoa.com (see [vaicoa.com](#vaicoacom) below for what differs there). These pages are static; there is no login, no forms and no comments.
 
 The home page sends you to the German or English version according to your browser language. If you switch the language with the switcher in the menu, your browser remembers that choice in local storage (`mm-lang`). This value never leaves your browser and is not transmitted to me; you can delete it in your browser settings.
 
@@ -98,3 +98,13 @@ TODO(Mitja): decide whether Google Analytics stays (id in `config/_default/hugo.
 ## Apps: Mitjas Relay
 
 If you use Mitjas Relay as a hosted service, I process appointment data from your Microsoft 365 tenant on your behalf. A data processing agreement under Art. 28 GDPR covers that, not this statement. What the relay stores and what it does not is described on the [product page](/en/apps/relay/). Payment is handled by Polar Software Inc. as merchant of record; Polar processes your billing and payment data as an independent controller (https://polar.sh/legal/privacy).
+
+## vaicoa.com
+
+The website vaicoa.com (with www.vaicoa.com, which forwards to it) presents Vaicoa, my software for running applications on your own servers. I operate it myself; the sections above on GitHub Pages, YouTube, Umami, Google Fonts and Google Analytics do not apply to it. For vaicoa.com:
+
+* **Hosting.** The site runs on a Kubernetes cluster I operate on servers of Hetzner Online GmbH, Industriestr. 25, 91710 Gunzenhausen, Germany, in Hetzner's data centre in Nuremberg, Germany. Requests reach the site through a Hetzner load balancer and a reverse proxy (Traefik) that terminates TLS.
+* **TLS certificate.** The certificate comes from Let's Encrypt (Internet Security Research Group, USA). Let's Encrypt only checks that I control the domain; your visits are not transmitted to it.
+* **Server logs.** The web server logs each request: date and time, the requested page, the status code, the referrer URL and the browser identification (user agent). In the current setup your IP address does not reach the web server and is not part of these logs. The logs are kept for up to 14 days for operating and securing the site and then deleted. The legal basis is my legitimate interest in a secure and working website (Art. 6 (1) (f) GDPR).
+* **No cookies, no analytics, no third-party content.** vaicoa.com sets no cookies, uses no analytics or tracking service and loads no fonts, scripts or other content from third parties; the fonts are delivered from vaicoa.com itself. There are no forms. Links to other sites (for example GitHub or X) only take effect when you click them; from then on that site's privacy policy applies.
+* **Light/dark mode.** If you choose a colour theme, your browser stores that choice in local storage (`starlight-theme`). It never leaves your browser.

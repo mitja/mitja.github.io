@@ -15,6 +15,8 @@ showSummary: false
 sharingLinks: false
 ---
 
+Dieses Impressum gilt für mitjamartini.com und für vaicoa.com.
+
 ## Angaben gemäß § 5 DDG
 
 **Mitja Martini**\

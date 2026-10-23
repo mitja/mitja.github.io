@@ -15,6 +15,8 @@ showSummary: false
 sharingLinks: false
 ---
 
+This imprint applies to mitjamartini.com and to vaicoa.com.
+
 ## Information under § 5 DDG
 
 **Mitja Martini**\
