@@ -87,7 +87,7 @@ Anfragen an diese Website werden mit einer selbst betriebenen Umami Analytics In
 
 ## Geltungsbereich und Sprachwahl
 
-Diese Erklärung gilt für alle Seiten unter mitjamartini.com, einschließlich der Seiten zu den Apps (z. B. Mitjas Relay) und ihrer Dokumentation. Diese Seiten sind statisch; es gibt keine Anmeldung, keine Formulare und keine Kommentare.
+Diese Erklärung gilt für alle Seiten unter mitjamartini.com, einschließlich der Seiten zu den Apps (z. B. Mitjas Relay) und ihrer Dokumentation, und für die Website vaicoa.com (was dort abweicht, steht unten unter [vaicoa.com](#vaicoacom)). Diese Seiten sind statisch; es gibt keine Anmeldung, keine Formulare und keine Kommentare.
 
 Die Startseite leitet Dich nach der Sprache Deines Browsers auf die deutsche oder englische Fassung. Wenn Du die Sprache über den Schalter im Menü wechselst, merkt sich Dein Browser diese Wahl im Local Storage (`mm-lang`). Dieser Wert verlässt Deinen Browser nicht und wird nicht an mich übertragen; Du kannst ihn über die Einstellungen Deines Browsers löschen.
 
@@ -104,3 +104,13 @@ TODO(Mitja): Prüfen, ob Google Analytics weiter eingesetzt werden soll (Kennung
 ## Apps: Mitjas Relay
 
 Wenn Du Mitjas Relay als Dienst nutzt, verarbeite ich im Auftrag Termindaten aus Deinem Microsoft-365-Mandanten. Dafür gilt ein Auftragsverarbeitungsvertrag nach Art. 28 DSGVO, nicht diese Erklärung. Was der Relay speichert und was nicht, steht auf der [Produktseite](/de/apps/relay/). Die Zahlung wickelt Polar Software Inc. als Merchant of Record ab; Polar verarbeitet Deine Rechnungs- und Zahlungsdaten als eigener Verantwortlicher (https://polar.sh/legal/privacy).
+
+## vaicoa.com
+
+Die Website vaicoa.com (mit www.vaicoa.com, das dorthin weiterleitet) stellt Vaicoa vor, meine Software für den Betrieb von Anwendungen auf eigenen Servern. Ich betreibe sie selbst; die Abschnitte oben zu GitHub Pages, YouTube, Umami, Google Fonts und Google Analytics gelten für sie nicht. Für vaicoa.com gilt:
+
+* **Hosting.** Die Website läuft auf einem Kubernetes-Cluster, den ich auf Servern der Hetzner Online GmbH, Industriestr. 25, 91710 Gunzenhausen, betreibe, im Rechenzentrum von Hetzner in Nürnberg. Anfragen erreichen die Website über einen Load Balancer von Hetzner und einen Reverse Proxy (Traefik), der die TLS-Verschlüsselung abschließt.
+* **TLS-Zertifikat.** Das Zertifikat stammt von Let's Encrypt (Internet Security Research Group, USA). Let's Encrypt prüft nur, dass mir die Domain gehört; Deine Aufrufe werden nicht an Let's Encrypt übermittelt.
+* **Server-Logfiles.** Der Webserver protokolliert jede Anfrage: Datum und Uhrzeit, die aufgerufene Seite, den Statuscode, die Referrer-URL und die Browserkennung (User Agent). In der derzeitigen Einrichtung erreicht Deine IP-Adresse den Webserver nicht und ist nicht Teil dieser Logs. Die Logs werden zum Betrieb und zur Sicherheit der Website 14 Tage aufbewahrt und dann gelöscht. Rechtsgrundlage ist mein berechtigtes Interesse an einer sicheren und funktionierenden Website (Art. 6 Abs. 1 lit. f DSGVO).
+* **Keine Cookies, keine Analyse, keine Inhalte Dritter.** vaicoa.com setzt keine Cookies, nutzt keinen Analyse- oder Tracking-Dienst und lädt keine Schriften, Skripte oder anderen Inhalte von Dritten; die Schriften liefert vaicoa.com selbst aus. Es gibt keine Formulare. Links zu anderen Websites (z. B. GitHub oder X) wirken erst, wenn Du sie anklickst; ab dann gilt die Datenschutzerklärung der jeweiligen Website.
+* **Hell/Dunkel-Modus.** Wenn Du ein Farbschema wählst, speichert Dein Browser diese Wahl im Local Storage (`starlight-theme`). Sie verlässt Deinen Browser nicht.
