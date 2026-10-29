@@ -1,6 +1,6 @@
 ---
-title: "Flux Operator Web UI with OIDC Single Sign-On, With and Without an Ingress"
-summary: "The Flux Operator chart starts a cluster-admin web console with no authentication. Here is how to close the network hole, turn on native OIDC login with Zitadel, and reach the UI either through an ingress or through kubectl port-forward. Plus what the chart's RBAC roles actually grant."
+title: "Flux Operator Web UI with OIDC Single Sign-On"
+summary: "The Flux Operator chart starts a web UI that every pod in the cluster can reach, that reads as cluster-admin and asks nobody for a login. Here is what it gives out, the shortcut that makes it worse, how to close it with native OIDC login and impersonation, and how to reach it through an ingress or through kubectl port-forward. Plus what the chart's RBAC roles actually grant."
 date: 2026-09-08
 draft: true
 categories:
@@ -14,15 +14,38 @@ tags:
 showHero: true
 ---
 
-If you installed the [Flux Operator](https://fluxoperator.dev) with its Helm chart, you are already running its web UI. Chart version 0.59.0 sets `web.enabled: true` by default, so the operator pod listens on port 9080 and serves a console for the whole Flux installation: sources, kustomizations, HelmReleases, events, and buttons to reconcile, suspend and resume them.
-
-Out of the box that console has no authentication. Unauthenticated GETs to `/`, `/api/*` and `/api/instance` return 200. And every action it performs runs through the operator's own ServiceAccount, which the chart binds to `cluster-admin`.
-
-This post covers four things: closing the network path that the chart leaves open, turning on the UI's native OpenID Connect login so that actions run as the signed-in person instead of as cluster-admin, what the chart's RBAC roles actually let that person do, and two ways of reaching the UI afterwards. The first is the usual one: an ingress controller and a public hostname. The second is `kubectl port-forward`, which I use on a cluster where I do not want to add an ingress at all. The identity provider in the examples is Zitadel, but nothing here is Zitadel-specific beyond the console screens. All of it is available as a Kustomize package at the end, if you would rather apply it than read it.
+When you install the [Flux Operator](https://fluxoperator.dev) with its Helm chart, you also install and start its web UI, on port 9080, without authentication. It reads with the operator's ServiceAccount, which is `cluster-admin`, and the chart's NetworkPolicy admits every namespace. So any pod in the cluster can read everything Flux knows: the inventory of every app, the specs of every Kustomization and HelmRelease including their values, and the pod templates of every workload Flux manages, environment variables included. Without authentication the UI does not act, so the buttons to reconcile, suspend and resume are not there. The quickest way to get them, `Anonymous` authentication with a named identity, hands them to every pod as well.
 
 ![Flux Operator web UI dashboard showing the Flux instance status](flux-status-home.webp)
 
 *The dashboard view. Screenshot from the Flux Operator project's own site, fluxoperator.dev, not from my instance.*
+
+With the help of Claude Code I built a small Kustomize package, `flux-web-sso`, that closes this and reaches the UI either through an ingress or through `kubectl port-forward`. Its site-specific values sit in one file:
+
+- `kustomization.yaml` holds every value (user, role, operator version, host, ingress class, issuer) and reaches the manifests through `replacements`. Commenting out one line switches between the two setups:
+  - Setup A: an ingress, cert-manager and a public hostname.
+  - Setup B: `kubectl port-forward` only.
+- `base/flux-operator.yaml`: an OCIRepository and a HelmRelease for the operator, with the chart's NetworkPolicy turned off.
+- `base/rbac.yaml`: a `flux-web-viewer` role that cannot read Secrets, and the binding for your user.
+- `components/ingress/exposure.yaml`: Certificate, Ingress and the two NetworkPolicies Setup A needs, including the one for the ACME solver.
+- `web-config.example.yaml`: the OIDC config as a Secret, applied separately so the file you edit never contains the client secret.
+
+There is also a [kind demo](https://github.com/mitja/blog-code/tree/main/2026-09-flux-operator-web-ui-with-zitadel-sso/kind-demo) that shows the default, the shortcut and the fix from a pod in another namespace, and the same as a step-by-step [Educates workshop](https://github.com/mitja/blog-code/tree/main/2026-09-flux-operator-web-ui-with-zitadel-sso/educates). I checked everything below against chart versions 0.59.0 and 0.61.0.
+
+What surprised me and what I learned along the way:
+
+1. **Without a web config the UI is read-only.** Reconcile, suspend, resume, restart, pod deletion, logs and artifact downloads are all off until authentication is configured. What it gives out is reading, as cluster-admin, to every pod. Secrets themselves it does not serve, only Flux objects and the workloads Flux manages; a password written into HelmRelease values or a Deployment's environment it does.
+2. **Native OIDC with impersonation beats a proxy.** I wanted oauth2-proxy; Claude recommended the UI's own OIDC login. With impersonation every action is checked by the API server as the signed-in person, so RBAC decides.
+3. **Removing the chart's NetworkPolicy is the fix**, but only because Flux's own baseline policies in `flux-system` admit same-namespace traffic only. Where Flux runs without them, removing it opens the UI to everyone.
+4. **Port-forward is a real access model.** It goes through the API server and the kubelet, not pod to pod, so NetworkPolicy does not apply. The kubeconfig opens the tunnel, OIDC says who is signed in, and RBAC decides what they may do.
+5. **The callback path `/oauth2/callback` is not documented.** Claude found it with `strings` on the operator binary.
+6. **Zitadel leaves the email out of the ID token by default.** Password and second factor succeed, Zitadel logs nothing, and the operator fails with `no such key: email`. The fix is "User Info inside ID Token" on the application, and the email must be verified.
+7. **The "read-only" `flux-web-user` role may read every Secret** (`apiGroups: ["*"], resources: ["*"]`). The UI does not show them, but the identity may read them wherever it reaches the API server.
+8. **`flux-web-admin` is close to cluster-admin**, because `create jobs` and `patch deployments` run arbitrary images. That is not a bug; it is what "restart workloads" means once spelled out. RBAC cannot say "everything except Secrets", so a safe viewer has to list what it may read.
+9. **The certificate did not issue, and it was not DNS.** The ingress controller could not reach cert-manager's short-lived solver pod (port 8089) because of the namespace policy, and the 502 was the clue. Fixed by hand, the renewal fails the same way months later.
+10. **Small traps:** an 18-digit client ID left unquoted loses its last digits; `${VAR}` inside YAML comments still gets substituted and can break a strict build; an empty UI after a successful login means a missing or mismatched RBAC binding; and over plain http some browsers drop the UI's `Secure` cookies unless the config says `insecure: true`.
+
+The rest of this post covers four things: closing the network path the chart leaves open, turning on the UI's native OpenID Connect login so that it reads and acts as the signed-in person instead of as cluster-admin, what the chart's RBAC roles actually let that person do, and two ways of reaching the UI afterwards. The first is the usual one: an ingress controller and a public hostname. The second is `kubectl port-forward`, which I use on a cluster where I do not want to add an ingress at all. The identity provider in the examples is Zitadel, but nothing here is Zitadel-specific beyond the console screens.
 
 ## What the chart opens, and how to close it
 
@@ -34,7 +57,36 @@ ingress:
       - namespaceSelector: {}
 ```
 
-which admits every namespace, and there is no Helm value to narrow it. Any pod in any namespace can therefore reach a cluster-admin-backed console on port 9080.
+which admits every namespace, and there is no Helm value to narrow it. Any pod in any namespace can therefore reach a console on port 9080 that reads as cluster-admin and asks nobody for a login.
+
+### What a pod in another namespace sees
+
+The UI's browser talks to a JSON API on the same port, and that API answers anyone who reaches it. From a pod in another team's namespace, with no token and no cookie, in the [kind demo](https://github.com/mitja/blog-code/tree/main/2026-09-flux-operator-web-ui-with-zitadel-sso/kind-demo):
+
+```sh
+UI=http://flux-operator.flux-system:9080
+curl -s $UI/api/v1/resources                                                  # every Flux object, with its status
+curl -s "$UI/api/v1/resource?kind=HelmRelease&namespace=shop&name=shop-api"   # the spec, values included
+curl -s "$UI/api/v1/workload?kind=Deployment&namespace=shop&name=shop-api-podinfo"  # the pod template, env included
+```
+
+A password written into the HelmRelease's values came back twice, once in `.spec.values` and once in the Deployment's environment. What the API does not give out: Secrets (`unable to find Flux kind Secret`), objects Flux does not manage, pod logs, artifact downloads and every action. A `POST /api/v1/resource/action` to suspend a Kustomization answers `User actions are disabled`, and the code says why: user actions are enabled exactly when authentication is configured. So the default is a leak, not a takeover. For an attacker it is the map of the cluster, plus whatever was written into specs.
+
+### The shortcut that makes it a takeover
+
+The buttons are missing, and the quickest way to get them is a web config with `Anonymous` authentication and a fixed identity:
+
+```yaml
+spec:
+  authentication:
+    type: Anonymous
+    anonymous:
+      username: flux-ui
+```
+
+Bind `flux-ui` to the chart's `flux-web-admin` and the buttons work, for everyone who reaches port 9080. In the demo the pod in the other namespace then suspended the shop's Kustomization and deleted its pods through `/api/v1/resource/action` and `/api/v1/workload/action`, and the audit events said `User 'flux-ui' performed action 'suspend'`: a trail that names nobody. The fix below takes the other way, a login per person.
+
+### Closing the network path
 
 The fix is to turn that policy off and not write a replacement:
 
@@ -45,7 +97,7 @@ web:
     create: false
 ```
 
-Flux's own baseline policies in `flux-system` already do the right thing. `allow-egress` selects every pod in the namespace and admits ingress from `podSelector: {}`, which means pods in the same namespace only, on all ports. `allow-scraping` admits all namespaces on port 8080 so metrics keep working. NetworkPolicies are additive: a pod is reachable if any policy that selects it admits the traffic. Removing the chart's policy removes only its allowance.
+Flux's own baseline policies in `flux-system` already do the right thing, provided they exist. `allow-egress` selects every pod in the namespace and admits ingress from `podSelector: {}`, which means pods in the same namespace only, on all ports. `allow-scraping` admits all namespaces on port 8080 so metrics keep working. NetworkPolicies are additive: a pod is reachable if any policy that selects it admits the traffic. Removing the chart's policy removes only its allowance.
 
 | Policy | Selects | Admits | Ports |
 |---|---|---|---|
@@ -54,6 +106,14 @@ Flux's own baseline policies in `flux-system` already do the right thing. `allow
 | `allow-scraping` (Flux baseline) | all pods in `flux-system` | every namespace | 8080 |
 
 Net effect: port 9080 is reachable from inside `flux-system`, metrics scraping is untouched, and cross-namespace access to the UI is gone. Whatever you add for your own access path goes on top of this.
+
+Check that the baseline is there before you switch the chart's policy off:
+
+```sh
+kubectl -n flux-system get networkpolicy
+```
+
+A `FluxInstance` writes `allow-egress`, `allow-scraping` and `allow-webhooks` when `cluster.networkPolicy` is `true`, which is its default. Without them, the operator pod is selected by no policy at all once the chart's is gone, and a pod no policy selects is reachable from everywhere. Then you need a policy of your own in place of the chart's, not none.
 
 ## Native SSO instead of a proxy
 
@@ -100,7 +160,7 @@ web:
     create: false
 ```
 
-Two details about the shape. `impersonation` nests under `authentication.oauth2`, not directly under `authentication`; so do `variables`, `validations` and `profile`. And there is an `Anonymous` authentication type, which is what you get without any config and which you are now leaving behind.
+Two details about the shape. `impersonation` nests under `authentication.oauth2`, not directly under `authentication`; so do `variables`, `validations` and `profile`. And `Anonymous` is not what you get without any config. Without a config there is no authentication at all and the UI is read-only; `Anonymous` is the shortcut from above, a configured identity that everyone shares.
 
 `impersonation.username: "claims.email"` means the `email` claim of the ID token becomes the Kubernetes username. Everything in RBAC hangs off that string.
 
@@ -193,7 +253,7 @@ I read the rules off a running cluster with `kubectl get clusterrole -o yaml`. `
 
 Two consequences.
 
-"Read only" reads every Secret in the cluster. `resources: ["*"]` in every API group includes Secrets, in every namespace. `kubectl auth can-i get secrets --as=you@example.com -n any-namespace` returns `yes` for a user bound to `flux-web-user`. On a cluster where SOPS decrypts registry tokens, S3 credentials and database passwords into Secrets, a viewer reads all of them.
+"Read only" may read every Secret in the cluster. `resources: ["*"]` in every API group includes Secrets, in every namespace. `kubectl auth can-i get secrets --as=you@example.com -n any-namespace` returns `yes` for a user bound to `flux-web-user`. The UI itself does not show Secrets, so through the UI this stays theoretical. It stops being theoretical wherever the same identity reaches the API server another way, for example when the cluster trusts the same OIDC provider for kubectl, or when the role gets reused for something else. On a cluster where SOPS decrypts registry tokens, S3 credentials and database passwords into Secrets, that identity may read all of them.
 
 `flux-web-admin` is close to cluster-admin in practice. `create jobs` runs an arbitrary image as an arbitrary ServiceAccount, and `patch deployments` does much the same. That is not a fault in the role. It is what "restart my workloads" means once you spell it out. But it should not come as a surprise when you hand the binding out.
 
@@ -243,7 +303,9 @@ rules:
 
 Checked the same way: `get secrets` is denied; listing Kustomizations, HelmReleases, Deployments and Events and reading pod logs are allowed; `patch kustomizations` is denied.
 
-That was verified at the RBAC layer, not by driving the UI as that user. Panels that show data derived from Secrets, such as a HelmRelease's `valuesFrom` or a source's authentication status, may show less or show an error. I would still make it the default for anyone who is not operating Flux, and click through the UI once as that user before handing the binding out.
+I also signed in as a user bound to it, in the demo: the UI lists Flux objects and shows HelmReleases and Deployments, and a suspend is refused with `Permission denied. User bob@example.com does not have access to suspend Kustomization/shop/podinfo`. Panels that show data derived from Secrets, such as a source's authentication status, may show less or show an error. I make it the default for anyone who is not operating Flux.
+
+What no role fixes: a viewer may read HelmReleases, so a password written into a HelmRelease's values, or rendered into a Deployment's `env`, is readable for every viewer. Put it in a Secret and reference it with `secretKeyRef`; then the UI shows the reference, not the value. `valuesFrom` a Secret helps less than it looks, because Helm renders the value into the Deployment and the UI shows the Deployment's environment.
 
 ## Setup A: ingress controller and a public hostname
 
@@ -283,7 +345,7 @@ spec:
   dnsNames:
     - flux.example.com
   issuerRef:
-    name: letsencrypt
+    name: letsencrypt-prod
     kind: ClusterIssuer
 ```
 
@@ -395,7 +457,9 @@ On one of my clusters the only ingress is Gardener's istio, and Gardener manages
 kubectl -n flux-system port-forward svc/flux-operator 9080:9080
 ```
 
-and then opened at `http://localhost:9080`. The config differs from Setup A in exactly one line, `baseURL: http://localhost:9080`, and the Zitadel application gets `http://localhost:9080/oauth2/callback` as its redirect URI with dev mode on. There is no Ingress, no Certificate, and no NetworkPolicy allowance of any kind.
+and then opened at `http://localhost:9080`. The config differs from Setup A in two lines, `baseURL: http://localhost:9080` and `insecure: true`, and the Zitadel application gets `http://localhost:9080/oauth2/callback` as its redirect URI with dev mode on. There is no Ingress, no Certificate, and no NetworkPolicy allowance of any kind.
+
+`insecure: true` drops the `Secure` flag from the UI's cookies. Chrome and Firefox accept `Secure` cookies on `http://localhost` anyway; Safari does not, loses the login state on the way back from the provider, and the UI says "Authentication failed" with nothing in the operator's log. Over https, leave it out.
 
 That last point is what makes this work. `kubectl port-forward` is not affected by NetworkPolicy, because the traffic does not arrive as pod-to-pod traffic. It goes from kubectl to the API server, from the API server to the kubelet on the node where the pod runs, and from the kubelet into the pod over the node's own network namespace.
 
@@ -415,7 +479,7 @@ This is a legitimate setup, not a workaround. The kubeconfig gates who can open 
 
 | | Setup A: ingress | Setup B: port-forward |
 |---|---|---|
-| `baseURL` | `https://flux.example.com` | `http://localhost:9080` |
+| `baseURL` | `https://flux.example.com` | `http://localhost:9080`, with `insecure: true` |
 | Ingress | yes | no |
 | Certificate | yes, cert-manager | no |
 | Extra NetworkPolicies | two: ingress controller namespace to 9080, and to the ACME solver on 8089 | none |
@@ -428,8 +492,11 @@ This is a legitimate setup, not a workaround. The kubeconfig gates who can open 
 ## The whole thing as a Kustomize package
 
 Everything above is packaged so you do not have to reassemble it out of prose:
-**[flux-web-sso.zip](flux-web-sso/flux-web-sso.zip)**. It is the configuration running on my
-clusters, with the site-specific values lifted into one file.
+**[flux-web-sso](https://github.com/mitja/blog-code/tree/main/2026-09-flux-operator-web-ui-with-zitadel-sso/flux-web-sso)**
+in the blog-code repository. It is the configuration running on my clusters, with the site-specific
+values lifted into one file. It assumes Flux's own NetworkPolicies in `flux-system` (see above), and
+it hands the operator to Flux: if you installed the chart with `helm install`, the helm-controller
+takes over the release `flux-system/flux-operator` and upgrades it with the package's values.
 
 ```
 kustomization.yaml            the values, and the Setup A / Setup B switch — edit this
@@ -441,7 +508,7 @@ components/
   ingress/exposure.yaml       Setup A: Certificate, Ingress, and two NetworkPolicies
 ```
 
-The values sit at the top of [`kustomization.yaml`](flux-web-sso/kustomization.yaml) and are the
+The values sit at the top of [`kustomization.yaml`](https://github.com/mitja/blog-code/blob/main/2026-09-flux-operator-web-ui-with-zitadel-sso/flux-web-sso/kustomization.yaml) and are the
 only thing to edit:
 
 ```yaml
@@ -473,7 +540,7 @@ file unused. Then:
 
 ```sh
 cp web-config.example.yaml /tmp/web-config.yaml
-$EDITOR /tmp/web-config.yaml          # baseURL, issuerURL, clientID, clientSecret
+$EDITOR /tmp/web-config.yaml          # baseURL, issuerURL, clientID, clientSecret (+ insecure for Setup B)
 kubectl apply -f /tmp/web-config.yaml && rm /tmp/web-config.yaml
 
 $EDITOR kustomization.yaml
@@ -484,12 +551,10 @@ The Secret is applied separately and on purpose. It carries the client secret, a
 of the kustomization means the file you edit and might commit never contains one. If you do keep
 this in Git with Flux, encrypt it with SOPS and add it to the resources list.
 
-Individual files, if you would rather read than download:
-[kustomization.yaml](flux-web-sso/kustomization.yaml) ·
-[base/flux-operator.yaml](flux-web-sso/base/flux-operator.yaml) ·
-[base/rbac.yaml](flux-web-sso/base/rbac.yaml) ·
-[components/ingress/exposure.yaml](flux-web-sso/components/ingress/exposure.yaml) ·
-[web-config.example.yaml](flux-web-sso/web-config.example.yaml)
+A further step this package does not take: `web.serverOnly: true` runs the UI as a Deployment of
+its own, in a second Helm release, whose ServiceAccount may read everything and impersonate users
+but is not cluster-admin. With impersonation the difference is small; without authentication it is
+the difference between reading as cluster-admin and reading as a viewer.
 
 ## Gotchas
 
@@ -501,8 +566,10 @@ Individual files, if you would rather read than download:
 
 **The identity provider says yes, the UI says no.** Zitadel accepts the password and the second factor and logs nothing wrong, and the operator fails with `no such key: email`. The provider is not where the fault is. The UI wants the claim in the ID token, and Zitadel puts it on the userinfo endpoint unless "User Info inside ID Token" is on for the application. When a login fails after a clean authentication, read the operator log and the token contents, not the provider's log.
 
+**Authentication failed over plain http.** The login at the provider succeeds, the UI says "Authentication failed", and the operator logs nothing. The UI's login state cookie is `Secure`, and a browser that does not send `Secure` cookies to `http://localhost` (Safari) loses it on the way back. Set `insecure: true` for Setup B.
+
 **A 502 on the ACME challenge is not DNS.** If the Certificate is pending and cert-manager reports `wrong status code '502'`, the ingress controller resolved the name and could not reach the solver pod. Check NetworkPolicy before checking propagation.
 
 ## Summary
 
-The UI was already running in your cluster, reachable from any pod, acting as cluster-admin. After this: the chart's NetworkPolicy is gone and Flux's baseline policies limit port 9080 to `flux-system`; the UI signs users in through OIDC and impersonates them, so every action goes through RBAC as a named person; and you reach it either through an ingress with two narrow NetworkPolicy allowances, one for the UI and one for the ACME solver, or through `kubectl port-forward` with no allowance at all. The callback path is `/oauth2/callback`, Zitadel has to be told to put the email claim in the ID token, the client ID is a string, and comments are not safe from substitution. And read the chart's roles before you bind them: the read-only one reads every Secret, the admin one can run arbitrary Jobs, and a viewer that cannot read Secrets has to be written by hand.
+With its defaults, the chart runs a UI that every pod in the cluster can reach, that reads as cluster-admin and asks nobody for a login. It does not act, but it shows everything Flux knows, including whatever was written into specs and values, and the quickest way to make its buttons work, `Anonymous` with a named identity, hands those to every pod too. After this: the chart's NetworkPolicy is gone and Flux's baseline policies limit port 9080 to `flux-system` (check that they exist first); the UI signs users in through OIDC and impersonates them, so every read and every action goes through RBAC as a named person; and you reach it either through an ingress with two narrow NetworkPolicy allowances, one for the UI and one for the ACME solver, or through `kubectl port-forward` with no allowance at all. The callback path is `/oauth2/callback`, Zitadel has to be told to put the email claim in the ID token, the client ID is a string, comments are not safe from substitution, and plain http needs `insecure: true`. And read the chart's roles before you bind them: the read-only one may read every Secret, the admin one can run arbitrary Jobs, a viewer that cannot read Secrets has to be written by hand, and no role protects a password written into a spec.

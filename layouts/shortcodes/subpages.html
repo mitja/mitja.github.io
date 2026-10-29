@@ -1,0 +1,9 @@
+{{- /*
+  The sub-pages of an article written as a branch bundle, by weight, with
+  their summaries. Usage: {{< subpages >}}
+*/ -}}
+<ul>
+  {{- range .Page.RegularPages.ByWeight }}
+  <li><a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ with .Params.summary }}: {{ . }}{{ end }}</li>
+  {{- end }}
+</ul>

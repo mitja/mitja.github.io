@@ -1,0 +1,33 @@
+{{- /*
+  Sub-page of an article written as a branch bundle (layout: subpage, set by
+  cascade in the article's _index.md), e.g. the README of a script folder. A
+  navigation over the article's sub-pages sits above it, as on appdoc pages,
+  and a link to the page's folder in the git repository, where the files it
+  describes live (they are not published: publishResources: false).
+*/ -}}
+{{ define "main" }}
+  {{ $article := .CurrentSection }}
+  <article class="max-w-full ad">
+    <header>
+      {{ partial "breadcrumbs.html" . }}
+      <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">{{ .Title | emojify }}</h1>
+      {{ with .Params.summary }}<p class="mt-2 text-neutral-500 dark:text-neutral-400">{{ . }}</p>{{ end }}
+      {{ with .File }}
+      <p class="mt-2 text-sm"><a href="{{ site.Params.sourceTree }}/content/{{ .Dir | replaceRE `/$` `` }}">{{ i18n "subpage.files" | default "The files on GitHub" }} &rarr;</a></p>
+      {{ end }}
+    </header>
+    {{ with $article }}
+    <nav class="ad-nav mt-6" aria-label="{{ .Title }}">
+      <p><a href="{{ .RelPermalink }}">{{ .Title }}</a></p>
+      <ol>
+        {{ range .RegularPages.ByWeight }}
+        <li><a href="{{ .RelPermalink }}"{{ if eq . $ }} aria-current="page"{{ end }}>{{ .Title }}</a></li>
+        {{ end }}
+      </ol>
+    </nav>
+    {{ end }}
+    <section class="max-w-full mt-6 prose dark:prose-invert">
+      {{ .Content }}
+    </section>
+  </article>
+{{ end }}

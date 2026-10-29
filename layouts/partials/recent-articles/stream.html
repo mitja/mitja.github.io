@@ -3,8 +3,8 @@
 {{ $streamItems := .Site.Params.homepage.streamItems | default .Site.Params.homepage.showRecentItems | default 10 }}
 {{ $streamSections := .Site.Params.homepage.streamSections | default .Site.Params.mainSections }}
 
-{{/* Filter pages by configured sections - site.RegularPages is already language-aware */}}
-{{ $pages := first $streamItems (where site.RegularPages "Section" "in" $streamSections) }}
+{{/* Filter articles by configured sections - partials/articles.html is language-aware and includes branch-bundle articles */}}
+{{ $pages := first $streamItems (where (partial "articles.html" .) "Section" "in" $streamSections) }}
 
 <div class="flex flex-col lg:flex-row lg:gap-8">
   {{/* Main content stream */}}

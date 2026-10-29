@@ -29,6 +29,9 @@ stringData:
       # Setup A: https://flux.example.com
       # Setup B: http://localhost:9080
       baseURL: https://flux.example.com
+      # Setup B only: plain http, so the UI's cookies must not be Secure. Without this, Safari drops
+      # the login state cookie and the UI says "Authentication failed", with nothing logged.
+      # insecure: true
       authentication:
         type: OAuth2
         oauth2:
