@@ -6,8 +6,8 @@ draft: false
 hero:
   eyebrow: "KI Bauer · Berlin"
   name: "Mitja Martini"
-  tagline: "AI Engineer and Cloud Services Solution Designer"
-  intro: "I work as Cloud Services Solution Designer at T-Systems. On the side, I give trainings and develop software with AI elements."
+  tagline: "Solution Designer and AI Engineer"
+  intro: "Welcome to my blog about AI engineering, platform engineering, and software development."
   primary:
     text: "Send me an email"
     url: "mailto:hi@mitjamartini.com"
@@ -75,9 +75,9 @@ hero:
 #      text: "Code for articles and experiments."
 #      url: "https://github.com/mitja"
 articles:
-  heading: "==Articles=="
+  heading: "Blog"
   lead: "My latest blog posts."
-  more_text: "All articles"
+  more_text: "All blog posts"
 #about:
 #  heading: "==About=="
 #  text: "For more than twenty years I have worked as an IT and Cloud Services Solution Designer at T-Systems. Before that I was an SAP consultant and application developer for ten years. On the side I work as a trainer and coach on AI-automated operations. PaaSbox, Cloud Viewer and ownpaas are my main projects for building knowledge and experience."

@@ -138,7 +138,7 @@
   {{- /* Latest articles */ -}}
   {{- with $p.articles }}
   {{- $n := $.Site.Params.homepage.showRecentItems | default 3 }}
-  {{- $posts := where $.Site.RegularPages "Type" "in" ($.Site.Params.mainSections | default (slice "posts")) }}
+  {{- $posts := partial "articles.html" . }}
   <section class="lp-section" id="{{ if $isDE }}artikel{{ else }}articles{{ end }}">
     <div class="lp-section-head">
       <h2>{{ .heading | markdownify }}</h2>

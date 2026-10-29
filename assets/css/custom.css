@@ -122,6 +122,16 @@
 /* Hero eyebrow: the brand line above the name (e.g. "KI Bauer · Berlin") */
 .lp-hero-eyebrow { color: var(--lp-accent, currentColor); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 0.5rem; }
 
+/* Training pages (layouts/_default/training.html) */
+.tp-facts { margin-bottom: 2.5rem; }
+.tp-facts h2 { font-size: 1.65rem; font-weight: 400; margin: 0 0 1rem; }
+.tp-facts dl { margin: 0; display: grid; }
+.tp-facts dl > div { display: grid; gap: 0.25rem 1.5rem; padding: 0.9rem 0; border-top: 1px solid var(--lp-rule); }
+@media (min-width: 768px) { .tp-facts dl > div { grid-template-columns: 12rem minmax(0, 1fr); } }
+.tp-facts dt { font-weight: 700; color: var(--lp-ink); }
+.tp-facts dd { margin: 0; color: var(--lp-ink); line-height: 1.6; }
+.tp-end { margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--lp-rule); }
+
 /* Decision helper (layouts/shortcodes/sqlite-decision.html) */
 .dh { margin: 1.5rem 0 2rem; padding: 1.25rem 1.5rem; border: 1px solid var(--lp-rule); border-radius: 0.75rem; color: var(--lp-ink); font-size: 0.95rem; }
 .dh-form { display: grid; gap: 1rem; }

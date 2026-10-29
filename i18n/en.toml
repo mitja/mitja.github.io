@@ -6,3 +6,18 @@ other = "On this page"
 
 [apps.docs]
 other = "Documentation"
+
+[training.register]
+other = "Pre-register by email"
+
+[training.mailBody]
+other = "Hi Mitja,\n\nplease put me on the list for this training and let me know when a session is open.\n\nName:\nCompany (optional):\n"
+
+[training.registerNote]
+other = "Pre-registering is an email to me, nothing more. I write back when the first sessions are scheduled. No newsletter."
+
+[training.facts]
+other = "At a glance"
+
+[training.sessions]
+other = "Sessions"

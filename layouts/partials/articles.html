@@ -1,0 +1,11 @@
+{{- /*
+  The site's articles, newest first: the regular pages of the main sections,
+  and the articles written as branch bundles (an _index.md with layout: single,
+  whose sub-pages are its READMEs). site.RegularPages alone leaves those out,
+  and their sub-pages are not in it (build.list: local).
+  Usage: {{ $posts := partial "articles.html" . }}
+*/ -}}
+{{- $sections := site.Params.mainSections | default (slice "posts") -}}
+{{- $pages := where site.RegularPages "Type" "in" $sections -}}
+{{- $branch := where (where (where site.Pages "Kind" "section") "Type" "in" $sections) "Params.layout" "single" -}}
+{{- return ($pages | union $branch).ByDate.Reverse -}}

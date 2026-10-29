@@ -13,6 +13,7 @@ enableSearch = true
 enableCodeCopy = true
 
 mainSections = ["posts"]
+sourceTree = "https://github.com/mitja/mitja.github.io/tree/main" # the repository, for links to files that are not published (layouts/_default/subpage.html)
 # robots = ""
 
 [header]

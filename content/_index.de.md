@@ -6,8 +6,8 @@ draft: false
 hero:
   eyebrow: "KI Bauer · Berlin"
   name: "Mitja Martini"
-  tagline: "Cloud Services Solution Designer und AI Engineer"
-  intro: "Ich arbeite als Cloud Services Solution Designer bei T-Systems. Nebenberuflich gebe ich Trainings und entwickle Software mit KI Elementen."
+  tagline: "Solution Designer und AI Engineer"
+  intro: "Willkommen auf meinem Blog über AI Engineering, Platform Engineering und Softwareentwicklung."
   primary:
     text: "Schreib mir eine Email"
     url: "mailto:hi@mitjamartini.com"
@@ -75,7 +75,7 @@ hero:
 #      text: "Code zu Artikeln und Experimenten."
 #      url: "https://github.com/mitja"
 articles:
-  heading: "==Artikel=="
+  heading: "Blog"
   lead: "Meine neuesten Blog Artikel."
   more_text: "Alle Artikel"
 #about:

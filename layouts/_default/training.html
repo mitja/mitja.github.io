@@ -1,0 +1,34 @@
+{{- /*
+  One training (content/training/<slug>/index.md, layout: training).
+  Front matter: subtitle, status (badge), format, summary, facts (a list of
+  label/text pairs, text in markdown). The call to action is a pre-registration
+  email; the body holds the sessions.
+*/ -}}
+{{ define "main" }}
+  {{- $mail := printf "mailto:hi@mitjamartini.com?subject=%s&body=%s" (replace (printf "Training: %s" .Title | urlquery) "+" "%20") (replace (i18n "training.mailBody" | urlquery) "+" "%20") }}
+  <div class="pp">
+    <header class="pp-head">
+      {{ with .Params.kicker }}<p class="pp-kicker">{{ . }}</p>{{ end }}
+      <h1>{{ .Title | emojify }}{{ with .Params.status }} <span class="pp-badge">{{ . }}</span>{{ end }}</h1>
+      {{ with .Params.subtitle }}<p class="pp-subtitle">{{ . }}</p>{{ end }}
+      {{ with .Params.summary }}<p class="pp-summary">{{ . }}</p>{{ end }}
+      <div class="pp-actions">
+        <a class="lp-btn lp-btn-primary" href="{{ $mail | safeURL }}">{{ i18n "training.register" }}</a>
+        {{- with .Parent }}<a class="lp-btn lp-btn-quiet" href="{{ .RelPermalink }}">{{ .Title }}</a>{{ end }}
+      </div>
+      <p class="pp-note">{{ i18n "training.registerNote" }}</p>
+    </header>
+    {{ with .Params.facts }}
+    <section class="tp-facts">
+      <h2>{{ i18n "training.facts" }}</h2>
+      <dl>
+        {{ range . }}<div><dt>{{ .label }}</dt><dd>{{ .text | markdownify }}</dd></div>{{ end }}
+      </dl>
+    </section>
+    {{ end }}
+    {{ with .Content }}<section class="max-w-full prose dark:prose-invert">{{ . }}</section>{{ end }}
+    <div class="pp-actions tp-end">
+      <a class="lp-btn lp-btn-primary" href="{{ $mail | safeURL }}">{{ i18n "training.register" }}</a>
+    </div>
+  </div>
+{{ end }}
