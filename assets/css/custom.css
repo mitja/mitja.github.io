@@ -6,7 +6,7 @@
    pp- (product page), ad- (app docs).
 
    Typography, markers and the coral button colour come from the paasbox
-   theme (themes/paasbox): headings are set in its Fraunces at weight 400,
+   theme (themes/paasbox): headings are set in its Sora at weight 500,
    card labels stay Inter, and the primary button is its coral CTA. The
    var(--pb-…, …) fallbacks keep this working on plain Blowfish.
    ------------------------------------------------------------------------ */
@@ -25,7 +25,7 @@
 /* Hero: name set large and tight, the photo at the side on wide screens */
 .lp-hero { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem; align-items: center; padding: 2rem 0 4rem; }
 @media (min-width: 768px) { .lp-hero { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 3rem; padding: 3rem 0 5rem; } }
-.lp-hero-name { font-size: clamp(2.6rem, 6vw, 4.2rem); line-height: 0.99; font-weight: 400; letter-spacing: -0.032em; margin: 0 0 1rem; }
+.lp-hero-name { font-size: clamp(2.6rem, 6vw, 4.2rem); line-height: 0.99; font-weight: 500; letter-spacing: -0.032em; margin: 0 0 1rem; }
 .lp-hero-tagline { font-size: clamp(1.2rem, 2.2vw, 1.5rem); line-height: 1.35; font-weight: 500; max-width: 26em; margin: 0 0 1rem; }
 .lp-hero-intro { color: var(--lp-muted); font-size: 1.05rem; line-height: 1.6; max-width: 34em; margin: 0 0 1.75rem; }
 .lp-hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; align-items: center; }
@@ -46,7 +46,7 @@
 .lp-section { border-top: 1px solid var(--lp-rule); padding: 2.5rem 0 3rem; }
 @media (min-width: 768px) { .lp-section { padding: 3.5rem 0 4rem; } }
 .lp-section-head { margin-bottom: 1.75rem; }
-.lp-section-head h2 { font-size: clamp(1.75rem, 2.8vw, 2.2rem); line-height: 1.12; font-weight: 400; margin: 0 0 0.6rem; }
+.lp-section-head h2 { font-size: clamp(1.75rem, 2.8vw, 2.2rem); line-height: 1.12; font-weight: 500; margin: 0 0 0.6rem; }
 .lp-lead { color: var(--lp-muted); font-size: 1.05rem; max-width: 36em; }
 .lp-link { color: var(--lp-accent); font-weight: 600; }
 .lp-more { margin-top: 1.5rem !important; }
@@ -84,13 +84,13 @@
 /* Product page */
 .pp-head { padding: 1rem 0 2.5rem; border-bottom: 1px solid var(--lp-rule); margin-bottom: 2.5rem; }
 .pp-kicker { color: var(--lp-muted); font-weight: 500; margin: 0 0 0.5rem; }
-.pp-head h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); line-height: 1.05; font-weight: 400; margin: 0 0 0.5rem; }
+.pp-head h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); line-height: 1.05; font-weight: 500; margin: 0 0 0.5rem; }
 .pp-subtitle { font-size: 1.25rem; font-weight: 500; margin: 0 0 1rem; }
 .pp-summary { color: var(--lp-muted); font-size: 1.05rem; line-height: 1.6; max-width: 38em; margin: 0 0 1.5rem; }
 .pp-actions { display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; align-items: center; }
 .pp-note { color: var(--lp-muted); font-size: 0.85rem; margin: 1rem 0 0; max-width: 40em; }
 .pp-docs { border-top: 1px solid var(--lp-rule); margin-top: 3rem; padding-top: 2rem; }
-.pp-docs h2 { font-size: 1.65rem; font-weight: 400; margin: 0 0 1rem; }
+.pp-docs h2 { font-size: 1.65rem; font-weight: 500; margin: 0 0 1rem; }
 .pp-docs ol, .ad-nav ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
 @media (min-width: 640px) { .pp-docs ol { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .pp-docs li a { display: block; padding: 1rem 1.25rem; border: 1px solid var(--lp-rule); border-radius: 0.75rem; color: var(--lp-ink); text-decoration: none; }

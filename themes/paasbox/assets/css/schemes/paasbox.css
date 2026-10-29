@@ -1,7 +1,7 @@
 /* ┌─────────────────────────────────────────────────────────────────────┐
    │ paasbox — a Blowfish colour scheme that carries the whole look.       │
    │ Ported from ../paasbox-web/src/styles (paasbox.css + global.css):     │
-   │ paper and ink, Fraunces for display headings, Inter for everything    │
+   │ paper and ink, Sora for display headings, Inter for everything        │
    │ else, and the hand-drawn markers and notes. Two departures: the       │
    │ accent is petrol (oklch hue 222) where paasbox has forest green, and  │
    │ the warm colour is the red of the KI Bauer cover's microphone where   │
@@ -78,7 +78,7 @@
 
 /* ── paasbox tokens (paasbox.css, global.css) ───────────────────────────── */
 :root {
-  --pb-serif: 'Fraunces Variable', Georgia, serif;
+  --pb-serif: 'Sora Variable', 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
   --pb-sans: 'Inter Variable', Inter, ui-sans-serif, system-ui, sans-serif;
   --pb-paper: #fbf8f1;
   --pb-paper-raised: #fffdf8;
@@ -138,39 +138,23 @@ html.dark {
 
 /* ── Fonts ──────────────────────────────────────────────────────────────────
    Self-hosted, never Google Fonts: static/fonts/ of this theme, latin and
-   latin-ext only (German needs nothing beyond latin). Fraunces is the
-   "standard" cut (weight and optical-size axes), Inter the weight axis. The
+   latin-ext only (German needs nothing beyond latin). Sora and Inter are
+   the weight-axis cuts. Sora has no italic, so nothing set in it is italic. The
    URLs are relative to the bundle Blowfish writes to /css/. */
 @font-face {
-  font-family: 'Fraunces Variable';
+  font-family: 'Sora Variable';
   font-style: normal;
   font-display: swap;
-  font-weight: 100 900;
-  src: url(../fonts/fraunces-latin-standard-normal.woff2) format('woff2-variations');
+  font-weight: 100 800;
+  src: url(../fonts/sora-latin-wght-normal.woff2) format('woff2-variations');
   unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
 }
 @font-face {
-  font-family: 'Fraunces Variable';
+  font-family: 'Sora Variable';
   font-style: normal;
   font-display: swap;
-  font-weight: 100 900;
-  src: url(../fonts/fraunces-latin-ext-standard-normal.woff2) format('woff2-variations');
-  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
-}
-@font-face {
-  font-family: 'Fraunces Variable';
-  font-style: italic;
-  font-display: swap;
-  font-weight: 100 900;
-  src: url(../fonts/fraunces-latin-standard-italic.woff2) format('woff2-variations');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: 'Fraunces Variable';
-  font-style: italic;
-  font-display: swap;
-  font-weight: 100 900;
-  src: url(../fonts/fraunces-latin-ext-standard-italic.woff2) format('woff2-variations');
+  font-weight: 100 800;
+  src: url(../fonts/sora-latin-ext-wght-normal.woff2) format('woff2-variations');
   unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
 }
 @font-face {
@@ -237,19 +221,34 @@ body {
 .pb-logo-mark { fill: var(--pb-paper); }
 
 /* ── Display headings ───────────────────────────────────────────────────────
-   Fraunces for the headings inside <main>: page and post titles, the
-   author's ## and ###, post titles in lists. h4 and below stay Inter, as do
-   the header and footer. `.pb-display` opts any other element in.
-   Weight 400: Blowfish puts font-extrabold on its titles, and a synthesised
-   heavy serif reads as a mistake. */
+   Sora for the headings inside <main>: page and post titles, the author's
+   ## and ###, post titles in lists. h4 and below stay Inter, as does the
+   footer; the site name in the header is Sora too. `.pb-display` opts any
+   other element in. Weight 500 for h1/h2 and 600 for h3 (as on vaicoa.com):
+   Blowfish puts font-extrabold on its titles, which this overrides. */
 main :is(h1, h2, h3),
 .pb-display {
   font-family: var(--pb-serif);
-  font-weight: 400;
+  font-weight: 500;
   font-synthesis-weight: none;
   font-feature-settings: 'kern' 1, 'liga' 1;
   letter-spacing: -0.025em;
   text-wrap: balance;
+}
+main h3 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+/* Post titles: Blowfish's text-4xl is too large for long titles. */
+main h1.text-4xl {
+  font-size: clamp(1.9rem, 1.3rem + 2vw, 2.4rem);
+  line-height: 1.15;
+}
+/* The site name next to the logo. */
+nav.space-x-3 > a:first-child {
+  font-family: var(--pb-serif);
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
 /* paasbox's restrained page scale, not its splash scale (see paasbox.css). */
@@ -307,7 +306,7 @@ main h1 {
   text-decoration-color: currentColor;
 }
 
-/* Pull-quote: Fraunces italic with a slightly tilted coral bar. Tailwind
+/* Pull-quote: Sora, upright, with a slightly tilted coral bar. Tailwind
    Typography's curly quotes are dropped, as in paasbox. */
 .prose blockquote {
   position: relative;
@@ -317,7 +316,7 @@ main h1 {
   color: var(--pb-ink);
   font-family: var(--pb-serif);
   font-size: clamp(1.35rem, 2.5vw, 1.85rem);
-  font-style: italic;
+  font-style: normal;
   font-weight: 400;
   line-height: 1.25;
   quotes: none;
@@ -543,7 +542,7 @@ main mark::before {
   color: var(--note-color);
   font-family: var(--pb-serif);
   font-size: 1.05rem;
-  font-style: italic;
+  font-style: normal;
 }
 
 .prose .pb-margin-note :is(p, ul, ol) {

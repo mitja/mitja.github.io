@@ -1,6 +1,6 @@
 # paasbox theme for Hugo
 
-The look of [paasbox.com](../../../paasbox-web) — paper and ink, Fraunces for
+The look of [paasbox.com](../../../paasbox-web) — paper and ink, Sora for
 headings, Inter for text, and hand-drawn markers — as a theme component on top
 of [Blowfish](https://github.com/nunocoracao/blowfish), with two colours of its
 own: a petrol accent and the red of the KI Bauer cover (see below).
