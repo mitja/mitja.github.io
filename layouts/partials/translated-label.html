@@ -1,0 +1,21 @@
+{{- /*
+  A quiet note on a page that was translated automatically: front matter `translation: machine`.
+  It names the language of the original (the translation of this page that is not itself `translation: machine`)
+  and links to it. The tooltip says what "automatically" means. Styles: assets/css/custom.css (.tl-*).
+*/ -}}
+{{- if eq .Params.translation "machine" -}}
+  {{- $orig := "" -}}
+  {{- range .Translations -}}
+    {{- if and (not $orig) (ne .Params.translation "machine") }}{{ $orig = . }}{{ end -}}
+  {{- end -}}
+  <p class="tl" title="{{ i18n "translated.hint" }}">
+    <span class="tl-icon" aria-hidden="true">{{ partial "icon.html" "language" }}</span>
+    {{- with $orig }}
+      <span>{{ i18n (printf "translated.from_%s" .Language.Lang) | default (i18n "translated.generic") }}</span>
+      <span aria-hidden="true">·</span>
+      <a href="{{ .RelPermalink }}" hreflang="{{ .Language.Lang }}" lang="{{ .Language.Lang }}">{{ i18n "translated.original" }}</a>
+    {{- else }}
+      <span>{{ i18n "translated.generic" }}</span>
+    {{- end }}
+  </p>
+{{- end -}}

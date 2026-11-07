@@ -266,3 +266,12 @@ nav.md\:flex p, nav.space-x-3 a { white-space: nowrap; }
   nav.md\:flex { column-gap: 0.85rem; margin-left: 1rem; }
   nav.md\:flex p.text-base { font-size: 0.95rem; }
 }
+
+/* "Automatically translated" note under an article's meta line (partials/translated-label.html). Quiet on purpose:
+   the size of the meta line, the muted colour, a hairline pill; the link is the only accent. */
+.tl { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 0.15rem 0.4rem; margin: 0.6rem 0 0; padding: 0.15rem 0.65rem 0.15rem 0.5rem; border: 1px solid rgb(var(--color-neutral-200)); border-radius: 999px; font-size: 0.8rem; line-height: 1.4; color: rgb(var(--color-neutral-500)); cursor: help; }
+.dark .tl { border-color: rgb(var(--color-neutral-700)); color: rgb(var(--color-neutral-400)); }
+.tl-icon .icon { font-size: 0.85rem; top: 0; }
+.tl a { color: rgb(var(--color-primary-600)); text-decoration: none; cursor: pointer; }
+.dark .tl a { color: rgb(var(--color-primary-400)); }
+.tl a:hover { text-decoration: underline; text-underline-offset: 2px; }

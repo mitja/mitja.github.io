@@ -66,3 +66,15 @@ other = "With summary"
 
 [stream.allTags]
 other = "All tags"
+
+[translated.generic]
+other = "Machine-translated"
+
+[translated.from_de]
+other = "Machine-translated from German"
+
+[translated.original]
+other = "Read the original"
+
+[translated.hint]
+other = "This page was translated with an AI model and only spot-checked. If in doubt, the original applies."
