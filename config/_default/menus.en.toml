@@ -13,14 +13,6 @@
     tab = true
 
 [[main]]
-  identifier = "archive"
-  name = "Archive"
-  pageRef = "posts"
-  weight = 15
-  [main.params]
-    tab = true
-
-[[main]]
   identifier = "training"
   name = "Training"
   pageRef = "training"

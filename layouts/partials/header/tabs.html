@@ -1,7 +1,7 @@
 {{- /*
   Header (header.layout = "tabs"): the theme's basic header, and below it on
   small screens a segmented bar with the three sections Blog, Training and
-  Apps (and Archiv), the main-menu entries with params.tab = true (config/_default/
+  Apps, the main-menu entries with params.tab = true (config/_default/
   menus.*.toml). It sticks to the top while the page scrolls, so the switch is
   always one tap away; on wide screens (md, 768 px and up) it is hidden and the
   same entries sit in the main menu. No script: the current tab is worked out
@@ -9,9 +9,7 @@
 */ -}}
 {{ partial "header/basic.html" . }}
 {{- $current := "" -}}
-{{- if and (eq .Section "posts") (eq .Kind "section") -}}
-  {{- $current = "archive" -}}
-{{- else if or .IsHome (eq .Section "posts") (eq .Section "tags") (eq .Section "categories") -}}
+{{- if or .IsHome (eq .Section "posts") (eq .Section "tags") (eq .Section "categories") -}}
   {{- $current = "blog" -}}
 {{- else if eq .Section "training" -}}
   {{- $current = "training" -}}

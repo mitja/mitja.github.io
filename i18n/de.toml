@@ -54,3 +54,12 @@ other = "Tags"
 
 [tabs.label]
 other = "Bereiche"
+
+[archive.view]
+other = "Ansicht des Archivs"
+
+[archive.short]
+other = "Kurz"
+
+[archive.long]
+other = "Mit Zusammenfassung"

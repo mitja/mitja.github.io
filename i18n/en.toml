@@ -54,3 +54,12 @@ other = "Tags"
 
 [tabs.label]
 other = "Sections"
+
+[archive.view]
+other = "Archive view"
+
+[archive.short]
+other = "Short"
+
+[archive.long]
+other = "With summary"

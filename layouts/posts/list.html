@@ -6,6 +6,13 @@
   <header class="mt-5 mb-8">
     <h1 class="text-4xl font-extrabold text-neutral-900 dark:text-neutral">{{ .Title }}</h1>
   </header>
+  {{- /* View switch without a script: two radio buttons before the list; CSS shows the excerpts only when "long"
+       is checked. A two-line script remembers the choice (localStorage, never sent anywhere). */}}
+  <div class="archive-view mb-4 flex gap-2 text-sm" role="radiogroup" aria-label="{{ i18n "archive.view" }}">
+    <input type="radio" name="archive-view" id="av-short" value="short" class="sr-only" checked>
+    <label for="av-short" class="av-btn">{{ i18n "archive.short" }}</label>
+    <input type="radio" name="archive-view" id="av-long" value="long" class="sr-only">
+    <label for="av-long" class="av-btn">{{ i18n "archive.long" }}</label>
   <section class="archive">
     {{- $posts := where site.RegularPages "Section" "posts" }}
     {{- range $posts.GroupByDate "2006" }}
@@ -14,10 +21,19 @@
         {{- range .Pages }}
           <li class="archive-item flex gap-4 py-1">
             <time class="archive-date shrink-0 tabular-nums text-neutral-500 dark:text-neutral-400" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date | time.Format ":date_medium" }}</time>
-            <a class="archive-title text-neutral-900 dark:text-neutral-100 hover:underline" href="{{ or .Params.externalUrl .RelPermalink }}">{{ .Title }}</a>
+            <div class="archive-entry">
+              <a class="archive-title text-neutral-900 dark:text-neutral-100 hover:underline" href="{{ or .Params.externalUrl .RelPermalink }}">{{ .Title }}</a>
+              {{- with partial "stream/excerpt.html" . }}<div class="archive-excerpt prose dark:prose-invert text-sm">{{ . | safeHTML | truncate 320 }}</div>{{ end }}
+            </div>
           </li>
         {{- end }}
       </ul>
     {{- end }}
   </section>
+  </div>
+  <script>
+    (function () { var k = "archive-view", v = localStorage.getItem(k), r = document.getElementById(v === "long" ? "av-long" : "av-short");
+      if (r) r.checked = true;
+      document.querySelectorAll('input[name="archive-view"]').forEach(function (i) { i.addEventListener("change", function () { localStorage.setItem(k, i.value); }); }); })();
+  </script>
 {{ end }}

@@ -1,0 +1,13 @@
+{{- /* The excerpt of a post: front matter summary or description, else its first real text paragraph. Shared by the
+  home stream and the archive's long view. Returns HTML (possibly empty). */ -}}
+{{- $excerpt := "" }}
+{{- with .Params.summary | default .Params.description }}
+  {{- $excerpt = printf "<p>%s</p>" (. | markdownify) }}
+{{- else }}
+  {{- range findRE `(?s)<p>.*?</p>` .Content 8 }}
+    {{- if and (not $excerpt) (gt (len (plainify .)) 60) }}
+      {{- $excerpt = . | replaceRE `<img[^>]*>` "" | replaceRE `<sup[^>]*>.*?</sup>` "" }}
+    {{- end }}
+  {{- end }}
+{{- end }}
+{{- return $excerpt }}

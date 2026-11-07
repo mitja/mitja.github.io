@@ -37,6 +37,14 @@
     </p>
   </header>
 
+  {{- /* Two views of the same stream, switched without a script (radio + CSS :has); a two-line script remembers
+       the choice in localStorage (never sent anywhere): "with summary" (default) and "short" (date and title). */}}
+  <div class="sx-view" role="radiogroup" aria-label="{{ i18n "archive.view" }}">
+    <input type="radio" name="sx-view" id="sv-long" value="long" class="sr-only" checked>
+    <label for="sv-long" class="av-btn">{{ i18n "archive.long" }}</label>
+    <input type="radio" name="sx-view" id="sv-short" value="short" class="sr-only">
+    <label for="sv-short" class="av-btn">{{ i18n "archive.short" }}</label>
+  </div>
   <ol class="sx-list">
     {{- range $pager.Pages }}
     {{- $isNote := .Params.stream | default false }}
@@ -101,3 +109,8 @@
     {{- with $feed }} · <a href="{{ .RelPermalink }}" type="{{ .MediaType.Type }}">{{ i18n "stream.feed" }}</a>{{ end }}
   </p>
 </div>
+<script>
+  (function () { var k = "blog-view", v = localStorage.getItem(k), r = document.getElementById(v === "short" ? "sv-short" : "sv-long");
+    if (r) r.checked = true;
+    document.querySelectorAll('input[name="sx-view"]').forEach(function (i) { i.addEventListener("change", function () { localStorage.setItem(k, i.value); }); }); })();
+</script>
