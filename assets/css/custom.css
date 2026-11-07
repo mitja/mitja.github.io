@@ -159,6 +159,19 @@
    excerpt, then a quiet line with "read on" and the tags. A hairline
    separates the entries. */
 .sx { color: var(--lp-ink); max-width: 42rem; padding: 1.5rem 0 3rem; }
+.sx-main { max-width: 42rem; min-width: 0; }
+.sx-side { display: none; }
+@media (min-width: 1024px) {
+  .sx { max-width: none; display: grid; grid-template-columns: minmax(0, 42rem) 14rem; gap: 4rem; align-items: start; }
+  .sx-side { display: block; position: sticky; top: 1.5rem; max-height: calc(100vh - 3rem); overflow-y: auto; padding-top: 0.4rem; }
+}
+.sx-side-h { font-size: 0.8rem !important; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--lp-muted); margin: 0 0 0.75rem; }
+.sx-taglist { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.35rem 0.9rem; font-size: 0.9rem; }
+.sx-taglist a { color: var(--lp-ink); }
+.sx-taglist a:hover, .sx-side-all a:hover { color: var(--lp-accent); text-decoration: underline; text-underline-offset: 3px; }
+.sx-count { color: var(--lp-muted); font-size: 0.78rem; font-variant-numeric: tabular-nums; }
+.sx-side-all { margin: 1rem 0 0; font-size: 0.9rem; }
+.sx-side-all a { color: var(--lp-accent); font-weight: 600; }
 .sx a { text-decoration: none; }
 .sx a:focus-visible { outline: 2px solid var(--lp-accent); outline-offset: 3px; border-radius: 2px; }
 .sx-head { padding: 0 0 1.25rem; border-bottom: 1px solid var(--lp-rule); }

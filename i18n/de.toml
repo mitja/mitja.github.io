@@ -63,3 +63,6 @@ other = "Kurz"
 
 [archive.long]
 other = "Mit Zusammenfassung"
+
+[stream.allTags]
+other = "Alle Tags"

@@ -16,7 +16,9 @@
   The texts of the header come from `stream:` in the front matter of
   content/_index.md and content/_index.de.md. Styles: assets/css/custom.css
   (.sx-*). What the home used to show about Mitja is on the About page now
-  (layouts/_default/about.html).
+  (layouts/_default/about.html). On wide screens (lg) a right column lists the
+  most used tags (partials/stream/tags-aside.html); on phones it is hidden and
+  the tags under each entry remain.
 
   The English home also publishes the root-level redirect stubs that keep the
   old English URLs (/posts/…, /about/…) working, see partials/legacy-aliases.html.
@@ -29,6 +31,7 @@
 {{- $feed := .OutputFormats.Get "RSS" -}}
 
 <div class="sx">
+<div class="sx-main">
   <header class="sx-head">
     <h1 class="sx-h1">{{ $s.heading | default "Blog" }}{{ if gt $pager.PageNumber 1 }} <span class="sx-h1-page">{{ i18n "stream.page" (dict "Count" $pager.PageNumber) }}</span>{{ end }}</h1>
     <p class="sx-lead">
@@ -108,6 +111,8 @@
     {{- with site.GetPage "tags" }} · <a href="{{ .RelPermalink }}">{{ i18n "stream.tags" }}</a>{{ end }}
     {{- with $feed }} · <a href="{{ .RelPermalink }}" type="{{ .MediaType.Type }}">{{ i18n "stream.feed" }}</a>{{ end }}
   </p>
+</div>
+{{ partial "stream/tags-aside.html" . }}
 </div>
 <script>
   (function () { var k = "blog-view", v = localStorage.getItem(k), r = document.getElementById(v === "short" ? "sv-short" : "sv-long");

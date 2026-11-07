@@ -1,0 +1,20 @@
+{{- /*
+  The right column of the blog stream on wide screens: the most used tags of this language, with their post counts,
+  and a link to all tags. Hidden below lg (assets/css/custom.css, .sx-side); there the tags under each entry suffice.
+*/ -}}
+{{- $max := site.Params.homepage.streamTagCount | default 30 -}}
+{{- with site.Taxonomies.tags }}
+<aside class="sx-side" aria-labelledby="sx-side-h">
+  <h2 id="sx-side-h" class="sx-side-h">{{ i18n "stream.tags" }}</h2>
+  <ul class="sx-taglist">
+    {{- range first $max .ByCount }}
+      {{- with .Page }}
+    <li><a href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a> <span class="sx-count">{{ len .Pages }}</span></li>
+      {{- end }}
+    {{- end }}
+  </ul>
+  {{- with site.GetPage "tags" }}
+  <p class="sx-side-all"><a href="{{ .RelPermalink }}">{{ i18n "stream.allTags" }} →</a></p>
+  {{- end }}
+</aside>
+{{- end }}
