@@ -1,0 +1,4 @@
+{{- /* A release's day in the page language, or "not released yet". Call with the release map. */ -}}
+{{- $s := i18n "releases.unreleased" -}}
+{{- with .date }}{{ $s = time.AsTime . | time.Format ":date_medium" }}{{ end -}}
+{{- return $s -}}

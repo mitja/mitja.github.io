@@ -12,6 +12,7 @@
         <span class="lp-app-name">{{ .Title }}{{ with .Params.status }} <span class="lp-badge">{{ . }}</span>{{ end }}</span>
         <span class="lp-app-sub">{{ .Params.subtitle }}</span>
         <span class="lp-app-text">{{ .Params.teaser }}</span>
+        {{- with .Params.releases }}{{ partial "apps/version-line.html" (dict "page" $ "app" . "link" false) }}{{ end }}
       </a>
       {{- end }}
       {{- with .Params.coming }}<p class="lp-app-coming">{{ . }}</p>{{ end }}

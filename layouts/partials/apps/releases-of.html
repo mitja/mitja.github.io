@@ -1,0 +1,13 @@
+{{- /*
+  The releases of one app (data/apps/<key>.yaml) that may be shown: drafts only on the local preview server.
+  Call: partial "apps/releases-of.html" "relay" → a slice, newest first (the file's order).
+*/ -}}
+{{- $preview := hugo.IsServer -}}
+{{- $out := slice -}}
+{{- $d := index site.Data.apps . -}}
+{{- if $d -}}
+  {{- range $d.releases -}}
+    {{- if or (not .draft) $preview }}{{ $out = $out | append . }}{{ end -}}
+  {{- end -}}
+{{- end -}}
+{{- return $out -}}

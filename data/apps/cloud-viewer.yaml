@@ -1,0 +1,10 @@
+# Cloud Viewer's releases as the blog shows them: the version line on the Apps tile. The source of truth is
+# cloudviewer web/src/data/releases.ts (cloudviewer.app/changelog/); copy each release's version and day here when it
+# ships. `draft: true` entries show only on the local preview server (hugo server), never on the live site.
+changelog: "https://cloudviewer.app/changelog/"
+changelogDe: "https://cloudviewer.app/de/changelog/"
+releases:
+  - version: "1.0"
+    date: ""          # YYYY-MM-DD when it is in the store; empty = not released yet
+    platforms: ["iOS 17+"]
+    draft: true       # TODO(Mitja): release day, then drop draft

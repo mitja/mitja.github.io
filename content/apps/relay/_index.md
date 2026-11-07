@@ -17,6 +17,8 @@ secondary:
 trademark: "Mitjas Relay is an independent product and is not affiliated with, endorsed or sponsored by Microsoft. Microsoft and Microsoft Bookings are trademarks of the Microsoft group of companies."
 docs_heading: "Documentation"
 layout: product
+releases: relay
+changelogPage: changelog
 cascade:
   layout: appdoc
   showDate: false

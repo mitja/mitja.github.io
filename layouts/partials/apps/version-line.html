@@ -1,0 +1,19 @@
+{{- /*
+  "Version 1.0 · 12. Nov. 2026 · iOS 17+ · Release-Notes →": the latest release of an app, for its tile on Apps and
+  the head of its page. Context: dict "page" . "app" "<key>" ["link" false: no link, for use inside a tile's <a>]. Renders nothing without a release to show.
+*/ -}}
+{{- $rels := partial "apps/releases-of.html" .app -}}
+{{- $data := index site.Data.apps .app -}}
+{{- with index $rels 0 -}}
+  {{- $cl := "" -}}
+  {{- with $data.changelog }}{{ $cl = . }}{{ end -}}
+  {{- if and (eq $.page.Language.Lang "de") $data.changelogDe }}{{ $cl = $data.changelogDe }}{{ end -}}
+  {{- with $.page.Params.changelogPage }}{{ with $.page.GetPage . }}{{ $cl = .RelPermalink }}{{ end }}{{ end -}}
+  <span class="rl-line">
+    <span class="rl-ver">{{ i18n "releases.version" }} {{ .version }}</span>
+    <span>{{ partial "apps/release-day.html" . }}</span>
+    {{- with .platforms }}<span>{{ delimit . " · " }}</span>{{ end }}
+    {{- if .draft }}<span class="rl-draft">{{ i18n "releases.draft" }}</span>{{ end }}
+    {{- if ne $.link false }}{{ with $cl }}<a class="rl-link" href="{{ . }}">{{ i18n "releases.notes" }} →</a>{{ end }}{{ end }}
+  </span>
+{{- end -}}

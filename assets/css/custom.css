@@ -290,3 +290,20 @@ nav.md\:flex p, nav.space-x-3 a { white-space: nowrap; }
 #TOCView ul ul ul a.active::before { left: -3.3rem; }
 [dir="rtl"] #TOCView ul ul a.active::before { left: auto; right: -2.3rem; }
 [dir="rtl"] #TOCView ul ul ul a.active::before { left: auto; right: -3.3rem; }
+
+/* App release notes (partials/apps/*, data/apps/*.yaml): the version line on tiles and app pages, "What's new" and
+   the full history. Quiet: the meta size and colour, one accent for the link. */
+.rl-line { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.15rem 0.75rem; margin-top: 0.6rem; font-size: 0.85rem; color: var(--lp-muted); }
+.rl-ver { font-weight: 600; color: var(--lp-ink); }
+.rl-link { color: var(--lp-accent); font-weight: 600; }
+.rl-draft { font-size: 0.72rem; font-weight: 600; padding: 0.05rem 0.5rem; border-radius: 999px; border: 1px dashed currentColor; }
+.pp-releases { margin: 2.5rem 0 0; padding-top: 2rem; border-top: 1px solid var(--lp-rule); }
+.rl-list { list-style: none; margin: 1rem 0 0; padding: 0; display: grid; gap: 0.9rem; }
+.rl-item { padding: 1rem 1.25rem; border-radius: 0.75rem; background: var(--lp-tint); }
+html:not(.dark) .rl-item { border: 1px solid var(--pb-line, rgb(var(--color-neutral-200))); }
+.rl-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.8rem; margin: 0; font-size: 0.88rem; color: var(--lp-muted); }
+.rl-num { font-family: var(--pb-serif, inherit); font-size: 1.25rem; font-weight: 600; color: var(--lp-ink); }
+.rl-notes { margin: 0.5rem 0 0; padding-left: 1.2rem; line-height: 1.55; }
+.rl-notes li { margin: 0.2rem 0; }
+.prose .rl-list, .prose .rl-notes { margin-top: 0.75rem; }
+.prose .rl-item p { margin: 0; }

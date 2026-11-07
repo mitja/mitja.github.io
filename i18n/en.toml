@@ -78,3 +78,21 @@ other = "Read the original"
 
 [translated.hint]
 other = "This page was translated with an AI model and only spot-checked. If in doubt, the original applies."
+
+[releases.version]
+other = "Version"
+
+[releases.unreleased]
+other = "not released yet"
+
+[releases.notes]
+other = "Release notes"
+
+[releases.draft]
+other = "Draft, preview only"
+
+[releases.whatsNew]
+other = "What's new"
+
+[releases.all]
+other = "All releases"

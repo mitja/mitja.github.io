@@ -78,3 +78,21 @@ other = "Original lesen"
 
 [translated.hint]
 other = "Diese Seite wurde mit einem KI-Modell übersetzt und nur stichprobenartig geprüft. Im Zweifel gilt das Original."
+
+[releases.version]
+other = "Version"
+
+[releases.unreleased]
+other = "noch nicht veröffentlicht"
+
+[releases.notes]
+other = "Release-Notes"
+
+[releases.draft]
+other = "Entwurf, nur in der Vorschau"
+
+[releases.whatsNew]
+other = "Neu"
+
+[releases.all]
+other = "Alle Versionen"

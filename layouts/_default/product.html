@@ -1,7 +1,8 @@
 {{- /*
   Product page of an app (content/apps/<app>/_index.md, layout: product).
   Front matter: subtitle, status (badge), summary, primary/secondary CTA,
-  trademark note; plans are rendered by the {{< plans >}} shortcode from
+  trademark note, releases (data/apps/<key>.yaml: version line and "What's new") and changelogPage (the
+  child page with the full history); plans are rendered by the {{< plans >}} shortcode from
   .Params.plans. The child pages are the documentation and are listed at the end.
 */ -}}
 {{ define "main" }}
@@ -19,10 +20,19 @@
         {{- with .Params.secondary }}<a class="lp-btn lp-btn-quiet" href="{{ .url }}">{{ .text }}</a>{{ end }}
       </div>
       {{ with .Params.status_note }}<p class="pp-note">{{ . }}</p>{{ end }}
+      {{- with .Params.releases }}<p class="pp-note">{{ partial "apps/version-line.html" (dict "page" $ "app" .) }}</p>{{ end }}
     </header>
     <section class="max-w-full prose dark:prose-invert">
       {{ .Content }}
     </section>
+    {{- /* What's new: the latest releases (data/apps/<releases>.yaml), with the link to the full history. */}}
+    {{- with .Params.releases }}{{ with partial "apps/releases-of.html" . }}
+    <section class="pp-releases">
+      <h2>{{ i18n "releases.whatsNew" }}</h2>
+      {{ partial "apps/releases.html" (dict "page" $ "app" $.Params.releases "limit" 3) }}
+      {{- with $.Params.changelogPage }}{{ with $.GetPage . }}<p class="pp-note"><a href="{{ .RelPermalink }}">{{ i18n "releases.all" }} →</a></p>{{ end }}{{ end }}
+    </section>
+    {{- end }}{{ end }}
     {{ with .Pages }}
     <section class="pp-docs">
       <h2>{{ $.Params.docs_heading | default (i18n "apps.docs" | default "Documentation") }}</h2>

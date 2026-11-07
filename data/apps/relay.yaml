@@ -1,0 +1,16 @@
+# Mitjas Relay's release history: newest first, written for users (what changed for them, one line each). Shown on
+# the Relay page ("Neu in Version …", partials/apps/releases.html) and in full on its release notes page
+# (content/apps/relay/changelog*.md, shortcode releases). `draft: true` entries show only on the local preview
+# server (hugo server), never on the live site.
+releases:
+  - version: "0.9"
+    date: ""
+    platforms: ["Microsoft 365"]
+    draft: true       # TODO(Mitja): the real notes and day
+    notes:
+      en:
+        - "Syncs your Bookings calendars on a schedule and sends every new, changed or cancelled appointment as a signed webhook."
+        - "Delivers straight into Mitjas CRM, or to any HTTPS endpoint."
+      de:
+        - "Synchronisiert deine Bookings-Kalender regelmäßig und meldet jeden neuen, geänderten oder abgesagten Termin als signierten Webhook."
+        - "Liefert direkt in Mitjas CRM oder an jeden HTTPS-Endpunkt."

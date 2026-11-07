@@ -1,0 +1,24 @@
+{{- /*
+  The release list of an app (data/apps/<key>.yaml). Context: dict "page" . "app" "<key>" "limit" N (0 = all).
+  Used on the app's page ("What's new", the latest releases) and by the shortcode releases (the full history).
+*/ -}}
+{{- $rels := partial "apps/releases-of.html" .app -}}
+{{- if gt (int (.limit | default 0)) 0 }}{{ $rels = first .limit $rels }}{{ end -}}
+{{- $lang := .page.Language.Lang -}}
+{{- with $rels }}
+<ol class="rl-list">
+  {{- range . }}
+  <li class="rl-item" id="v{{ .version }}">
+    <p class="rl-head">
+      <span class="rl-num">{{ .version }}</span>
+      <time{{ with .date }} datetime="{{ . }}"{{ end }}>{{ partial "apps/release-day.html" . }}</time>
+      {{- with .platforms }}<span>{{ delimit . " · " }}</span>{{ end }}
+      {{- if .draft }}<span class="rl-draft">{{ i18n "releases.draft" }}</span>{{ end }}
+    </p>
+    {{- with index .notes $lang }}
+    <ul class="rl-notes">{{ range . }}<li>{{ . | markdownify }}</li>{{ end }}</ul>
+    {{- end }}
+  </li>
+  {{- end }}
+</ol>
+{{- end }}

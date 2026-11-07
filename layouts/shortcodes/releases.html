@@ -1,0 +1,2 @@
+{{- /* Every release of an app, newest first: {{< releases app="relay" >}} (data/apps/relay.yaml). */ -}}
+{{ partial "apps/releases.html" (dict "page" .Page "app" (.Get "app") "limit" 0) }}
