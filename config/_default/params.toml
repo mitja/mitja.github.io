@@ -13,6 +13,8 @@ enableSearch = true
 enableCodeCopy = true
 
 mainSections = ["posts"]
+smartTOC = true # highlight the section being read in the table of contents (theme script in partials/toc.html); styled in custom.css (.toc a.active)
+smartTOCHideUnfocusedChildren = false
 sourceTree = "https://github.com/mitja/mitja.github.io/tree/main" # the repository, for links to files that are not published (layouts/_default/subpage.html)
 # robots = ""
 

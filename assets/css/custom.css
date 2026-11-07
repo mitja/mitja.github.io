@@ -275,3 +275,12 @@ nav.md\:flex p, nav.space-x-3 a { white-space: nowrap; }
 .tl a { color: rgb(var(--color-primary-600)); text-decoration: none; cursor: pointer; }
 .dark .tl a { color: rgb(var(--color-primary-400)); }
 .tl a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+/* Table of contents on wide screens: the section being read (smartTOC in params.toml sets .active). Blowfish's own
+   .active is a 3 px underline; here it is the accent colour, a heavier weight and a short bar on the TOC's dotted
+   rule, so the eye finds it without the list jumping. */
+.toc a { transition: color .15s; }
+.toc a.active { text-decoration: none; color: rgb(var(--color-primary-600)); font-weight: 600; position: relative; }
+.dark .toc a.active { color: rgb(var(--color-primary-400)); }
+#TOCView a.active::before { content: ""; position: absolute; left: -1.3rem; top: 0.15em; bottom: 0.15em; width: 2px; border-radius: 1px; background: currentColor; }
+[dir="rtl"] #TOCView a.active::before { left: auto; right: -1.3rem; }
