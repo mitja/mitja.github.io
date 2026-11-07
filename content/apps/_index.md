@@ -1,6 +1,6 @@
 ---
 title: "Apps"
-summary: "Tools I built for myself and now offer to others."
+summary: "Tools for freelancers, solopreneurs and small teams."
 layout: apps
 showDate: false
 showReadingTime: false
