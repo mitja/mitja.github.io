@@ -1,0 +1,103 @@
+{{- /*
+  Home page (homepage.layout = "stream"): the blog as one stream, newest first.
+
+  Every article (partials/articles.html, so branch-bundle articles too) is an
+  entry with its date, title, an excerpt and its tags. Ten to a page; older
+  pages live at /<lang>/page/N/. The home's RSS feed (layouts/_default/rss.xml)
+  carries the same articles.
+
+  Three kinds of entry, all of them ordinary posts:
+  - a post: the excerpt is the front matter `summary`, else the first real
+    paragraph of the text, and a link to read on;
+  - a note (`stream: true`): the whole text, no "read on";
+  - a link (`externalUrl: https://…`): the title points at the link, the text
+    is the comment on it, and a small "#" is the entry's own page.
+
+  The texts of the header come from `stream:` in the front matter of
+  content/_index.md and content/_index.de.md. Styles: assets/css/custom.css
+  (.sx-*). What the home used to show about Mitja is on the About page now
+  (layouts/_default/about.html).
+
+  The English home also publishes the root-level redirect stubs that keep the
+  old English URLs (/posts/…, /about/…) working, see partials/legacy-aliases.html.
+*/ -}}
+{{- $s := .Params.stream | default dict -}}
+{{- $size := site.Params.homepage.streamPageSize | default 10 -}}
+{{- $pager := .Paginate (partial "articles.html" .) $size -}}
+{{- if and (eq .Site.Language.Lang "en") (eq $pager.PageNumber 1) }}{{ partial "legacy-aliases.html" . }}{{ end -}}
+{{- $dateFormat := site.Params.dateFormat | default "2 January 2006" -}}
+{{- $feed := .OutputFormats.Get "RSS" -}}
+
+<div class="sx">
+  <header class="sx-head">
+    <h1 class="sx-h1">{{ $s.heading | default "Blog" }}{{ if gt $pager.PageNumber 1 }} <span class="sx-h1-page">{{ i18n "stream.page" (dict "Count" $pager.PageNumber) }}</span>{{ end }}</h1>
+    <p class="sx-lead">
+      {{- with $s.lead }}{{ . | markdownify }} {{ end -}}
+      {{- with $feed }}<a class="sx-feed" href="{{ .RelPermalink }}" type="{{ .MediaType.Type }}">{{ i18n "stream.feed" }}</a>{{ end -}}
+    </p>
+  </header>
+
+  <ol class="sx-list">
+    {{- range $pager.Pages }}
+    {{- $isNote := .Params.stream | default false }}
+    {{- $link := .Params.externalUrl }}
+    <li class="sx-entry{{ if $isNote }} sx-note{{ end }}{{ if $link }} sx-linkpost{{ end }}">
+      <article>
+        <p class="sx-date"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date | time.Format $dateFormat }}</time></p>
+        <h2 class="sx-title">
+          {{- if $link }}
+            <a href="{{ $link }}" rel="noopener">{{ .Title | emojify }}</a> <span class="sx-domain">{{ (urls.Parse $link).Host | strings.TrimPrefix "www." }} ↗</span>
+          {{- else }}
+            <a href="{{ .RelPermalink }}">{{ .Title | emojify }}</a>
+          {{- end }}
+        </h2>
+
+        {{- if or $isNote $link }}
+          <div class="sx-body prose dark:prose-invert">{{ .Content }}</div>
+        {{- else }}
+          {{- $excerpt := "" }}
+          {{- with .Params.summary | default .Params.description }}
+            {{- $excerpt = printf "<p>%s</p>" (. | markdownify) }}
+          {{- else }}
+            {{- /* The first paragraph that is text, not an image or a one-word line. */}}
+            {{- range findRE `(?s)<p>.*?</p>` .Content 8 }}
+              {{- if and (not $excerpt) (gt (len (plainify .)) 60) }}
+                {{- $excerpt = . | replaceRE `<img[^>]*>` "" | replaceRE `<sup[^>]*>.*?</sup>` "" }}
+              {{- end }}
+            {{- end }}
+          {{- end }}
+          {{- with $excerpt }}<div class="sx-body prose dark:prose-invert">{{ . | safeHTML | truncate 480 }}</div>{{ end }}
+        {{- end }}
+
+        <p class="sx-meta">
+          {{- if $link }}
+            <a class="sx-permalink" href="{{ .RelPermalink }}" title="{{ i18n "stream.permalink" }}">#</a>
+          {{- else if not $isNote }}
+            <a class="sx-more" href="{{ .RelPermalink }}">{{ i18n "stream.readOn" }}</a>
+            <span class="sx-time">{{ i18n "article.reading_time" .ReadingTime | markdownify }}</span>
+          {{- else }}
+            <a class="sx-permalink" href="{{ .RelPermalink }}" title="{{ i18n "stream.permalink" }}">#</a>
+          {{- end }}
+          {{- with .GetTerms "tags" }}
+            <span class="sx-tags">
+              {{- range . }}{{ if .LinkTitle }} <a href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a>{{ end }}{{ end -}}
+            </span>
+          {{- end }}
+        </p>
+      </article>
+    </li>
+    {{- end }}
+  </ol>
+
+  <nav class="sx-pager" aria-label="{{ i18n "stream.pages" }}">
+    {{- if $pager.HasPrev }}<a class="sx-newer" href="{{ $pager.Prev.URL }}" rel="prev">{{ i18n "stream.newer" }}</a>{{ end }}
+    {{- if gt $pager.TotalPages 1 }}<span class="sx-pageof">{{ i18n "stream.pageOf" (dict "Page" $pager.PageNumber "Total" $pager.TotalPages) }}</span>{{ end }}
+    {{- if $pager.HasNext }}<a class="sx-older" href="{{ $pager.Next.URL }}" rel="next">{{ i18n "stream.older" }}</a>{{ end }}
+  </nav>
+
+  <p class="sx-browse">
+    {{- with site.GetPage "posts" }}<a href="{{ .RelPermalink }}">{{ i18n "stream.archive" }}</a>{{ end }}
+    {{- with site.GetPage "tags" }} · <a href="{{ .RelPermalink }}">{{ i18n "stream.tags" }}</a>{{ end }}
+    {{- with $feed }} · <a href="{{ .RelPermalink }}" type="{{ .MediaType.Type }}">{{ i18n "stream.feed" }}</a>{{ end }}
+  </p>
+</div>

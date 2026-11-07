@@ -21,3 +21,33 @@ other = "At a glance"
 
 [training.sessions]
 other = "Sessions"
+
+[stream.feed]
+other = "RSS feed"
+
+[stream.page]
+other = "· page {{ .Count }}"
+
+[stream.pages]
+other = "Pages of the blog"
+
+[stream.pageOf]
+other = "Page {{ .Page }} of {{ .Total }}"
+
+[stream.newer]
+other = "← Newer posts"
+
+[stream.older]
+other = "Older posts →"
+
+[stream.readOn]
+other = "Read on"
+
+[stream.permalink]
+other = "Permalink"
+
+[stream.archive]
+other = "All posts by year"
+
+[stream.tags]
+other = "Tags"

@@ -21,3 +21,33 @@ other = "Auf einen Blick"
 
 [training.sessions]
 other = "Ablauf"
+
+[stream.feed]
+other = "RSS-Feed"
+
+[stream.page]
+other = "· Seite {{ .Count }}"
+
+[stream.pages]
+other = "Seiten des Blogs"
+
+[stream.pageOf]
+other = "Seite {{ .Page }} von {{ .Total }}"
+
+[stream.newer]
+other = "← Neuere Beiträge"
+
+[stream.older]
+other = "Ältere Beiträge →"
+
+[stream.readOn]
+other = "Weiterlesen"
+
+[stream.permalink]
+other = "Permalink"
+
+[stream.archive]
+other = "Alle Beiträge nach Jahr"
+
+[stream.tags]
+other = "Tags"

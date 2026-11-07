@@ -27,7 +27,8 @@ sourceTree = "https://github.com/mitja/mitja.github.io/tree/main" # the reposito
   showScrollToTop = true
 
 [homepage]
-  layout = "custom" # own partial layouts/partials/home/custom.html; # valid options: page, profile, hero, card, background (default), custom
+  layout = "stream" # own partial layouts/partials/home/stream.html: the blog as one stream; the old landing page is the About page now (layouts/_default/about.html). Theme options: page, profile, hero, card, background (default), custom
+  streamPageSize = 10 # entries per page of the home stream; older ones at /<lang>/page/N/
   homepageImage = "img/oberbaum-bridge-view.jpg" # used in: hero, and card
   showRecent = true
   showRecentItems = 3

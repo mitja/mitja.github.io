@@ -1,9 +1,11 @@
 /* ------------------------------------------------------------------------
-   Landing page (layouts/partials/home/custom.html), app pages
+   About profile (layouts/partials/about/profile.html), home stream
+   (layouts/partials/home/stream.html), tab bar (partials/header/tabs.html), app pages
    (layouts/_default/product.html, apps.html, appdoc.html) and the plans
    shortcode. Colours come from the theme's scheme variables so light and
-   dark mode follow the theme (html.dark). Class prefixes: lp- (landing),
-   pp- (product page), ad- (app docs).
+   dark mode follow the theme (html.dark). Class prefixes: lp- (the profile
+   on the About page, once the landing page), pp- (product page), ad- (app
+   docs), sx- (the home page's blog stream), tb- (the tab bar on phones).
 
    Typography, markers and the coral button colour come from the paasbox
    theme (themes/paasbox): headings are set in its Sora at weight 500,
@@ -11,8 +13,8 @@
    var(--pb-…, …) fallbacks keep this working on plain Blowfish.
    ------------------------------------------------------------------------ */
 
-.lp, .pp, .ad, .dh { --lp-ink: rgb(var(--color-neutral-900)); --lp-muted: rgb(var(--color-neutral-500)); --lp-rule: rgb(var(--color-neutral-200)); --lp-accent: rgb(var(--color-primary-600)); --lp-accent-ink: rgb(var(--color-neutral)); --lp-tint: rgb(var(--color-primary-50)); --lp-cta: var(--pb-cta, var(--lp-accent)); --lp-cta-hover: var(--pb-cta-hover, var(--lp-accent)); --lp-cta-ink: var(--pb-cta-ink, var(--lp-accent-ink)); }
-.dark .lp, .dark .pp, .dark .ad, .dark .dh { --lp-ink: rgb(var(--color-neutral)); --lp-muted: rgb(var(--color-neutral-400)); --lp-rule: rgb(var(--color-neutral-700)); --lp-accent: rgb(var(--color-primary-400)); --lp-accent-ink: rgb(var(--color-neutral-900)); --lp-tint: var(--pb-paper-raised, rgba(var(--color-primary-400), 0.12)); }
+.lp, .pp, .ad, .dh, .sx, .tb { --lp-ink: rgb(var(--color-neutral-900)); --lp-muted: rgb(var(--color-neutral-500)); --lp-rule: rgb(var(--color-neutral-200)); --lp-accent: rgb(var(--color-primary-600)); --lp-accent-ink: rgb(var(--color-neutral)); --lp-tint: rgb(var(--color-primary-50)); --lp-cta: var(--pb-cta, var(--lp-accent)); --lp-cta-hover: var(--pb-cta-hover, var(--lp-accent)); --lp-cta-ink: var(--pb-cta-ink, var(--lp-accent-ink)); }
+.dark .lp, .dark .pp, .dark .ad, .dark .dh, .dark .sx, .dark .tb { --lp-ink: rgb(var(--color-neutral)); --lp-muted: rgb(var(--color-neutral-400)); --lp-rule: rgb(var(--color-neutral-700)); --lp-accent: rgb(var(--color-primary-400)); --lp-accent-ink: rgb(var(--color-neutral-900)); --lp-tint: var(--pb-paper-raised, rgba(var(--color-primary-400), 0.12)); }
 
 .lp { color: var(--lp-ink); }
 /* :where() keeps this reset below the margins the .lp-hero-* rules set. */
@@ -147,3 +149,47 @@
 .dh-table tr.dh-out td { color: var(--lp-muted); }
 .dh-table tr.dh-best td { color: var(--lp-accent); font-weight: 700; }
 .dh-note { margin: 0.5rem 0 0; color: var(--lp-muted); font-size: 0.8rem; }
+
+/* About page: the page's own text between the profile and its sections */
+.lp-about-text { max-width: 40em; padding: 0 0 2.5rem; }
+.lp-about-text p { margin: 0 0 1em; }
+
+/* ── Home: the blog as one stream (layouts/partials/home/stream.html) ──────
+   One column at reading width, little chrome: a date line, the title, the
+   excerpt, then a quiet line with "read on" and the tags. A hairline
+   separates the entries. */
+.sx { color: var(--lp-ink); max-width: 42rem; padding: 1.5rem 0 3rem; }
+.sx a { text-decoration: none; }
+.sx a:focus-visible { outline: 2px solid var(--lp-accent); outline-offset: 3px; border-radius: 2px; }
+.sx-head { padding: 0 0 1.25rem; border-bottom: 1px solid var(--lp-rule); }
+.sx-h1 { font-size: clamp(1.9rem, 4vw, 2.4rem) !important; line-height: 1.1; margin: 0 0 0.4rem; }
+.sx-h1-page { color: var(--lp-muted); font-size: 0.6em; }
+.sx-lead { color: var(--lp-muted); font-size: 1rem; line-height: 1.55; margin: 0; }
+.sx-feed { color: var(--lp-accent); font-weight: 600; white-space: nowrap; }
+.sx-feed:hover, .sx-browse a:hover, .sx-pager a:hover, .sx-tags a:hover, .sx-more:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+.sx-list { list-style: none; margin: 0; padding: 0; }
+.sx-entry { padding: 1.6rem 0 1.5rem; border-bottom: 1px solid var(--lp-rule); }
+.sx-date { color: var(--lp-muted); font-size: 0.85rem; font-variant-numeric: tabular-nums; letter-spacing: 0.01em; margin: 0 0 0.3rem; }
+.sx-title { font-size: clamp(1.3rem, 2.6vw, 1.55rem) !important; line-height: 1.22; margin: 0 0 0.55rem; }
+.sx-title a { color: var(--lp-ink); }
+.sx-title a:hover { text-decoration: underline; text-decoration-color: var(--lp-accent); text-decoration-thickness: 0.08em; text-underline-offset: 0.16em; }
+.sx-domain { font-family: var(--pb-sans, inherit); font-size: 0.85rem; font-weight: 500; letter-spacing: 0; color: var(--lp-muted); white-space: nowrap; }
+/* The excerpt reads like the post itself, a step smaller. */
+.sx-body { max-width: none; font-size: 1.02rem; }
+.sx-body > :first-child { margin-top: 0; }
+.sx-body > :last-child { margin-bottom: 0; }
+.sx-body p { margin: 0 0 0.8em; }
+.sx-meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.25rem 0.9rem; margin: 0.7rem 0 0; font-size: 0.88rem; color: var(--lp-muted); }
+.sx-more { color: var(--lp-accent); font-weight: 600; }
+.sx-more::after { content: " →"; }
+.sx-permalink { color: var(--lp-muted); font-weight: 600; }
+.sx-tags { display: inline-flex; flex-wrap: wrap; gap: 0.15rem 0.6rem; }
+.sx-tags a { color: var(--lp-muted); }
+
+.sx-pager { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem 1.5rem; padding: 1.75rem 0 0.5rem; font-weight: 600; }
+.sx-pager a { color: var(--lp-accent); }
+.sx-pageof { color: var(--lp-muted); font-weight: 500; font-size: 0.9rem; }
+.sx-older { margin-left: auto; }
+.sx-browse { color: var(--lp-muted); font-size: 0.9rem; margin: 0.75rem 0 0; }
+.sx-browse a { color: var(--lp-ink); }

@@ -1,0 +1,11 @@
+{{- /*
+  About page (content/about/index*.md, layout: about): the profile that used to
+  be the home page, then the page's own text, then the optional sections
+  (approach, offers, apps, channels) if their blocks in the front matter are
+  switched on. See partials/about/profile.html.
+*/ -}}
+{{ define "main" }}
+  <article class="max-w-full">
+    {{ partial "about/profile.html" . }}
+  </article>
+{{ end }}

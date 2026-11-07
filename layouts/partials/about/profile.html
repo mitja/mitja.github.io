@@ -1,18 +1,17 @@
 {{- /*
-  Landing page (homepage.layout = "custom"). All texts come from the front
-  matter of content/_index.md and content/_index.de.md; this partial only
-  arranges them. Styles: assets/css/custom.css (.lp-*).
+  The About page's profile (content/about/index*.md, layout: about), rendered
+  above the page's own text by layouts/_default/about.html. It was the landing
+  page (home/custom.html) until the home became the blog stream; its texts
+  moved with it, from content/_index*.md into the About page's front matter
+  (hero, and the commented-out approach, offers, apps and channels blocks).
+  Styles: assets/css/custom.css (.lp-*).
 
   Annotations come from the paasbox theme and follow paasbox.com's homepage.
   The main heading (the name) stays plain; each section heading highlights the
   phrase marked with ==…== in its front matter, in yellow like a highlighter
   pen. A class pb-tone-<colour> on the <h2> would give it another colour. Headings and running texts go through
   markdownify, so ==text== and ++text++ (a wavy underline) work in all of them.
-
-  The English home also publishes the root-level redirect stubs that keep the
-  old English URLs (/posts/…, /about/…) working, see partials/legacy-aliases.html.
 */ -}}
-{{- if eq .Site.Language.Lang "en" }}{{ partial "legacy-aliases.html" . }}{{ end -}}
 {{- $p := .Params -}}
 {{- $isDE := eq .Site.Language.Lang "de" -}}
 
@@ -36,6 +35,8 @@
           {{- end }}
         {{- end }}
         {{- with .secondary }}<a class="lp-btn lp-btn-quiet" href="{{ .url }}">{{ .text }}</a>{{ end }}
+        {{- /* The links of params.author (GitHub, X), which the theme's author box showed here before. */}}
+        {{- partial "author-links.html" $ }}
       </div>
     </div>
     {{- with resources.Get "img/mitja-avatar.jpg" }}
@@ -45,6 +46,11 @@
       </div>
     {{- end }}
   </section>
+  {{- end }}
+
+  {{- /* The page's own text: who I am, in my words */ -}}
+  {{- with $.Content }}
+  <section class="lp-about-text prose dark:prose-invert">{{ . }}</section>
   {{- end }}
 
   {{- /* Approach: how I work (the kinds of proof), same cards as the offers */ -}}
@@ -132,40 +138,6 @@
       </li>
       {{- end }}
     </ul>
-  </section>
-  {{- end }}
-
-  {{- /* Latest articles */ -}}
-  {{- with $p.articles }}
-  {{- $n := $.Site.Params.homepage.showRecentItems | default 3 }}
-  {{- $posts := partial "articles.html" . }}
-  <section class="lp-section" id="{{ if $isDE }}artikel{{ else }}articles{{ end }}">
-    <div class="lp-section-head">
-      <h2>{{ .heading | markdownify }}</h2>
-      {{ with .lead }}<p class="lp-lead">{{ . | markdownify }}</p>{{ end }}
-    </div>
-    <ol class="lp-articles">
-      {{- range first $n $posts }}
-      <li>
-        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date | time.Format ($.Site.Params.dateFormat | default "2 January 2006") }}</time>
-        {{- with .Summary }}<p>{{ . | plainify | truncate 180 }}</p>{{ end }}
-      </li>
-      {{- end }}
-    </ol>
-    {{- with $.Site.GetPage "posts" }}<p class="lp-more"><a class="lp-link" href="{{ .RelPermalink }}">{{ $p.articles.more_text }}</a></p>{{ end }}
-  </section>
-  {{- end }}
-
-  {{- /* About */ -}}
-  {{- with $p.about }}
-  <section class="lp-section lp-about" id="{{ if $isDE }}ueber-mich{{ else }}about{{ end }}">
-    <div class="lp-section-head">
-      <h2>{{ .heading | markdownify }}</h2>
-    </div>
-    <p>{{ .text | markdownify }}</p>
-    {{- $text := .link_text }}
-    {{- with .link }}<p class="lp-more"><a class="lp-link" href="{{ . }}">{{ $text }}</a></p>{{ end }}
   </section>
   {{- end }}
 
