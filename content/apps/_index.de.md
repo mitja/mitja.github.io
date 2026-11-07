@@ -1,6 +1,6 @@
 ---
 title: "Apps"
-summary: "Werkzeuge, die ich für mich gebaut habe und jetzt anbiete. Klein, auf eine Aufgabe konzentriert, in der EU betrieben oder bei Dir selbst."
+summary: "Werkzeuge, die ich für mich gebaut habe und jetzt anbiete."
 layout: apps
 showDate: false
 showReadingTime: false

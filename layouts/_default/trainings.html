@@ -1,9 +1,10 @@
 {{- /* Training overview (content/training/_index.md, layout: trainings). Lists the trainings below it. */ -}}
 {{ define "main" }}
   <div class="lp pp">
-    <header class="pp-head">
-      <h1>{{ .Title | emojify }}</h1>
-      {{ with .Params.summary }}<p class="pp-summary">{{ . }}</p>{{ end }}
+    {{- /* The same header as the blog (stream.html): title and one line, sized like .sx-h1 and .sx-lead. */}}
+    <header class="sx-head pp-listhead">
+      <h1 class="sx-h1">{{ .Title | emojify }}</h1>
+      {{ with .Params.summary }}<p class="sx-lead">{{ . }}</p>{{ end }}
     </header>
     <div class="lp-apps">
       {{- range .Pages.ByWeight }}

@@ -1,6 +1,6 @@
 ---
 title: "Training"
-summary: "Hands-on courses on running your own infrastructure: Kubernetes with Gardener, Hetzner Cloud, Forgejo and CI runners, and shipping a small SaaS. Every participant works in their own browser workspace with real servers behind it. Nothing to install."
+summary: "Hands-on courses in a browser workspace with real servers. Nothing to install."
 layout: trainings
 showDate: false
 showReadingTime: false

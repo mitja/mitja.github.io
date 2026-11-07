@@ -1,6 +1,6 @@
 ---
 title: "Trainings"
-summary: "Praktische Kurse zum Betrieb eigener Infrastruktur: Kubernetes mit Gardener, Hetzner Cloud, Forgejo und CI-Runner, und eine kleine SaaS bis zum Launch. Alle arbeiten in einem eigenen Browser-Workspace mit echten Servern dahinter. Nichts zu installieren."
+summary: "Praxiskurse in einem Browser-Workspace mit echten Servern. Nichts zu installieren."
 layout: trainings
 showDate: false
 showReadingTime: false

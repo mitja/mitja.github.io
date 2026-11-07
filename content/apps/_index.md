@@ -1,6 +1,6 @@
 ---
 title: "Apps"
-summary: "Tools I built for myself and now offer to others. Small, focused on one job, run in the EU or on your own infrastructure."
+summary: "Tools I built for myself and now offer to others."
 layout: apps
 showDate: false
 showReadingTime: false
