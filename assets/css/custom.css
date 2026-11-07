@@ -258,7 +258,7 @@ html:not(.dark) .lp-app:hover { border-color: color-mix(in srgb, var(--pb-accent
 .sx:has(#sv-short:checked) .sx-date { margin: 0; flex-shrink: 0; font-variant-numeric: tabular-nums; }
 .sx:has(#sv-short:checked) .sx-title { margin: 0; font-size: 1rem; }
 
-/* Header between md and lg (768–1023 px): the desktop menu has five entries since Kursportal joined, and at ~900 px
+/* Header between md and lg (768–1023 px): the desktop menu with its four entries and the icons, at ~900 px
    the theme's nav wrapped its labels mid-word ("Blo/g") and the site name over two lines. Keep every label and the
    site name on one line, and tighten the gaps in that range. */
 nav.md\:flex p, nav.space-x-3 a { white-space: nowrap; }

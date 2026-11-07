@@ -4,7 +4,11 @@
     {{- /* The same header as the blog (stream.html): title and one line, sized like .sx-h1 and .sx-lead. */}}
     <header class="sx-head pp-listhead">
       <h1 class="sx-h1">{{ .Title | emojify }}</h1>
-      {{ with .Params.summary }}<p class="sx-lead">{{ . }}</p>{{ end }}
+      {{- /* The course portal sits in the lead, as the RSS feed does on the blog (front matter `portal`). */}}
+      <p class="sx-lead">
+        {{- with .Params.summary }}{{ . }} {{ end -}}
+        {{- with .Params.portal }}<a class="sx-feed" href="{{ .url }}">{{ .label }}</a>{{ end -}}
+      </p>
     </header>
     <div class="lp-apps">
       {{- range .Pages.ByWeight }}

@@ -2,6 +2,9 @@
 title: "Trainings"
 summary: "Praxiskurse in einem Browser-Workspace mit echten Servern. Nichts zu installieren."
 layout: trainings
+portal:
+  url: "https://training.mitjamartini.com/"
+  label: "Kursportal"
 showDate: false
 showReadingTime: false
 showWordCount: false

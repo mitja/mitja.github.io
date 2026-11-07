@@ -2,6 +2,9 @@
 title: "Training"
 summary: "Hands-on courses in a browser workspace with real servers. Nothing to install."
 layout: trainings
+portal:
+  url: "https://training.mitjamartini.com/"
+  label: "Course portal"
 showDate: false
 showReadingTime: false
 showWordCount: false
