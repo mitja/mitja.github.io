@@ -1,6 +1,6 @@
 ---
 title: "Trainings"
-summary: "Praxiskurse in einem Browser-Workspace mit echten Servern. Nichts zu installieren."
+summary: "KI und DevOps Trainings"
 layout: trainings
 portal:
   url: "https://training.mitjamartini.com/"

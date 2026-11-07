@@ -1,6 +1,6 @@
 ---
 title: "Training"
-summary: "Hands-on courses in a browser workspace with real servers. Nothing to install."
+summary: "AI and DevOps trainings"
 layout: trainings
 portal:
   url: "https://training.mitjamartini.com/"
