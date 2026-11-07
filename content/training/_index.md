@@ -10,6 +10,10 @@ showPagination: false
 sharingLinks: false
 ---
 
+## Course portal
+
+The courses, dates and your sessions are in the **[course portal at training.mitjamartini.com](https://training.mitjamartini.com/)**.
+
 ## How it works
 
 - **Browser workspace.** Each session opens an editor and terminals in the browser ([Educates](https://docs.educates.dev)), with the tools installed and the lab environment already running. Nothing touches your laptop.

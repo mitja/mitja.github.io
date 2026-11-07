@@ -10,6 +10,10 @@ showPagination: false
 sharingLinks: false
 ---
 
+## Kursportal
+
+Kurse, Termine und Deine Sessions findest Du im **[Kursportal unter training.mitjamartini.com](https://training.mitjamartini.com/)**.
+
 ## So läuft es ab
 
 - **Browser-Workspace.** Jede Session öffnet Editor und Terminals im Browser ([Educates](https://docs.educates.dev)), mit installierten Werkzeugen und laufender Lab-Umgebung. Auf Deinem Laptop wird nichts installiert.
