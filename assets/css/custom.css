@@ -284,3 +284,9 @@ nav.md\:flex p, nav.space-x-3 a { white-space: nowrap; }
 .dark .toc a.active { color: rgb(var(--color-primary-400)); }
 #TOCView a.active::before { content: ""; position: absolute; left: -1.3rem; top: 0.15em; bottom: 0.15em; width: 2px; border-radius: 1px; background: currentColor; }
 [dir="rtl"] #TOCView a.active::before { left: auto; right: -1.3rem; }
+/* Nested entries are indented 1rem per level (Blowfish: .toc ul ul pl-4), so their bar moves 1rem further out to
+   stay on the same rule as the top level. */
+#TOCView ul ul a.active::before { left: -2.3rem; }
+#TOCView ul ul ul a.active::before { left: -3.3rem; }
+[dir="rtl"] #TOCView ul ul a.active::before { left: auto; right: -2.3rem; }
+[dir="rtl"] #TOCView ul ul ul a.active::before { left: auto; right: -3.3rem; }
