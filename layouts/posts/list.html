@@ -1,0 +1,23 @@
+{{- /*
+  The archive (Archiv): every post of the section, grouped by year, newest first, as one line each: date and title,
+  no summary, no image. The home page is the stream with excerpts; this page is the compact index.
+*/ -}}
+{{ define "main" }}
+  <header class="mt-5 mb-8">
+    <h1 class="text-4xl font-extrabold text-neutral-900 dark:text-neutral">{{ .Title }}</h1>
+  </header>
+  <section class="archive">
+    {{- $posts := where site.RegularPages "Section" "posts" }}
+    {{- range $posts.GroupByDate "2006" }}
+      <h2 class="archive-year mt-8 mb-2 text-xl font-bold text-neutral-800 dark:text-neutral-200">{{ .Key }}</h2>
+      <ul class="archive-list">
+        {{- range .Pages }}
+          <li class="archive-item flex gap-4 py-1">
+            <time class="archive-date shrink-0 tabular-nums text-neutral-500 dark:text-neutral-400" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date | time.Format ":date_medium" }}</time>
+            <a class="archive-title text-neutral-900 dark:text-neutral-100 hover:underline" href="{{ or .Params.externalUrl .RelPermalink }}">{{ .Title }}</a>
+          </li>
+        {{- end }}
+      </ul>
+    {{- end }}
+  </section>
+{{ end }}

@@ -47,7 +47,7 @@ other = "Weiterlesen"
 other = "Permalink"
 
 [stream.archive]
-other = "Alle Beiträge nach Jahr"
+other = "Archiv: alle Beiträge nach Jahr"
 
 [stream.tags]
 other = "Tags"
