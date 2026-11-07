@@ -21,6 +21,14 @@
     tab = true
 
 [[main]]
+  identifier = "portal"
+  name = "Kursportal"
+  url = "https://training.mitjamartini.com/"
+  weight = 25
+  [main.params]
+    target = "_blank"
+
+[[main]]
   identifier = "apps"
   name = "Apps"
   pageRef = "apps"
