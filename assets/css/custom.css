@@ -193,3 +193,24 @@
 .sx-older { margin-left: auto; }
 .sx-browse { color: var(--lp-muted); font-size: 0.9rem; margin: 0.75rem 0 0; }
 .sx-browse a { color: var(--lp-ink); }
+
+/* ── Tab bar on phones (layouts/partials/header/tabs.html) ─────────────────
+   A segmented control under the header with Blog, Training and Apps. It
+   sticks to the top while the page scrolls; from 768 px on the main menu
+   carries the same entries and the bar is gone. It bleeds to the body's
+   padding (px-6) so the paper behind it covers the text that scrolls under. */
+.tb { position: sticky; top: 0; z-index: 20; margin: 0.25rem -1.5rem 0.75rem; padding: 0.5rem 1.5rem; background: var(--pb-paper, rgb(var(--color-neutral))); border-bottom: 1px solid var(--lp-rule); }
+.tb-list { list-style: none; margin: 0; padding: 0.2rem; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.2rem; border-radius: 0.7rem; background: color-mix(in srgb, var(--lp-rule) 70%, transparent); }
+.tb-tab { display: block; text-align: center; padding: 0.45rem 0.5rem; border-radius: 0.55rem; font-size: 0.95rem; font-weight: 600; line-height: 1.25; color: var(--lp-muted); text-decoration: none; }
+.tb-tab:hover { color: var(--lp-ink); }
+.tb-tab[aria-current="page"] { background: var(--pb-paper-raised, rgb(var(--color-neutral))); color: var(--lp-ink); box-shadow: 0 1px 2px rgb(0 0 0 / 12%), 0 0 0 1px var(--lp-rule); }
+/* On the slate the raised paper is too close to the track: a darker track, a petrol tint on the current tab. */
+.dark .tb-list { background: rgb(0 0 0 / 28%); }
+.dark .tb-tab[aria-current="page"] { background: color-mix(in srgb, var(--pb-accent) 22%, var(--pb-paper-raised)); box-shadow: none; }
+.tb-tab:focus-visible { outline: 2px solid var(--lp-accent); outline-offset: 1px; }
+/* Blowfish gives <body> a fixed height (h-screen) and lets the page overflow it;
+   a sticky element cannot leave its parent, so the bar would scroll away after
+   one screen. min-height keeps the footer at the bottom just the same. */
+@media (max-width: 767px) { body:has(> .tb) { height: auto; min-height: 100vh; } }
+@media (min-width: 640px) { .tb { margin-inline: -3.5rem; padding-inline: 3.5rem; } } /* sm:px-14 */
+@media (min-width: 768px) { .tb { display: none; } }

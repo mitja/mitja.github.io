@@ -17,7 +17,7 @@ sourceTree = "https://github.com/mitja/mitja.github.io/tree/main" # the reposito
 # robots = ""
 
 [header]
-  layout = "basic" # valid options: basic, fixed
+  layout = "tabs" # own partial layouts/partials/header/tabs.html: Blowfish's basic header plus the Blog/Training/Apps tab bar on small screens; theme options: basic, fixed
 
 [footer]
  # showMenu = true

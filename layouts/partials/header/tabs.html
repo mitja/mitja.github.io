@@ -1,0 +1,28 @@
+{{- /*
+  Header (header.layout = "tabs"): the theme's basic header, and below it on
+  small screens a segmented bar with the three sections Blog, Training and
+  Apps, the main-menu entries with params.tab = true (config/_default/
+  menus.*.toml). It sticks to the top while the page scrolls, so the switch is
+  always one tap away; on wide screens (md, 768 px and up) it is hidden and the
+  same entries sit in the main menu. No script: the current tab is worked out
+  here from the page's section. Styles: assets/css/custom.css (.tb-*).
+*/ -}}
+{{ partial "header/basic.html" . }}
+{{- $current := "" -}}
+{{- if or .IsHome (eq .Section "posts") (eq .Section "tags") (eq .Section "categories") -}}
+  {{- $current = "blog" -}}
+{{- else if eq .Section "training" -}}
+  {{- $current = "training" -}}
+{{- else if eq .Section "apps" -}}
+  {{- $current = "apps" -}}
+{{- end -}}
+{{- $tabs := where .Site.Menus.main "Params.tab" true -}}
+{{- with $tabs }}
+<nav class="tb" aria-label="{{ i18n "tabs.label" }}">
+  <ul class="tb-list">
+    {{- range . }}
+    <li><a class="tb-tab" href="{{ .URL }}"{{ if eq .Identifier $current }} aria-current="page"{{ end }}>{{ .Name }}</a></li>
+    {{- end }}
+  </ul>
+</nav>
+{{- end }}

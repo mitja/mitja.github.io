@@ -51,3 +51,6 @@ other = "All posts by year"
 
 [stream.tags]
 other = "Tags"
+
+[tabs.label]
+other = "Sections"

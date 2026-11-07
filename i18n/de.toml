@@ -51,3 +51,6 @@ other = "Alle Beiträge nach Jahr"
 
 [stream.tags]
 other = "Tags"
+
+[tabs.label]
+other = "Bereiche"

@@ -1,31 +1,38 @@
 # -- Main Menu --
-# Leads with who Mitja is and what he offers; the blog is secondary.
-# Anchors point at sections of the English home page (layouts/partials/home/custom.html).
-
-#[[main]]
-#  name = "Services"
-#  url = "/en/#services"
-#  weight = 10
-
-#[[main]]
-#  name = "Apps"
-#  pageRef = "apps"
-#  weight = 20
+# The blog first: the home page is its stream. Blog, Training and Apps carry
+# params.tab = true and also form the tab bar under the header on small screens
+# (layouts/partials/header/tabs.html), so desktop and phone show the same three
+# sections. The identifiers blog/training/apps mark the current tab.
 
 [[main]]
+  identifier = "blog"
+  name = "Blog"
+  pageRef = "/"
+  weight = 10
+  [main.params]
+    tab = true
+
+[[main]]
+  identifier = "training"
   name = "Training"
   pageRef = "training"
-  weight = 25
+  weight = 20
+  [main.params]
+    tab = true
 
 [[main]]
-  name = "Blog"
-  pageRef = "posts"
+  identifier = "apps"
+  name = "Apps"
+  pageRef = "apps"
   weight = 30
+  [main.params]
+    tab = true
 
-#[[main]]
-#  name = "About"
-#  pageRef = "about"
-#  weight = 40
+[[main]]
+  identifier = "about"
+  name = "About"
+  pageRef = "about"
+  weight = 40
 
 [[main]]
   identifier = "mail"

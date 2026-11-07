@@ -224,13 +224,36 @@ Embed external apps in posts:
 
 All options are listed in `themes/paasbox/README.md`; an unknown one fails the build.
 
-The landing page (`layouts/partials/home/custom.html`) takes its texts from the
-front matter of `content/_index.md` and `content/_index.de.md`. Headings and
-running texts go through `markdownify`: `==phrase==` in a section heading is
-its highlight (the template sets the colour per section), `++word++` in a
-text is a wavy underline. Page titles (the name, app titles) stay without
-annotations. Its styles, and those of the app pages, are in
-`assets/css/custom.css` (`.lp-`, `.pp-`, `.ad-`).
+### Home page, About page and the tab bar
+
+The home page is the blog as one stream, newest first
+(`layouts/partials/home/stream.html`, `homepage.layout = "stream"` in
+`params.toml`): date, title, excerpt, "read on" and tags per post, ten per page
+(`homepage.streamPageSize`), older ones at `/<lang>/page/N/`. The excerpt is the
+front matter `summary` (or `description`), else the first real paragraph. Its
+header texts are `stream.heading` and `stream.lead` in `content/_index.md` and
+`content/_index.de.md`. The home feed (`/<lang>/index.xml`) carries the same posts.
+
+Short notes and links need no own type, they are posts:
+
+- a note: `stream: true` in the front matter; the stream shows the whole text;
+- a link: `externalUrl: "https://…"`; the title in the stream points at the
+  link, the text below is the comment on it, `#` is the post's own page.
+
+The About page (`content/about/index*.md`, `layout: about`) carries what the
+home used to show: `hero` (eyebrow, name, tagline, intro, mail button, photo
+`assets/img/mitja-avatar.jpg`, the author links), then the page text, then the
+optional `approach`, `offers`, `apps` and `channels` blocks (commented out in
+the front matter). `layouts/partials/about/profile.html` renders them. Headings
+and running texts go through `markdownify`: `==phrase==` in a section heading
+is its highlight, `++word++` in a text is a wavy underline. Page titles (the
+name, app titles) stay without annotations. Styles: `assets/css/custom.css`
+(`.sx-` stream, `.tb-` tab bar, `.lp-` profile, `.pp-`/`.ad-` app pages).
+
+Main menu (`config/_default/menus.*.toml`): Blog (the home page), Training,
+Apps, About, mail. The entries with `params.tab = true` also form the tab bar
+under the header on screens below 768 px (`layouts/partials/header/tabs.html`,
+`header.layout = "tabs"`), which sticks to the top while scrolling.
 
 ## Common Tasks for AI Assistants
 
