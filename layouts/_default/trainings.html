@@ -10,15 +10,12 @@
         {{- with .Params.portal }}<a class="sx-feed" href="{{ .url }}">{{ .label }}</a>{{ end -}}
       </p>
     </header>
-    <div class="lp-apps">
+    {{- /* Blowfish's card view (its grid and card markup, partials/article-link/card-extra.html) with the extras. */}}
+    <section class="w-full grid gap-4 sm:grid-cols-2 cx-grid">
       {{- range .Pages.ByWeight }}
-      <a class="lp-app" href="{{ .RelPermalink }}">
-        <span class="lp-app-name">{{ .Title }}{{ with .Params.status }} <span class="lp-badge">{{ . }}</span>{{ end }}</span>
-        <span class="lp-app-sub">{{ .Params.subtitle }}{{ with .Params.format }} · {{ . }}{{ end }}</span>
-        <span class="lp-app-text">{{ .Params.teaser }}</span>
-      </a>
+      {{ partial "article-link/card-extra.html" (dict "page" . "href" .RelPermalink) }}
       {{- end }}
-    </div>
+    </section>
     {{ with .Content }}<section class="max-w-full mt-10 prose dark:prose-invert">{{ . }}</section>{{ end }}
   </div>
 {{ end }}

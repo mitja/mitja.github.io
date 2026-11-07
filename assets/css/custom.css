@@ -307,3 +307,14 @@ html:not(.dark) .rl-item { border: 1px solid var(--pb-line, rgb(var(--color-neut
 .rl-notes li { margin: 0.2rem 0; }
 .prose .rl-list, .prose .rl-notes { margin-top: 0.75rem; }
 .prose .rl-item p { margin: 0; }
+
+/* Overview cards on Apps and Trainings (partials/article-link/card-extra.html): Blowfish's card, plus the status
+   badge, and the extras (version line, key facts) on a hairline below the teaser. */
+.cx-grid { margin-top: 0.5rem; }
+.cx-card { background: var(--pb-paper-raised, transparent); }
+.cx-badge { display: inline-block; vertical-align: middle; margin-left: 0.4em; padding: 0.25em 0.55em; border: 1px solid var(--lp-accent); border-radius: 999px; color: var(--lp-accent); font-size: 0.7rem; font-weight: 700; line-height: 1; text-decoration: none; }
+.cx-extras { border-top: 1px solid var(--lp-rule); margin: 0 1.5rem; padding: 0.75rem 0 1rem !important; }
+.cx-extras .rl-line { margin-top: 0; }
+.cx-facts { display: grid; grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr)); gap: 0.6rem 1.25rem; margin: 0; font-size: 0.85rem; line-height: 1.35; }
+.cx-facts dt { color: var(--lp-muted); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+.cx-facts dd { margin: 0.1rem 0 0; color: var(--lp-ink); }

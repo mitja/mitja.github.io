@@ -6,17 +6,13 @@
       <h1 class="sx-h1">{{ .Title | emojify }}</h1>
       {{ with .Params.summary }}<p class="sx-lead">{{ . }}</p>{{ end }}
     </header>
-    <div class="lp-apps">
+    {{- /* Blowfish's card view (its grid and card markup, partials/article-link/card-extra.html) with the extras. */}}
+    <section class="w-full grid gap-4 sm:grid-cols-2 cx-grid">
       {{- range .Sections }}
-      <a class="lp-app" href="{{ .Params.external | default .RelPermalink }}"{{ with .Params.external }} rel="noopener"{{ end }}>
-        <span class="lp-app-name">{{ .Title }}{{ with .Params.status }} <span class="lp-badge">{{ . }}</span>{{ end }}</span>
-        <span class="lp-app-sub">{{ .Params.subtitle }}</span>
-        <span class="lp-app-text">{{ .Params.teaser }}</span>
-        {{- with .Params.releases }}{{ partial "apps/version-line.html" (dict "page" $ "app" . "link" false) }}{{ end }}
-      </a>
+      {{ partial "article-link/card-extra.html" (dict "page" . "href" (.Params.external | default .RelPermalink)) }}
       {{- end }}
-      {{- with .Params.coming }}<p class="lp-app-coming">{{ . }}</p>{{ end }}
-    </div>
+    </section>
+    {{- with .Params.coming }}<p class="lp-app-coming">{{ . }}</p>{{ end }}
     {{ with .Content }}<section class="max-w-full mt-10 prose dark:prose-invert">{{ . }}</section>{{ end }}
   </div>
 {{ end }}

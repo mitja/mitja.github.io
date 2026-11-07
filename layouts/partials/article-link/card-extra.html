@@ -1,0 +1,48 @@
+{{- /*
+  Blowfish's card (themes/blowfish/layouts/partials/article-link/card.html, the card view of list pages) with the
+  same markup and classes, for the overview pages Apps and Trainings, plus three things the theme's card lacks:
+  - the page's status badge next to the title (front matter status);
+  - a subtitle and the teaser instead of the auto summary;
+  - an "extras" slot below: the app's version line (front matter releases, data/apps/<key>.yaml) or a training's
+    key facts (front matter keyfacts: a list of {label, text}).
+  Context: dict "page" <page> "href" <url> (href: the external site of an app, else the page itself).
+  The whole card is the link (the theme's absolute overlay <a>), so nothing in the extras may be a link.
+  Feature image: as in the theme, a *feature*, *cover* or *thumbnail* image in the page bundle.
+*/ -}}
+{{- $p := .page -}}
+{{- $href := .href | default $p.RelPermalink -}}
+<div class="group-hover-card group relative min-h-full min-w-full overflow-hidden rounded border border-2 border-neutral-200 shadow-2xl dark:border-neutral-700 cx-card">
+  <a href="{{ $href }}"{{ if hasPrefix $href "http" }} rel="noopener"{{ end }} class="absolute inset-0" aria-label="{{ $p.Title }}"></a>
+  {{- $images := $p.Resources.ByType "image" -}}
+  {{- $featured := $images.GetMatch "*feature*" -}}
+  {{- if not $featured }}{{ $featured = $images.GetMatch "{*cover*,*thumbnail*}" }}{{ end -}}
+  {{- with $featured }}
+    {{- $img := . }}{{ if not (strings.HasSuffix .Name ".svg") }}{{ $img = .Resize "600x" }}{{ end }}
+    <div class="thumbnail_card nozoom w-full" style="background-image:url({{ $img.RelPermalink }});"></div>
+  {{- end }}
+  {{- if $p.Draft }}
+    <span class="absolute top-0 right-0 m-2">{{ partial "badge.html" (i18n "article.draft" | emojify) }}</span>
+  {{- end }}
+  <div class="px-6 py-4">
+    <div class="group-hover-card-title decoration-primary-500 dark:text-neutral text-xl font-bold text-neutral-800 group-hover:underline group-hover:underline-offset-2">
+      {{ $p.Title | emojify }}{{ if hasPrefix $href "http" }} <span class="cursor-default align-top text-xs text-neutral-400 dark:text-neutral-500">&#8599;</span>{{ end }}
+      {{- with $p.Params.status }} <span class="cx-badge">{{ . }}</span>{{ end }}
+    </div>
+    {{- with $p.Params.subtitle }}
+    <div class="text-sm text-neutral-500 dark:text-neutral-400">{{ . }}</div>
+    {{- end }}
+    {{- with $p.Params.teaser | default $p.Params.summary }}
+    <div class="prose dark:prose-invert py-1">{{ . | plainify }}</div>
+    {{- end }}
+  </div>
+  {{- $extras := "" -}}
+  {{- with $p.Params.releases }}{{ $extras = partial "apps/version-line.html" (dict "page" $p "app" . "link" false) }}{{ end -}}
+  {{- with $p.Params.keyfacts }}
+    {{- $extras = partial "training/keyfacts.html" . -}}
+  {{- end }}
+  {{- with $extras }}
+  <div class="cx-extras px-6 pb-4">{{ . }}</div>
+  {{- else }}
+  <div class="px-6 pt-4 pb-2"></div>
+  {{- end }}
+</div>

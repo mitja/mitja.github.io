@@ -1,0 +1,8 @@
+{{- /* A training's key facts as a compact grid: front matter keyfacts, a list of {label, text}. Returns HTML. */ -}}
+{{- $h := "" -}}
+{{- with . -}}
+  {{- $rows := "" -}}
+  {{- range . }}{{ $rows = printf "%s<div><dt>%s</dt><dd>%s</dd></div>" $rows (.label | htmlEscape) (.text | markdownify) }}{{ end -}}
+  {{- $h = printf "<dl class=\"cx-facts\">%s</dl>" $rows -}}
+{{- end -}}
+{{- return ($h | safeHTML) -}}
