@@ -85,10 +85,6 @@ This statement applies to all pages under mitjamartini.com, including the pages 
 
 The home page sends you to the German or English version according to your browser language. If you switch the language with the switcher in the menu, your browser remembers that choice in local storage (`mm-lang`). This value never leaves your browser and is not transmitted to me; you can delete it in your browser settings.
 
-## Google Fonts
-
-This website loads a font from Google Fonts. When you open a page, your browser connects to servers of Google (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland) and transmits your IP address. The legal basis is my legitimate interest in a consistent presentation (Art. 6 (1) (f) GDPR). Details: https://policies.google.com/privacy
-
 ## Google Analytics
 
 This website uses Google Analytics, a web analytics service of Google Ireland Limited. Google Analytics uses cookies and similar techniques to evaluate the use of the website; the information generated is transmitted to and stored on Google servers. The legal basis is Art. 6 (1) (f) GDPR. You can prevent the collection with the [browser add-on to disable Google Analytics](https://tools.google.com/dlpage/gaoptout). Details: https://policies.google.com/privacy

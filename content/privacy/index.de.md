@@ -91,10 +91,6 @@ Diese Erklärung gilt für alle Seiten unter mitjamartini.com, einschließlich d
 
 Die Startseite leitet Dich nach der Sprache Deines Browsers auf die deutsche oder englische Fassung. Wenn Du die Sprache über den Schalter im Menü wechselst, merkt sich Dein Browser diese Wahl im Local Storage (`mm-lang`). Dieser Wert verlässt Deinen Browser nicht und wird nicht an mich übertragen; Du kannst ihn über die Einstellungen Deines Browsers löschen.
 
-## Google Fonts
-
-Diese Website lädt eine Schriftart von Google Fonts. Beim Aufruf einer Seite stellt Dein Browser eine Verbindung zu Servern von Google (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland) her und übermittelt dabei Deine IP-Adresse. Rechtsgrundlage ist mein berechtigtes Interesse an einer einheitlichen Darstellung (Art. 6 Abs. 1 lit. f DSGVO). Details: https://policies.google.com/privacy
-
 ## Google Analytics
 
 Diese Website nutzt Google Analytics, einen Webanalysedienst der Google Ireland Limited. Google Analytics verwendet Cookies und ähnliche Techniken, um die Nutzung der Website auszuwerten; die dabei erzeugten Informationen werden an Server von Google übertragen und dort gespeichert. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Du kannst die Erfassung durch das [Browser-Add-on zur Deaktivierung von Google Analytics](https://tools.google.com/dlpage/gaoptout) verhindern. Details: https://policies.google.com/privacy
