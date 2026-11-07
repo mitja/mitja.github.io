@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "Hetzner Cloud Crashkurs"
 slug: "hetzner-cloud-crashkurs"
 weight: 10

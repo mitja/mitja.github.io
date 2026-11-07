@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "Running Forgejo in production"
 slug: "running-forgejo-in-production"
 weight: 30

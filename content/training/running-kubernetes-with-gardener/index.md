@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "Running Kubernetes with Gardener"
 slug: "running-kubernetes-with-gardener"
 weight: 40

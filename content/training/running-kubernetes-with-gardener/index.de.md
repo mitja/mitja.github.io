@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "Kubernetes mit Gardener betreiben"
 slug: "kubernetes-mit-gardener-betreiben"
 weight: 40

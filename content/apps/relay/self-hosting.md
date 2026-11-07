@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "Self-hosting in Azure"
 slug: "self-hosting"
 summary: "Bring your own Azure: the relay runs in your subscription with a licence key. Appointment data leaves your tenant only towards your targets."

@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "Selbstbetrieb in Azure"
 slug: "selbstbetrieb"
 summary: "Bring your own Azure: der Relay läuft in Deiner Subscription, mit Lizenzschlüssel. Termindaten verlassen Deinen Mandanten nur zu Deinen Zielen."

@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "Forgejo produktiv betreiben"
 slug: "forgejo-produktiv-betreiben"
 weight: 30

@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "Eine KI-Softwarefabrik bauen"
 slug: "eine-ki-softwarefabrik-bauen"
 weight: 60

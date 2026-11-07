@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "Building an AI Software Factory"
 slug: "building-an-ai-software-factory"
 weight: 60

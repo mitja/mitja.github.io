@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "KI-Agenten im Betrieb"
 slug: "ki-agenten-im-betrieb"
 weight: 70

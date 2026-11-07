@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "Ereignisformat und Signaturprüfung"
 slug: "ereignisformat"
 summary: "CloudEvents 1.0, signiert nach Standard Webhooks. Felder, Typen, Ids und wie Dein Empfänger die Signatur prüft."

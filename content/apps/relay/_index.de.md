@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "Mitjas Relay"
 weight: 10
 subtitle: "Webhooks für Microsoft Bookings"

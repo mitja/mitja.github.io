@@ -13,7 +13,7 @@
    var(--pb-…, …) fallbacks keep this working on plain Blowfish.
    ------------------------------------------------------------------------ */
 
-.lp, .pp, .ad, .dh, .sx, .tb { --lp-ink: rgb(var(--color-neutral-900)); --lp-muted: rgb(var(--color-neutral-500)); --lp-rule: rgb(var(--color-neutral-200)); --lp-accent: rgb(var(--color-primary-600)); --lp-accent-ink: rgb(var(--color-neutral)); --lp-tint: rgb(var(--color-primary-50)); --lp-cta: var(--pb-cta, var(--lp-accent)); --lp-cta-hover: var(--pb-cta-hover, var(--lp-accent)); --lp-cta-ink: var(--pb-cta-ink, var(--lp-accent-ink)); }
+.lp, .pp, .ad, .dh, .sx, .tb { --lp-ink: rgb(var(--color-neutral-900)); --lp-muted: rgb(var(--color-neutral-500)); --lp-rule: rgb(var(--color-neutral-200)); --lp-accent: rgb(var(--color-primary-600)); --lp-accent-ink: rgb(var(--color-neutral)); --lp-tint: var(--pb-paper-raised, rgb(var(--color-primary-50))); --lp-cta: var(--pb-cta, var(--lp-accent)); --lp-cta-hover: var(--pb-cta-hover, var(--lp-accent)); --lp-cta-ink: var(--pb-cta-ink, var(--lp-accent-ink)); }
 .dark .lp, .dark .pp, .dark .ad, .dark .dh, .dark .sx, .dark .tb { --lp-ink: rgb(var(--color-neutral)); --lp-muted: rgb(var(--color-neutral-400)); --lp-rule: rgb(var(--color-neutral-700)); --lp-accent: rgb(var(--color-primary-400)); --lp-accent-ink: rgb(var(--color-neutral-900)); --lp-tint: var(--pb-paper-raised, rgba(var(--color-primary-400), 0.12)); }
 
 .lp { color: var(--lp-ink); }
@@ -65,6 +65,11 @@
 .lp-apps { display: grid; gap: 1rem; }
 .lp-app { display: grid; gap: 0.25rem; padding: 1.25rem 1.5rem; border-radius: 0.65rem 0.9rem 0.7rem 1rem; background: var(--lp-tint); color: var(--lp-ink); }
 .lp-app:hover { text-decoration: none; }
+/* Light mode: a raised card on the warm paper, framed by the paper's own line colour (the old primary-50 tint was
+   blue against the cream). Dark mode keeps the raised slate without a frame. */
+html:not(.dark) .lp-app, html:not(.dark) .ad-nav, html:not(.dark) .dh-result { border: 1px solid var(--pb-line, rgb(var(--color-neutral-200))); }
+html:not(.dark) .lp-app { box-shadow: 0 1px 2px rgb(24 32 29 / 4%); transition: box-shadow .15s, border-color .15s; }
+html:not(.dark) .lp-app:hover { border-color: color-mix(in srgb, var(--pb-accent, #00657f) 35%, var(--pb-line, #d9d6cc)); box-shadow: var(--pb-shadow, 0 14px 40px rgb(24 32 29 / 8%)); }
 .lp-app:hover .lp-app-name { text-decoration: underline; text-decoration-color: var(--lp-accent); text-underline-offset: 3px; }
 .lp-app-name { font-size: 1.25rem; font-weight: 700; }
 .lp-app-sub { color: var(--lp-muted); font-weight: 500; }

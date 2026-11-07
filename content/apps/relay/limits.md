@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "Limits and FAQ"
 slug: "limits"
 summary: "What the relay does not do, what is not verified yet, and answers to common questions."

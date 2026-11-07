@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "Setup"
 slug: "setup"
 summary: "From purchase to the first event: grant consent, add a target, verify the signature."

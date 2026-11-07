@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "Event format and signature verification"
 slug: "event-format"
 summary: "CloudEvents 1.0, signed per Standard Webhooks. Fields, types, ids, and how your receiver verifies the signature."

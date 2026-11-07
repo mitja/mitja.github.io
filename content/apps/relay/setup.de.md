@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "Einrichtung"
 slug: "einrichtung"
 summary: "Vom Kauf bis zum ersten Ereignis: Einwilligung erteilen, Ziel anlegen, Signatur prüfen."
