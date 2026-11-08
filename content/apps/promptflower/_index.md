@@ -23,10 +23,10 @@ layout: product
 ---
 
 {{< gallery >}}
-  <img src="screen-1.jpg" class="grid-w25" alt="Script list" />
-  <img src="screen-2.jpg" class="grid-w25" alt="Prompter: read text turns grey, the script follows your voice" />
-  <img src="screen-3.jpg" class="grid-w25" alt="Recording with the front camera, compact bar" />
-  <img src="screen-4.jpg" class="grid-w25" alt="Export of subtitles, transcript and edit markers" />
+  <img src="screen-en-1.jpg" class="grid-w25" alt="Script list" />
+  <img src="screen-en-2.jpg" class="grid-w25" alt="Prompter: read text turns grey, the script follows your voice" />
+  <img src="screen-en-3.jpg" class="grid-w25" alt="Recording with the front camera, compact bar" />
+  <img src="screen-en-4.jpg" class="grid-w25" alt="Export of subtitles, transcript and edit markers" />
 {{< /gallery >}}
 
 ## How it works

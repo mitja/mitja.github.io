@@ -23,10 +23,10 @@ layout: product
 ---
 
 {{< gallery >}}
-  <img src="screen-1.jpg" class="grid-w25" alt="Skriptliste" />
-  <img src="screen-2.jpg" class="grid-w25" alt="Prompter: gelesener Text wird grau, der Text folgt der Stimme" />
-  <img src="screen-3.jpg" class="grid-w25" alt="Aufnahme mit der Frontkamera, kompakte Leiste" />
-  <img src="screen-4.jpg" class="grid-w25" alt="Export von Untertiteln, Transkript und Schnittmarkern" />
+  <img src="screen-de-1.jpg" class="grid-w25" alt="Skriptliste" />
+  <img src="screen-de-2.jpg" class="grid-w25" alt="Prompter: gelesener Text wird grau, der Text folgt der Stimme" />
+  <img src="screen-de-3.jpg" class="grid-w25" alt="Aufnahme mit der Frontkamera, kompakte Leiste" />
+  <img src="screen-de-4.jpg" class="grid-w25" alt="Export von Untertiteln, Transkript und Schnittmarkern" />
 {{< /gallery >}}
 
 ## So funktioniert es
