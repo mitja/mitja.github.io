@@ -5,7 +5,7 @@ subtitle: "Teleprompter, der Deiner Stimme folgt"
 kicker: "App"
 status: "Bald im App Store"
 status_note: "PromptFlower erscheint zuerst für das iPhone. Für Android läuft bald eine Beta über Google Play – trag Dich gern als Tester ein."
-teaser: "Der Text scrollt im Tempo Deiner Stimme, wartet bei Pausen und findet zurück, wenn Du improvisierst. Auf Deutsch und Englisch, komplett auf dem iPhone."
+teaser: "Du sprichst, PromptFlower liest mit: Machst Du eine Pause, wartet der Text, wirst Du schneller, zieht er mit. Mit Aufnahme, Untertiteln aus Deinem Skript und Rohschnitt. Auf Deutsch und Englisch, komplett auf dem iPhone."
 summary: "PromptFlower hört zu und scrollt den Text genau so schnell, wie Du sprichst. Pausen, Tempowechsel und spontane Einschübe sind kein Problem. Die Spracherkennung läuft vollständig auf dem Gerät: Kein Ton und kein Text gehen ins Internet."
 primary:
   text: "Android-Beta: als Tester anmelden"
@@ -21,7 +21,6 @@ showPagination: false
 sharingLinks: false
 layout: product
 ---
-
 {{< gallery >}}
   <img src="screen-de-1.jpg" class="grid-w25" alt="Skriptliste" />
   <img src="screen-de-2.jpg" class="grid-w25" alt="Prompter: gelesener Text wird grau, der Text folgt der Stimme" />
@@ -29,51 +28,89 @@ layout: product
   <img src="screen-de-4.jpg" class="grid-w25" alt="Export von Untertiteln, Transkript und Schnittmarkern" />
 {{< /gallery >}}
 
+## Der Text folgt Deiner Stimme
+
+Du sprichst, PromptFlower liest mit. **Machst Du eine Pause, wartet der Text. Wirst Du schneller, zieht er mit.** Lässt Du einen Satz aus, findet er die Stelle wieder. Die Spracherkennung läuft auf dem iPhone, auf Deutsch und Englisch.
+
 ## So funktioniert es
 
-1. **Text einfügen** oder importieren (TXT, PDF, Word). Regieanweisungen in eckigen Klammern wie `[Pause]` werden gedimmt angezeigt und beim Mitlesen übersprungen.
-2. **Losreden.** Der Text läuft im Tempo Deiner Stimme mit, die aktuelle Zeile bleibt im oberen Drittel nah an der Kamera. Machst Du eine Pause, wartet der Text. Lässt Du einen Satz aus oder improvisierst, findet PromptFlower die Stelle wieder.
-3. **Aufnehmen**, wenn Du willst: Video mit der Frontkamera oder nur Ton, am besten mit einem Ansteckmikrofon über USB-C oder Lightning. Ein Satz ging schief? „Satz zurück“ tippen und neu ansetzen.
-4. **Weiterverwenden:** Untertitel (SRT, WebVTT) und Transkript mit der Schreibweise aus Deinem Skript, Schnittmarker für DaVinci Resolve, Premiere und Final Cut, und auf Wunsch ein Rohschnitt, der abgebrochene Versuche herausnimmt – das Original bleibt erhalten.
+Kein Pedal, kein Tempo, keine zweite Person.
 
-Dazu: Spiegelmodus für Teleprompter-Glas, Bluetooth-Clicker und -Pedale, und eine Fernsteuerung im Browser eines zweiten Geräts per QR-Code.
+1. **Text rein.** Schreib im Editor oder importiere Text, PDF oder Word. Regieanweisungen in eckigen Klammern wie `[Pause]` erscheinen gedimmt und werden beim Mitlesen übersprungen.
+2. **Losreden.** Tipp auf die Blüte und sprich. Gelesene Wörter werden grau, die Lesezeile bleibt im oberen Drittel, nah an der Kamera. Ein Satz ging schief? „Satz zurück“ und noch mal.
+3. **Aufnehmen und weiterverwenden.** Nimm Video oder nur Ton auf, gern mit Funk-Lavalier. Danach: Untertitel aus Deinem Skript, Marker für den Schnitt und ein Rohschnitt ohne die abgebrochenen Versuche.
+
+## Aufnahme
+
+Ein Knopf startet Aufnahme und Mitlesen. Der Text läuft direkt unter der Frontkamera, so bleibt Dein Blick nah an der Linse. Die Kamera-Vorschau ist klein und lässt sich per Tippen ausblenden.
+
+- **Ton vom Funk-Lavalier:** Steck den Empfänger per USB-C oder Lightning an, PromptFlower nimmt ihn automatisch. Abgezogen? Die Aufnahme läuft mit dem eingebauten Mikrofon weiter.
+- **Video in 1080p oder 4K**, eine Datei mit Bild und Ton. Oder nur Ton, etwa für Podcasts und Sprechertexte.
+- **Aufnahmen gehören zum Skript:** ansehen, mit Stern markieren, teilen, in Fotos sichern.
+
+## Untertitel, Marker und Rohschnitt aus Deinem Skript
+
+Der Text der Untertitel kommt aus Deinem Skript, richtig geschrieben. Das Timing kommt aus der Spracherkennung, Wort für Wort. Jedes „Satz zurück“ während der Aufnahme setzt einen Marker, und der Rohschnitt schneidet die abgebrochenen Versuche heraus. Du prüfst jeden Schnitt, das Original bleibt erhalten.
+
+| Format | Wofür |
+| --- | --- |
+| SRT, WebVTT | Untertitel für YouTube, Instagram, Schnittprogramme und Webseiten |
+| Transkript | Skripttext Satz für Satz mit Timecodes, oder was Du tatsächlich gesagt hast |
+| Kapitel | YouTube-Kapitel aus Deinen Absätzen |
+| EDL | Marker für DaVinci Resolve und Premiere Pro |
+| FCPXML | Marker für Final Cut Pro |
+| CSV | alle Marker als Tabelle |
+
+## Fernsteuerung im Browser
+
+Öffne die Fernsteuerung, und PromptFlower zeigt einen QR-Code. Ein Tablet, ein Laptop oder ein zweites Handy im selben WLAN scannt ihn und steuert den Prompter im Browser: Start und Pause, Satz und Absatz vor und zurück, Tempo, Schriftgröße. Ohne App, ohne Internet, ohne Konto, geschützt durch einen Zugangscode, der mit „Beenden“ ungültig wird. Kostenlos, auch ohne Pro.
+
+Dazu: Spiegelmodus für Teleprompter-Glas und Bluetooth-Clicker oder Tastatur.
 
 ## Datenschutz
 
-- **Alles auf dem Gerät.** Die Spracherkennung nutzt Apples Erkennung auf dem iPhone. Ton, Transkripte und Skripte werden nicht an mich oder Dritte übertragen.
-- **Keine Konten, keine Werbung, kein Tracking.** Die App erhebt keine Nutzungsdaten.
-- **Fernsteuerung nur im lokalen WLAN**, geschützt durch einen Zugangscode im QR-Code, der mit „Beenden“ ungültig wird.
+PromptFlower nutzt die Spracherkennung von iOS im reinen Gerätemodus. **Kein Ton und kein Text gehen ins Internet** – nicht zu mir, nicht zu Apple, nicht zu Dritten.
+
+- **Kein Konto, keine Werbung, keine Analyse.** Im App Store steht: „Keine Daten erfasst“.
+- **Fernsteuerung nur im WLAN**, Deine Geräte verbinden sich direkt miteinander.
 - **Käufe über Apple.** Abo und Einmalkauf wickelt Apple ab; ich erhalte keine Zahlungsdaten.
 
 Details in der [Datenschutzerklärung](/de/datenschutz/).
 
 ## Preise
 
-Kostenlos: Skripte, Editor, Scrollen im festen Tempo, Fernsteuerung und **jeden Tag 5 Minuten Mitlesen mit der Stimme**.
-
-**PromptFlower Pro** schaltet unbegrenztes Mitlesen, Aufnahmen, Untertitel, Transkripte, Schnittmarker und den Rohschnitt frei:
-
-| Variante | Preis |
-| --- | --- |
-| Monatlich | 3,99 € pro Monat, mit 7 Tagen kostenlos testen |
-| Jährlich | 24,99 € pro Jahr, mit 7 Tagen kostenlos testen |
-| Einmalkauf | 59,99 € |
+| | Kostenlos | PromptFlower Pro |
+| --- | --- | --- |
+| Skripte, Editor, Scrollen im festen Tempo, Fernsteuerung | ✓ | ✓ |
+| Mitlesen mit der Stimme | 5 Minuten pro Tag | unbegrenzt |
+| Aufnahme (Video und Ton) | – | ✓ |
+| Untertitel, Transkripte, Schnittmarker, Rohschnitt | – | ✓ |
+| **Preis** | **0 €** | **3,99 € pro Monat** oder **24,99 € pro Jahr**, je 7 Tage kostenlos testen – oder **59,99 € einmalig**, kein Abo |
 
 Abos verlängern sich automatisch und sind jederzeit in den Einstellungen Deines Apple-Accounts kündbar. Maßgeblich sind die Preise im App Store.
 
 ## Häufige Fragen
 
 **Welche Sprachen versteht PromptFlower?**\
-Deutsch und Englisch. Der Text folgt Dir auch bei langen deutschen Wörtern und Zahlen.
+Deutsch und Englisch. Die Sprache stellst Du pro Skript ein.
 
 **Brauche ich Internet?**\
-Nein. Mitlesen, Aufnahme und Export funktionieren offline. Nur der Kauf von Pro läuft über den App Store.
+Nein. Mitlesen, Aufnahme und Export funktionieren offline. Einmalig lädt iOS das Sprachpaket von Apple, falls es noch fehlt. Der Kauf von Pro läuft über den App Store.
 
-**Welches Mikrofon?**\
-Das eingebaute Mikrofon reicht zum Üben. Für Aufnahmen empfehle ich ein Ansteckmikrofon (kabellos mit USB-C- oder Lightning-Empfänger); PromptFlower wählt es automatisch.
+**Welches Mikrofon brauche ich?**\
+Zum Üben reicht das eingebaute Mikrofon. Für Aufnahmen empfehle ich ein Funk-Lavalier mit USB-C- oder Lightning-Empfänger; PromptFlower wählt es automatisch. Bluetooth-Mikrofone nutzt die App nicht.
+
+**Welche iPhones werden unterstützt?**\
+iPhones mit iOS 17 oder neuer, im Hochformat. Für iPad gibt es PromptFlower noch nicht.
+
+**Was passiert, wenn die 5 Minuten aufgebraucht sind?**\
+Der Text läuft im festen Tempo weiter, eine laufende Aufnahme wird nicht unterbrochen. Am nächsten Tag folgt der Text wieder 5 Minuten lang Deiner Stimme.
+
+**Kann ich einen Angebotscode einlösen?**\
+Ja, in der App unter Einstellungen › Code einlösen.
 
 **Gibt es PromptFlower für Android?**\
-Bald als Beta über Google Play. [Melde Dich als Tester an](mailto:support@mitjamartini.com?subject=PromptFlower%20Android-Beta) – ich nutze Deine E-Mail-Adresse nur, um Dich zur Beta einzuladen.
+Geplant ist eine Beta über Google Play. [Melde Dich als Tester an](mailto:support@mitjamartini.com?subject=PromptFlower%20Android-Beta) – ich nutze Deine E-Mail-Adresse nur, um Dich zur Beta einzuladen.
 
 ## Support
 
