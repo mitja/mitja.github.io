@@ -56,7 +56,7 @@ Free: scripts, editor, fixed-speed scrolling, remote control and **5 minutes of 
 | Option | Price |
 | --- | --- |
 | Monthly | €3.99 per month, with a 7-day free trial |
-| Yearly | first year €19.99, then €29.99 per year |
+| Yearly | €24.99 per year, with a 7-day free trial |
 | One-time purchase | €59.99 |
 
 Subscriptions renew automatically and can be cancelled at any time in your Apple account settings. Prices in the App Store apply.

@@ -56,7 +56,7 @@ Kostenlos: Skripte, Editor, Scrollen im festen Tempo, Fernsteuerung und **jeden 
 | Variante | Preis |
 | --- | --- |
 | Monatlich | 3,99 € pro Monat, mit 7 Tagen kostenlos testen |
-| Jährlich | erstes Jahr 19,99 €, danach 29,99 € pro Jahr |
+| Jährlich | 24,99 € pro Jahr, mit 7 Tagen kostenlos testen |
 | Einmalkauf | 59,99 € |
 
 Abos verlängern sich automatisch und sind jederzeit in den Einstellungen Deines Apple-Accounts kündbar. Maßgeblich sind die Preise im App Store.
