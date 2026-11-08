@@ -6,7 +6,7 @@ kicker: "App"
 status: "Coming to the App Store"
 status_note: "PromptFlower launches on iPhone first. An Android beta on Google Play follows soon – feel free to sign up as a tester."
 teaser: "The script scrolls at the pace of your voice, waits when you pause and finds its place again when you improvise. In German and English, entirely on your iPhone."
-summary: "PromptFlower listens and scrolls the script exactly as fast as you speak. Pauses, changes of pace and spontaneous asides are no problem. Speech recognition runs entirely on the device: no audio and no text leave the phone."
+summary: "PromptFlower listens and scrolls the script exactly as fast as you speak. Pauses, changes of pace and spontaneous asides are no problem. Speech recognition runs entirely on the device: no audio and no text go to the internet."
 primary:
   text: "Android beta: sign up as a tester"
   url: "mailto:support@mitjamartini.com?subject=PromptFlower%20Android%20beta&body=I%27d%20like%20to%20test%20the%20PromptFlower%20Android%20beta.%0ADevice%3A%20"
@@ -42,7 +42,7 @@ Plus: mirror mode for teleprompter glass, Bluetooth clickers and pedals, and a r
 
 - **Everything stays on the device.** Speech recognition uses Apple's on-device recognition. Audio, transcripts and scripts are not sent to me or to third parties.
 - **No accounts, no ads, no tracking.** The app collects no usage data.
-- **Remote control on your local Wi-Fi only**, protected by a one-time code in the QR code.
+- **Remote control on your local Wi-Fi only**, protected by an access code in the QR code that stops working when you tap "Stop".
 - **Purchases through Apple.** Apple handles subscriptions and the one-time purchase; I receive no payment details.
 
 Details in the [privacy policy](/privacy/).

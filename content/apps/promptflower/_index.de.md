@@ -6,7 +6,7 @@ kicker: "App"
 status: "Bald im App Store"
 status_note: "PromptFlower erscheint zuerst für das iPhone. Für Android läuft bald eine Beta über Google Play – trag Dich gern als Tester ein."
 teaser: "Der Text scrollt im Tempo Deiner Stimme, wartet bei Pausen und findet zurück, wenn Du improvisierst. Auf Deutsch und Englisch, komplett auf dem iPhone."
-summary: "PromptFlower hört zu und scrollt den Text genau so schnell, wie Du sprichst. Pausen, Tempowechsel und spontane Einschübe sind kein Problem. Die Spracherkennung läuft vollständig auf dem Gerät: Kein Ton und kein Text verlassen das Telefon."
+summary: "PromptFlower hört zu und scrollt den Text genau so schnell, wie Du sprichst. Pausen, Tempowechsel und spontane Einschübe sind kein Problem. Die Spracherkennung läuft vollständig auf dem Gerät: Kein Ton und kein Text gehen ins Internet."
 primary:
   text: "Android-Beta: als Tester anmelden"
   url: "mailto:support@mitjamartini.com?subject=PromptFlower%20Android-Beta&body=Ich%20m%C3%B6chte%20die%20Android-Beta%20von%20PromptFlower%20testen.%0AGer%C3%A4t%3A%20"
@@ -42,7 +42,7 @@ Dazu: Spiegelmodus für Teleprompter-Glas, Bluetooth-Clicker und -Pedale, und ei
 
 - **Alles auf dem Gerät.** Die Spracherkennung nutzt Apples Erkennung auf dem iPhone. Ton, Transkripte und Skripte werden nicht an mich oder Dritte übertragen.
 - **Keine Konten, keine Werbung, kein Tracking.** Die App erhebt keine Nutzungsdaten.
-- **Fernsteuerung nur im lokalen WLAN**, geschützt durch einen Einmal-Code im QR-Code.
+- **Fernsteuerung nur im lokalen WLAN**, geschützt durch einen Zugangscode im QR-Code, der mit „Beenden“ ungültig wird.
 - **Käufe über Apple.** Abo und Einmalkauf wickelt Apple ab; ich erhalte keine Zahlungsdaten.
 
 Details in der [Datenschutzerklärung](/de/datenschutz/).
