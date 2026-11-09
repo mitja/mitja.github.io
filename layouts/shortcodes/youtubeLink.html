@@ -1,23 +1,52 @@
 {{- /*
-  Privacy-friendly replacement for the theme's lite-youtube embed: a locally stored thumbnail
-  (youtube-<id>.jpg in the page bundle) that links to the video on YouTube. Nothing is loaded
-  from YouTube or Google until the visitor clicks (privacy statement, section "Websites").
+  youtubeLink — a YouTube video as a preview image that links to YouTube. Privacy-friendly:
+  the page loads nothing from YouTube or Google; only a click opens YouTube in a new tab
+  (privacy statement, section "Websites"). Hugo's own `youtube` shortcode embeds an iframe and
+  Blowfish's `youtubeLite` loads the thumbnail from i.ytimg.com, so neither fits.
+
+  Usage:
+    {{< youtubeLink id="z8xi44O3hvY" label="Ollama on Windows" >}}
+
+  The preview image is fetched at BUILD time (locally and in CI) with resources.GetRemote from
+  i.ytimg.com (maxresdefault, else hqdefault), cropped to 16:9, converted to WebP and served from
+  this site. Hugo caches it (resources/_gen, getresource cache). To use your own image instead,
+  put youtube-<id>.jpg|png|webp into the page bundle.
 */ -}}
 {{- $id := .Get "id" -}}
+{{- if not $id }}{{ errorf "youtubeLink: missing id in %s" .Page.File.Path }}{{ end -}}
 {{- $label := .Get "label" | default "Video" -}}
 {{- $de := eq .Page.Language.Lang "de" -}}
 {{- $url := printf "https://www.youtube.com/watch?v=%s" $id -}}
-{{- $img := .Page.Resources.GetMatch (printf "youtube-%s.*" $id) -}}
+
+{{- $src := .Page.Resources.GetMatch (printf "youtube-%s.*" $id) -}}
+{{- if not $src -}}
+  {{- range slice "maxresdefault" "hqdefault" -}}
+    {{- if not $src -}}
+      {{- with try (resources.GetRemote (printf "https://i.ytimg.com/vi/%s/%s.jpg" $id .)) -}}
+        {{- with .Value -}}{{- $src = . -}}{{- end -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- if not $src }}{{ warnf "youtubeLink: no preview image for %s (%s); showing a text link" $id $.Page.File.Path }}{{ end -}}
+
+{{- $img := "" -}}
+{{- with $src -}}
+  {{- $w := cond (ge .Width 1280) 1280 (cond (ge .Width 960) 960 640) -}}
+  {{- $img = .Fill (printf "%dx%d Center webp q80" $w (div (mul $w 9) 16)) -}}
+{{- end -}}
+
 <figure class="not-prose my-6">
-  <a href="{{ $url }}" target="_blank" rel="noopener" class="group relative block overflow-hidden rounded-lg" aria-label="{{ $label }} – {{ if $de }}Video auf YouTube ansehen{{ else }}watch on YouTube{{ end }}">
+  <a href="{{ $url }}" target="_blank" rel="noopener" class="group relative block overflow-hidden rounded-lg bg-neutral-900"
+     aria-label="{{ $label }} – {{ if $de }}Video auf YouTube ansehen{{ else }}watch on YouTube{{ end }}">
     {{- with $img }}
     <img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="{{ $label }}" loading="lazy" class="m-0 w-full" />
     {{- else }}
-    <span class="block p-8 text-center">{{ $label }}</span>
+    <span class="block p-8 text-center text-neutral-100">{{ $label }}</span>
     {{- end }}
     <span class="absolute inset-0 flex items-center justify-center" aria-hidden="true">
-      <span class="flex h-16 w-24 items-center justify-center rounded-2xl bg-black/70 group-hover:bg-red-600">
-        <svg viewBox="0 0 24 24" width="32" height="32" fill="white"><path d="M8 5v14l11-7z"/></svg>
+      <span class="flex h-14 w-20 items-center justify-center rounded-2xl bg-black/70 transition-colors group-hover:bg-red-600">
+        <svg viewBox="0 0 24 24" width="30" height="30" fill="white"><path d="M8 5v14l11-7z"/></svg>
       </span>
     </span>
   </a>
