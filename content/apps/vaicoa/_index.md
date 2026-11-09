@@ -46,7 +46,7 @@ The core is not the last word. The node on each host does not rely on it but che
 - **The roster.** Whether you may approve, the node checks against the signed team roster it has pinned itself.
 - **The plan.** If the state has changed since your approval, the approval is invalid and a new one is needed.
 
-On top of that, some rules apply to everyone: nobody approves their own proposal, and risky actions always need a human.
+On top of that, some rules apply to everyone: risky actions always need a human, and whoever proposes does not approve. The two exceptions, solo mode and the emergency change, are visibly marked and recorded in the audit.
 
 ## Limits
 

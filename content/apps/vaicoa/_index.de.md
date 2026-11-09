@@ -46,7 +46,7 @@ Der Kern ist nicht die letzte Instanz. Der Node auf jedem Host verlässt sich ni
 - **Den Roster.** Ob Du freigeben darfst, prüft der Node gegen den signierten Team-Roster, den er selbst gepinnt hat.
 - **Den Plan.** Hat sich der Zustand seit Deiner Freigabe geändert, ist sie ungültig, und es braucht eine neue.
 
-Dazu kommen Regeln, die für alle gelten: Niemand gibt den eigenen Vorschlag frei, und riskante Aktionen brauchen immer einen Menschen.
+Dazu kommen Regeln, die für alle gelten: Riskante Aktionen brauchen immer einen Menschen, und wer vorschlägt, gibt nicht selbst frei. Die zwei Ausnahmen, der Allein-Modus und der Notfall-Change, sind sichtbar markiert und stehen im Audit.
 
 ## Grenzen
 
