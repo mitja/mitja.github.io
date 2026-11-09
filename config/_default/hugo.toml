@@ -20,7 +20,6 @@ buildFuture = false
 
 enableEmoji = true
 
-googleAnalytics = "G-MJ6W78NM6R"
 
 [taxonomies]
   tag = "tags"
