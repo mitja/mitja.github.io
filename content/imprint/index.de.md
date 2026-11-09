@@ -15,7 +15,7 @@ showSummary: false
 sharingLinks: false
 ---
 
-Dieses Impressum gilt für mitjamartini.com und für vaicoa.com.
+Dieses Impressum gilt für alle meine Angebote: mitjamartini.com mit dem Trainingsportal training.mitjamartini.com, promptflower.com und die App Prompt Flower, vaicoa.com, ownpaas.com, paasbox.com, cloudviewer.app sowie den Podcast KI Bauer (kibauer.de, kibauer.com).
 
 ## Angaben gemäß § 5 DDG
 
@@ -37,10 +37,8 @@ Mitja Martini, Anschrift wie oben
 
 ## Streitbeilegung
 
-Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: [https://ec.europa.eu/consumers/odr/](https://ec.europa.eu/consumers/odr/).
-
 Ich bin nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
 
 ## Marken
 
-Microsoft und Microsoft Bookings sind Marken der Microsoft-Unternehmensgruppe. Hetzner ist eine Marke der Hetzner Online GmbH. Die hier beschriebenen Apps sind unabhängige Produkte und stehen in keiner Verbindung zu diesen Unternehmen.
+Prompt Flower ist eine eingetragene Marke von Mitja Martini. Hetzner ist eine Marke der Hetzner Online GmbH; Apple, iPhone und App Store sind Marken der Apple Inc. Meine Apps und Dienste sind unabhängige Produkte und stehen in keiner Verbindung zu diesen Unternehmen.

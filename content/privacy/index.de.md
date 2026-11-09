@@ -35,15 +35,16 @@ Einen Datenschutzbeauftragten habe ich nicht benannt; dazu bin ich nicht verpfli
 
 ## Geltungsbereich
 
-Diese Erklärung gilt für:
+Diese Erklärung gilt für alle meine Angebote:
 
-* die Website **mitjamartini.com** (mit Blog, Seiten zu Apps und Kursen),
-* die Website **promptflower.com**,
+* die Website **mitjamartini.com** (mit Blog und Seiten zu Apps und Kursen),
 * das Trainingsportal **training.mitjamartini.com** mit den Übungsumgebungen (Labs) und den Live-Sitzungen,
-* die App **Prompt Flower** und den Dienst **Mitjas Relay** (Abschnitte unten),
+* die Website **promptflower.com** und die App **Prompt Flower** (Abschnitt unten),
+* die Produkt-Websites **vaicoa.com**, **ownpaas.com** und **paasbox.com**,
+* die Website des Podcasts **KI Bauer** (**kibauer.de** und **kibauer.com**),
 * E-Mails, die Du mir schreibst oder die Du von mir bekommst.
 
-Für **Cloud Viewer** gilt eine eigene Datenschutzerklärung: https://cloudviewer.app/de/privacy
+Für die App und den Dienst **Cloud Viewer** gilt eine eigene Datenschutzerklärung: https://cloudviewer.app/de/privacy
 
 ## Kurz gesagt
 
@@ -55,7 +56,7 @@ Für **Cloud Viewer** gilt eine eigene Datenschutzerklärung: https://cloudviewe
 
 Ich setze folgende Dienstleister ein. Wo sie Daten in meinem Auftrag verarbeiten, habe ich mit ihnen einen Auftragsverarbeitungsvertrag nach Art. 28 DSGVO geschlossen.
 
-* **Hetzner (Server und Speicher).** Hetzner Online GmbH, Industriestr. 25, 91710 Gunzenhausen. Auf Servern von Hetzner in den Rechenzentren Nürnberg und Falkenstein laufen promptflower.com, das Trainingsportal mit Datenbank und Labs, die Reichweitenmessung (Umami) und die Speicher für Dateien und Sicherungen (Hetzner Object Storage). Anfragen erreichen die Dienste über Load Balancer von Hetzner und einen Reverse Proxy, der die TLS-Verschlüsselung abschließt.
+* **Hetzner (Server und Speicher).** Hetzner Online GmbH, Industriestr. 25, 91710 Gunzenhausen. Auf Servern von Hetzner in den Rechenzentren Nürnberg und Falkenstein laufen promptflower.com, vaicoa.com, ownpaas.com, paasbox.com, kibauer.de, das Trainingsportal mit Datenbank und Labs, die Reichweitenmessung (Umami) und die Speicher für Dateien und Sicherungen (Hetzner Object Storage). Anfragen erreichen die Dienste über Load Balancer von Hetzner und einen Reverse Proxy, der die TLS-Verschlüsselung abschließt.
 * **Microsoft 365 (E-Mail, Microsoft Teams).** Microsoft Ireland Operations Limited, One Microsoft Place, South County Business Park, Leopardstown, Dublin 18, Irland. Mein E-Mail-Postfach (z. B. privacy@, support@ und hi@mitjamartini.com) liegt bei Microsoft Exchange Online; die Live-Sitzungen der Kurse finden in Microsoft Teams statt. Microsoft kann Daten auch in den USA verarbeiten; Microsoft ist nach dem EU-US Data Privacy Framework zertifiziert, außerdem gelten die EU-Standardvertragsklauseln. Datenschutzerklärung: https://privacy.microsoft.com/de-de/privacystatement
 * **Mailjet (Versand von E-Mails).** Sinch Mailjet SAS, 13-13 bis rue de l'Aubrac, 75012 Paris, Frankreich. Über Mailjet verschickt das Trainingsportal seine E-Mails (z. B. Bestätigung der E-Mail-Adresse, Passwort zurücksetzen, Anmeldebestätigungen, Erinnerungen an Termine) von der Absenderdomain mg.mitjamartini.com, und – wenn Du ihn abonniert hast – den Newsletter. Mailjet verarbeitet dafür Deine E-Mail-Adresse, den Inhalt der E-Mail und technische Zustelldaten (z. B. ob eine E-Mail zugestellt wurde) auf Servern in der EU. Öffnungs- und Klick-Tracking ist ausgeschaltet: Meine E-Mails enthalten keine Zählpixel, und Links werden nicht umgeschrieben. Datenschutzerklärung: https://www.mailjet.com/de/rechtliches/datenschutz/
 * **GitHub Pages (Blog).** GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA. Der Blog und die übrigen statischen Seiten von mitjamartini.com werden derzeit über GitHub Pages ausgeliefert; GitHub verarbeitet dabei die Server-Logdaten (siehe unten), auch in den USA. GitHub ist nach dem EU-US Data Privacy Framework zertifiziert. Datenschutzerklärung: https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement
@@ -66,10 +67,12 @@ Ich setze folgende Dienstleister ein. Wo sie Daten in meinem Auftrag verarbeiten
 
 * **Server-Logfiles.** Beim Aufruf einer Seite überträgt Dein Browser technisch bedingt Daten, die der Webserver protokolliert: Datum und Uhrzeit, die aufgerufene Seite, den Statuscode, die übertragene Datenmenge, die Referrer-URL, die Browserkennung (Typ, Version, Betriebssystem) und die IP-Adresse. Ich nutze diese Daten, um die Dienste auszuliefern, Fehler zu finden und Angriffe abzuwehren, und führe sie nicht mit anderen Daten zusammen. Rechtsgrundlage ist mein berechtigtes Interesse an sicheren und funktionierenden Websites (Art. 6 Abs. 1 lit. f DSGVO). Auf meinen Servern bei Hetzner werden die Logs höchstens 90 Tage aufbewahrt und dann gelöscht; für die Seiten auf GitHub Pages speichert GitHub die Logs nach seinen eigenen Regeln.
 * **TLS-Verschlüsselung.** Alle Seiten werden nur verschlüsselt (HTTPS) ausgeliefert, damit Dritte die übertragenen Daten nicht mitlesen können.
-* **Reichweitenmessung mit Umami.** Auf mitjamartini.com messe ich mit Umami, einer selbst betriebenen Open-Source-Software auf meinem Server bei Hetzner, welche Seiten wie oft aufgerufen werden. Umami setzt keine Cookies, speichert nichts auf Deinem Gerät und speichert Deine IP-Adresse nicht; erfasst werden die aufgerufene Seite, die Referrer-URL, Browser, Betriebssystem, Gerätetyp, Bildschirmgröße und das aus der IP-Adresse abgeleitete Land. Ich werte nur zusammengefasste Zahlen aus und gebe nichts an Dritte weiter. Rechtsgrundlage ist mein berechtigtes Interesse, die Inhalte zu verbessern (Art. 6 Abs. 1 lit. f DSGVO). Du kannst die Messung verhindern, indem Du in Deinem Browser „Do Not Track“ aktivierst oder Skripte von umami.mitja.app blockierst.
+* **Reichweitenmessung mit Umami.** Auf mitjamartini.com und paasbox.com messe ich mit Umami, einer selbst betriebenen Open-Source-Software auf meinem Server bei Hetzner, welche Seiten wie oft aufgerufen werden. Umami setzt keine Cookies, speichert nichts auf Deinem Gerät und speichert Deine IP-Adresse nicht; erfasst werden die aufgerufene Seite, die Referrer-URL, Browser, Betriebssystem, Gerätetyp, Bildschirmgröße und das aus der IP-Adresse abgeleitete Land. Ich werte nur zusammengefasste Zahlen aus und gebe nichts an Dritte weiter. Rechtsgrundlage ist mein berechtigtes Interesse, die Inhalte zu verbessern (Art. 6 Abs. 1 lit. f DSGVO). Du kannst die Messung verhindern, indem Du in Deinem Browser „Do Not Track“ aktivierst oder Skripte von umami.mitja.app blockierst.
+* **Reichweitenmessung mit Plausible (KI Bauer).** Auf kibauer.de nutze ich Plausible Analytics der Plausible Insights OÜ, Västriku tn 2, 50403 Tartu, Estland, mit Servern in der EU. Plausible setzt keine Cookies, speichert nichts auf Deinem Gerät und speichert keine IP-Adressen; aus IP-Adresse und Browserkennung wird nur ein täglich wechselnder, anonymer Wert gebildet, um Besuche zu zählen. Erfasst werden die aufgerufene Seite, die Referrer-URL, Browser, Betriebssystem, Gerätetyp und das Land. Plausible verarbeitet die Daten in meinem Auftrag (Art. 28 DSGVO). Rechtsgrundlage ist mein berechtigtes Interesse, die Inhalte zu verbessern (Art. 6 Abs. 1 lit. f DSGVO). Details: https://plausible.io/data-policy
+* **Links zu Podcast-Plattformen.** kibauer.de verlinkt den Podcast bei Apple Podcasts, Spotify, YouTube und Overcast. Diese Links wirken erst, wenn Du sie anklickst; ab dann gilt die Datenschutzerklärung der jeweiligen Plattform.
 * **Videos auf YouTube.** Einige Blogartikel zeigen ein Vorschaubild eines Videos, das auf meinem Server liegt, und verlinken das Video auf YouTube. Beim Lesen der Seite wird nichts von YouTube oder Google geladen. Erst wenn Du auf das Bild klickst, öffnet sich YouTube (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland) in einem neuen Tab; ab dann gilt die Datenschutzerklärung von Google: https://policies.google.com/privacy
 * **Sprachwahl und Farbschema.** Wählst Du eine Sprache oder ein Farbschema, merkt sich Dein Browser das im Local Storage (z. B. `mm-lang`). Diese Werte verlassen Deinen Browser nicht. Das ist für die von Dir gewünschte Funktion unbedingt erforderlich (§ 25 Abs. 2 Nr. 2 TDDDG).
-* **Keine Formulare.** mitjamartini.com und promptflower.com haben keine Formulare und keine Kommentare. Links zu anderen Websites wirken erst, wenn Du sie anklickst; ab dann gilt die Datenschutzerklärung der jeweiligen Website.
+* **Keine Formulare.** Die Websites haben keine Formulare und keine Kommentare. Links zu anderen Websites wirken erst, wenn Du sie anklickst; ab dann gilt die Datenschutzerklärung der jeweiligen Website.
 
 ## E-Mail-Kontakt
 
@@ -105,9 +108,12 @@ Prompt Flower ist meine Teleprompter-App für iPhone (und später Android), dere
 * **Speicherung auf dem Gerät.** Skripte, Aufnahmen (mit Untertitel- und Markerdaten) und Einstellungen liegen im Speicher der App auf Deinem Gerät. Du löschst sie in der App oder, vollständig, indem Du die App löschst. Die App liest und speichert auf Deinem Gerät nur, was für die von Dir genutzten Funktionen unbedingt erforderlich ist (§ 25 Abs. 2 Nr. 2 TDDDG).
 * **Support.** Schreibst Du mir über „Support“ in der App, öffnet die App eine E-Mail an support@mitjamartini.com mit dem Betreff „Prompt Flower <Version>“; es gilt der Abschnitt „E-Mail-Kontakt“.
 
+<!-- Mitjas Relay wird derzeit nicht vermarktet; Abschnitt reaktivieren, wenn die Produktseite wieder online ist.
+
 ## Apps: Mitjas Relay
 
 Wenn Du Mitjas Relay als Dienst nutzt, verarbeite ich im Auftrag Termindaten aus Deinem Microsoft-365-Mandanten. Dafür gilt ein Auftragsverarbeitungsvertrag nach Art. 28 DSGVO, nicht diese Erklärung. Was der Relay speichert und was nicht, steht auf der [Produktseite](/de/apps/relay/). Die Zahlung wickelt Polar Software Inc. als Merchant of Record ab; Polar verarbeitet Deine Rechnungs- und Zahlungsdaten als eigener Verantwortlicher (https://polar.sh/legal/privacy).
+-->
 
 ## Deine Rechte
 

@@ -15,7 +15,7 @@ showSummary: false
 sharingLinks: false
 ---
 
-This imprint applies to mitjamartini.com and to vaicoa.com.
+This imprint applies to all my offerings: mitjamartini.com with the training portal training.mitjamartini.com, promptflower.com and the app Prompt Flower, vaicoa.com, ownpaas.com, paasbox.com, cloudviewer.app and the podcast KI Bauer (kibauer.de, kibauer.com).
 
 ## Information under § 5 DDG
 
@@ -37,10 +37,8 @@ Mitja Martini, address as above
 
 ## Dispute resolution
 
-The European Commission provides a platform for online dispute resolution (ODR): [https://ec.europa.eu/consumers/odr/](https://ec.europa.eu/consumers/odr/).
-
 I am neither willing nor obliged to take part in dispute resolution proceedings before a consumer arbitration board.
 
 ## Trademarks
 
-Microsoft and Microsoft Bookings are trademarks of the Microsoft group of companies. Hetzner is a trademark of Hetzner Online GmbH. The apps described on this site are independent products and are not affiliated with these companies.
+Prompt Flower is a registered trademark of Mitja Martini. Hetzner is a trademark of Hetzner Online GmbH; Apple, iPhone and App Store are trademarks of Apple Inc. My apps and services are independent products and are not affiliated with these companies.
