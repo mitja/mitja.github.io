@@ -1,0 +1,27 @@
+{{- /*
+  Privacy-friendly replacement for the theme's lite-youtube embed: a locally stored thumbnail
+  (youtube-<id>.jpg in the page bundle) that links to the video on YouTube. Nothing is loaded
+  from YouTube or Google until the visitor clicks (privacy statement, section "Websites").
+*/ -}}
+{{- $id := .Get "id" -}}
+{{- $label := .Get "label" | default "Video" -}}
+{{- $de := eq .Page.Language.Lang "de" -}}
+{{- $url := printf "https://www.youtube.com/watch?v=%s" $id -}}
+{{- $img := .Page.Resources.GetMatch (printf "youtube-%s.*" $id) -}}
+<figure class="not-prose my-6">
+  <a href="{{ $url }}" target="_blank" rel="noopener" class="group relative block overflow-hidden rounded-lg" aria-label="{{ $label }} – {{ if $de }}Video auf YouTube ansehen{{ else }}watch on YouTube{{ end }}">
+    {{- with $img }}
+    <img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="{{ $label }}" loading="lazy" class="m-0 w-full" />
+    {{- else }}
+    <span class="block p-8 text-center">{{ $label }}</span>
+    {{- end }}
+    <span class="absolute inset-0 flex items-center justify-center" aria-hidden="true">
+      <span class="flex h-16 w-24 items-center justify-center rounded-2xl bg-black/70 group-hover:bg-red-600">
+        <svg viewBox="0 0 24 24" width="32" height="32" fill="white"><path d="M8 5v14l11-7z"/></svg>
+      </span>
+    </span>
+  </a>
+  <figcaption class="mt-2 text-sm text-neutral-500 dark:text-neutral-400">
+    {{ $label }} – {{ if $de }}öffnet YouTube in einem neuen Tab{{ else }}opens YouTube in a new tab{{ end }}
+  </figcaption>
+</figure>

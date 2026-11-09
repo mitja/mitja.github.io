@@ -18,7 +18,7 @@ Large language models like GPT-3.5 and GPT-4 can summarize text quite well. But 
 
 If you want to see how to do it in Python, check out the video and see the **[Juypter notebook about Summarizing Large Texts](https://github.com/mitja/mitja.github.io/blob/main/content/posts/tree-of-summaries/summarize-large-texts.ipynb)** ([Open in Colab](https://colab.research.google.com/github/mitja/mitja.github.io/blob/main/content/posts/tree-of-summaries/summarize-large-texts.ipynb)).
 
-{{< youtubeLite id="on8xoaeWcOE" label="Summarize Large Texts with LLMs" >}}
+{{< youtubeLink id="on8xoaeWcOE" label="Summarize Large Texts with LLMs" >}}
 
 The **general approach** to this is an example of recursive task decomposition which is a fancy way of saying: "Break up a difficult task into easier ones and then do it again, if the sub-tasks are still too difficult." In this case, it's about breaking up summarizing a long piece of text into summarizing several shorter pieces.
 
