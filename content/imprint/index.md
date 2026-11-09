@@ -41,4 +41,4 @@ I am neither willing nor obliged to take part in dispute resolution proceedings 
 
 ## Trademarks
 
-Prompt Flower is a registered trademark of Mitja Martini. Hetzner is a trademark of Hetzner Online GmbH; Apple, iPhone and App Store are trademarks of Apple Inc. My apps and services are independent products and are not affiliated with these companies.
+“Prompt Flower” is a word and figurative mark of Mitja Martini registered with the European Union Intellectual Property Office (EUIPO). “Vaicoa” is a trademark of Mitja Martini applied for with the German Patent and Trade Mark Office (DPMA). Hetzner is a trademark of Hetzner Online GmbH; Apple, iPhone and App Store are trademarks of Apple Inc. My apps and services are independent products and are not affiliated with these companies.

@@ -36,15 +36,15 @@
     <div class="sx-headrow">
     <h1 class="sx-h1">{{ $s.heading | default "Blog" }}{{ if gt $pager.PageNumber 1 }} <span class="sx-h1-page">{{ i18n "stream.page" (dict "Count" $pager.PageNumber) }}</span>{{ end }}</h1>
     {{- /* Two views of the same stream, switched without a script (radio + CSS :has); a two-line script remembers
-         the choice in localStorage (never sent anywhere): "with summary" (default) and "short" (date and title).
+         the choice in localStorage (never sent anywhere): "short" (date and title, default) and "with summary".
          Icon buttons on the heading's line (Blowfish's own icons: expand, list), so the header is as tall as on Trainings and Apps. */}}
     <div class="sx-view" role="radiogroup" aria-label="{{ i18n "archive.view" }}">
-      <input type="radio" name="sx-view" id="sv-long" value="long" class="sr-only" aria-label="{{ i18n "archive.long" }}" checked>
+      <input type="radio" name="sx-view" id="sv-long" value="long" class="sr-only" aria-label="{{ i18n "archive.long" }}">
       <label for="sv-long" class="sx-vbtn" title="{{ i18n "archive.long" }}">
         {{ partial "icon.html" "expand" }}
         <span class="sr-only">{{ i18n "archive.long" }}</span>
       </label>
-      <input type="radio" name="sx-view" id="sv-short" value="short" class="sr-only" aria-label="{{ i18n "archive.short" }}">
+      <input type="radio" name="sx-view" id="sv-short" value="short" class="sr-only" aria-label="{{ i18n "archive.short" }}" checked>
       <label for="sv-short" class="sx-vbtn" title="{{ i18n "archive.short" }}">
         {{ partial "icon.html" "list" }}
         <span class="sr-only">{{ i18n "archive.short" }}</span>
@@ -124,7 +124,7 @@
 {{ partial "stream/tags-aside.html" . }}
 </div>
 <script>
-  (function () { var k = "blog-view", v = localStorage.getItem(k), r = document.getElementById(v === "short" ? "sv-short" : "sv-long");
+  (function () { var k = "blog-view", v = localStorage.getItem(k), r = document.getElementById(v === "long" ? "sv-long" : "sv-short");
     if (r) r.checked = true;
     document.querySelectorAll('input[name="sx-view"]').forEach(function (i) { i.addEventListener("change", function () { localStorage.setItem(k, i.value); }); }); })();
 </script>

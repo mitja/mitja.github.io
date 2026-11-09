@@ -41,4 +41,4 @@ Ich bin nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor ei
 
 ## Marken
 
-Prompt Flower ist eine eingetragene Marke von Mitja Martini. Hetzner ist eine Marke der Hetzner Online GmbH; Apple, iPhone und App Store sind Marken der Apple Inc. Meine Apps und Dienste sind unabhängige Produkte und stehen in keiner Verbindung zu diesen Unternehmen.
+„Prompt Flower“ ist eine beim Amt der Europäischen Union für geistiges Eigentum (EUIPO) eingetragene Wort-Bild-Marke von Mitja Martini. „Vaicoa“ ist eine beim Deutschen Patent- und Markenamt (DPMA) angemeldete Marke von Mitja Martini. Hetzner ist eine Marke der Hetzner Online GmbH; Apple, iPhone und App Store sind Marken der Apple Inc. Meine Apps und Dienste sind unabhängige Produkte und stehen in keiner Verbindung zu diesen Unternehmen.
