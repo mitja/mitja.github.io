@@ -1,12 +1,12 @@
 ---
-title: "PromptFlower"
+title: "Prompt Flower"
 weight: 5
 subtitle: "Teleprompter, der Deiner Stimme folgt"
 kicker: "App"
 status: "Bald im App Store"
-status_note: "PromptFlower erscheint zuerst für das iPhone. Für Android läuft bald eine Beta über Google Play – trag Dich gern als Tester ein."
-teaser: "Du sprichst, PromptFlower liest mit: Machst Du eine Pause, wartet der Text, wirst Du schneller, zieht er mit. Mit Aufnahme, Untertiteln aus Deinem Skript und Rohschnitt. Auf Deutsch und Englisch, komplett auf dem iPhone."
-summary: "PromptFlower hört zu und scrollt den Text genau so schnell, wie Du sprichst. Pausen, Tempowechsel und spontane Einschübe sind kein Problem. Die Spracherkennung läuft vollständig auf dem Gerät: Kein Ton und kein Text gehen ins Internet."
+status_note: "Prompt Flower erscheint zuerst für das iPhone. Für Android läuft bald eine Beta über Google Play – trag Dich gern als Tester ein."
+teaser: "Du sprichst, Prompt Flower liest mit: Machst Du eine Pause, wartet der Text, wirst Du schneller, zieht er mit. Mit Aufnahme, Untertiteln aus Deinem Skript und Rohschnitt. Auf Deutsch und Englisch, komplett auf dem iPhone."
+summary: "Prompt Flower hört zu und scrollt den Text genau so schnell, wie Du sprichst. Pausen, Tempowechsel und spontane Einschübe sind kein Problem. Die Spracherkennung läuft vollständig auf dem Gerät: Kein Ton und kein Text gehen ins Internet."
 primary:
   text: "Android-Beta: als Tester anmelden"
   url: "mailto:support@mitjamartini.com?subject=PromptFlower%20Android-Beta&body=Ich%20m%C3%B6chte%20die%20Android-Beta%20von%20PromptFlower%20testen.%0AGer%C3%A4t%3A%20"
@@ -30,7 +30,7 @@ layout: product
 
 ## Der Text folgt Deiner Stimme
 
-Du sprichst, PromptFlower liest mit. **Machst Du eine Pause, wartet der Text. Wirst Du schneller, zieht er mit.** Lässt Du einen Satz aus, findet er die Stelle wieder. Die Spracherkennung läuft auf dem iPhone, auf Deutsch und Englisch.
+Du sprichst, Prompt Flower liest mit. **Machst Du eine Pause, wartet der Text. Wirst Du schneller, zieht er mit.** Lässt Du einen Satz aus, findet er die Stelle wieder. Die Spracherkennung läuft auf dem iPhone, auf Deutsch und Englisch.
 
 ## So funktioniert es
 
@@ -44,7 +44,7 @@ Kein Pedal, kein Tempo, keine zweite Person.
 
 Ein Knopf startet Aufnahme und Mitlesen. Der Text läuft direkt unter der Frontkamera, so bleibt Dein Blick nah an der Linse. Die Kamera-Vorschau ist klein und lässt sich per Tippen ausblenden.
 
-- **Ton vom Funk-Lavalier:** Steck den Empfänger per USB-C oder Lightning an, PromptFlower nimmt ihn automatisch. Abgezogen? Die Aufnahme läuft mit dem eingebauten Mikrofon weiter.
+- **Ton vom Funk-Lavalier:** Steck den Empfänger per USB-C oder Lightning an, Prompt Flower nimmt ihn automatisch. Abgezogen? Die Aufnahme läuft mit dem eingebauten Mikrofon weiter.
 - **Video in 1080p oder 4K**, eine Datei mit Bild und Ton. Oder nur Ton, etwa für Podcasts und Sprechertexte.
 - **Aufnahmen gehören zum Skript:** ansehen, mit Stern markieren, teilen, in Fotos sichern.
 
@@ -63,13 +63,13 @@ Der Text der Untertitel kommt aus Deinem Skript, richtig geschrieben. Das Timing
 
 ## Fernsteuerung im Browser
 
-Öffne die Fernsteuerung, und PromptFlower zeigt einen QR-Code. Ein Tablet, ein Laptop oder ein zweites Handy im selben WLAN scannt ihn und steuert den Prompter im Browser: Start und Pause, Satz und Absatz vor und zurück, Tempo, Schriftgröße. Ohne App, ohne Internet, ohne Konto, geschützt durch einen Zugangscode, der mit „Beenden“ ungültig wird. Kostenlos, auch ohne Pro.
+Öffne die Fernsteuerung, und Prompt Flower zeigt einen QR-Code. Ein Tablet, ein Laptop oder ein zweites Handy im selben WLAN scannt ihn und steuert den Prompter im Browser: Start und Pause, Satz und Absatz vor und zurück, Tempo, Schriftgröße. Ohne App, ohne Internet, ohne Konto, geschützt durch einen Zugangscode, der mit „Beenden“ ungültig wird. Kostenlos, auch ohne Pro.
 
 Dazu: Spiegelmodus für Teleprompter-Glas und Bluetooth-Clicker oder Tastatur.
 
 ## Datenschutz
 
-PromptFlower nutzt die Spracherkennung von iOS im reinen Gerätemodus. **Kein Ton und kein Text gehen ins Internet** – nicht zu mir, nicht zu Apple, nicht zu Dritten.
+Prompt Flower nutzt die Spracherkennung von iOS im reinen Gerätemodus. **Kein Ton und kein Text gehen ins Internet** – nicht zu mir, nicht zu Apple, nicht zu Dritten.
 
 - **Kein Konto, keine Werbung, keine Analyse.** Im App Store steht: „Keine Daten erfasst“.
 - **Fernsteuerung nur im WLAN**, Deine Geräte verbinden sich direkt miteinander.
@@ -79,7 +79,7 @@ Details in der [Datenschutzerklärung](/de/datenschutz/).
 
 ## Preise
 
-| | Kostenlos | PromptFlower Pro |
+| | Kostenlos | Prompt Flower Pro |
 | --- | --- | --- |
 | Skripte, Editor, Scrollen im festen Tempo, Fernsteuerung | ✓ | ✓ |
 | Mitlesen mit der Stimme | 5 Minuten pro Tag | unbegrenzt |
@@ -91,17 +91,17 @@ Abos verlängern sich automatisch und sind jederzeit in den Einstellungen Deines
 
 ## Häufige Fragen
 
-**Welche Sprachen versteht PromptFlower?**\
+**Welche Sprachen versteht Prompt Flower?**\
 Deutsch und Englisch. Die Sprache stellst Du pro Skript ein.
 
 **Brauche ich Internet?**\
 Nein. Mitlesen, Aufnahme und Export funktionieren offline. Einmalig lädt iOS das Sprachpaket von Apple, falls es noch fehlt. Der Kauf von Pro läuft über den App Store.
 
 **Welches Mikrofon brauche ich?**\
-Zum Üben reicht das eingebaute Mikrofon. Für Aufnahmen empfehle ich ein Funk-Lavalier mit USB-C- oder Lightning-Empfänger; PromptFlower wählt es automatisch. Bluetooth-Mikrofone nutzt die App nicht.
+Zum Üben reicht das eingebaute Mikrofon. Für Aufnahmen empfehle ich ein Funk-Lavalier mit USB-C- oder Lightning-Empfänger; Prompt Flower wählt es automatisch. Bluetooth-Mikrofone nutzt die App nicht.
 
 **Welche iPhones werden unterstützt?**\
-iPhones mit iOS 17 oder neuer, im Hochformat. Für iPad gibt es PromptFlower noch nicht.
+iPhones mit iOS 17 oder neuer, im Hochformat. Für iPad gibt es Prompt Flower noch nicht.
 
 **Was passiert, wenn die 5 Minuten aufgebraucht sind?**\
 Der Text läuft im festen Tempo weiter, eine laufende Aufnahme wird nicht unterbrochen. Am nächsten Tag folgt der Text wieder 5 Minuten lang Deiner Stimme.
@@ -109,7 +109,7 @@ Der Text läuft im festen Tempo weiter, eine laufende Aufnahme wird nicht unterb
 **Kann ich einen Angebotscode einlösen?**\
 Ja, in der App unter Einstellungen › Code einlösen.
 
-**Gibt es PromptFlower für Android?**\
+**Gibt es Prompt Flower für Android?**\
 Geplant ist eine Beta über Google Play. [Melde Dich als Tester an](mailto:support@mitjamartini.com?subject=PromptFlower%20Android-Beta) – ich nutze Deine E-Mail-Adresse nur, um Dich zur Beta einzuladen.
 
 ## Support

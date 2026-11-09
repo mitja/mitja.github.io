@@ -1,12 +1,12 @@
 ---
-title: "PromptFlower"
+title: "Prompt Flower"
 weight: 5
 subtitle: "The teleprompter that follows your voice"
 kicker: "App"
 status: "Coming to the App Store"
-status_note: "PromptFlower launches on iPhone first. An Android beta on Google Play follows soon – feel free to sign up as a tester."
-teaser: "You speak, PromptFlower reads along: pause and the script waits, speed up and it keeps up. With recording, subtitles from your script and a rough cut. In English and German, entirely on your iPhone."
-summary: "PromptFlower listens and scrolls the script exactly as fast as you speak. Pauses, changes of pace and spontaneous asides are no problem. Speech recognition runs entirely on the device: no audio and no text go to the internet."
+status_note: "Prompt Flower launches on iPhone first. An Android beta on Google Play follows soon – feel free to sign up as a tester."
+teaser: "You speak, Prompt Flower reads along: pause and the script waits, speed up and it keeps up. With recording, subtitles from your script and a rough cut. In English and German, entirely on your iPhone."
+summary: "Prompt Flower listens and scrolls the script exactly as fast as you speak. Pauses, changes of pace and spontaneous asides are no problem. Speech recognition runs entirely on the device: no audio and no text go to the internet."
 primary:
   text: "Android beta: sign up as a tester"
   url: "mailto:support@mitjamartini.com?subject=PromptFlower%20Android%20beta&body=I%27d%20like%20to%20test%20the%20PromptFlower%20Android%20beta.%0ADevice%3A%20"
@@ -30,7 +30,7 @@ layout: product
 
 ## The script follows your voice
 
-You speak, PromptFlower reads along. **Pause and the script waits. Speed up and it keeps up.** Skip a sentence and it finds its place again. Speech recognition runs on the iPhone, in English and German.
+You speak, Prompt Flower reads along. **Pause and the script waits. Speed up and it keeps up.** Skip a sentence and it finds its place again. Speech recognition runs on the iPhone, in English and German.
 
 ## How it works
 
@@ -44,7 +44,7 @@ No pedal, no speed setting, no second person.
 
 One button starts recording and voice following. The script runs right below the front camera, so your eyes stay close to the lens. The camera preview is small and can be hidden with a tap.
 
-- **Sound from a wireless lavalier:** plug the receiver in via USB-C or Lightning and PromptFlower uses it automatically. Unplugged? Recording continues with the built-in microphone.
+- **Sound from a wireless lavalier:** plug the receiver in via USB-C or Lightning and Prompt Flower uses it automatically. Unplugged? Recording continues with the built-in microphone.
 - **Video in 1080p or 4K**, one file with picture and sound. Or audio only, for podcasts and voice-overs.
 - **Takes belong to the script:** watch, star, share, save to Photos.
 
@@ -63,13 +63,13 @@ The subtitle text comes from your script, spelled right. The timing comes from s
 
 ## Remote control in the browser
 
-Open the remote and PromptFlower shows a QR code. A tablet, laptop or second phone on the same Wi-Fi scans it and controls the prompter in the browser: start and pause, sentence and paragraph back and forward, speed, font size. No app, no internet, no account, protected by an access code that stops working when you tap "Stop". Free, even without Pro.
+Open the remote and Prompt Flower shows a QR code. A tablet, laptop or second phone on the same Wi-Fi scans it and controls the prompter in the browser: start and pause, sentence and paragraph back and forward, speed, font size. No app, no internet, no account, protected by an access code that stops working when you tap "Stop". Free, even without Pro.
 
 Plus: mirror mode for teleprompter glass and Bluetooth clickers or keyboards.
 
 ## Privacy
 
-PromptFlower uses iOS speech recognition in on-device-only mode. **No audio and no text go to the internet** – not to me, not to Apple, not to third parties.
+Prompt Flower uses iOS speech recognition in on-device-only mode. **No audio and no text go to the internet** – not to me, not to Apple, not to third parties.
 
 - **No account, no ads, no analytics.** The App Store says "Data Not Collected".
 - **Remote control on your Wi-Fi only**, your devices connect directly.
@@ -79,7 +79,7 @@ Details in the [privacy policy](/en/privacy/).
 
 ## Pricing
 
-| | Free | PromptFlower Pro |
+| | Free | Prompt Flower Pro |
 | --- | --- | --- |
 | Scripts, editor, fixed-speed scrolling, remote control | ✓ | ✓ |
 | Voice following | 5 minutes a day | unlimited |
@@ -91,14 +91,14 @@ Subscriptions renew automatically and can be cancelled at any time in your Apple
 
 ## FAQ
 
-**Which languages does PromptFlower understand?**\
+**Which languages does Prompt Flower understand?**\
 English and German. You set the language per script.
 
 **Do I need internet?**\
 No. Following, recording and export work offline. iOS downloads the speech package from Apple once if it's missing. Buying Pro goes through the App Store.
 
 **Which microphone do I need?**\
-The built-in microphone is fine for practice. For recordings I recommend a wireless lavalier with a USB-C or Lightning receiver; PromptFlower picks it automatically. The app doesn't use Bluetooth microphones.
+The built-in microphone is fine for practice. For recordings I recommend a wireless lavalier with a USB-C or Lightning receiver; Prompt Flower picks it automatically. The app doesn't use Bluetooth microphones.
 
 **Which iPhones are supported?**\
 iPhones with iOS 17 or later, in portrait. There's no iPad version yet.
