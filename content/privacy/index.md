@@ -55,8 +55,9 @@ I use the following providers. Where they process data on my behalf, I have a da
 
 * **Hetzner (servers and storage).** Hetzner Online GmbH, Industriestr. 25, 91710 Gunzenhausen, Germany. Servers of Hetzner in its Nuremberg and Falkenstein data centres run promptflower.com, the training portal with its database and labs, the reach measurement (Umami), and the storage for files and backups (Hetzner Object Storage). Requests reach the services through Hetzner load balancers and a reverse proxy that terminates TLS.
 * **Microsoft 365 (e-mail, Microsoft Teams).** Microsoft Ireland Operations Limited, One Microsoft Place, South County Business Park, Leopardstown, Dublin 18, Ireland. My mailboxes (e.g. privacy@, support@ and hi@mitjamartini.com) are hosted on Microsoft Exchange Online; the live course sessions take place in Microsoft Teams. Microsoft may also process data in the USA; Microsoft is certified under the EU-US Data Privacy Framework, and the EU standard contractual clauses apply as well. Privacy statement: https://privacy.microsoft.com/en-us/privacystatement
-* **Mailjet (e-mail delivery).** Sinch Mailjet SAS, 13-13 bis rue de l'Aubrac, 75012 Paris, France. The training portal sends its e-mails through Mailjet (e.g. confirming your e-mail address, password reset, enrolment confirmations, session reminders) from the sender domain mg.mitjamartini.com, and – if you subscribed – the newsletter. For this, Mailjet processes your e-mail address, the content of the e-mail and technical delivery data (e.g. whether an e-mail was delivered) on servers in the EU. Privacy policy: https://www.mailjet.com/legal/privacy-policy/
+* **Mailjet (e-mail delivery).** Sinch Mailjet SAS, 13-13 bis rue de l'Aubrac, 75012 Paris, France. The training portal sends its e-mails through Mailjet (e.g. confirming your e-mail address, password reset, enrolment confirmations, session reminders) from the sender domain mg.mitjamartini.com, and – if you subscribed – the newsletter. For this, Mailjet processes your e-mail address, the content of the e-mail and technical delivery data (e.g. whether an e-mail was delivered) on servers in the EU. Open and click tracking is turned off: my e-mails contain no tracking pixels, and links are not rewritten. Privacy policy: https://www.mailjet.com/legal/privacy-policy/
 * **GitHub Pages (blog).** GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA. The blog and the other static pages of mitjamartini.com are currently served by GitHub Pages; GitHub processes the server log data (see below) for this, also in the USA. GitHub is certified under the EU-US Data Privacy Framework. Privacy statement: https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement
+* **Lexware Office (accounting).** Haufe-Lexware GmbH & Co. KG, Munzinger Straße 9, 79111 Freiburg, Germany. Invoices and payments, which may contain personal data (e.g. name and address on an invoice), are processed for my bookkeeping in Lexware Office. The legal basis is my statutory bookkeeping and retention obligations (Art. 6(1)(c) GDPR).
 * **Let's Encrypt (TLS certificates).** My services use certificates from Let's Encrypt (Internet Security Research Group, USA). Let's Encrypt only checks that I own a domain; your visits are not sent to Let's Encrypt.
 
 ## Websites
@@ -86,7 +87,7 @@ In the training portal you can sign up for courses and live sessions, access cou
 
 ## Newsletter
 
-If I offer a newsletter and you subscribe, I only send it with your consent (Art. 6(1)(a) GDPR) and with double opt-in: after signing up you receive an e-mail with a confirmation link, and only then are you added. As proof of your consent I store the text you agreed to and the time and IP address of the sign-up and of the confirmation. Only confirmed addresses are passed to Mailjet for delivery. You can unsubscribe at any time through the link in every e-mail or by e-mailing me; I then remove your address from the mailing list and keep the proof of consent only as long as I need it to defend against claims.
+If I offer a newsletter and you subscribe, I only send it with your consent (Art. 6(1)(a) GDPR) and with double opt-in: after signing up you receive an e-mail with a confirmation link, and only then are you added. As proof of your consent I store the text you agreed to and the time and IP address of the sign-up and of the confirmation. Only confirmed addresses are passed to Mailjet for delivery. You can unsubscribe at any time through the link in every e-mail or by e-mailing me; I then remove your address from the mailing list. So that you do not receive mail again by mistake after unsubscribing, I may keep the address on a suppression list (Art. 6(1)(f) GDPR); I keep the proof of consent only as long as I need it to defend against claims. The newsletter has no tracking pixels or click tracking either.
 
 ## Apps: Prompt Flower
 
@@ -113,12 +114,17 @@ Regarding the personal data concerning you, you have the right to:
 * **access** the stored data, its origin, recipients and the purpose of processing (Art. 15 GDPR),
 * **rectification** of inaccurate data (Art. 16 GDPR),
 * **erasure** (Art. 17 GDPR) and **restriction of processing** (Art. 18 GDPR),
+* **notification**: if I rectify, erase or restrict data, I inform the recipients I disclosed it to (Art. 19 GDPR),
 * **data portability**: data I process automatically on the basis of your consent or a contract, in a machine-readable format (Art. 20 GDPR),
 * **withdraw consent** with effect for the future; the lawfulness of processing before the withdrawal is not affected (Art. 7(3) GDPR).
 
 **Right to object (Art. 21 GDPR):** Where I process data on the basis of my legitimate interest (Art. 6(1)(f) GDPR), you may object at any time on grounds relating to your particular situation. I will then stop, unless there are compelling legitimate grounds that override your interests, or the processing serves the establishment, exercise or defence of legal claims.
 
 An informal e-mail to privacy@mitjamartini.com is enough for any of these.
+
+## How long I keep data
+
+Where no period is given above: I keep data only as long as I need it for its purpose. Data based on your consent is deleted when you withdraw it. Data I must keep by law (e.g. up to 6 or 10 years under commercial and tax law) is deleted when those periods end. Data processed on the basis of my legitimate interest is deleted at the latest when you object successfully.
 
 ## Right to lodge a complaint
 
