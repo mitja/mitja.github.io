@@ -1,6 +1,6 @@
 ---
 author: null
-date: 2026-11-09
+date: 2026-11-11
 draft: false
 sharingLinks: false
 showDate: false
@@ -18,7 +18,7 @@ title: Datenschutz
 ---
 
 
-Stand: 9. November 2026
+Stand: 11. November 2026
 
 ## Verantwortliche Stelle
 
@@ -58,7 +58,7 @@ Ich setze folgende Dienstleister ein. Wo sie Daten in meinem Auftrag verarbeiten
 
 * **Hetzner (Server und Speicher).** Hetzner Online GmbH, Industriestr. 25, 91710 Gunzenhausen. Auf Servern von Hetzner in den Rechenzentren Nürnberg und Falkenstein laufen promptflower.com, vaicoa.com, ortszeit.app, ownpaas.com, paasbox.com, kibauer.de, das Trainingsportal mit Datenbank und Labs, die Reichweitenmessung (Umami) und die Speicher für Dateien und Sicherungen (Hetzner Object Storage). Anfragen erreichen die Dienste über Load Balancer von Hetzner und einen Reverse Proxy, der die TLS-Verschlüsselung abschließt.
 * **Microsoft 365 (E-Mail, Microsoft Teams).** Microsoft Ireland Operations Limited, One Microsoft Place, South County Business Park, Leopardstown, Dublin 18, Irland. Mein E-Mail-Postfach (z. B. privacy@, support@ und hi@mitjamartini.com) liegt bei Microsoft Exchange Online; die Live-Sitzungen der Kurse finden in Microsoft Teams statt. Microsoft kann Daten auch in den USA verarbeiten; Microsoft ist nach dem EU-US Data Privacy Framework zertifiziert, außerdem gelten die EU-Standardvertragsklauseln. Datenschutzerklärung: https://privacy.microsoft.com/de-de/privacystatement
-* **Mailjet (Versand von E-Mails).** Sinch Mailjet SAS, 13-13 bis rue de l'Aubrac, 75012 Paris, Frankreich. Über Mailjet verschickt das Trainingsportal seine E-Mails (z. B. Bestätigung der E-Mail-Adresse, Passwort zurücksetzen, Anmeldebestätigungen, Erinnerungen an Termine) von der Absenderdomain mg.mitjamartini.com, und – wenn Du ihn abonniert hast – den Newsletter. Mailjet verarbeitet dafür Deine E-Mail-Adresse, den Inhalt der E-Mail und technische Zustelldaten (z. B. ob eine E-Mail zugestellt wurde) auf Servern in der EU. Öffnungs- und Klick-Tracking ist ausgeschaltet: Meine E-Mails enthalten keine Zählpixel, und Links werden nicht umgeschrieben. Datenschutzerklärung: https://www.mailjet.com/de/rechtliches/datenschutz/
+* **Mailjet (Versand von E-Mails).** Sinch Mailjet SAS, 13-13 bis rue de l'Aubrac, 75012 Paris, Frankreich. Über Mailjet verschickt das Trainingsportal seine E-Mails (z. B. Bestätigung der E-Mail-Adresse, Passwort zurücksetzen, Anmeldebestätigungen, Erinnerungen an Termine) von der Absenderdomain mg.mitjamartini.com, und – wenn Du ihn abonniert hast – den Newsletter. Ebenfalls über Mailjet laufen die E-Mails zu Prompt Flower (Benachrichtigung zum Start, Neuigkeiten, Android-Beta), für die Du Dich über ein Formular von Mailjet anmelden kannst. Mailjet verarbeitet dafür Deine E-Mail-Adresse, den Inhalt der E-Mail und technische Zustelldaten (z. B. ob eine E-Mail zugestellt wurde) auf Servern in der EU. Öffnungs- und Klick-Tracking ist ausgeschaltet: Meine E-Mails enthalten keine Zählpixel, und Links werden nicht umgeschrieben. Datenschutzerklärung: https://www.mailjet.com/de/rechtliches/datenschutz/
 * **GitHub Pages (Blog).** GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA. Der Blog und die übrigen statischen Seiten von mitjamartini.com werden derzeit über GitHub Pages ausgeliefert; GitHub verarbeitet dabei die Server-Logdaten (siehe unten), auch in den USA. GitHub ist nach dem EU-US Data Privacy Framework zertifiziert. Datenschutzerklärung: https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement
 * **Lexware Office (Buchhaltung).** Haufe-Lexware GmbH & Co. KG, Munzinger Straße 9, 79111 Freiburg. Rechnungen und Zahlungen, die dabei personenbezogene Daten enthalten können (z. B. Name und Anschrift auf einer Rechnung), verarbeite ich für meine Buchhaltung in Lexware Office. Rechtsgrundlage sind meine gesetzlichen Buchführungs- und Aufbewahrungspflichten (Art. 6 Abs. 1 lit. c DSGVO).
 * **Let's Encrypt (TLS-Zertifikate).** Die Zertifikate meiner Dienste stammen von Let's Encrypt (Internet Security Research Group, USA). Let's Encrypt prüft nur, dass mir eine Domain gehört; Deine Aufrufe werden nicht an Let's Encrypt übermittelt.
@@ -91,7 +91,7 @@ Im Trainingsportal kannst Du Dich für Kurse und Live-Sitzungen anmelden, Kursma
 
 ## Newsletter
 
-Wenn ich einen Newsletter anbiete und Du ihn abonnierst, verschicke ich ihn nur mit Deiner Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) und nach dem Double-Opt-in-Verfahren: Nach der Anmeldung bekommst Du eine E-Mail mit einem Bestätigungslink, erst danach trage ich Dich ein. Als Nachweis Deiner Einwilligung speichere ich den Text, dem Du zugestimmt hast, den Zeitpunkt und die IP-Adresse der Anmeldung und der Bestätigung. Für den Versand übermittle ich nur bestätigte E-Mail-Adressen an Mailjet. Du kannst den Newsletter jederzeit über den Link in jeder E-Mail oder per E-Mail an mich abbestellen; danach lösche ich Deine Adresse aus der Versandliste. Damit Du nach einer Abmeldung nicht versehentlich wieder Post bekommst, kann ich die Adresse in einer Sperrliste behalten (Art. 6 Abs. 1 lit. f DSGVO); den Nachweis der Einwilligung bewahre ich nur so lange auf, wie ich ihn zur Abwehr von Ansprüchen brauche. Zählpixel oder Klick-Auswertungen gibt es auch im Newsletter nicht.
+Wenn ich einen Newsletter anbiete und Du ihn abonnierst, verschicke ich ihn nur mit Deiner Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) und nach dem Double-Opt-in-Verfahren: Nach der Anmeldung bekommst Du eine E-Mail mit einem Bestätigungslink, erst danach trage ich Dich ein. Als Nachweis Deiner Einwilligung speichere ich den Text, dem Du zugestimmt hast, den Zeitpunkt und die IP-Adresse der Anmeldung und der Bestätigung. Meldest Du Dich über das Trainingsportal an, übermittle ich erst die bestätigte Adresse an Mailjet. Meldest Du Dich über ein Formular von Mailjet an (z. B. für Prompt Flower), verarbeitet Mailjet die Anmeldung und die Bestätigung in meinem Auftrag; E-Mails bekommst Du erst nach der Bestätigung. Du kannst den Newsletter jederzeit über den Link in jeder E-Mail oder per E-Mail an mich abbestellen; danach lösche ich Deine Adresse aus der Versandliste. Damit Du nach einer Abmeldung nicht versehentlich wieder Post bekommst, kann ich die Adresse in einer Sperrliste behalten (Art. 6 Abs. 1 lit. f DSGVO); den Nachweis der Einwilligung bewahre ich nur so lange auf, wie ich ihn zur Abwehr von Ansprüchen brauche. Zählpixel oder Klick-Auswertungen gibt es auch im Newsletter nicht.
 
 ## Apps: Prompt Flower
 
