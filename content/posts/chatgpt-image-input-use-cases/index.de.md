@@ -80,7 +80,7 @@ Please create working html with
 embedded css code without explanations.
 ```
 
-Dann antwortete ChatGPT mit [generiertem Code](chat.html) die in einem Browser so dargestellt wird:
+Dann antwortete ChatGPT mit [generiertem Code](/posts/chatgpt-image-input-use-cases/chat.html) die in einem Browser so dargestellt wird:
 
 ![ChatGPTs erster Versuch, die Chatbot-Box von Azure nachzubilden.](chat-generated.png)
 
@@ -94,7 +94,7 @@ Da sich das Ergebnis des obigen Codes auch als Bild erfassen lässt, habe ich mi
 
 Ich habe ein Bild des Browser-Renderings genommen, die Unterschiede zwischen dem Original und dem generierten Bild manuell aufgelistet und ChatGPT gebeten, es zu verbessern.
 
-Der [verbesserte Code](chat-improved-manually.html) sieht bereits ziemlich brauchbar aus:
+Der [verbesserte Code](/posts/chatgpt-image-input-use-cases/chat-improved-manually.html) sieht bereits ziemlich brauchbar aus:
 
 ![Eine verbesserte Chatbot-Box.](chat-generated-improved-manually.png)
 
@@ -129,7 +129,7 @@ have differences in design due to screen
 size constraints.
 ```
 
-Anschließend habe ich GPT-4 damit gebeten, eine zweite, [automatisch verbesserte Version](chat-generated-improved-automatically.html) des Codes zu erstellen. Das Ergebnis ist nicht so gut wie der verbesserte Code, bei dem ich die Unterschiede manuell beschrieben habe, aber immer noch besser als die ursprüngliche Version:
+Anschließend habe ich GPT-4 damit gebeten, eine zweite, [automatisch verbesserte Version](/posts/chatgpt-image-input-use-cases/chat-generated-improved-automatically.html) des Codes zu erstellen. Das Ergebnis ist nicht so gut wie der verbesserte Code, bei dem ich die Unterschiede manuell beschrieben habe, aber immer noch besser als die ursprüngliche Version:
 
 ![ChatGPTs erster Versuch, die Chatbot-Box von Azure nachzubilden.](chat-generated-improved-automatically.png)
 

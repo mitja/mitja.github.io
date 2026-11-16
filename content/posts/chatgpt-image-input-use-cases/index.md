@@ -92,7 +92,7 @@ Please create working html with
 embedded css code without explanations.
 ```
 
-Then, ChatGPT replied with [generated code](chat.html). Here is an image of a browser render of it:
+Then, ChatGPT replied with [generated code](/posts/chatgpt-image-input-use-cases/chat.html). Here is an image of a browser render of it:
 
 ![ChatGPT's first attempt at recreating Azure's chatbot box.](chat-generated.png)
 
@@ -104,7 +104,7 @@ As the result of above code can also be captured as an image, I wondered if I co
 
 I took an image of the browser rendering, manually listed differences between the original and the generated image, and asked ChatGPT to improve it.
 
-The [improved code](chat-improved-manually.html) already looks quite usable:
+The [improved code](/posts/chatgpt-image-input-use-cases/chat-improved-manually.html) already looks quite usable:
 
 ![An improved chatbot box.](chat-generated-improved-manually.png)
 
@@ -139,7 +139,7 @@ have differences in design due to screen
 size constraints.
 ```
 
-I then used this to ask GPT-4 to create a second, more [automatically improved version](chat-generated-improved-automatically.html) of the code. The result is not as good as the improved code, where I manually described the differences, but still better than the original version:
+I then used this to ask GPT-4 to create a second, more [automatically improved version](/posts/chatgpt-image-input-use-cases/chat-generated-improved-automatically.html) of the code. The result is not as good as the improved code, where I manually described the differences, but still better than the original version:
 
 ![ChatGPT's first attempt at recreating Azure's chatbot box.](chat-generated-improved-automatically.png)
 
