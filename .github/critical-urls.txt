@@ -1,0 +1,17 @@
+# Critical live URLs, checked daily by .github/workflows/links.yml (job "critical").
+#
+# The iOS app Prompt Flower (Settings, paywall) and its App Store listing
+# (privacy policy URL, support URL, marketing URL, EULA) link to these pages.
+# If one of them breaks, the app and the store listing point to a dead page.
+# Keep this list in sync with the app (promptflower repo, CLAUDE.md) and App Store Connect.
+#
+# Format: one URL per line, optionally followed by " | " and a text the page must contain.
+# Each URL must answer HTTP 200 after redirects. Lines starting with # are ignored.
+
+https://mitjamartini.com/de/datenschutz/ | Apps: Prompt Flower
+https://mitjamartini.com/en/privacy/ | Apps: Prompt Flower
+https://mitjamartini.com/de/impressum/
+https://mitjamartini.com/en/imprint/
+https://mitjamartini.com/de/apps/promptflower/
+https://mitjamartini.com/en/apps/promptflower/
+https://www.apple.com/legal/internet-services/itunes/dev/stdeula/

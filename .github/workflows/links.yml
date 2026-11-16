@@ -1,0 +1,109 @@
+# Link checks for mitjamartini.com.
+#
+# site:     builds the site like pages.yml and checks every link in ./public with lychee.
+#           Internal links (relative, root-relative and absolute https://mitjamartini.com/...)
+#           must resolve to a built file, otherwise the job fails.
+#           External links are checked too, but only reported in the job summary,
+#           because third-party sites go down, rate-limit or block bots.
+# critical: checks the live legal and support pages that the iOS app Prompt Flower and its
+#           App Store listing link to (list: .github/critical-urls.txt). Fails if one of them
+#           does not answer HTTP 200 or misses its content marker; GitHub then emails the owner.
+name: Links
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 6 * * *" # daily 06:00 UTC, critical URLs only
+
+permissions:
+  contents: read
+
+concurrency:
+  group: links-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  site:
+    if: github.event_name != 'schedule'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hugo setup
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: 0.155.3
+          extended: true
+
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+          fetch-depth: 0
+
+      - name: Build with Hugo
+        env:
+          HUGO_ENVIRONMENT: production
+          HUGO_ENV: production
+        run: hugo --minify -d ./public --baseURL https://mitjamartini.com/
+
+      - name: Restore lychee cache
+        uses: actions/cache@v4
+        with:
+          path: .lycheecache
+          key: lychee-${{ github.sha }}
+          restore-keys: lychee-
+
+      # Internal links: offline, absolute links to the site itself are mapped onto ./public.
+      - name: Check internal links
+        uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
+        with:
+          fail: true
+          output: lychee/internal.md
+          args: >-
+            --no-progress
+            --offline
+            --root-dir ${{ github.workspace }}/public
+            --index-files index.html
+            --remap '^https?://(www\.)?mitjamartini\.com/(.*)$ file://${{ github.workspace }}/public/$2'
+            'public/**/*.html'
+
+      # External links: report only (job summary), never fails the job.
+      - name: Check external links (report only)
+        uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
+        with:
+          fail: false
+          output: lychee/external.md
+          args: >-
+            --no-progress
+            --cache
+            --max-cache-age 1d
+            --accept '200..=299,403,429'
+            --max-retries 2
+            --retry-wait-time 5
+            --timeout 20
+            --max-concurrency 16
+            --root-dir ${{ github.workspace }}/public
+            --exclude '^file://'
+            --exclude '^https?://(www\.)?mitjamartini\.com'
+            --exclude 'linkedin\.com'
+            --exclude '^https?://(www\.)?(twitter|x)\.com'
+            --exclude 'instagram\.com'
+            --exclude 'facebook\.com'
+            --exclude-loopback
+            'public/**/*.html'
+
+  critical:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Check critical URLs
+        run: .github/scripts/check-critical-urls.sh .github/critical-urls.txt
