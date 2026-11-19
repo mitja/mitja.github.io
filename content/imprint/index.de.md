@@ -15,7 +15,7 @@ showSummary: false
 sharingLinks: false
 ---
 
-Dieses Impressum gilt für alle meine Angebote: mitjamartini.com mit dem Trainingsportal training.mitjamartini.com, promptflower.com und die App Prompt Flower, vaicoa.com, ownpaas.com, paasbox.com, cloudviewer.app sowie den Podcast KI Bauer (kibauer.de, kibauer.com).
+Dieses Impressum gilt für alle meine Angebote: mitjamartini.com mit dem Trainingsportal training.mitjamartini.com, promptflower.com und die App Prompt Flower, notabrief.com und die Software Nota, vaicoa.com, ownpaas.com, paasbox.com, cloudviewer.app sowie den Podcast KI Bauer (kibauer.de, kibauer.com).
 
 ## Angaben gemäß § 5 DDG
 

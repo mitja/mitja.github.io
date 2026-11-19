@@ -18,7 +18,7 @@ title: Datenschutz
 ---
 
 
-Stand: 11. November 2026
+Stand: 19. November 2026
 
 ## Verantwortliche Stelle
 
@@ -41,6 +41,7 @@ Diese Erklärung gilt für alle meine Angebote:
 * das Trainingsportal **training.mitjamartini.com** mit den Übungsumgebungen (Labs) und den Live-Sitzungen,
 * die Website **promptflower.com** und die App **Prompt Flower** (Abschnitt unten),
 * die Website **noctulog.com** und die App **Noctulog** (Abschnitt unten),
+* die Website **notabrief.com** und die Software **Nota** (Abschnitt unten),
 * die Produkt-Websites **vaicoa.com**, **ortszeit.app**, **ownpaas.com** und **paasbox.com**,
 * die Website des Podcasts **KI Bauer** (**kibauer.de** und **kibauer.com**),
 * E-Mails, die Du mir schreibst oder die Du von mir bekommst.
@@ -57,7 +58,7 @@ Für die App und den Dienst **Cloud Viewer** gilt eine eigene Datenschutzerklär
 
 Ich setze folgende Dienstleister ein. Wo sie Daten in meinem Auftrag verarbeiten, habe ich mit ihnen einen Auftragsverarbeitungsvertrag nach Art. 28 DSGVO geschlossen.
 
-* **Hetzner (Server und Speicher).** Hetzner Online GmbH, Industriestr. 25, 91710 Gunzenhausen. Auf Servern von Hetzner in den Rechenzentren Nürnberg und Falkenstein laufen promptflower.com, noctulog.com, vaicoa.com, ortszeit.app, ownpaas.com, paasbox.com, kibauer.de, das Trainingsportal mit Datenbank und Labs, die Reichweitenmessung (Umami) und die Speicher für Dateien und Sicherungen (Hetzner Object Storage). Anfragen erreichen die Dienste über Load Balancer von Hetzner und einen Reverse Proxy, der die TLS-Verschlüsselung abschließt.
+* **Hetzner (Server und Speicher).** Hetzner Online GmbH, Industriestr. 25, 91710 Gunzenhausen. Auf Servern von Hetzner in den Rechenzentren Nürnberg und Falkenstein laufen promptflower.com, noctulog.com, notabrief.com, vaicoa.com, ortszeit.app, ownpaas.com, paasbox.com, kibauer.de, das Trainingsportal mit Datenbank und Labs, die Reichweitenmessung (Umami) und die Speicher für Dateien und Sicherungen (Hetzner Object Storage). Anfragen erreichen die Dienste über Load Balancer von Hetzner und einen Reverse Proxy, der die TLS-Verschlüsselung abschließt.
 * **Microsoft 365 (E-Mail, Microsoft Teams).** Microsoft Ireland Operations Limited, One Microsoft Place, South County Business Park, Leopardstown, Dublin 18, Irland. Mein E-Mail-Postfach (z. B. privacy@, support@ und hi@mitjamartini.com) liegt bei Microsoft Exchange Online; die Live-Sitzungen der Kurse finden in Microsoft Teams statt. Microsoft kann Daten auch in den USA verarbeiten; Microsoft ist nach dem EU-US Data Privacy Framework zertifiziert, außerdem gelten die EU-Standardvertragsklauseln. Datenschutzerklärung: https://privacy.microsoft.com/de-de/privacystatement
 * **Mailjet (Versand von E-Mails).** Sinch Mailjet SAS, 13-13 bis rue de l'Aubrac, 75012 Paris, Frankreich. Über Mailjet verschickt das Trainingsportal seine E-Mails (z. B. Bestätigung der E-Mail-Adresse, Passwort zurücksetzen, Anmeldebestätigungen, Erinnerungen an Termine) von der Absenderdomain mg.mitjamartini.com, und – wenn Du ihn abonniert hast – den Newsletter. Ebenfalls über Mailjet laufen die E-Mails zu Prompt Flower (Benachrichtigung zum Start, Neuigkeiten, Android-Beta), für die Du Dich über ein Formular von Mailjet anmelden kannst. Mailjet verarbeitet dafür Deine E-Mail-Adresse, den Inhalt der E-Mail und technische Zustelldaten (z. B. ob eine E-Mail zugestellt wurde) auf Servern in der EU. Öffnungs- und Klick-Tracking ist ausgeschaltet: Meine E-Mails enthalten keine Zählpixel, und Links werden nicht umgeschrieben. Datenschutzerklärung: https://www.mailjet.com/de/rechtliches/datenschutz/
 * **GitHub Pages (Blog).** GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA. Der Blog und die übrigen statischen Seiten von mitjamartini.com werden derzeit über GitHub Pages ausgeliefert; GitHub verarbeitet dabei die Server-Logdaten (siehe unten), auch in den USA. GitHub ist nach dem EU-US Data Privacy Framework zertifiziert. Datenschutzerklärung: https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement
@@ -121,6 +122,19 @@ Noctulog ist meine App für iPhone und Mac, die die Geräusche Deiner Nacht aufn
 * **Keine Analyse, kein Tracking, keine Werbung.** Die App enthält keine Analyse-, Tracking-, Werbe- oder Absturzmelde-Software von Dritten, sendet nichts automatisch und nutzt keine Werbe-Kennung. Wenn Du in iOS erlaubst, Analysedaten mit App-Entwicklern zu teilen, stellt Apple mir anonymisierte Absturzberichte und Nutzungsstatistiken zur Verfügung – nie Aufnahmen.
 * **Fehlerbericht nur per E-Mail, wenn Du willst.** In den Einstellungen kannst Du einen Fehlerbericht per E-Mail an mich schicken. Er enthält App- und Systemversion, Gerätetyp, Deine Einstellungen, Anzahl und Länge der gespeicherten Nächte und ein kurzes technisches Protokoll – keine Aufnahmen, keine Lautstärkeverläufe und keine Uhrzeiten Deiner Nächte. Absturzberichte des Systems (MetricKit) sammelt die App nur, wenn Du das einschaltest. Du siehst die E-Mail vor dem Senden; es gilt der Abschnitt „E-Mail-Kontakt“.
 * **Support.** Schreibst Du mir an support@mitjamartini.com, gilt der Abschnitt „E-Mail-Kontakt“.
+
+## Software: Nota
+
+Nota ist eine Software, die im Blick behält, wofür Du verantwortlich bist – Server, Sicherungen, Fristen, Rechnungen –, und die Du selbst betreibst, auf Deinem eigenen Server oder Rechner. Ich betreibe dafür keinen Dienst, der Deine Daten hält, und ich erhalte nichts von Deiner Installation. Für die Website notabrief.com gelten die Abschnitte zu den Websites oben, mit einem Unterschied: notabrief.com nutzt kein Umami; sie setzt keine Cookies und misst nichts.
+
+* **Deine Installation, Deine Daten.** Was Nota speichert – die Dinge, die es beobachtet, ihre Zustände, Kosten und Beträge, Deine Listen, seine Tokens und gekoppelten Geräte –, liegt in einer Datenbankdatei auf Deinem Server. Du entscheidest, was hineinkommt, und Du bist Verantwortlicher für personenbezogene Daten darin (zum Beispiel den Namen eines Kunden auf einer Rechnung). Ich habe keinen Zugriff darauf.
+* **Verbindungen nur dorthin, wohin Du sie richtest.** Deine Installation verbindet sich nur mit dem, was Du einrichtest: mit den Diensten, die sie beobachtet (zum Beispiel Websites, die sie prüft, der Hetzner-Cloud-API oder Lexware Office), und mit den Benachrichtigungszielen, die Du festlegst (zum Beispiel ntfy, ein Webhook oder E-Mail). Für diesen Verkehr gelten die Datenschutzerklärungen dieser Anbieter. An mich sendet Deine Installation nichts.
+* **Support.** Schreibst Du mir zu Nota an support@mitjamartini.com, gilt der Abschnitt „E-Mail-Kontakt“.
+
+<!-- Nota-Push-Relay: diesen Abschnitt einschalten, sobald relay.notabrief.com in Betrieb ist und die iPhone-App gekoppelt werden kann (core/README.md „Push“ im Repository nota).
+
+* **Mitteilungen auf Dein Telefon.** Koppelst Du die Nota-App mit Deiner Installation, schickt Deine Installation die Mitteilungen für Dein Telefon über mein Relay unter relay.notabrief.com, weil nur ich die Schlüssel habe, die Apple und Google annehmen. Deine Installation verschlüsselt jede Mitteilung mit einem Schlüssel, den nur Dein Telefon hat; das Relay kann sie nicht lesen. Das Relay erhält die verschlüsselte Mitteilung, das Push-Token Deines Telefons, ob die Mitteilung dringend ist, eine nichtssagende Gruppierungskennung sowie die IP-Adresse Deiner Installation. Es reicht die Mitteilung an Apple (APNs) oder Google (Firebase Cloud Messaging) weiter, die sie als eigenständige Verantwortliche zustellen. Das Relay speichert nichts: Es zählt Anfragen je Absender nur im Arbeitsspeicher, um Missbrauch zu begrenzen, und protokolliert weder Push-Tokens noch Mitteilungen. Rechtsgrundlage ist die Nutzung der App auf Deinen Wunsch (Art. 6 Abs. 1 lit. b DSGVO). Ohne gekoppeltes Telefon geht nichts an das Relay; Du kannst es auch abschalten (NOTA_RELAY_URL=off).
+-->
 
 <!-- Mitjas Relay wird derzeit nicht vermarktet; Abschnitt reaktivieren, wenn die Produktseite wieder online ist.
 
