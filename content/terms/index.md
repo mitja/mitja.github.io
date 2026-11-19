@@ -84,3 +84,24 @@ Your saved game is stored only on your device. It is kept when you update the ap
 
 - The connection is off until you switch it on under Mods. It works only in your local network while the game is open. Keep the code shown on your screen to yourself.
 - A coding agent acts on your behalf: you choose which agent you connect, and its provider's terms apply to it. The agent plays only a separate test run; it does not change your own saved game. A mod becomes your mod for your next run only when you or your agent choose "install".
+
+## Nota {#nota}
+
+Software for your own servers, website [notabrief.com](https://notabrief.com/). An iPhone app is in development.
+
+### The software and its licence
+
+The server parts of Nota – the program `nota` with the core, the probe and the templates – are provided free of charge under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). The licence governs how you may use, change and pass them on. Its disclaimer of warranty and liability applies as far as the law allows; the liability rules under "General" above take precedence where mandatory law requires.
+
+### You run it
+
+You install and operate Nota yourself and are responsible for your installation: its security and updates, its backups, the data you put into it and whom you give access tokens to. Install security updates promptly; they are announced in the release notes.
+
+Nota reads what its sources report and hands it over; it never acts itself. Its amounts, deadlines and states are only as correct and as current as their sources and its configuration. Nota does not replace bookkeeping, tax advice or a monitoring service with guaranteed availability. Do not rely on it as the only way to meet a statutory or contractual deadline.
+
+<!-- Nota push relay and app: enable when relay.notabrief.com is in operation and the app is in the App Store (privacy policy, section "Software: Nota", has the matching commented-out paragraph).
+
+### Push to your phone
+
+Push messages to the Nota app go through my relay (relay.notabrief.com). I provide the relay free of charge, without guaranteed availability. I may limit or block requests to prevent abuse, and change or end the relay with reasonable notice. Delivery depends on Apple and Google; I cannot guarantee that a message arrives or when.
+-->

@@ -84,3 +84,24 @@ Dein Spielstand liegt nur auf deinem Gerät. Er bleibt bei Updates erhalten, abe
 
 - Die Verbindung ist aus, bis du sie unter Mods einschaltest. Sie funktioniert nur in deinem lokalen Netzwerk, solange das Spiel geöffnet ist. Behalte den Code auf deinem Bildschirm für dich.
 - Ein Coding-Agent handelt in deinem Auftrag: Du wählst, welchen Agenten du verbindest, und für ihn gelten die Bedingungen seines Anbieters. Der Agent spielt nur einen getrennten Testlauf; deinen eigenen Spielstand ändert er nicht. Ein Mod wird erst dann dein Mod für den nächsten Lauf, wenn du oder dein Agent „installieren“ wählst.
+
+## Nota {#nota}
+
+Software für deine eigenen Server, Website [notabrief.com](https://notabrief.com/de/). Eine iPhone-App ist in Entwicklung.
+
+### Die Software und ihre Lizenz
+
+Die Server-Teile von Nota – das Programm `nota` mit Kern, Probe und Vorlagen – stelle ich unentgeltlich unter der [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0) zur Verfügung. Die Lizenz regelt, wie du sie nutzen, ändern und weitergeben darfst. Ihr Gewährleistungs- und Haftungsausschluss gilt, soweit das Gesetz es zulässt; die Haftungsregeln unter „Allgemeines“ oben gehen vor, wo zwingendes Recht es verlangt.
+
+### Du betreibst es
+
+Du installierst und betreibst Nota selbst und bist für deine Installation verantwortlich: für ihre Sicherheit und Aktualisierungen, ihre Sicherungen, die Daten, die du hineingibst, und dafür, wem du Zugangs-Tokens gibst. Spiel Sicherheitsaktualisierungen zügig ein; sie werden in den Versionshinweisen angekündigt.
+
+Nota liest, was seine Quellen melden, und übergibt es; es handelt nie selbst. Beträge, Fristen und Zustände sind nur so richtig und aktuell wie ihre Quellen und die Konfiguration. Nota ersetzt keine Buchhaltung, keine Steuerberatung und keine Überwachung mit zugesicherter Verfügbarkeit. Verlass dich nicht allein darauf, um eine gesetzliche oder vertragliche Frist einzuhalten.
+
+<!-- Nota-Push-Relay und App: einschalten, sobald relay.notabrief.com in Betrieb ist und die App im App Store steht (in der Datenschutzerklärung, Abschnitt „Software: Nota“, liegt der passende auskommentierte Absatz).
+
+### Mitteilungen auf dein Telefon
+
+Mitteilungen an die Nota-App laufen über mein Relay (relay.notabrief.com). Das Relay stelle ich unentgeltlich und ohne zugesicherte Verfügbarkeit bereit. Ich darf Anfragen begrenzen oder sperren, um Missbrauch zu verhindern, und das Relay mit angemessener Ankündigung ändern oder einstellen. Die Zustellung hängt von Apple und Google ab; dass und wann eine Mitteilung ankommt, kann ich nicht zusichern.
+-->
