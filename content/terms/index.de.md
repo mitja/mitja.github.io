@@ -53,3 +53,34 @@ Aufnahmen und Auswertungen werden nur auf deinem Gerät gespeichert. Ganze Aufna
 - **„Plus Jahr“** ist ein Jahresabo. Es verlängert sich automatisch um ein Jahr, wenn du es nicht spätestens 24 Stunden vor Ablauf in den Einstellungen deines Apple-Accounts kündigst. Endet es, werden ältere Nächte wieder gesperrt, aber nicht gelöscht.
 - **„Plus Dauerhaft“** ist ein Einmalkauf ohne Abo. Du bezahlst einmal, und er verlängert sich nicht.
 - **Auf weiteren Geräten** mit derselben Apple-ID nutzt du Käufe über „Käufe wiederherstellen“.
+
+## Data Center Baron {#datacenterbaron}
+
+Spiel fürs iPhone, Website [datacenterbaron.com](https://datacenterbaron.com/de).
+
+### Ein Spiel
+
+Data Center Baron ist ein Spiel. Firmen, Kunden, Märkte, Preise und Ereignisse darin sind erfunden. Nichts im Spiel ist ein Rat zu echten Investitionen, Energie oder Technik.
+
+### Dein Spielstand
+
+Dein Spielstand liegt nur auf deinem Gerät. Er bleibt bei Updates erhalten, aber nicht, wenn du die App löschst, und nicht auf einem neuen Gerät ohne Sicherung des alten. Einzelheiten stehen in der [Datenschutzerklärung](/de/datenschutz/#apps-data-center-baron).
+
+### Käufe
+
+- **Kostenlos:** das Wohnheim-Kapitel und die ersten fünf Jahre (60 Monate) im Rechenzentrum, mit allen Funktionen außer Mods.
+- **„Vollversion“** ist ein Einmalkauf ohne Abo. Sie schaltet jedes weitere Jahr, den Verkauf der Firma und Mods frei. Du kannst sie über die Familienfreigabe teilen.
+- **Der Preis** steht vor dem Kauf im App Store. Zum Start kann zeitlich begrenzt ein Einführungspreis gelten.
+- **Ohne Vollversion** bleibt dein Spielstand erhalten; du kannst nur keine weiteren Monate spielen.
+- **Auf weiteren Geräten** mit demselben Apple Account nutzt du den Kauf über „Kauf wiederherstellen“.
+- **Wird ein Kauf erstattet,** ist die Vollversion wieder gesperrt; dein Spielstand bleibt erhalten.
+
+### Mods
+
+- Mods ändern die Daten des Spiels: Zahlen, Texte und Bilder. Sie enthalten keinen Programmcode. Die App prüft einen Mod, bevor sie ihn verwendet, ich übernehme aber keine Gewähr, dass jeder Mod gut spielbar ist oder nach einem Update weiter funktioniert. Ein Mod ändert nie den kostenlosen Teil oder den Kauf.
+- Für den Inhalt von Mods, die du erstellst, importierst oder weitergibst, bist du verantwortlich, insbesondere für Texte und Bilder: Sie dürfen keine Rechte anderer verletzen und nicht rechtswidrig sein.
+
+### Verbindung zu einem Coding-Agenten
+
+- Die Verbindung ist aus, bis du sie unter Mods einschaltest. Sie funktioniert nur in deinem lokalen Netzwerk, solange das Spiel geöffnet ist. Behalte den Code auf deinem Bildschirm für dich.
+- Ein Coding-Agent handelt in deinem Auftrag: Du wählst, welchen Agenten du verbindest, und für ihn gelten die Bedingungen seines Anbieters. Der Agent spielt nur einen getrennten Testlauf; deinen eigenen Spielstand ändert er nicht. Ein Mod wird erst dann dein Mod für den nächsten Lauf, wenn du oder dein Agent „installieren“ wählst.

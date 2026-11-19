@@ -53,3 +53,34 @@ Recordings and analyses are stored only on your device. Full recordings are excl
 - **"Plus Yearly"** is a yearly subscription. It renews automatically for another year unless you cancel it in your Apple Account settings at least 24 hours before it ends. When it ends, older nights are locked again but not deleted.
 - **"Plus Lifetime"** is a one-time purchase without a subscription. You pay once, and it does not renew.
 - **On other devices** with the same Apple ID, you can use your purchases via "Restore Purchases".
+
+## Data Center Baron {#datacenterbaron}
+
+Game for iPhone, website [datacenterbaron.com](https://datacenterbaron.com/).
+
+### A game
+
+Data Center Baron is a game. Its companies, customers, markets, prices and events are invented. Nothing in the game is advice on real investments, energy or technology.
+
+### Your saved game
+
+Your saved game is stored only on your device. It is kept when you update the app, but not when you delete it, and not on a new device without a backup of the old one. See the [privacy policy](/en/privacy/#apps-data-center-baron) for details.
+
+### Purchases
+
+- **Free:** the dorm chapter and the first five years (60 months) in the data center, with every feature except mods.
+- **"Full Game"** is a one-time purchase without a subscription. It unlocks every year after that, the company sale and mods. You can share it via Family Sharing.
+- **The price** is shown in the App Store before you buy. A launch price may apply for a limited time.
+- **Without the full game** your saved game is kept; you just cannot play further months.
+- **On other devices** with the same Apple Account, you can use your purchase via "Restore purchase".
+- **If a purchase is refunded,** the full game is locked again; your saved game is kept.
+
+### Mods
+
+- Mods change the game's data: numbers, texts and pictures. They contain no program code. The app checks a mod before using it, but I do not guarantee that every mod plays well or keeps working after an update. A mod never changes the free part or the purchase.
+- You are responsible for the content of mods you make, import or share, in particular texts and pictures: they must not infringe the rights of others or be unlawful.
+
+### Coding agent connection
+
+- The connection is off until you switch it on under Mods. It works only in your local network while the game is open. Keep the code shown on your screen to yourself.
+- A coding agent acts on your behalf: you choose which agent you connect, and its provider's terms apply to it. The agent plays only a separate test run; it does not change your own saved game. A mod becomes your mod for your next run only when you or your agent choose "install".
