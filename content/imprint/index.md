@@ -15,7 +15,7 @@ showSummary: false
 sharingLinks: false
 ---
 
-This imprint applies to all my offerings: mitjamartini.com with the training portal training.mitjamartini.com, promptflower.com and the app Prompt Flower, notabrief.com and the software Nota, vaicoa.com, ownpaas.com, paasbox.com, cloudviewer.app and the podcast KI Bauer (kibauer.de, kibauer.com).
+This imprint applies to all my offerings: mitjamartini.com with the training portal training.mitjamartini.com, promptflower.com and the app Prompt Flower, notabrief.com and the software Nota, noctulog.com and the app Noctulog, vaicoa.com, ownpaas.com, paasbox.com, cloudviewer.app and the podcast KI Bauer (kibauer.de, kibauer.com).
 
 ## Information under § 5 DDG
 

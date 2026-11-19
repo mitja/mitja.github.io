@@ -51,3 +51,8 @@
   name = "Datenschutz"
   pageRef = "privacy"
   weight = 20
+
+[[footer]]
+  name = "Nutzungsbedingungen"
+  pageRef = "terms"
+  weight = 30
